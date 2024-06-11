@@ -1,5 +1,5 @@
 import { FaHeart } from "react-icons/fa";
-import necklace from "../../../assets/images/categoryPhotos/necklace.png";
+import detail from "./ItemData";
 import "./ItemDetailsPage.css";
 
 function ItemDetailsPage() {
@@ -7,14 +7,14 @@ function ItemDetailsPage() {
     <div id="ItemDetailsPage">
       <div className="container">
         <div className="container-img">
-          <img src={necklace} alt="necklace" className="image-detail" />
+          <img src={detail.picture_jewell} alt="necklace" className="image-detail" />
         </div>
         <FaHeart className="heart-img" />
       </div>
       <div className="container-text">
-        <h3>Collier en or 24 carats</h3>
-        <p>Marque Tiffany & Co, sertie de 40 diamants</p>
-        <p>€1.200</p>
+        <h3>{detail.name}</h3>
+        <p>{detail.details}</p>
+        <p>{detail.price}</p>
         <div className="container-button">
           <button type="button" className="button-detail">
             Ajouter au panier

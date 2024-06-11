@@ -72,7 +72,7 @@
   }
 }
 /* TABLET */
-@media screen and (max-width: 1060px) {
+@media screen and (min-width: 600px) and (max-width: 1060px) {
   .image-detail {
     height: 60vh;
     object-fit: cover;

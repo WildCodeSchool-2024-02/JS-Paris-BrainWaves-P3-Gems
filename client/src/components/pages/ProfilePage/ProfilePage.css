@@ -1,0 +1,16 @@
+.background-image {
+  height: 100vh;
+  background-size: cover;
+  background-position: right;
+}
+#ProfilePage h1 {
+  color: white;
+  text-align: center;
+  padding-top: 30%;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  font-size: 2.3rem;
+}
+.fav-profil {
+  display: flex;
+}
