@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: fit-content;
+}
+
+p {
+  color: rgb(0, 0, 0);
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: "Judson", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+}
+h2 {
+  font-size: 2.2rem;
+  font-family: "League Spartan", sans-serif;
+  color: rgb(0, 0, 0);
+}
+h3 {
+  font-size: 2.2rem;
+  font-family: "League Spartan", sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+p {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+}
+label {
+  font-size: 1.3rem;
+  font-family: "League Spartan", sans-serif;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 7px;
+  font-size: 1.2rem;
+  transition: all 0.8s ease-in-out;
+  font-family: "League Spartan", sans-serif;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+input:focus {
+  outline: none;
+}
+input:hover {
+  background-color: rgba(0, 0, 0, 0.094);
+}
+
+button {
+  border: none;
+  padding: 7px;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.488);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  font-family: "League Spartan", sans-serif;
+}
+button:hover {
+  background: black;
+}
+
+@media screen and (max-width: 1060px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  label {
+    font-size: 1.2rem;
+  }
+}
+/* MOBILE */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+  label {
+    font-size: 1rem;
+  }
+  input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    font-size: 1rem;
+  }
+  button {
+    padding: 7px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0);
+    color: #fff;
+  }
+}
