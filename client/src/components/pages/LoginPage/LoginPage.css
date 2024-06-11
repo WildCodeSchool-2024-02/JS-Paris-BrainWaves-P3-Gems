@@ -1,0 +1,13 @@
+.Pagelogin {
+  margin-left: 10px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 50%;
+  border: solid;
+}
