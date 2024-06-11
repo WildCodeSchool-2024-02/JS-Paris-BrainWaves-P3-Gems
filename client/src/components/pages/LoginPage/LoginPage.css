@@ -1,13 +1,73 @@
-.Pagelogin {
+.inputLogin {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+}
+
+.inputflex {
+  display: flex;
+  justify-content: center;
+}
+input {
+  width: 100%;
+  border: solid;
+}
+
+.create-account {
+  display: flex;
+  justify-content: center;
+  padding-right: 16%;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  cursor: pointer;
+}
+
+.nextButton {
+  display: flex;
+  justify-content: center;
+}
+
+.nextHome {
+  width: 100%;
+  font-size: large;
+  margin-right: 10px;
   margin-left: 10px;
 }
 
-.input {
-  display: flex;
-  flex-direction: column;
+.wishlist {
+  padding: 4% 0% 4% 0%;
 }
 
-input {
-  width: 50%;
-  border: solid;
+.flowerLogin {
+  margin: 0 10px 0 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .input {
+    width: 33%;
+    padding-top: 2%;
+  }
+
+  .nextHome {
+    width: 50vh;
+    margin-right: 0%;
+    margin-left: 0px;
+  }
+
+  .create-account {
+    padding-right: 12%;
+    padding-top: 2%;
+    padding-bottom: 1%;
+  }
+
+  .wishlist {
+    width: 25%;
+    padding: 2% 0% 2% 0%;
+  }
+
+  .flowerLogin {
+    object-fit: cover;
+    height: 40vh;
+    width: 98%;
+  }
 }

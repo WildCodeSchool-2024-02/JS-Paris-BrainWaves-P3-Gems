@@ -1,30 +1,53 @@
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import { FaHeart } from "react-icons/fa";
 import flower from "../../../assets/images/illustrations/flower2.png";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleCreateAccountClick = () => {
+    navigate("/createAccount");
+  };
+
   return (
     <div id="LoginPage">
-      <div className="Pagelogin">
-        <h1>Gems</h1>
+      <h1>Gems</h1>
 
-        <label className="input">
+      <div className="inputflex">
+        <label className="inputLogin">
           Saissisez votre addresse e-mail
-          <input type="email" defaultValue="Adresse e-mail" />
+          <input className="inputLogin" type="email" placeholder="Adresse e-mail" />
         </label>
-
-        <label className="input">
+      </div>
+      <div className="inputflex" >
+        <label className="inputLogin">
           Mot de passe
-          <input type="password" defaultValue="Mot de passe" />
+          <input type="password" placeholder="Mot de passe" />
         </label>
+      </div>
 
-        <button type="button">suivant</button>
-        <p>Crée un compte</p>
-        <p>
+      <div
+        className="create-account"
+        onClick={handleCreateAccountClick}
+        onKeyUp={handleCreateAccountClick}
+        role="button"
+        tabIndex={0}
+      >
+        Créer un compte
+      </div>
+      <div className="nextButton">
+        <button className="nextHome" type="button">
+          suivant
+        </button>
+      </div>
+      <div className="inputflex" >
+        <p className="wishlist">
           <FaHeart />
-          Crée une wishlit personnalisée avec vos articles enregistrés
+          Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
+
       <div>
         <img className="flowerLogin" src={flower} alt="fleur" />
       </div>
