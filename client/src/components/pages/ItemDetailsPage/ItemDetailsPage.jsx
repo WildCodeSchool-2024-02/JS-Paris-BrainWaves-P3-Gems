@@ -11,13 +11,15 @@ function ItemDetailsPage() {
         </div>
         <FaHeart className="heart-img" />
       </div>
-      <h3>Collier en or 24 carats</h3>
-      <p>Blabla blabla blabla Bla</p>
-      <p>€1.200</p>
-      <div className="container-button">
-        <button type="button" className="button-detail">
-          Ajouter
-        </button>
+      <div className="container-text">
+        <h3>Collier en or 24 carats</h3>
+        <p>Marque Tiffany & Co, sertie de 40 diamants</p>
+        <p>€1.200</p>
+        <div className="container-button">
+          <button type="button" className="button-detail">
+            Ajouter au panier
+          </button>
+        </div>
       </div>
     </div>
   );
