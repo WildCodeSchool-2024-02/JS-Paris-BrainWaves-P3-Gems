@@ -1,165 +1,116 @@
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #eee;
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
+  height: fit-content;
 }
 
-.container {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 30px;
+p {
+  color: rgb(0, 0, 0);
 }
 
-.logo {
-  font-size: 20px;
-  margin-top: 16px;
-}
-
-.navbar ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #eee;
-  display: flex;
-  gap: 5px;
-  justify-content: end;
-  margin-top: auto;
-  font-size: 15px;
-}
-
-.navbar a:hover {
-  scale: 110%;
-}
-
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.block-primary {
-  text-transform: uppercase;
-  margin-bottom: 30px;
-}
-
-.block-primary-main {
-  font-size: 50px;
+h1 {
+  font-size: 4rem;
+  font-family: "Judson", serif;
   font-weight: 400;
-  letter-spacing: 5px;
-  animation: blink 12s infinite;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+}
+h2 {
+  font-size: 2.2rem;
+  font-family: "League Spartan", sans-serif;
+  color: rgb(0, 0, 0);
+}
+h3 {
+  font-size: 2.2rem;
+  font-family: "League Spartan", sans-serif;
+  color: rgb(0, 0, 0);
 }
 
-.block-primary-sub {
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 7px;
+p {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+}
+label {
+  font-size: 1.3rem;
+  font-family: "League Spartan", sans-serif;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 7px;
+  font-size: 1.2rem;
+  transition: all 0.8s ease-in-out;
+  font-family: "League Spartan", sans-serif;
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: inline-block;
-  border-radius: 100px;
-  transition: all 0.2s;
-  position: relative;
+input::placeholder {
+  font-style: italic;
+}
+input:focus {
+  outline: none;
+}
+input:hover {
+  background-color: rgba(0, 0, 0, 0.094);
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+button {
+  border: none;
+  padding: 7px;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.488);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  font-family: "League Spartan", sans-serif;
+}
+button:hover {
+  background: black;
 }
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-white {
-  background-color: #fff;
-  color: #777;
-  font-size: 14px;
-}
-
-footer {
-  position: absolute;
-  top: 85%;
-  left: 75%;
-}
-
-.wcs {
-  text-decoration: none;
-  color: #ff1493ad;
-}
-
-.wcs:hover {
-  border-bottom: solid 1px #ff1493ad;
-}
-
-@media screen and (max-width: 760px) {
-  .logo {
-    display: none;
+@media screen and (max-width: 1060px) {
+  h1 {
+    font-size: 3rem;
   }
-
-  .container {
-    justify-content: center;
+  h2 {
+    font-size: 1.8rem;
   }
-
-  footer {
-    position: absolute;
-    top: 85%;
-    left: 20%;
+  p {
+    font-size: 1.2rem;
   }
-}
-
-@media screen and (min-width: 761px) and (max-width: 960px) {
-  footer {
-    position: absolute;
-    top: 85%;
-    left: 60%;
+  label {
+    font-size: 1.2rem;
   }
 }
-
-@keyframes blink {
-  20%,
-  24%,
-  55% {
-    color: #111;
-    text-shadow: none;
+/* MOBILE */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
   }
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
-  100% {
-    text-shadow:
-      0 0 5px #ff1493ad,
-      0 0 15px #eee,
-      0 0 20px #ff1493ad,
-      0 0 40px #a00ac9,
-      0 0 60px #ff0000,
-      0 0 10px #970dc5,
-      0 0 98px #ff0000;
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+  label {
+    font-size: 1rem;
+  }
+  input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    font-size: 1rem;
+  }
+  button {
+    padding: 7px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0);
     color: #fff;
   }
 }
