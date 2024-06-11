@@ -1,6 +1,6 @@
 function ItemDetailsPage(){
     return(
-        <></>
+        <>item</>
     )
 }
 
