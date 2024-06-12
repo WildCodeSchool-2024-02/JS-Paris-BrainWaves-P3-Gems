@@ -1,7 +1,9 @@
+/* MOBILE */
 .background-image {
   height: 100vh;
   background-size: cover;
   background-position: right;
+  background-image: url("src/assets/images/illustrations/flower3.jpeg");
 }
 #ProfilePage h1 {
   color: white;
@@ -11,6 +13,108 @@
   font-weight: 500;
   font-size: 2.3rem;
 }
+.heart-profil {
+  opacity: 0.6;
+}
 .fav-profil {
   display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.9);
+  height: 6vh;
+  padding-left: 2%;
+  font-weight: 300;
+  margin-top: 14%;
+}
+#ProfilePage p {
+  margin-left: 2%;
+  margin-top: 1%;
+}
+.boxjewels-profil {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.9);
+  height: 6vh;
+  padding-left: 2%;
+  font-weight: 300;
+  margin-top: 4%;
+}
+.ring-profil {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.invoice-profil {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.bag-profil {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.buttons-profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sale-button {
+  color: black;
+  background-color: transparent;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 35%;
+}
+.sale-button:hover {
+  background-color: transparent;
+}
+.return-button {
+  color: white;
+  background-color: rgb(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  width: 80vw;
+  height: 5vh;
+  margin-top: 5%;
+}
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  .background-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3%;
+    height: 100vh;
+    background-size: cover;
+    background-position: top;
+    background-image: url("src/assets/images/illustrations/flower4.png");
+  }
+  #ProfilePage h1 {
+    padding-top: 0;
+  }
+  .fav-profil {
+    margin-top: 5%;
+    padding: 1.8rem;
+    width: 24vw;
+  }
+  .boxjewels-profil {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1.8rem;
+    width: 24vw;
+  }
+  .sale-button {
+    background-color: white;
+    border: 1px solid black;
+    margin-top: 2%;
+    width: 20vw;
+    height: 8vh;
+  }
+  .sale-button:hover {
+    background-color: white;
+  }
+  .return-button {
+    color: white;
+    background-color: black;
+    width: 20vw;
+    padding: 0.7rem;
+    margin-top: 1.8%;
+    height: 8vh;
+  }
 }

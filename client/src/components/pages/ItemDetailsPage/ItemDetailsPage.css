@@ -41,8 +41,7 @@
   font-weight: 500;
 }
 #ItemDetailsPage button:hover {
-  /* background: white; */
-  color: white;
+  background: transparent;
 }
 
 /* DESKTOP */
