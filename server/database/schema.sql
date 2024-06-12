@@ -1,12 +1,92 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE category(
+   Id_category_list INT AUTO_INCREMENT,
+   name VARCHAR(100) ,
+   picture TEXT,
+   details TEXT NOT NULL,
+   exist BOOLEAN NOT NULL,
+   PRIMARY KEY(Id_category_list)
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE user(
+   Id_user_ INT,
+   firstname VARCHAR(100)  NOT NULL,
+   lastname VARCHAR(100)  NOT NULL,
+   mail VARCHAR(120)  NOT NULL,
+   password VARCHAR(150)  NOT NULL,
+   role VARCHAR(50) ,
+   PRIMARY KEY(Id_user_)
+);
+
+CREATE TABLE product(
+   Id_product INT AUTO_INCREMENT,
+   name VARCHAR(150)  NOT NULL,
+   details TEXT,
+   price INT NOT NULL,
+   sold BOOLEAN NOT NULL,
+   picture_jewell TEXT NOT NULL,
+   picture_validation TEXT NOT NULL,
+   validated BOOLEAN,
+   Id_user_ INT NOT NULL,
+   PRIMARY KEY(Id_product),
+   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
+);
+
+CREATE TABLE transaction(
+   Id_transaction INT,
+   date_ DATE NOT NULL,
+   invoice VARCHAR(50)  NOT NULL,
+   status VARCHAR(50)  NOT NULL,
+   Id_product INT NOT NULL,
+   PRIMARY KEY(Id_transaction),
+   UNIQUE(Id_product),
+   FOREIGN KEY(Id_product) REFERENCES product(Id_product)
+);
+
+CREATE TABLE comment(
+   Id_comment INT AUTO_INCREMENT,
+   text TEXT NOT NULL,
+   date_ DATE NOT NULL,
+   Id_transaction INT NOT NULL,
+   Id_user_ INT NOT NULL,
+   PRIMARY KEY(Id_comment),
+   UNIQUE(Id_transaction),
+   FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction),
+   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
+);
+
+CREATE TABLE adress(
+   Id_adress INT AUTO_INCREMENT,
+   city VARCHAR(50)  NOT NULL,
+   street VARCHAR(255)  NOT NULL,
+   street_code INT NOT NULL,
+   zip_code INT NOT NULL,
+   Id_user_ INT NOT NULL,
+   Id_transaction INT NOT NULL,
+   PRIMARY KEY(Id_adress),
+   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_),
+   FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction)
+);
+
+CREATE TABLE assign(
+   Id_category_list INT,
+   Id_product INT,
+   PRIMARY KEY(Id_category_list, Id_product),
+   FOREIGN KEY(Id_category_list) REFERENCES category(Id_category_list),
+   FOREIGN KEY(Id_product) REFERENCES product(Id_product)
+);
+
+CREATE TABLE sale(
+   Id_user_ INT,
+   Id_transaction INT,
+   PRIMARY KEY(Id_user_, Id_transaction),
+   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_),
+   FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction)
+);
+
+CREATE TABLE wish_list(
+   Id_product INT,
+   Id_user_ INT,
+   PRIMARY KEY(Id_product, Id_user_),
+   FOREIGN KEY(Id_product) REFERENCES product(Id_product),
+   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
 );
