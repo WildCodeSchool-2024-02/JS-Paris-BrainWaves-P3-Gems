@@ -79,7 +79,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3%;
+    padding-top: 5%;
     height: 100vh;
     background-size: cover;
     background-position: top;
@@ -87,9 +87,11 @@
   }
   #ProfilePage h1 {
     padding-top: 0;
+    padding-bottom: 6%;
+    font-size: 5rem;
   }
   .fav-profil {
-    margin-top: 5%;
+    margin-top: 0%;
     padding: 1.8rem;
     width: 24vw;
   }
