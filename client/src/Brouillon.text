@@ -7,4 +7,24 @@
 /* MOBILE */
 @media screen and (max-width: 600px) {
 
-}
+} 
+
+DON'T FORGET TO " npm install react-icons " in your Ternimal before importing these icons
+
+import { FaUser } from "react-icons/fa";
+<FaUser /> this is for user logo
+
+import { RiSearchFill } from "react-icons/ri";
+<RiSearchFill /> this for search icon
+
+import { FaHeart } from "react-icons/fa";
+<FaHeart /> like icon
+
+import { IoBagSharp } from "react-icons/io5";
+<IoBagSharp />
+
+import { GiHamburgerMenu } from "react-icons/gi";
+<GiHamburgerMenu /> burger icon
+
+import { RxCross2 } from "react-icons/rx";
+<RxCross2 /> close icon
