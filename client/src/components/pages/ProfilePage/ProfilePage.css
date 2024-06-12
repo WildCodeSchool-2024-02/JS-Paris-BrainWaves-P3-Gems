@@ -83,6 +83,7 @@
     height: 100vh;
     background-size: cover;
     background-position: top;
+    object-fit: cover;
     background-image: url("src/assets/images/illustrations/flower4.png");
   }
   #ProfilePage h1 {

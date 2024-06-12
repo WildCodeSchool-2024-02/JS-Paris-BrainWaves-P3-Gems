@@ -1,0 +1,15 @@
+.modal-profil {
+  position: absolute;
+}
+.container-image {
+  border: 1px solid black;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+.image-modal {
+  width: 10vw;
+  height: 35vh;
+  object-fit: cover;
+  z-index: 2;
+}
