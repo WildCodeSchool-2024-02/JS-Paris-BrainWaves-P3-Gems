@@ -1,73 +1,94 @@
+#LoginPage {
+  text-align: left;
+}
+
+#LoginPage h1 {
+  padding: 10px;
+}
 .inputLogin {
   display: flex;
   flex-direction: column;
-  padding-top: 5%;
+  padding-top: 2%;
+  width: 100%;
+  text-align: left;
+  gap: 10px;
 }
 
 .inputflex {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  margin: 40px auto 0px;
+  width: 90%;
 }
-input {
-  width: 100%;
-  border: solid;
+
+.inputLogin input {
+  border: 1px solid;
+  padding: 12px;
+  margin-bottom: 20px;
 }
 
 .create-account {
-  display: flex;
-  justify-content: center;
-  padding-right: 16%;
-  padding-top: 1%;
-  padding-bottom: 5%;
+  font-family: "League Spartan", sans-serif;
+  font-size: 0.9rem;
   cursor: pointer;
+  width: 90%;
+  margin: -15px auto 15px;
 }
 
 .nextButton {
   display: flex;
   justify-content: center;
 }
-
 .nextHome {
-  width: 100%;
-  font-size: large;
-  margin-right: 10px;
-  margin-left: 10px;
+  width: 90%;
+  padding: 12px;
+  font-weight: 300;
+  font-size: 17px;
 }
 
 .wishlist {
-  padding: 4% 0% 4% 0%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: small;
+  padding-bottom: 20px;
 }
 
+.wishlist .heart {
+  font-size: 25px;
+}
+.login-image-container {
+  width: 100vw;
+  overflow: hidden;
+}
 .flowerLogin {
-  margin: 0 10px 0 10px;
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 1024px) {
-  .input {
-    width: 33%;
-    padding-top: 2%;
+  .inputflex {
+    width: 35%;
   }
-
-  .nextHome {
-    width: 50vh;
-    margin-right: 0%;
-    margin-left: 0px;
-  }
-
   .create-account {
-    padding-right: 12%;
-    padding-top: 2%;
-    padding-bottom: 1%;
+    width: 35%;
   }
-
+  .nextHome {
+    width: 35%;
+  }
   .wishlist {
-    width: 25%;
-    padding: 2% 0% 2% 0%;
+    width: 35vw;
+    font-size: 20px;
+    gap: 15px;
   }
-
+  .login-image-container {
+    width: 98vw;
+    margin: 0 auto 10px;
+  }
   .flowerLogin {
-    object-fit: cover;
-    height: 40vh;
-    width: 98%;
+    height: 45vh;
+    width: 100%;
   }
 }

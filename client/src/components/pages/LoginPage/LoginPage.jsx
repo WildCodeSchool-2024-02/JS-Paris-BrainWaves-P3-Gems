@@ -17,10 +17,12 @@ function LoginPage() {
       <div className="inputflex">
         <label className="inputLogin">
           Saissisez votre addresse e-mail
-          <input className="inputLogin" type="email" placeholder="Adresse e-mail" />
+          <input
+            className="inputLogin"
+            type="email"
+            placeholder="Adresse e-mail"
+          />
         </label>
-      </div>
-      <div className="inputflex" >
         <label className="inputLogin">
           Mot de passe
           <input type="password" placeholder="Mot de passe" />
@@ -38,17 +40,17 @@ function LoginPage() {
       </div>
       <div className="nextButton">
         <button className="nextHome" type="button">
-          suivant
+          Suivant
         </button>
       </div>
-      <div className="inputflex" >
+      <div className="inputflex">
         <p className="wishlist">
-          <FaHeart />
+          <FaHeart className="heart"/>
           Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
 
-      <div>
+      <div className="login-image-container">
         <img className="flowerLogin" src={flower} alt="fleur" />
       </div>
     </div>
