@@ -85,7 +85,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  #AddToCart {
+  .container-add {
     display: flex;
     justify-content: space-around;
     align-items: center;
