@@ -8,13 +8,13 @@ CREATE TABLE category(
 );
 
 CREATE TABLE user(
-   Id_user_ INT,
+   Id_user INT,
    firstname VARCHAR(100)  NOT NULL,
    lastname VARCHAR(100)  NOT NULL,
    mail VARCHAR(120)  NOT NULL,
    password VARCHAR(150)  NOT NULL,
    role VARCHAR(50) ,
-   PRIMARY KEY(Id_user_)
+   PRIMARY KEY(Id_user)
 );
 
 CREATE TABLE product(
@@ -26,14 +26,14 @@ CREATE TABLE product(
    picture_jewell TEXT NOT NULL,
    picture_validation TEXT NOT NULL,
    validated BOOLEAN,
-   Id_user_ INT NOT NULL,
+   Id_user INT NOT NULL,
    PRIMARY KEY(Id_product),
-   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user)
 );
 
 CREATE TABLE transaction(
    Id_transaction INT,
-   date_ DATE NOT NULL,
+   transaction_date DATE NOT NULL,
    invoice VARCHAR(50)  NOT NULL,
    status VARCHAR(50)  NOT NULL,
    Id_product INT NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE transaction(
 CREATE TABLE comment(
    Id_comment INT AUTO_INCREMENT,
    text TEXT NOT NULL,
-   date_ DATE NOT NULL,
+   creation_date DATE NOT NULL,
    Id_transaction INT NOT NULL,
-   Id_user_ INT NOT NULL,
+   Id_user INT NOT NULL,
    PRIMARY KEY(Id_comment),
    UNIQUE(Id_transaction),
    FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction),
-   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user)
 );
 
 CREATE TABLE adress(
@@ -60,10 +60,10 @@ CREATE TABLE adress(
    street VARCHAR(255)  NOT NULL,
    street_code INT NOT NULL,
    zip_code INT NOT NULL,
-   Id_user_ INT NOT NULL,
+   Id_user INT NOT NULL,
    Id_transaction INT NOT NULL,
    PRIMARY KEY(Id_adress),
-   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_),
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user),
    FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction)
 );
 
@@ -76,17 +76,17 @@ CREATE TABLE assign(
 );
 
 CREATE TABLE sale(
-   Id_user_ INT,
+   Id_user INT,
    Id_transaction INT,
-   PRIMARY KEY(Id_user_, Id_transaction),
-   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_),
+   PRIMARY KEY(Id_user, Id_transaction),
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user),
    FOREIGN KEY(Id_transaction) REFERENCES transaction(Id_transaction)
 );
 
 CREATE TABLE wish_list(
    Id_product INT,
-   Id_user_ INT,
-   PRIMARY KEY(Id_product, Id_user_),
+   Id_user INT,
+   PRIMARY KEY(Id_product, Id_user),
    FOREIGN KEY(Id_product) REFERENCES product(Id_product),
-   FOREIGN KEY(Id_user_) REFERENCES user_(Id_user_)
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user)
 );
