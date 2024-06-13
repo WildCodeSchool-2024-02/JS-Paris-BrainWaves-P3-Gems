@@ -65,7 +65,7 @@ function AddToCart() {
                     >
                       Supprimer
                     </button>
-                    <span>€{item.price.toFixed(2)}</span>
+                    <p>€{item.price.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -75,7 +75,7 @@ function AddToCart() {
           <div className="card-desktop">
             <div className="cart-total">
               <h2>Sous-total</h2>
-              <span>€{getTotal().toFixed(2)}</span>
+              <p>€{getTotal().toFixed(2)}</p>
             </div>
             <div className="cart-actions">
               <button
