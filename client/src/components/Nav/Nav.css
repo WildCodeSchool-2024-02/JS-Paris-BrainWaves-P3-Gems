@@ -11,6 +11,9 @@
   justify-content: space-between;
   padding: 7px;
 }
+#Nav .nav-container h1 {
+  cursor: pointer;
+}
 .menu-icons {
   display: flex;
   align-items: center;

@@ -24,3 +24,4 @@ class CategorySeeder extends AbstractSeeder{
 }
 
 module.exports = CategorySeeder
+
