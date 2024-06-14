@@ -1,9 +1,8 @@
 import Category from "../../Category/Category";
-import "./HomePage.css";
 
 function HomePage() {
   return (
-    <div id="HomePage">
+    <div id="homePage">
     <Category/>
     </div>
   );
