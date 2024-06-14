@@ -1,3 +1,5 @@
+/* Mobile */
+
 #CreateAccount h1 {
   padding: 10px;
 }
@@ -8,12 +10,15 @@
   padding: 10px;
   margin: 20px auto;
 }
+
 .join-btn {
+  background: none;
   width: 100%;
   padding: 14px;
   font-weight: 300;
   font-size: 20px;
 }
+
 #CreateAccount p {
   text-transform: uppercase;
   text-align: center;
@@ -24,6 +29,8 @@
   border: none;
   border-bottom: 1px solid;
 }
+
+/* desktop */
 
 @media screen and (min-width: 1024px) {
   #CreateAccount .btn-container {

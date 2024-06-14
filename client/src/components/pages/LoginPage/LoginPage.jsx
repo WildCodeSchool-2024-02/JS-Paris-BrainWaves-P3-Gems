@@ -45,7 +45,7 @@ function LoginPage() {
       </div>
       <div className="inputflex">
         <p className="wishlist">
-          <FaHeart className="heart"/>
+          <FaHeart className="heart" />
           Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
