@@ -10,7 +10,6 @@ function ItemsPage() {
  
   return (
     <div id="ItemsPage">
-    {/* <h2>{displayProduct[0].name}</h2> */}
       <div className="the-filter">
         <div>
           <button type="button">Prix croissant</button>
@@ -20,14 +19,6 @@ function ItemsPage() {
       </div>
 
       <div className="container-items">
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
-        {/* <Card /> */}
         { displayProduct.map((product) => ( <Card key={product.id_product}  product={product}/> ))}
        
       </div>
