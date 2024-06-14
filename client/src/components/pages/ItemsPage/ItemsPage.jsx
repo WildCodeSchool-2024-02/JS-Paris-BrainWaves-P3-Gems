@@ -1,10 +1,16 @@
+import { useLocation } from "react-router-dom";
+
 import "./ItemsPage.css";
 import Card from "../../Card/Card";
 
+
 function ItemsPage() {
+  const location = useLocation()
+  const  displayProduct  = location.state ;
+ 
   return (
     <div id="ItemsPage">
-      <h2>ITEMPAGE</h2>
+    {/* <h2>{displayProduct[0].name}</h2> */}
       <div className="the-filter">
         <div>
           <button type="button">Prix croissant</button>
@@ -14,16 +20,16 @@ function ItemsPage() {
       </div>
 
       <div className="container-items">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        {/* <Card /> */}
+        { displayProduct.map((product) => ( <Card key={product.id_product}  product={product}/> ))}
+       
       </div>
     </div>
   );

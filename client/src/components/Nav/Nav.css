@@ -11,6 +11,9 @@
   justify-content: space-between;
   padding: 7px;
 }
+#Nav .nav-container h1 {
+  cursor: pointer;
+}
 .menu-icons {
   display: flex;
   align-items: center;
@@ -80,6 +83,11 @@
   align-items: center;
   font-size: 30px;
   font-weight: 100;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.list li:hover {
+  transform: scale(1.02);
 }
 .list-icon {
   font-size: 25px;
