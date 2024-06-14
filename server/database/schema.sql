@@ -8,8 +8,9 @@ CREATE TABLE category(
 );
 
 CREATE TABLE user(
-   Id_user INT,
-   firstname VARCHAR(100)  NOT NULL,
+
+   Id_user INT AUTO_INCREMENT,
+  firstname VARCHAR(100)  NOT NULL,
    lastname VARCHAR(100)  NOT NULL,
    mail VARCHAR(120)  NOT NULL,
    password VARCHAR(150)  NOT NULL,
@@ -22,13 +23,16 @@ CREATE TABLE product(
    name VARCHAR(150)  NOT NULL,
    details TEXT,
    price INT NOT NULL,
-   sold BOOLEAN NOT NULL,
+   sold BOOLEAN NOT NULL default 0,
    picture_jewell TEXT NOT NULL,
    picture_validation TEXT NOT NULL,
-   validated BOOLEAN,
+   validated BOOLEAN default 0,
    Id_user INT NOT NULL,
    PRIMARY KEY(Id_product),
-   FOREIGN KEY(Id_user) REFERENCES user(Id_user)
+   FOREIGN KEY(Id_user) REFERENCES user(Id_user),
+   Id_category INT NOT NULL,
+   FOREIGN KEY(Id_category) REFERENCES category(Id_category_list)
+
 );
 
 CREATE TABLE transaction(

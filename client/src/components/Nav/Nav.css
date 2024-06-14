@@ -1,0 +1,119 @@
+/* MOBILE */
+#Nav {
+  z-index: 100;
+}
+#Nav:hover {
+  box-shadow: 0 0 10px black;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+}
+.menu-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu-icons .icons {
+  font-size: 22px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.close-icons {
+  position: absolute;
+  right: 5px;
+  font-size: 22px;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 25px;
+}
+.menu-icons .icons:hover {
+  opacity: 1;
+}
+#menu-list {
+  z-index: 100;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.2) 1%,
+    rgba(19, 19, 19, 1)
+  );
+  color: white;
+  position: absolute;
+  padding: 20px;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  animation: slideMenu 1s ease-in-out forwards alternate;
+}
+
+@keyframes slideMenu {
+  from {
+    transform: translateX(-400px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideSearchBar {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.list {
+  list-style: none;
+  margin: auto 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.list li {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 30px;
+}
+.list-icon {
+  font-size: 45px;
+}
+
+#SearchInput {
+  animation: slideSearchBar 0.4s ease-in-out alternate forwards;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid black;
+  z-index: 1;
+}
+
+#SearchInput input {
+  position: relative;
+  width: 90%;
+  border-bottom: none;
+  padding-left: 10px;
+}
+#SearchInput input:hover {
+  background-color: aliceblue;
+}
+#SearchInput .close-search {
+  z-index: 120;
+  font-size: 15px;
+  padding: 10px;
+  width: 50px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  text-align: center;
+}

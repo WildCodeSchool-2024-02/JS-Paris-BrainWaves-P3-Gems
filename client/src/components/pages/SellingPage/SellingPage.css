@@ -1,0 +1,85 @@
+/* MOBILE */
+.input-image {
+  height: 30vh;
+  text-align: center;
+  font-size: 2vh;
+  font-weight: 600;
+}
+
+.inputs-section {
+  height: 65vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+.input-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5vh;
+  background: rgba(255, 255, 255, 70%);
+  padding: 1vh 0;
+}
+
+.input-image-div {
+  display: flex;
+  justify-content: center;
+  background-color: #d4d4d4;
+}
+
+.input-image::placeholder {
+  color: black;
+}
+
+#sellingPage input {
+  border: none;
+  background: transparent;
+}
+
+#sellingPage select {
+  background: transparent;
+  border: none;
+  height: 4vh;
+}
+
+#sellingPage label {
+  font-size: 2.5vh;
+  margin-left: 1vw;
+}
+
+#sellingPage button {
+  width: 80vw;
+  height: 5vh;
+  font-size: 2vh;
+  font-weight: 500;
+  background: linear-gradient(43deg, black, transparent);
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  .input-div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+    background: rgba(255, 255, 255, 70%);
+    padding: 1vh 0;
+    margin: 0 25% 2% 25%;
+  }
+
+  .inputs-section {
+    padding-top: 2%;
+  }
+
+  #sellingPage button {
+    width: 23vw;
+    height: 5vh;
+    font-size: 2vh;
+    font-weight: 500;
+    background: linear-gradient(43deg, black, transparent);
+  }
+}
+/* TABLET */
+@media screen and (max-width: 1060px) {
+}

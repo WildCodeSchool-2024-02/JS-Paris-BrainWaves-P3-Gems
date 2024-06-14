@@ -1,9 +1,116 @@
+import { useState } from "react";
 import "./SellingPage.css";
+import background from "../../../assets/images/illustrations/flower1.jpg";
 
 function SellingPage() {
+
+  const [name, setName] = useState("");
+  const [details, setDetails] = useState("");
+  const [IdCategory, setIdCategory] = useState(0);
+  const [price, setPrice] = useState("");
+  const [pictureJewell, setPictureJewell] = useState("");
+  const [pictureValidation, setPictureValidation] = useState("");
+  const [IdUser, setIdUser] = useState("");
+  const [errors, setErrors] = useState({});
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product`, {
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,details,Id_category:IdCategory,price, picture_jewell :pictureJewell, picture_validation: pictureValidation, Id_user:IdUser
+        })
+      })
+      if(!response.ok){
+        const result = await response.json();
+        setErrors(result.errors)
+      }else{setErrors({})}
+    } catch (error){console.error(error)}
+    setName("");
+    setDetails("");
+    setIdCategory("");
+    setPrice("");
+    setPictureJewell("");
+    setPictureValidation("");
+
+  };
+
   return (
-    <div id="SellingPage">
-      <h1>SellingPage</h1>
+    <div id="sellingPage">
+      <div className="input-image-div">
+        <input className="input-image" placeholder="Ajouter une photo" value={pictureJewell} onChange={(e) =>setPictureJewell(e.target.value)}/>
+        <input className="input-image" placeholder="Ajouter une facture" value={pictureValidation} onChange={(e) =>setPictureValidation(e.target.value)}/>
+      </div>
+      {errors && <p>{errors.picture}</p>}
+      <form
+        style={{ backgroundImage: `url(${background})` }}
+        className="inputs-section"
+      >
+        <div className="input-div">
+          <label htmlFor="title">Titre:</label>
+          <input
+            placeholder="Ex: Collier en argent et Saphir"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            />
+            {errors && <p>{errors.name}{errors.all}</p>}
+        </div>
+        <div className="input-div">
+          <label htmlFor="description">Description:</label>
+          <input
+            placeholder="Ex: Marque, taille..."
+            type="text"
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+          />
+          {errors && <p>{errors.details}{errors.all}</p>}
+        </div>
+        <div className="input-div">
+          <label htmlFor="categories">Catégorie:</label>
+          <select
+            defaultValue={IdCategory}
+            id="categories"
+            name="selectedCategories"
+            onChange={(e) => setIdCategory(e.target.value)}
+          >
+            <option value="0">{null}</option>
+            <option value="5">Collier</option>
+            <option value="2">Bague</option>
+            <option value="4">Boucles d'oreilles</option>
+            <option value="1">Bracelet</option>
+            <option value="3">Watch</option>
+          </select>
+          {errors && <p>{errors.all}</p>}
+        </div>
+        <div className="input-div">
+          <label htmlFor="price">Prix:</label>
+          <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          {errors && <p>{errors.all}{errors.price}</p>}
+        </div>
+        <div className="input-div">
+          <label htmlFor="id-user">Id-user :</label>
+          <input
+            type="number"
+            value={IdUser}
+            onChange={(e) => setIdUser(e.target.value)}
+          />
+        </div>
+        <div className="button-div">
+          <button type="submit" onClick={handleSubmit}>
+            Ajouter
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
