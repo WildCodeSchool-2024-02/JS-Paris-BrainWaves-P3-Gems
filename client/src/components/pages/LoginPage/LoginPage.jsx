@@ -48,6 +48,7 @@ function LoginPage() {
       </div>
 
       <div className="login-image-container"/>
+
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* Mobile */
 #LoginPage {
   text-align: left;
 }
@@ -42,6 +43,7 @@
   display: flex;
   justify-content: center;
 }
+
 .nextHome {
   width: 90%;
   padding: 12px;
@@ -60,6 +62,7 @@
 .wishlist .heart {
   font-size: 25px;
 }
+
 .login-image-container {
   width: 100vw;
   overflow: hidden;
@@ -68,20 +71,26 @@
   background-size: cover;
   height: 43vh;
 }
+
 .flowerLogin {
   transform: scale(1.1);
 }
+
+/* desktop */
 
 @media screen and (min-width: 1024px) {
   .inputflex {
     width: 35%;
   }
+
   .create-account {
     width: 35%;
   }
+
   .nextHome {
     width: 35%;
   }
+
   .wishlist {
     width: 35vw;
     font-size: 20px;
@@ -95,6 +104,7 @@
     background-size: cover;
     height: 43vh;
   }
+
   .flowerLogin {
     height: 45vh;
     width: 100%;
