@@ -63,6 +63,10 @@
 .login-image-container {
   width: 100vw;
   overflow: hidden;
+  background-image: url(src/assets/images/illustrations/flower2.png);
+  background-position: cover;
+  background-size: cover;
+  height: 43vh;
 }
 .flowerLogin {
   transform: scale(1.1);
@@ -86,6 +90,10 @@
   .login-image-container {
     width: 98vw;
     margin: 0 auto 10px;
+    background-image: url(src/assets/images/illustrations/flower2bis.png);
+    background-position: center;
+    background-size: cover;
+    height: 43vh;
   }
   .flowerLogin {
     height: 45vh;

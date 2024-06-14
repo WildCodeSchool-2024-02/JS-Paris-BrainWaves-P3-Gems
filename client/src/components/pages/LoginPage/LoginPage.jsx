@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import { FaHeart } from "react-icons/fa";
-import flower from "../../../assets/images/illustrations/flower2.png";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -12,8 +11,6 @@ function LoginPage() {
 
   return (
     <div id="LoginPage">
-      <h1>Gems</h1>
-
       <div className="inputflex">
         <label className="inputLogin">
           Saissisez votre addresse e-mail
@@ -50,9 +47,7 @@ function LoginPage() {
         </p>
       </div>
 
-      <div className="login-image-container">
-        <img className="flowerLogin" src={flower} alt="fleur" />
-      </div>
+      <div className="login-image-container"/>
     </div>
   );
 }

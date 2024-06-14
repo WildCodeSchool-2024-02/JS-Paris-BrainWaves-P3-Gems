@@ -24,6 +24,7 @@
   padding-left: 2%;
   font-weight: 300;
   margin-top: 14%;
+  cursor: pointer;
 }
 #ProfilePage p {
   margin-left: 2%;
@@ -37,6 +38,7 @@
   padding-left: 2%;
   font-weight: 300;
   margin-top: 4%;
+  cursor: pointer;
 }
 .ring-profil {
   opacity: 0.6;
