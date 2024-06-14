@@ -1,0 +1,42 @@
+/* Mobile */
+
+#CreateAccount h1 {
+  padding: 10px;
+}
+
+#CreateAccount .btn-container {
+  width: 97%;
+  font-size: large;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+.join-btn {
+  width: 100%;
+  padding: 14px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+#CreateAccount p {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px;
+}
+
+#CreateAccount input {
+  border: none;
+  border-bottom: 1px solid;
+}
+
+/* desktop */
+
+@media screen and (min-width: 1024px) {
+  #CreateAccount .btn-container {
+    width: 36%;
+  }
+
+  #CreateAccount input {
+    border: 1px solid black;
+  }
+}
