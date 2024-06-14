@@ -4,12 +4,15 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { FaRegHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
-import picture from "../../assets/images/categoryPhotos/necklace.png";
+import PropTypes from 'prop-types';
 
-function Card (){
+
+
+
+function Card ({product}){
   return (
-    <div className='card'>
-          <img className="card-picture" src={picture} alt="" />
+     <div  className='card'>
+          <img className="card-picture" src={product.picture_jewell} alt="" />
           <FaRegHeart className="heart-logo" />
           <div className="logo-container">
             <div>
@@ -26,12 +29,12 @@ function Card (){
           </div>
 
           <div className="card-title">
-            <p className="title">Bracelet en or 12 carats</p>
+            <p className="title">{product.name}</p>
             <div className="price-and-logo">
               <HiOutlineShoppingBag className="panier" />
               <p className="price">
                 <MdOutlineEuroSymbol className="euro-logo" />
-                <span> 1200</span>
+                <span>{product.price}</span>
               </p>
             </div>
           </div>
@@ -39,4 +42,13 @@ function Card (){
   )
 }
 
+Card.propTypes = {
+  product: PropTypes.shape({
+    picture_jewell: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 export default Card
+

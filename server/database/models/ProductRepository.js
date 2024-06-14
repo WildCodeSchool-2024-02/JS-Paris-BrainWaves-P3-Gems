@@ -20,6 +20,11 @@ class ProductRepository extends AbstractRepository {
     );
     return result.insertId;
   }
+
+  async getProductByCategory(id){
+    const [result] = await this.database.query(`SELECT p.*, cat.name, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? `, [id]);
+    return result
+  }
 }
 
 module.exports = ProductRepository;

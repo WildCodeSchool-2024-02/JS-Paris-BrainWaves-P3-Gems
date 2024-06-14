@@ -2,14 +2,14 @@
 #Nav {
   z-index: 100;
 }
-#Nav:hover {
-  box-shadow: 0 0 10px black;
-}
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 7px;
+}
+#Nav .nav-container h1 {
+  cursor: pointer;
 }
 .menu-icons {
   display: flex;
@@ -80,9 +80,15 @@
   align-items: center;
   font-size: 30px;
   font-weight: 100;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.list li:hover {
+  transform: scale(1.02);
 }
 .list-icon {
-  font-size: 45px;
+  font-size: 25px;
+  margin: 2%;
 }
 
 #SearchInput {

@@ -28,12 +28,20 @@
   margin-left: 2%;
   font-weight: 400;
 }
+
+#modal-profil h3 {
+  font-size: 13px;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-weight: 400;
+}
+
 .modal-bottom {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  top: 80px;
+  top: 55px;
 }
 .modal-delete {
   background: none;

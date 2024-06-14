@@ -7,18 +7,21 @@ const favmodals = [
   {
     id: 1,
     img: "src/assets/images/categoryPhotos/necklace.png",
+    name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€1300",
   },
   {
     id: 2,
     img: "src/assets/images/categoryPhotos/bracelet.jpg",
+    name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€10300",
   },
   {
     id: 3,
     img: "src/assets/images/categoryPhotos/earrings.jpg",
+    name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€3500",
   },
@@ -47,7 +50,8 @@ function ModalFav({ setModalOpen }) {
           <div className="modal-style" key={modal.id}>
             <img src={modal.img} alt="" className="image-modal" />
             <div className="modal-details">
-              <h1>{modal.details}</h1>
+            <h1>{modal.name}</h1>
+              <h3>{modal.details}</h3>
               <div className="modal-bottom">
                 <button
                   className="modal-delete"
