@@ -10,12 +10,18 @@ import SellingPage from "./components/pages/SellingPage/SellingPage";
 import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import AdminPage from "./components/pages/AdminPage/AdminPage";
 
+const api = import.meta.env.VITE_API_URL;
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <HomePage /> },
+      {
+        path: "/",
+        element: <HomePage />,
+        loader: () => 
+          fetch(`${api}/api/category`)
+      },
       { path: "/loginPage", element: <LoginPage /> },
       { path: "/createAccount", element: <CreateAccount /> },
       { path: "/itemsPage", element: <ItemsPage /> },
@@ -27,7 +33,8 @@ const router = createBrowserRouter([
         path: "/addToCart",
         element: <AddToCart />,
       },
-      { path: "/sellingPage", element: <SellingPage /> },
+      { path: "/sellingPage", element: <SellingPage />,
+       },
       { path: "/profilePage", element: <ProfilePage /> },
       { path: "/adminPage", element: <AdminPage /> },
     ],
