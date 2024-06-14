@@ -1,0 +1,97 @@
+/* MOBILE */
+#modal-profil {
+  left: 0px;
+  position: absolute;
+  z-index: 1;
+  top: 28%;
+}
+.container-heart {
+  display: flex;
+  align-items: center;
+  margin: 2% 0% 2% 2%;
+}
+.modal-style {
+  display: flex;
+  margin: 2%;
+  margin-left: 2%;
+}
+.modal-details {
+  display: flex;
+  flex-direction: column;
+}
+#modal-profil h1 {
+  text-align: start;
+  padding-top: 0;
+  font-size: 1.1rem;
+  color: black;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-weight: 400;
+}
+
+#modal-profil h3 {
+  font-size: 13px;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-weight: 400;
+}
+
+.modal-bottom {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 55px;
+}
+.modal-delete {
+  background: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 6vw;
+}
+.modal-delete:hover {
+  background: none;
+}
+#modal-profil h2 {
+  font-size: 1rem;
+  margin-top: 3%;
+  margin-right: 6%;
+  font-weight: 400;
+}
+.container-image {
+  background-color: rgb(255, 255, 255, 0.9);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  max-height: 47vh;
+  overflow-y: auto;
+}
+.image-modal {
+  width: 49vw;
+  height: 19vh;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  #modal-profil {
+    left: 32%;
+    top: 30%;
+  }
+  #modal-profil h1 {
+    margin-top: 3%;
+  }
+  .modal-bottom {
+    top: 100px;
+  }
+  .container-image {
+    width: 35vw;
+    max-height: 69vh;
+  }
+  .image-modal {
+    width: 15vw;
+    height: 24vh;
+  }
+}

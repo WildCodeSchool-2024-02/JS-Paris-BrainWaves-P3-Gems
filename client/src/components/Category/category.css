@@ -1,47 +1,67 @@
-/* DESKTOP */
+/* DESKTOP TABLET*/
 
-/* .all-containers{
-  display: grid;
+@media screen and (min-width: 600px) {
+  .all-containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 15px 15px;
+  }
 
-} */
-.category-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 1.5vh;
-}
-.category-title {
-  font-family: League Spartan;
-  font-size: 5vh;
-  margin: 4vh 1vh 1vh 6vh;
-  letter-spacing: 5px;
-}
+  .all-containers > :nth-child(1) {
+    grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
 
-.order-title {
-  font-family: "League Spartan";
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  text-decoration-thickness: 1px;
-  margin: 0 4vw;
-  font-size: 3vh;
-}
+  .all-containers > :nth-child(2) {
+    grid-row-start: span 1;
+    grid-column-start: span 1;
+  }
 
-.category-image {
-  width: 98vw;
-  height: 60vh;
-  background-position: center;
-  background-size: cover;
-  object-fit: contain;
-}
+  .all-containers > :nth-child(4) {
+    grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
 
-/* TABLET */
-@media screen and (min-width: 600px) and (max-width: 1060px) {
+  .all-containers > :nth-child(5) {
+    grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
+
+  .category-title {
+    font-family: League Spartan;
+    font-size: 5vh;
+    padding: 3vh 3vh 2vh 3vh;
+    letter-spacing: 5px;
+  }
+
+  .order-title {
+    font-family: "League Spartan";
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+    padding: 0 4vh;
+    font-size: 3vh;
+  }
+
+  .category-image {
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    object-fit: contain;
+  }
 }
 /* MOBILE */
 @media screen and (max-width: 600px) {
+  .category-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5vh;
+  }
   .category-image {
     width: 95vw;
     height: 60vh;
