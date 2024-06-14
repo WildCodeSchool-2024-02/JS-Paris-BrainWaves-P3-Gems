@@ -50,14 +50,18 @@ function AddToCart() {
           </div>
         ) : (
           <>
-            {items.map((item) => (
-              <div key={item.id} className="cart-contnair">
-                <img className="cart-img" src={item.imageUrl} alt={item.name} />
-                <div className="info-price-contnair">
-                  <div className="info-name">
-                    <h2>{item.name}</h2>
-                  </div>
-                  <div>
+            <div>
+              {items.map((item) => (
+                <div key={item.id} className="cart-container">
+                  <img
+                    className="cart-img"
+                    src={item.imageUrl}
+                    alt={item.name}
+                  />
+                  <div className="info-price-container">
+                    <div className="info-name">
+                      <h2>{item.name}</h2>
+                    </div>
                     <div className="item-details">
                       <button
                         className="remove-item"
@@ -66,17 +70,17 @@ function AddToCart() {
                       >
                         Supprimer
                       </button>
-                      <p>€{item.price.toFixed(2)}</p>
+                      <span>€{item.price.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <div className="card-desktop">
               <div className="cart-total">
                 <h2>Sous-total</h2>
-                <p>€{getTotal().toFixed(2)}</p>
+                <span>€{getTotal().toFixed(2)}</span>
               </div>
               <div className="cart-actions">
                 <button
