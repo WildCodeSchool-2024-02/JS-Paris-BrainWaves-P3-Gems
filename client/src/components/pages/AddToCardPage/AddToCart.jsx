@@ -52,13 +52,13 @@ function AddToCart() {
           <>
             <div>
               {items.map((item) => (
-                <div key={item.id} className="cart-contnair">
+                <div key={item.id} className="cart-container">
                   <img
                     className="cart-img"
                     src={item.imageUrl}
                     alt={item.name}
                   />
-                  <div className="info-price-contnair">
+                  <div className="info-price-container">
                     <div className="info-name">
                       <h2>{item.name}</h2>
                     </div>
