@@ -1,16 +1,18 @@
+/* Mobile */
 #AddToCart {
   background-image: url("../../../assets/images/illustrations/flower3.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  font-family: "League Spartan", sans-serif;
 }
 
 #AddToCart h1 {
   padding: 10px 0 0 5px;
 }
 
-.empty-cart {
+#AddToCart .empty-cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,31 +21,31 @@
   text-align: center;
 }
 
-.text-empty-cart {
+#AddToCart .text-empty-cart {
   background-color: #ffffff70;
   font-size: 8vh;
 }
 
-.cart-contnair {
+#AddToCart .cart-container {
   background-color: #ffffff70;
   display: flex;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.cart-img {
+#AddToCart .cart-img {
   width: 40vw;
   padding-right: 5px;
 }
 
-.item-details {
+#AddToCart .item-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 105px;
 }
 
-.card-desktop {
+#AddToCart .card-desktop {
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -51,7 +53,7 @@
   font-size: large;
 }
 
-.cart-total {
+#AddToCart .cart-total {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -59,7 +61,7 @@
   height: 40px;
 }
 
-.cart-actions {
+#AddToCart .cart-actions {
   display: flex;
   flex-direction: column;
   margin: 10px auto;
@@ -67,7 +69,7 @@
   margin: 0 10px 0 10px;
 }
 
-.continue-shopping {
+#AddToCart .continue-shopping {
   background-color: transparent;
   color: black;
   width: 100%;
@@ -76,7 +78,7 @@
   font-size: 20px;
 }
 
-.proceed-payment {
+#AddToCart .proceed-payment {
   background: linear-gradient(45deg, black, black, transparent);
   width: 100%;
   padding: 12px;
@@ -84,47 +86,89 @@
   font-size: 17px;
 }
 
+/* desktop */
+
 @media screen and (min-width: 1024px) {
-  .container-add {
+  #AddToCart h1 {
+    margin-left: 7.5%;
+  }
+
+  #AddToCart .container-add {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
 
-  .cart-img {
-    width: 30vh;
+  #AddToCart .cart-container {
+    display: flex;
+    margin: 0;
   }
 
-  .cart-contnair {
+  #AddToCart .cart-img {
+    width: 30vh;
+  }
+  #AddToCart .info-price-container {
     display: flex;
     flex-direction: column;
-  }
-
-  .cart-item {
-    background-color: #ffffff70;
-  }
-
-  .card-desktop {
-    background-color: #ffffff70;
-    padding: 0;
     margin: 0;
-    width: 30vh;
-    padding: 2% 0% 2% 0%;
   }
 
-  .cart-total {
+  #AddToCart .info-name,
+  h2 {
+    margin: 0;
+  }
+  #AddToCart .item-details {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0;
+    align-items: flex-start;
+    height: 25vh;
+  }
+
+  #AddToCart .cart-item {
+    background-color: #ffffff70;
+  }
+
+  #AddToCart .remove-item {
+    background: none;
+    color: black;
+    font-family: "League Spartan", sans-serif;
+    font-size: medium;
+    font-weight: 200;
+  }
+
+  #AddToCart .cart-total,
+  span {
+    padding-top: 5px;
+  }
+
+  #AddToCart .remove-item {
+    background: none;
+    color: black;
+  }
+
+  #AddToCart .card-desktop {
+    background-color: #ffffff70;
+    width: 50vh;
+    height: 35vh;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "League Spartan", sans-serif;
+    padding: 0 20px 0 20px;
+  }
+
+  #AddToCart .cart-total {
     background-color: transparent;
-    margin: 2% 5% 2% 5%;
   }
 
-  .continue-shopping {
+  #AddToCart .continue-shopping {
     color: black;
     background-color: white;
     border-style: solid;
     border-color: black;
   }
 
-  .proceed-payment {
+  #AddToCart .proceed-payment {
     color: white;
     background-color: black;
   }
