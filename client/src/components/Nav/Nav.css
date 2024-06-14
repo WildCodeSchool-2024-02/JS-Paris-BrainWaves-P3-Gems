@@ -2,9 +2,6 @@
 #Nav {
   z-index: 100;
 }
-#Nav:hover {
-  box-shadow: 0 0 10px black;
-}
 .nav-container {
   display: flex;
   align-items: center;
