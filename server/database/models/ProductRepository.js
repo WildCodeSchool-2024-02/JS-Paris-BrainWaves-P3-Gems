@@ -25,6 +25,13 @@ class ProductRepository extends AbstractRepository {
     const [result] = await this.database.query(`SELECT p.*, cat.name, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? `, [id]);
     return result
   }
+
+  async readProductByUser(id){
+    const [rows] = await this.database.query(
+        `select * from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user`,[id]
+    )
+return [rows];
+}
 }
 
 module.exports = ProductRepository;

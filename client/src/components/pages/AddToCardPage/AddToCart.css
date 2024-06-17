@@ -1,6 +1,6 @@
 /* Mobile */
 #AddToCart {
-  background-image: url("../../../assets/images/illustrations/flower3.png");
+  background-image: url("src/assets/images/illustrations/flower4.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -85,7 +85,6 @@
   font-weight: 300;
   font-size: 17px;
 }
-
 
 /* desktop */
 

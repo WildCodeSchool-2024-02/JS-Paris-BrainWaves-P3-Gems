@@ -18,10 +18,21 @@ const readProductByCategoryId = async (req, res, next )=>{
   } catch (error) {
     next(error)
   }
+  } 
+
+  const readProductByUser = async (req, res, next) =>{
+   try {
+    const parseId = parseInt(req.params.id,10)
+    const results = await tables.product.readProductByUser(parseId)
+    res.status(200).json(results)
+   } catch (error) {
+    next(error)
+   }
+  }
   
-}
 
 module.exports = {
   add,
   readProductByCategoryId,
+  readProductByUser,
 };
