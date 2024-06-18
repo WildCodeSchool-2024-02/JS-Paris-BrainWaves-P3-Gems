@@ -7,11 +7,11 @@ class CategorySeeder extends AbstractSeeder{
 
     run() {
         const categories = [
-            {name:"Bracelets", picture:"https://img.edenly.com/pt/40/origine-n45-bague-fiancailles-or-jaune-18-carats__3499955_1.png",details:"Commander", exist:1},
-            {name:"Bagues", picture:"https://img.edenly.com/pt/40/origine-n45-bague-fiancailles-or-jaune-18-carats__3499955_1.png",details:"Commander", exist:1},
-            {name:"Colliers", picture:"https://img.edenly.com/pt/40/origine-n45-bague-fiancailles-or-jaune-18-carats__3499955_1.png",details:"Commander", exist:1},
-            {name:"Boucles d'oreilles", picture:"https://img.edenly.com/pt/40/origine-n45-bague-fiancailles-or-jaune-18-carats__3499955_1.png",details:"Commander", exist:1},
-            {name:"Montres", picture:"https://img.edenly.com/pt/40/origine-n45-bague-fiancailles-or-jaune-18-carats__3499955_1.png",details:"Commander", exist:1},
+            {name:"Bracelets", picture:"http://localhost:3311/categoryPhotos/bracelet.jpg",details:"Commander", exist:1},
+            {name:"Bagues", picture:"http://localhost:3311/categoryPhotos/ring.jpg",details:"Commander", exist:1},
+            {name:"Colliers", picture:"http://localhost:3311/categoryPhotos/necklace.png",details:"Commander", exist:1},
+            {name:"Boucles d'oreilles", picture:"http://localhost:3311/categoryPhotos/earrings.jpg",details:"Commander", exist:1},
+            {name:"Montres", picture:"http://localhost:3311/categoryPhotos/watch.jpg",details:"Commander", exist:1},
         ]
 
         categories.forEach((category) => {
@@ -24,3 +24,4 @@ class CategorySeeder extends AbstractSeeder{
 }
 
 module.exports = CategorySeeder
+
