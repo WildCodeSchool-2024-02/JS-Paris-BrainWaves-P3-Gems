@@ -27,19 +27,16 @@ function Nav() {
       <div className="nav-container">
         <h1
           onClick={() => navigate(`/`)}
-          onKeyDown={() => setclosebtn(false, navigate(`/itemsPage`))}
+          onKeyDown={() => setclosebtn(false, navigate(`/items`))}
           role="presentation"
         >
           Gems
         </h1>
         <div className="menu-icons">
           {isOnline === false ? (
-            <FaUser onClick={() => navigate(`/loginPage`)} className="icons" />
+            <FaUser onClick={() => navigate(`/login`)} className="icons" />
           ) : (
-            <FaUser
-              onClick={() => navigate(`/profilePage`)}
-              className="icons"
-            />
+            <FaUser onClick={() => navigate(`/profile`)} className="icons" />
           )}
           <RiSearchFill onClick={() => setShowInput(true)} className="icons" />
           <IoBagSharp

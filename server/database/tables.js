@@ -18,7 +18,6 @@ tables.category = new CategoryRepository();
 tables.product = new ProductRepository();
 tables.user = new UserRepository();
 
-
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table

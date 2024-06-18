@@ -29,6 +29,7 @@
 #ProfilePage p {
   margin-left: 2%;
   margin-top: 1%;
+  font-weight: 400;
 }
 .boxjewels-profile {
   display: flex;
@@ -105,11 +106,11 @@
     width: 24vw;
   }
   .sale-button {
-    background-color: white;
+    background-color: transparent;
     border: 1px solid black;
     margin-top: 2%;
     width: 20vw;
-    height: 8vh;
+    height: 7vh;
   }
   .sale-button:hover {
     background-color: white;
@@ -120,6 +121,6 @@
     width: 20vw;
     padding: 0.7rem;
     margin-top: 1.8%;
-    height: 8vh;
+    height: 7vh;
   }
 }
