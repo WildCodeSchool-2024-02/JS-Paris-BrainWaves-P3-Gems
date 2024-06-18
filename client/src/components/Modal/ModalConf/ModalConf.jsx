@@ -7,7 +7,7 @@ function ModalConf({ setModalConfOpen, handleDelete }) {
     };
 
   return (
-      <div id="modal-conf-profil">
+      <div id="modal-conf-profile">
         <div className="container-conf-image">
       <h1>Êtes vous sûr?</h1>
      <div className="buttons-conf-modal">
