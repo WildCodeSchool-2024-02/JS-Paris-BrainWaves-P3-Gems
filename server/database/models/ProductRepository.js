@@ -32,6 +32,16 @@ class ProductRepository extends AbstractRepository {
     )
 return [rows];
 }
+
+async deleteProductByUser(data){
+  const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE Id_user = ? AND Id_product = ?`,
+      [data.Id_user, data.Id_product]
+    );
+return [rows];
+}
+
+
 }
 
 module.exports = ProductRepository;

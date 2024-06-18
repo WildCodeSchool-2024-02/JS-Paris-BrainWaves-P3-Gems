@@ -35,7 +35,10 @@ const router = createBrowserRouter([
       },
       { path: "/sellingPage", element: <SellingPage />,
        },
-      { path: "/profilePage", element: <ProfilePage /> },
+      { path: "/profilePage/", element: <ProfilePage />,
+        loader:() => 
+          fetch(`${api}/api/product/user/1`)
+       },
       { path: "/adminPage", element: <AdminPage /> },
     ],
   },
