@@ -53,7 +53,7 @@ function Nav() {
             onClick={handleClick}
             onKeyDown={handleClick}
             role="presentation"
-            className="boxjewels-profilNav"
+            className="boxjewels-profileNav"
           >
             <IoBagSharp
               onClick={() => navigate(`/addToCart`)}

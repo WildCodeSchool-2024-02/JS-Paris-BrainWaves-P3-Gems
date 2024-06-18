@@ -8,13 +8,13 @@ function ModalSells({ setModalSellsOpen }) {
   };
 
   return (
-    <div id="modal-profil">
+    <div id="modal-profile">
       <button type="button" onClick={handleCloseModal} className="btn-close">
         X
       </button>
       <div className="container-image">
         <div className="container-heart">
-          <GiDiamondRing className="ring-profil" />
+          <GiDiamondRing className="ring-profile" />
           <p>Ma boite à bijoux</p>
         </div>
         <button className="modal-delete" type="button">

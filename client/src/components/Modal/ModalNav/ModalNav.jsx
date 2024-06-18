@@ -45,7 +45,7 @@ function ModalNav({ setModalNav }) {
       </button>
       <div className="container-imgNav">
         <div className="container-heartNav">
-          <FaHeart className="heart-profilNav" />
+          <FaHeart className="heart-profileNav" />
           <p>Mes articles favoris</p>
         </div>
         {modalNavigation.map((modalsNav) => (
