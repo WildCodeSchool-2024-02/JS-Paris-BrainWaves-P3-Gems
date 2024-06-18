@@ -53,7 +53,7 @@ app.use(
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 // app.use(express.text());
 // app.use(express.raw());
 
@@ -131,7 +131,7 @@ app.get("*", (_, res) => {
 // Middleware for Error Logging (Uncomment to enable)
 // Important: Error-handling middleware should be defined last, after other app.use() and routes calls.
 
-/*
+
 // Define a middleware function to log errors
 const logErrors = (err, req, res, next) => {
   // Log the error to the console for debugging purposes
@@ -144,7 +144,7 @@ const logErrors = (err, req, res, next) => {
 
 // Mount the logErrors middleware globally
 app.use(logErrors);
-*/
+
 
 /* ************************************************************************* */
 

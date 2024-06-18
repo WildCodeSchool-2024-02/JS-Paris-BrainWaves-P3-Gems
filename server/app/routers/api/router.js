@@ -13,6 +13,11 @@ router.use("/category", categoryRouter);
 const productRouter = require("./product/router");
 
 router.use("/product", productRouter);
+
+const createUser = require("./createusers/router");
+
+router.use("/user", createUser);
+
 /* ************************************************************************* */
 
 module.exports = router;

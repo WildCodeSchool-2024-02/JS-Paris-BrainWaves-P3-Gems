@@ -12,8 +12,6 @@ function LoginPage() {
 
   return (
     <div id="LoginPage">
-      <h1>Gems</h1>
-
       <div className="inputflex">
         <label className="inputLogin">
           Saissisez votre addresse e-mail

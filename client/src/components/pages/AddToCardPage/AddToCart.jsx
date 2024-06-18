@@ -45,7 +45,7 @@ function AddToCart() {
           <div className="empty-cart">
             <p className="text-empty-cart">Votre panier est vide.</p>
             <button onClick={handleHomePageClick} type="button">
-              Retour à la page d'accueil
+            Continuer vos achats
             </button>
           </div>
         ) : (
