@@ -19,7 +19,7 @@ function ItemsPage() {
       </div>
 
       <div className="container-items">
-        { displayProduct.map((product) => ( <Card key={product.id_product}  product={product}/> ))}
+        { displayProduct.map((product) => ( <Card key={product.Id_product} product={product}/> ))}
        
       </div>
     </div>

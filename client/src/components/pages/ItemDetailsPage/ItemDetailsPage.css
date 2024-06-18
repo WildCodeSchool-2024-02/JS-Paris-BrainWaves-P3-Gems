@@ -1,9 +1,8 @@
 /* MOBILE */
-
 #ItemDetailsPage {
   margin: 2%;
 }
-.container {
+#ItemDetailsPage .container {
   position: relative;
 }
 .image-detail {
@@ -14,34 +13,98 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 25px;
+  font-size: 35px;
   opacity: 0.6;
   z-index: 2;
 }
 #ItemDetailsPage p {
-  margin-top: 6%;
-  font-size: 1.2rem;
+  margin-top: 10px;
   font-weight: 300;
 }
 #ItemDetailsPage h3 {
-  font-size: 1.8rem;
   font-weight: 300;
-  margin-top: 5%;
 }
 .container-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 13%;
+  width: 40vw;
+  margin: 0 auto;
 }
-.button-detail {
+#ItemDetailsPage .button-detail {
   color: black;
   background-color: transparent;
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 300;
 }
-#ItemDetailsPage button:hover {
-  background: transparent;
+.verified {
+  display: flex;
+  width: 80px;
+  height: 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 1px;
+  text-align: center;
+  border-radius: 10px;
+  color: aliceblue;
+}
+#ItemDetailsPage .verified p {
+  color: rgb(255, 255, 255);
+  transform: translateX(8px);
+  filter: drop-shadow(0 0 4px black);
+  font-weight: 350;
+}
+
+#ItemDetailsPage .euro-logo {
+  transform: translateY(3px);
+  font-weight: 200;
+}
+
+#ItemDetailsPage .button-detail:hover {
+  background: black;
+  color: white;
+}
+#ItemDetailsPage .more-Info {
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+}
+@keyframes showAnim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes upanddown {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+#ItemDetailsPage .show-logo {
+  font-size: 25px;
+  cursor: pointer;
+  animation: upanddown 1s alternate forwards infinite;
+}
+#ItemDetailsPage .display-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  animation: showAnim 1s ease-in-out alternate forwards;
+}
+
+#ItemDetailsPage .display-info button {
+  margin-top: 10px;
 }
 
 /* DESKTOP */
@@ -61,10 +124,8 @@
   .button-detail {
     color: white;
     background-color: black;
-    font-size: 1.6rem;
-    width: 25vw;
-    height: 7vh;
-    margin-left: 20%;
+    min-width: 400px;
+    margin-top: 30px;
   }
   #ItemDetailsPage button:hover {
     background: black;
