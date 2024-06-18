@@ -1,0 +1,37 @@
+.container-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  width: 100vw;
+}
+#ItemsPage h2 {
+  padding: 20px;
+}
+
+.the-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+.the-filter div button {
+  margin: 10px;
+}
+.the-filter div button:focus {
+  background-color: rgb(0, 0, 0);
+}
+
+#ItemsPage h3 {
+  padding: 20px;
+
+  text-align: right;
+}
+
+@media screen and (max-width: 430px) {
+  #ItemsPage h3 {
+    display: none;
+  }
+}

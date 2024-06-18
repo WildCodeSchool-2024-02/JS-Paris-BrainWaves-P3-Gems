@@ -62,7 +62,6 @@ function AddToCart() {
                     <div className="info-name">
                       <h2>{item.name}</h2>
                     </div>
-
                     <div className="item-details">
                       <button
                         className="remove-item"
