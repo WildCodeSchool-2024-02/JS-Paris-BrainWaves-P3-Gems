@@ -45,7 +45,7 @@ function AddToCart() {
           <div className="empty-cart">
             <p className="text-empty-cart">Votre panier est vide.</p>
             <button onClick={handleHomePageClick} type="button">
-            Continuer vos achats
+              Retour à la page d'accueil
             </button>
           </div>
         ) : (
@@ -80,7 +80,7 @@ function AddToCart() {
             <div className="card-desktop">
               <div className="cart-total">
                 <h2>Sous-total</h2>
-                <span>€{getTotal().toFixed(2)}</span>
+                <span id="total">€{getTotal().toFixed(2)}</span>
               </div>
               <div className="cart-actions">
                 <button
