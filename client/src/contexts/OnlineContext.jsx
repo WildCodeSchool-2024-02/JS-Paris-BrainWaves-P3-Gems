@@ -4,7 +4,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 const OnlineContext = createContext();
 
 export function OnlineProvider({ children }) {
-  const [isOnline, setIsOnline] = useState(false);
+  const [isOnline, setIsOnline] = useState(true);
 
   const contextValue = useMemo(
     () => ({

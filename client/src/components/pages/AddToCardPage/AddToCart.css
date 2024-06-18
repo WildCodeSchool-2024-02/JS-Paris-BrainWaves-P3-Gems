@@ -90,7 +90,7 @@
 
 @media screen and (min-width: 1024px) {
   #AddToCart h1 {
-    margin-left: 7.5%;
+    font-size: 4vh;
   }
 
   #AddToCart .container-add {
@@ -105,12 +105,20 @@
   }
 
   #AddToCart .cart-img {
-    width: 30vh;
+    width: 13vw;
+    height: 25vh;
+    object-fit: cover;
   }
   #AddToCart .info-price-container {
     display: flex;
     flex-direction: column;
     margin: 0;
+  }
+
+  #AddToCart h2 {
+    font-size: 3vh;
+    font-weight: 300;
+    margin-top: 2%;
   }
 
   #AddToCart .info-name,
@@ -139,12 +147,15 @@
 
   #AddToCart .cart-total,
   span {
-    padding-top: 5px;
+    padding-top: 15px;
+    font-size: 2vh;
+    font-weight: 400;
   }
 
   #AddToCart .remove-item {
     background: none;
     color: black;
+    font-size: 2vh;
   }
 
   #AddToCart .card-desktop {
@@ -161,6 +172,11 @@
     background-color: transparent;
   }
 
+  #AddToCart .cart-total h2 {
+    font-weight: 300;
+    font-size: 3.5vh;
+  }
+
   #AddToCart .continue-shopping {
     color: black;
     background-color: white;
@@ -171,5 +187,9 @@
   #AddToCart .proceed-payment {
     color: white;
     background-color: black;
+  }
+
+  #AddToCart #total {
+    font-size: 3.5vh;
   }
 }
