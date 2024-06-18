@@ -10,6 +10,7 @@ function ItemsPage() {
  
   return (
     <div id="ItemsPage">
+      <h2>{displayProduct[0].name.toUpperCase()}</h2>
       <div className="the-filter">
         <div>
           <button type="button">Prix croissant</button>
