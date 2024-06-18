@@ -8,9 +8,8 @@ CREATE TABLE category(
 );
 
 CREATE TABLE user(
-
    Id_user INT AUTO_INCREMENT,
-  firstname VARCHAR(100)  NOT NULL,
+   firstname VARCHAR(100)  NOT NULL,
    lastname VARCHAR(100)  NOT NULL,
    mail VARCHAR(120)  NOT NULL,
    password VARCHAR(150)  NOT NULL,
@@ -32,7 +31,6 @@ CREATE TABLE product(
    FOREIGN KEY(Id_user) REFERENCES user(Id_user),
    Id_category INT NOT NULL,
    FOREIGN KEY(Id_category) REFERENCES category(Id_category_list)
-
 );
 
 CREATE TABLE transaction(
