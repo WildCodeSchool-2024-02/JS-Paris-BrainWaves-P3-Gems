@@ -16,7 +16,7 @@ function CreateAccount() {
     setErrors({});
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/user/createAccount`,
+        `${import.meta.env.VITE_API_URL}/user`,
         {
           method: "POST",
           headers: {
