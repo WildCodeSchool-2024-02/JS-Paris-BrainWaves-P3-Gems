@@ -42,6 +42,10 @@ function Nav() {
             />
           )}
           <RiSearchFill onClick={() => setShowInput(true)} className="icons" />
+          <IoBagSharp
+            onClick={() => navigate(`/addToCart`)}
+            className="icons"
+          />
           <FaHeart
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -54,12 +58,7 @@ function Nav() {
             onKeyDown={handleClick}
             role="presentation"
             className="boxjewels-profileNav"
-          >
-            <IoBagSharp
-              onClick={() => navigate(`/addToCart`)}
-              className="icons"
-            />
-          </div>
+          />
           {closeBtn ? (
             <RxCross2
               className="close-icons"

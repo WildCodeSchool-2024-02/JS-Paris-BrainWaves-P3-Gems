@@ -15,22 +15,19 @@ function CreateAccount() {
   const handleSubmit = async () => {
     setErrors({});
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/user`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstname: firstname.current.value,
-            lastname: lastname.current.value,
-            mail: mail.current.value,
-            password: password.current.value,
-            confirmPassword: confirmPassword.current.value,
-          }),
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname: firstname.current.value,
+          lastname: lastname.current.value,
+          mail: mail.current.value,
+          password: password.current.value,
+          confirmPassword: confirmPassword.current.value,
+        }),
+      });
 
       if (response.ok) {
         navigate("/profilePage");
