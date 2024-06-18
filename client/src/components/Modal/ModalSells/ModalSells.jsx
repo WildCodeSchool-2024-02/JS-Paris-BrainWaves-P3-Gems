@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./ModalFav.css";
+import "../ModalFav/ModalFav.css";
 import { GiDiamondRing } from "react-icons/gi";
 
 function ModalSells({ setModalSellsOpen }) {

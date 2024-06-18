@@ -5,8 +5,8 @@ import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { IoBagSharp } from "react-icons/io5";
 import "./ProfilePage.css";
 import { useState } from "react";
-import ModalFav from "../../Modal/ModalFav";
-import ModalSells from "../../Modal/ModalSells";
+import ModalFav from "../../Modal/ModalFav/ModalFav";
+import ModalSells from "../../Modal/ModalSells/ModalSells";
 
 const user = {
   firstname: "Coline",
