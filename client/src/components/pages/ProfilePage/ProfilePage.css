@@ -13,10 +13,10 @@
   font-weight: 500;
   font-size: 2.3rem;
 }
-.heart-profil {
+.heart-profile {
   opacity: 0.6;
 }
-.fav-profil {
+.fav-profile {
   display: flex;
   align-items: center;
   background-color: rgb(255, 255, 255, 0.9);
@@ -31,7 +31,7 @@
   margin-top: 1%;
   font-weight: 400;
 }
-.boxjewels-profil {
+.boxjewels-profile {
   display: flex;
   align-items: center;
   background-color: rgb(255, 255, 255, 0.9);
@@ -41,19 +41,19 @@
   margin-top: 4%;
   cursor: pointer;
 }
-.ring-profil {
+.ring-profile {
   opacity: 0.6;
   font-size: 1.3rem;
 }
-.invoice-profil {
+.invoice-profile {
   opacity: 0.6;
   font-size: 1.3rem;
 }
-.bag-profil {
+.bag-profile {
   opacity: 0.6;
   font-size: 1.3rem;
 }
-.buttons-profil {
+.buttons-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,12 +94,12 @@
     padding-bottom: 6%;
     font-size: 5rem;
   }
-  .fav-profil {
+  .fav-profile {
     margin-top: 0%;
     padding: 1.8rem;
     width: 24vw;
   }
-  .boxjewels-profil {
+  .boxjewels-profile {
     margin-top: 1%;
     margin-bottom: 1%;
     padding: 1.8rem;

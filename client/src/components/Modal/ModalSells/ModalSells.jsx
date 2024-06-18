@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import "./ModalFav.css";
+import "../ModalFav/ModalFav.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
-import ModalConf from "./ModalConf/ModalConf";
+import ModalConf from "../ModalConf/ModalConf";
 
 function ModalSells({ setModalSellsOpen }) {
   const data = useLoaderData();
@@ -44,13 +44,13 @@ function ModalSells({ setModalSellsOpen }) {
   };
 
   return (
-    <div id="modal-profil">
+    <div id="modal-profile">
       <button type="button" onClick={handleCloseModal} className="btn-close">
         X
       </button>
       <div className="container-image">
         <div className="container-heart">
-          <GiDiamondRing className="heart-profil" />
+          <GiDiamondRing className="ring-profile" />
           <p>Ma boite à bijoux</p>
         </div>
         {sellings.map((modal) => (
@@ -63,7 +63,6 @@ function ModalSells({ setModalSellsOpen }) {
                 <button
                   className="modal-delete"
                   type="button"
-                  // onClick={() => handleDelete(modal.Id_user, modal.Id_product)}
                   onClick={() => handleClickConf(modal)}
                 >
                   Supprimer
