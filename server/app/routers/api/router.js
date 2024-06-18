@@ -14,9 +14,9 @@ const productRouter = require("./product/router");
 
 router.use("/product", productRouter);
 
-const UserRouter = require("./user/router");
+const userRouter = require("./user/router");
 
-router.use("/user", UserRouter);
+router.use("/user", userRouter);
 
 /* ************************************************************************* */
 
