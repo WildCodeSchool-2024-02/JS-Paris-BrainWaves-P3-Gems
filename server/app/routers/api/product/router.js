@@ -9,7 +9,7 @@ router.post("/",validateProduct, add);
 
 router.get("/user/:id", readProductByUser)
 
-router.delete("/user/:id", deleteProductByUser)
+router.delete("/", deleteProductByUser)
 
 router.get('/product-by-category/:id', readProductByCategoryId)
 

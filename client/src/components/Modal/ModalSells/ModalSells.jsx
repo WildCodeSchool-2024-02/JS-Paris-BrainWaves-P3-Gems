@@ -22,7 +22,7 @@ function ModalSells({ setModalSellsOpen }) {
 
   const handleDelete = async (IdUser, IdProduct) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/product/user/1`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
