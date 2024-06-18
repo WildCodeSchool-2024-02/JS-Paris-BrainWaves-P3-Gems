@@ -5,8 +5,8 @@ import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { IoBagSharp } from "react-icons/io5";
 import "./ProfilePage.css";
 import { useState } from "react";
-import ModalFav from "../../Modal/ModalFav";
-import ModalSells from "../../Modal/ModalSells";
+import ModalFav from "../../Modal/ModalFav/ModalFav";
+import ModalSells from "../../Modal/ModalSells/ModalSells";
 
 const user = {
   firstname: "Coline",
@@ -17,6 +17,7 @@ function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
   const navigate = useNavigate();
+
   const handleClick = () => {
     setModalOpen(true);
   };
@@ -32,33 +33,42 @@ function ProfilePage() {
           {user.firstname} {user.lastname}
         </h1>
         <div
-          className="fav-profil"
+          className="fav-profile"
           onClick={handleClick}
           onKeyDown={handleClick}
           role="presentation"
         >
-          <FaHeart className="heart-profil" />
+          <FaHeart className="heart-profile" />
           <p>Mes articles favoris</p>
         </div>
         {modalOpen && <ModalFav setModalOpen={setModalOpen} />}
-        <div onClick={handleClickSells} onKeyDown={handleClickSells} role="presentation" className="boxjewels-profil">
-          <GiDiamondRing className="ring-profil" />
+        <div
+          onClick={handleClickSells}
+          onKeyDown={handleClickSells}
+          role="presentation"
+          className="boxjewels-profile"
+        >
+          <GiDiamondRing className="ring-profile" />
           <p>Ma boîte à bijoux</p>
         </div>
         {modalSellsOpen && <ModalSells setModalSellsOpen={setModalSellsOpen} />}
-        <div className="fav-profil">
-          <LiaFileInvoiceSolid className="invoice-profil" />
+        <div className="fav-profile">
+          <LiaFileInvoiceSolid className="invoice-profile" />
           <p>Mes ventes</p>
         </div>
-        <div className="boxjewels-profil">
-          <IoBagSharp className="bag-profil" />
+        <div className="boxjewels-profile">
+          <IoBagSharp className="bag-profile" />
           <p>Mes achats</p>
         </div>
-        <div className="buttons-profil">
-          <button onClick={() => navigate(`/sellingpage`)} className="sale-button" type="button">
+        <div className="buttons-profile">
+          <button
+            onClick={() => navigate(`/sellingpage`)}
+            className="sale-button"
+            type="button"
+          >
             Vendre un article
           </button>
-          <button  className="return-button" type="button">
+          <button className="return-button" type="button">
             Retour
           </button>
         </div>
