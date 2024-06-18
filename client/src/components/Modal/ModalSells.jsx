@@ -2,9 +2,19 @@ import PropTypes from "prop-types";
 import "./ModalFav.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import ModalConf from "./ModalConf/ModalConf";
 
 function ModalSells({ setModalSellsOpen }) {
   const data = useLoaderData();
+  const [sellings, setSellings] = useState(data);
+  const [modalConfOpen, setModalConfOpen] = useState(false);
+  const [modalToDelete, setModalToDelete] = useState(null);
+
+  const handleClickConf = (modal) => {
+    setModalConfOpen(true);
+    setModalToDelete(modal);
+  };
 
   const handleCloseModal = () => {
     setModalSellsOpen(false);
@@ -12,19 +22,22 @@ function ModalSells({ setModalSellsOpen }) {
 
   const handleDelete = async (IdUser, IdProduct) => {
     try {
-    await fetch(
-        `${import.meta.env.VITE_API_URL}/api/product/user/1`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            Id_user: IdUser,
-            Id_product: IdProduct,
-          }),
-          }
-        );
+      await fetch(`${import.meta.env.VITE_API_URL}/api/product/user/1`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Id_user: IdUser,
+          Id_product: IdProduct,
+        }),
+      });
+
+      const filteredData = sellings.filter(
+        (modal) => modal.Id_product !== IdProduct
+      );
+      setModalConfOpen(false);
+      setSellings(filteredData);
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +53,7 @@ function ModalSells({ setModalSellsOpen }) {
           <GiDiamondRing className="heart-profil" />
           <p>Ma boite à bijoux</p>
         </div>
-        {data.map((modal) => (
+        {sellings.map((modal) => (
           <div className="modal-style" key={modal.Id_product}>
             <img src={modal.picture_jewell} alt="" className="image-modal" />
             <div className="modal-details">
@@ -50,7 +63,8 @@ function ModalSells({ setModalSellsOpen }) {
                 <button
                   className="modal-delete"
                   type="button"
-                  onClick={() => handleDelete(modal.Id_user, modal.Id_product)}
+                  // onClick={() => handleDelete(modal.Id_user, modal.Id_product)}
+                  onClick={() => handleClickConf(modal)}
                 >
                   Supprimer
                 </button>
@@ -60,6 +74,14 @@ function ModalSells({ setModalSellsOpen }) {
           </div>
         ))}
       </div>
+      {modalConfOpen && (
+        <ModalConf
+          setModalConfOpen={setModalConfOpen}
+          handleDelete={() =>
+            handleDelete(modalToDelete.Id_user, modalToDelete.Id_product)
+          }
+        />
+      )}
     </div>
   );
 }

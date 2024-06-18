@@ -1,0 +1,63 @@
+/* MOBILE */
+#modal-conf-profil {
+  right: 17%;
+  position: absolute;
+  z-index: 99;
+  top: 45%;
+}
+
+#modal-conf-profil h1 {
+  color: white;
+}
+
+.container-conf-image {
+  background-color: rgb(53 53 53 / 95%);
+  width: 65vw;
+  display: flex;
+  z-index: 99;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons-conf-modal {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons-conf-modal button {
+  padding: 10px 30px;
+  margin: 0 5px;
+  background-color: white;
+  color: black;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  #modal-conf-profil {
+    left: 25;
+    top: 35%;
+  }
+
+  #modal-conf-profil h1 {
+    font-size: 2.5vh;
+  }
+
+  .container-conf-image {
+    width: 20vw;
+    height: 20vh;
+  }
+
+  .buttons-conf-modal button {
+    padding: 11px 35px;
+    margin: 0 10px;
+  }
+
+  .buttons-conf-modal button:hover {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
+}
