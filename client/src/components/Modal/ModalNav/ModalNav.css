@@ -1,0 +1,102 @@
+/* MOBILE */
+#modal-nav {
+  left: 0px;
+  position: absolute;
+  z-index: 1;
+  top: 28%;
+}
+.heart-profilNav {
+  margin-right: 1.5%;
+  opacity: 0.6;
+}
+#modal-nav p {
+  padding-top: 1%;
+}
+.container-imgNav {
+  background-color: rgb(255, 255, 255, 0.9);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  max-height: 47vh;
+  overflow-y: auto;
+}
+.image-modalNav {
+  width: 49vw;
+  height: 19vh;
+  object-fit: cover;
+  z-index: 2;
+}
+.container-heartNav {
+  display: flex;
+  align-items: center;
+  margin: 2% 0% 2% 2%;
+}
+.modal-styleNav {
+  display: flex;
+  margin: 2%;
+  margin-left: 2%;
+}
+.modal-detailsNav {
+  display: flex;
+  flex-direction: column;
+}
+#modal-nav h1 {
+  text-align: start;
+  padding-top: 0;
+  font-size: 1.1rem;
+  color: black;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-weight: 400;
+}
+#modal-nav h3 {
+  font-size: 13px;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-weight: 400;
+}
+.modal-bottomNav {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 55px;
+}
+.modal-deleteNav {
+  background: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 6vw;
+}
+.modal-deleteNav:hover {
+  background: none;
+}
+#modal-nav h2 {
+  font-size: 1rem;
+  margin-top: 3%;
+  margin-right: 6%;
+  font-weight: 400;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  #modal-nav {
+    left: 65%;
+    top: 54%;
+  }
+  #modal-nav h1 {
+    margin-top: 3%;
+  }
+  .modal-bottomNav {
+    height: 90%;
+  }
+  .container-imgNav {
+    width: 35vw;
+    max-height: 100vh;
+  }
+  .image-modalNav {
+    width: 15vw;
+    height: 24vh;
+  }
+}

@@ -17,6 +17,7 @@ function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
   const navigate = useNavigate();
+  
   const handleClick = () => {
     setModalOpen(true);
   };

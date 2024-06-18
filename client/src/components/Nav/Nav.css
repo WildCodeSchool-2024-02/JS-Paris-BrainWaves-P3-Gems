@@ -1,6 +1,7 @@
 /* MOBILE */
 #Nav {
   z-index: 100;
+  position: relative;
 }
 .nav-container {
   display: flex;
