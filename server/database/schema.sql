@@ -14,7 +14,7 @@ CREATE TABLE user(
    lastname VARCHAR(100)  NOT NULL,
    mail VARCHAR(120)  NOT NULL,
    password VARCHAR(150)  NOT NULL,
-   role VARCHAR(50) ,
+   role ENUM ("user", "admin") NOT NULL,
    PRIMARY KEY(Id_user)
 );
 
