@@ -13,6 +13,10 @@ router.use("/category", categoryRouter);
 const productRouter = require("./product/router");
 
 router.use("/product", productRouter);
+
+const wishListRouter = require("./wishlist/router")
+
+router.use('/wishlist', wishListRouter)
 /* ************************************************************************* */
 
 module.exports = router;

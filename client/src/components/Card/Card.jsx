@@ -14,34 +14,45 @@ function Card({ product, setShowInput }) {
     fetch(`${port}/api/product/single-Product/${product.Id_product}`)
       .then((res) => res.json())
       .then((data) =>
-        navigate(`/ItemDetailsPage/${product.Id_product}`, { state: { details: data } })
+        navigate(`/ItemDetailsPage/${product.Id_product}`, {
+          state: { details: data },
+        })
       )
       .catch((err) => console.error(err));
 
-      setShowInput(false)
+    setShowInput(false);
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleCard();
     }
   };
 
+  const addToWishList = () =>{
+    navigate("/profilePage")
+  }
+
   return (
-    <div
-      className="card"
-      onClick={handleCard}
-      onKeyDown={handleKeyDown}
-      tabIndex={0} 
-      role="button"
-    >
-      <img className="card-picture" src={product.picture_jewell} alt={product.name} />
+    <div className="card">
+      <img
+        className="card-picture"
+        src={product.picture_jewell}
+        alt={product.name}
+        onClick={handleCard}
+        onKeyDown={handleKeyDown}
+        role="presentation"
+      />
       <FaRegHeart className="heart-logo" />
       <div className="logo-container">
         <div>
           <HiOutlineShoppingBag className="icon" />
         </div>
-        <div>
+        <div
+          onClick={addToWishList}
+          onKeyDown={addToWishList}
+          role="presentation"
+        >
           <FaRegHeart className="icon" />
         </div>
         <div>
