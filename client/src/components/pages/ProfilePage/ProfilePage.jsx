@@ -62,7 +62,7 @@ function ProfilePage() {
         </div>
         <div className="buttons-profile">
           <button
-            onClick={() => navigate(`/sellingpage`)}
+            onClick={() => navigate(`/selling`)}
             className="sale-button"
             type="button"
           >
