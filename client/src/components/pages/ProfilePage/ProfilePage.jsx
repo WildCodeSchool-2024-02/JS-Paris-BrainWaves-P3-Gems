@@ -4,18 +4,14 @@ import { GiDiamondRing } from "react-icons/gi";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { IoBagSharp } from "react-icons/io5";
 import "./ProfilePage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
-
-const user = {
-  firstname: "Coline",
-  lastname: "Grosso",
-};
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
+  const [infoUser, setInfoUser] = useState("");
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -26,11 +22,18 @@ function ProfilePage() {
     setModalSellsOpen(true);
   };
 
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/2`)
+      .then((response) => response.json())
+      .then((data) => setInfoUser(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
   return (
     <div id="ProfilePage">
       <div className="background-image">
         <h1>
-          {user.firstname} {user.lastname}
+          {infoUser.firstname} {infoUser.lastname}
         </h1>
         <div
           className="fav-profile"
@@ -62,7 +65,7 @@ function ProfilePage() {
         </div>
         <div className="buttons-profile">
           <button
-            onClick={() => navigate(`/sellingpage`)}
+            onClick={() => navigate(`/selling`)}
             className="sale-button"
             type="button"
           >
