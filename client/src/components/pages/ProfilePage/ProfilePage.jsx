@@ -8,11 +8,6 @@ import { useEffect, useState } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
 
-// const user = {
-//   firstname: "Coline",
-//   lastname: "Grosso",
-// };
-
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
