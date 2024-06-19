@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiEye } from "react-icons/fi";
 import "./CreateAccount.css";
 
 function CreateAccount() {
@@ -11,6 +12,25 @@ function CreateAccount() {
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [strengthPassword, setStrengthPassword] = useState(0);
+  const [shown, setShown] = useState(false);
+
+  const checkStrengthPassword = (pass) => {
+    if (!pass) return 0;
+    let strength = 0;
+    if (pass.length >= 8) strength += 1;
+    if (/[A-Z]/.test(pass)) strength += 1;
+    if (/[a-z]/.test(pass)) strength += 1;
+    if (/\d/.test(pass)) strength += 1;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(pass)) strength += 1;
+
+    return strength;
+  };
+
+  const handlePasswordChange = () => {
+    const pass = password.current.value;
+    setStrengthPassword(checkStrengthPassword(pass));
+  };
 
   const handleSubmit = async () => {
     setErrors({});
@@ -79,22 +99,34 @@ function CreateAccount() {
         </label>
         <label className="inputLogin">
           Mot de passe
-          <input
-            className="inputLogin"
-            type="password"
-            placeholder="Mot de passe"
-            ref={password}
-          />
+          <div className="password-strength-bar">
+            <div
+              className={`password-strength-level strength-${strengthPassword}`}
+            />
+          </div>
+          <div className="password-input-container">
+            <input
+              className="inputLogin"
+              type={shown ? "text" : "password"}
+              placeholder="Mot de passe"
+              ref={password}
+              onChange={handlePasswordChange}
+            />
+            <FiEye className="reveal" onClick={() => setShown(!shown)} />
+          </div>
           {errors.password && <span className="error">{errors.password}</span>}
         </label>
         <label className="inputLogin">
           Confirmez le mot de passe
-          <input
-            className="inputLogin"
-            type="password"
-            placeholder="Confirmez le mot de passe"
-            ref={confirmPassword}
-          />
+          <div className="password-input-container">
+            <input
+              className="inputLogin"
+              type={shown ? "text" : "password"}
+              placeholder="Confirmez le mot de passe"
+              ref={confirmPassword}
+            />
+            <FiEye className="reveal" onClick={() => setShown(!shown)} />
+          </div>
           {errors.confirmPassword && (
             <span className="error">{errors.confirmPassword}</span>
           )}

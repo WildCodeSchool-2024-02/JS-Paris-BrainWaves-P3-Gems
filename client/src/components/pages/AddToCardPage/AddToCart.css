@@ -145,8 +145,7 @@
     font-weight: 200;
   }
 
-  #AddToCart .cart-total,
-  span {
+  #AddToCart .cart-total span {
     padding-top: 15px;
     font-size: 2vh;
     font-weight: 400;
