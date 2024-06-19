@@ -37,6 +37,23 @@ class ProductRepository extends AbstractRepository {
     const [result] = await this.database.query(query,[`%${value}%`]);
     return result 
   }
+
+  async readProductByUser(id){
+    const [rows] = await this.database.query(
+        `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user`,[id]
+    )
+return [rows];
+}
+
+async deleteProductByUser(data){
+  const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE Id_user = ? AND Id_product = ?`,
+      [data.Id_user, data.Id_product]
+    );
+return [rows];
+}
+
+
 }
 
 module.exports = ProductRepository;

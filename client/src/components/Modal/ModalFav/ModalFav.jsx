@@ -28,29 +28,29 @@ const favmodals = [
 ];
 
 function ModalFav({ setModalOpen }) {
-  const [modals, setModals]=useState(favmodals);
+  const [modals, setModals] = useState(favmodals);
   const handleCloseModal = () => {
     setModalOpen(false);
   };
   const handleRemoveItem = (id) => {
-    setModals(modals.filter((modal)=>modal.id !==id))
+    setModals(modals.filter((modal) => modal.id !== id));
   };
 
   return (
-    <div id="modal-profil">
+    <div id="modal-profile">
       <button type="button" onClick={handleCloseModal} className="btn-close">
         X
       </button>
       <div className="container-image">
         <div className="container-heart">
-          <FaHeart className="heart-profil" />
+          <FaHeart className="heart-profile" />
           <p>Mes articles favoris</p>
         </div>
         {modals.map((modal) => (
           <div className="modal-style" key={modal.id}>
             <img src={modal.img} alt="" className="image-modal" />
             <div className="modal-details">
-            <h1>{modal.name}</h1>
+              <h1>{modal.name}</h1>
               <h3>{modal.details}</h3>
               <div className="modal-bottom">
                 <button

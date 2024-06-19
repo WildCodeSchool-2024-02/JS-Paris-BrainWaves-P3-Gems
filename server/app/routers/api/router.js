@@ -14,6 +14,11 @@ const productRouter = require("./product/router");
 
 router.use("/product", productRouter);
 
+const userRouter = require("./user/router");
+
+router.use("/user", userRouter);
+
+
 const wishListRouter = require("./wishlist/router")
 
 router.use('/wishlist', wishListRouter)

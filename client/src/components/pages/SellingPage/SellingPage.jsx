@@ -3,7 +3,6 @@ import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
 
 function SellingPage() {
-
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [IdCategory, setIdCategory] = useState(0);
@@ -13,40 +12,61 @@ function SellingPage() {
   const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product`, {
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,details,Id_category:IdCategory,price, picture_jewell :pictureJewell, picture_validation: pictureValidation, Id_user:IdUser
-        })
-      })
-      if(!response.ok){
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/product`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            details,
+            Id_category: IdCategory,
+            price,
+            picture_jewell: pictureJewell,
+            picture_validation: pictureValidation,
+            Id_user: IdUser,
+          }),
+        }
+      );
+      if (!response.ok) {
         const result = await response.json();
-        setErrors(result.errors)
-      }else{setErrors({})}
-    } catch (error){console.error(error)}
+        setErrors(result.errors);
+      } else {
+        setErrors({});
+      }
+    } catch (error) {
+      console.error(error);
+    }
     setName("");
     setDetails("");
     setIdCategory("");
     setPrice("");
     setPictureJewell("");
     setPictureValidation("");
-
   };
-
   return (
     <div id="sellingPage">
+      {errors && <p className="error-picture">{errors.picture}</p>}
       <div className="input-image-div">
-        <input className="input-image" placeholder="Ajouter une photo" value={pictureJewell} onChange={(e) =>setPictureJewell(e.target.value)}/>
-        <input className="input-image" placeholder="Ajouter une facture" value={pictureValidation} onChange={(e) =>setPictureValidation(e.target.value)}/>
+        <input
+          className="input-image"
+          placeholder="Ajouter une photo"
+          value={pictureJewell}
+          onChange={(e) => setPictureJewell(e.target.value)}
+        />
+        <input
+          className="input-image"
+          placeholder="Ajouter une facture"
+          value={pictureValidation}
+          onChange={(e) => setPictureValidation(e.target.value)}
+        />
       </div>
-      {errors && <p>{errors.picture}</p>}
+      {errors && <p className="error">{errors.all}</p>}
       <form
         style={{ backgroundImage: `url(${background})` }}
         className="inputs-section"
@@ -58,8 +78,8 @@ function SellingPage() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            />
-            {errors && <p>{errors.name}{errors.all}</p>}
+          />
+          {errors && <p className="error">{errors.name}</p>}
         </div>
         <div className="input-div">
           <label htmlFor="description">Description:</label>
@@ -69,7 +89,7 @@ function SellingPage() {
             value={details}
             onChange={(e) => setDetails(e.target.value)}
           />
-          {errors && <p>{errors.details}{errors.all}</p>}
+          {errors && <p className="error">{errors.details}</p>}
         </div>
         <div className="input-div">
           <label htmlFor="categories">Catégorie:</label>
@@ -86,7 +106,6 @@ function SellingPage() {
             <option value="1">Bracelet</option>
             <option value="3">Watch</option>
           </select>
-          {errors && <p>{errors.all}</p>}
         </div>
         <div className="input-div">
           <label htmlFor="price">Prix:</label>
@@ -95,7 +114,7 @@ function SellingPage() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          {errors && <p>{errors.all}{errors.price}</p>}
+          {errors && <p className="error">{errors.price}</p>}
         </div>
         <div className="input-div">
           <label htmlFor="id-user">Id-user :</label>

@@ -80,7 +80,7 @@ function AddToCart() {
             <div className="card-desktop">
               <div className="cart-total">
                 <h2>Sous-total</h2>
-                <span>€{getTotal().toFixed(2)}</span>
+                <span id="total">€{getTotal().toFixed(2)}</span>
               </div>
               <div className="cart-actions">
                 <button
