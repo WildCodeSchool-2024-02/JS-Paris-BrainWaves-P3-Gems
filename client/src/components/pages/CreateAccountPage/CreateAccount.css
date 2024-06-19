@@ -24,6 +24,70 @@
   border-bottom: 1px solid;
 }
 
+#CreateAccount .error {
+  color: #c50000c7;
+}
+
+.password-strength-bar {
+  width: 100%;
+  height: 5px;
+  margin-top: 5px;
+  background-color: #e0e0e0;
+}
+
+.password-strength-level {
+  height: 100%;
+  transition: width 0.5s;
+}
+
+.strength-0 {
+  width: 0;
+  background-color: transparent;
+}
+
+.strength-1 {
+  width: 20%;
+  background-color: red;
+}
+
+.strength-2 {
+  width: 40%;
+  background-color: orange;
+}
+
+.strength-3 {
+  width: 60%;
+  background-color: yellow;
+}
+
+.strength-4 {
+  width: 80%;
+  background-color: lightgreen;
+}
+
+.strength-5 {
+  width: 100%;
+  background-color: green;
+}
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.password-input-container .reveal {
+  position: absolute;
+  right: 10px; /* Adjust as necessary */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 /* desktop */
 
 @media screen and (min-width: 1024px) {
