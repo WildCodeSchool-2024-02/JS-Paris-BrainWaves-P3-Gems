@@ -12,7 +12,7 @@ const add = async (req, res, next) => {
 
 const readProductByCategoryId = async (req, res, next )=>{
   try {
-    const parseId = Number(req.params.id, 10)
+    const parseId = parseInt(req.params.id, 10)
     const results = await tables.product.getProductByCategory(parseId);
     res.status(200).json(results)
   } catch (error) {

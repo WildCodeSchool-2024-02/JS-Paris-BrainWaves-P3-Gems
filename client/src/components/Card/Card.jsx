@@ -14,7 +14,7 @@ function Card({ product, setShowInput }) {
     fetch(`${port}/api/product/single-Product/${product.Id_product}`)
       .then((res) => res.json())
       .then((data) =>
-        navigate(`/ItemDetailsPage/${product.Id_product}`, {
+        navigate(`/ItemDetails/${product.Id_product}`, {
           state: { details: data },
         })
       )
@@ -29,9 +29,9 @@ function Card({ product, setShowInput }) {
     }
   };
 
-  const addToWishList = () =>{
-    navigate("/profilePage")
-  }
+  const addToWishList = () => {
+    navigate("/profile");
+  };
 
   return (
     <div className="card">

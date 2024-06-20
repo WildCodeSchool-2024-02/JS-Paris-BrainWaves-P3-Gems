@@ -3,11 +3,10 @@ import { useLocation } from "react-router-dom";
 import "./ItemsPage.css";
 import Card from "../../Card/Card";
 
-
 function ItemsPage() {
-  const location = useLocation()
-  const  displayProduct  = location.state ;
- 
+  const location = useLocation();
+  const displayProduct = location.state;
+
   return (
     <div id="ItemsPage">
       <h2>{displayProduct[0].name.toUpperCase()}</h2>
@@ -20,8 +19,9 @@ function ItemsPage() {
       </div>
 
       <div className="container-items">
-        { displayProduct.map((product) => ( <Card key={product.Id_product} product={product}/> ))}
-       
+        {displayProduct.map((product) => (
+          <Card key={product.Id_product} product={product} />
+        ))}
       </div>
     </div>
   );
