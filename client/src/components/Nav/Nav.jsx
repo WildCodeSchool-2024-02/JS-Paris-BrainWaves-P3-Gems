@@ -23,7 +23,7 @@ function Nav() {
     setModalNav(true);
   };
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/2`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/7`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));

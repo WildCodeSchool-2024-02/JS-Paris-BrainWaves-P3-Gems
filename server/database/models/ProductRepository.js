@@ -26,9 +26,21 @@ class ProductRepository extends AbstractRepository {
     return result
   }
 
+  async getSingleProduct(id){
+    const [result] = await this.database.query(`SELECT p.*, cat.name as catname, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.Id_product= ? `, [id]);
+    return result
+  }
+
+  async searchForProduct(value){
+
+    const query = `SELECT * FROM gems.product WHERE name LIKE ?`;
+    const [result] = await this.database.query(query,[`%${value}%`]);
+    return result 
+  }
+
   async readProductByUser(id){
     const [rows] = await this.database.query(
-        `select * from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user`,[id]
+        `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user`,[id]
     )
 return [rows];
 }

@@ -3,7 +3,7 @@
   height: 100vh;
   background-size: cover;
   background-position: right;
-  background-image: url("src/assets/images/illustrations/flower3.jpeg");
+  background-image: url("../../../assets/images/illustrations/flower3.jpeg");
 }
 #ProfilePage h1 {
   color: white;
@@ -87,7 +87,7 @@
     background-size: cover;
     background-position: top;
     object-fit: cover;
-    background-image: url("src/assets/images/illustrations/flower4.png");
+    background-image: url("../../../assets/images/illustrations/flower4.png");
   }
   #ProfilePage h1 {
     padding-top: 0;

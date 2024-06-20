@@ -1,8 +1,8 @@
 // Import the repository modules responsible for handling data operations on the tables
 const ItemRepository = require("./models/ItemRepository");
-const CategoryRepository = require("./models/CategoryRepository");
-const ProductRepository = require("./models/ProductRepository");
-const UserRepository = require("./models/UserRepository");
+const CategoryRepository = require("./models/CategoryRepository")
+const ProductRepository = require("./models/ProductRepository")
+const UserRepository = require("./models/UserRepository")
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};

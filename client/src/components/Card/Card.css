@@ -1,6 +1,7 @@
 .heart-logo {
   display: none;
   z-index: 10;
+  border: 2px solid green;
 }
 .card {
   width: 300px;
@@ -34,6 +35,10 @@
   width: 80%;
   margin: 0px auto;
   transition: all 0.5s ease-in-out;
+  z-index: 100;
+}
+.logo-container div:nth-child(2):hover {
+  color: red;
 }
 .logo-container div {
   border: 2px solid white;
@@ -46,6 +51,7 @@
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
   background-color: white;
+  z-index: 100;
 }
 .icon {
   font-size: 30px;
@@ -132,7 +138,7 @@
     background-color: #000;
   }
 
-  .panier {
+  .cart {
     font-size: 15px;
   }
 
