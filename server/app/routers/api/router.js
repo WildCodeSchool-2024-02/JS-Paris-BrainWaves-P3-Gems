@@ -19,9 +19,6 @@ const userRouter = require("./user/router");
 router.use("/user", userRouter);
 
 
-const wishListRouter = require("./wishlist/router")
-
-router.use('/wishlist', wishListRouter)
 /* ************************************************************************* */
 
 module.exports = router;
