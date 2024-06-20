@@ -13,7 +13,6 @@ function SearchInput({ setShowInput }) {
   const [results, setResults] = useState([]);
   const handleInput = (e) => {
     setInputValue(e.target.value);
-    // handleClick()
   };
 
   const handleClick = async () => {

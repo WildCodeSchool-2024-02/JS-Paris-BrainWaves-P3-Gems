@@ -23,7 +23,6 @@ SearchResult.propTypes = {
   results: PropTypes.arrayOf(
     PropTypes.shape({
       Id_product: PropTypes.number.isRequired,
-      // Add other product properties here as needed
     })
   ).isRequired,
 };

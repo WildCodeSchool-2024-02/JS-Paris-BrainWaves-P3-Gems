@@ -62,7 +62,7 @@ function Card({ product, setShowInput }) {
       <div className="card-title">
         <p className="title">{product.name}</p>
         <div className="price-and-logo">
-          <HiOutlineShoppingBag className="panier" />
+          <HiOutlineShoppingBag className="cart" />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
             <span>{product.price}</span>
