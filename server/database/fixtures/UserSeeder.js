@@ -28,7 +28,7 @@ class UserSeeder extends AbstractSeeder {
         lastname: "grosso",
         mail: "coline.grosso94@gmail.com",
         password: "FindusIsa86@",
-        role: "user",
+        role: "admin",
         refName: "use_3",
       },
       {
