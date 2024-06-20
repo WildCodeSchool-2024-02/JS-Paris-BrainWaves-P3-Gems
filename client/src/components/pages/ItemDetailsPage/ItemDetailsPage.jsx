@@ -1,25 +1,52 @@
+import { useState } from 'react'
 import { FaHeart } from "react-icons/fa";
-import detail from "./ItemData";
+import { useLocation } from "react-router-dom";
+import { MdOutlineEuroSymbol } from "react-icons/md";
+import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
+
 import "./ItemDetailsPage.css";
 
 function ItemDetailsPage() {
+  const[showMore, setShowMore] = useState(false)
+  const location = useLocation();
+  const { details: detailProduct } = location.state || {};
+ 
+  const sellerEmail = `mailto:${detailProduct.mail}`
+
+  if (!detailProduct) {
+    return <div><h2>Product details not found</h2></div>;
+  }
+
   return (
     <div id="ItemDetailsPage">
+
       <div className="container">
         <div className="container-img">
-          <img src={detail.picture_jewell} alt="necklace" className="image-detail" />
+          <img src={detailProduct.picture_validation} alt={detailProduct.name} className="image-detail" />
+          {detailProduct.validated === 1 && <div className="verified"> <p>Verified</p> </div>}
         </div>
         <FaHeart className="heart-img" />
       </div>
       <div className="container-text">
-        <h3>{detail.name}</h3>
-        <p>{detail.details}</p>
-        <p>{detail.price}</p>
+        <h2>{detailProduct.name}</h2>
+        <p>{detailProduct.details}</p>
+        <p> <MdOutlineEuroSymbol className="euro-logo" /> {detailProduct.price}</p>
         <div className="container-button">
           <button type="button" className="button-detail">
             Ajouter au panier
           </button>
         </div>
+      <div className="more-Info">
+      { showMore ?(<IoIosArrowDropup  onClick={()=>setShowMore(false)} className='show-logo'/>) : (<IoIosArrowDropdown  onClick={()=>setShowMore(true)} className='show-logo'/>) }
+
+        {showMore &&<div className="display-info">
+          <p>
+         Vendu par : {detailProduct.firstname} {detailProduct.lastname} 
+          </p>
+       <button type='button'> <a href={sellerEmail}>Contactez le vendeur</a></button>
+        </div>}
+      </div>
+
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 /* MOBILE */
 #Nav {
   z-index: 100;
-  position: relative;
+  position: sticky;
+  width: 100vw;
+  background-color: white;
+  top: 0px;
 }
 .nav-container {
   display: flex;
@@ -101,11 +104,12 @@
   animation: slideSearchBar 0.4s ease-in-out alternate forwards;
   width: 100vw;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
   border-bottom: 1px solid black;
   z-index: 1;
+  position: relative;
 }
 
 #SearchInput input {
@@ -117,12 +121,61 @@
 #SearchInput input:hover {
   background-color: aliceblue;
 }
+
+#SearchInput .search-btn-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
 #SearchInput .close-search {
   z-index: 120;
-  font-size: 15px;
+  font-size: 18px;
   padding: 10px;
-  width: 50px;
+  width: 90%;
+  gap: 20px;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
   text-align: center;
+}
+
+#searchResult {
+  background-color: rgba(103, 103, 103, 0.597);
+  min-width: 100vw;
+  max-height: 100vh;
+  position: fixed;
+  top: 100%;
+  overflow: scroll;
+  scrollbar-width: 1px;
+  scrollbar-color: black, transparent;
+  padding: 10px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(20px);
+}
+
+#searchResult .result-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10px 60px;
+  justify-content: center;
+  margin: 40px auto 80px;
+}
+
+#searchResult .result-container h1 {
+  filter: drop-shadow(0 0 5px white);
+  color: white;
+}
+@media screen and (min-width: 1024px) {
+  .menu-icons .icons {
+    font-size: 35px;
+    margin-right: 10px;
+  }
+
+  .menu-icons .icons:hover {
+    font-size: 25px;
+  }
 }
