@@ -11,6 +11,7 @@ function CreateAccount() {
   const confirmPassword = useRef();
 
   const navigate = useNavigate();
+
   const [errors, setErrors] = useState({});
   const [strengthPassword, setStrengthPassword] = useState(0);
   const [shown, setShown] = useState(false);
@@ -50,7 +51,7 @@ function CreateAccount() {
       });
 
       if (response.ok) {
-        navigate("/profilePage");
+        navigate("/profile");
       } else {
         const data = await response.json();
         setErrors(data.errors || {});

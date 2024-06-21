@@ -3,12 +3,21 @@ const express = require("express");
 const router = express.Router();
 
 const { add, read, browse } = require("../../../controllers/userActions");
-const validateUser = require("../../../services/users")
 
-router.get("/", browse)
+const { login } = require("../../../controllers/authActions");
 
-router.post("/",validateUser, add );
+const { hashPassword, verifyToken } = require("../../../services/auth");
 
-router.get("/:id", read)
+const validateUser = require("../../../services/users");
+
+router.get("/", browse);
+
+router.post("/", validateUser, hashPassword, add);
+
+router.post("/login", login);
+
+router.get("/:id", read);
+
+router.use(verifyToken);
 
 module.exports = router;
