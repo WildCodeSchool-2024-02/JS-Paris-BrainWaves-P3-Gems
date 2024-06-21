@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import "./LoginPage.css";
 import { FaHeart } from "react-icons/fa";
+import "./LoginPage.css";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -42,13 +42,12 @@ function LoginPage() {
       </div>
       <div className="inputflex">
         <p className="wishlist">
-          <FaHeart className="heart"/>
+          <FaHeart className="heart" />
           Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
 
-      <div className="login-image-container"/>
-
+      <div className="login-image-container" />
     </div>
   );
 }

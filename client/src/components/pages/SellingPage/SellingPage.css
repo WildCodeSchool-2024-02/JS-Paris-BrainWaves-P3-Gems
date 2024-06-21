@@ -84,12 +84,15 @@
   .input-image-div {
     height: 25vh;
   }
+  .all-input {
+    position: fixed;
+  }
 
   .inputs-section {
     padding-top: 2%;
-    height: 70vh;
     object-fit: cover;
     background-size: cover;
+    min-height: 80vh;
   }
 
   #sellingPage button {

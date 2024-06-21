@@ -19,26 +19,25 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        loader: () => 
-          fetch(`${api}/api/category`)
+        loader: () => fetch(`${api}/api/category`),
       },
       { path: "/login", element: <LoginPage /> },
       { path: "/createAccount", element: <CreateAccount /> },
-      { path: "/items", element: <ItemsPage /> },
+      { path: "/items/:id", element: <ItemsPage /> },
       {
-        path: "/items/:id/itemsDetails/:id",
+        path: "/itemDetails/:id",
         element: <ItemDetailsPage />,
       },
       {
         path: "/addToCart",
         element: <AddToCart />,
       },
-      { path: "/selling", element: <SellingPage />,
-       },
-      { path: "/profile", element: <ProfilePage />,
-        loader:() => 
-          fetch(`${api}/api/product/user/1`)
-       },
+      { path: "/selling", element: <SellingPage /> },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+        loader: () => fetch(`${api}/api/product/user/1`),
+      },
       { path: "/admin", element: <AdminPage /> },
     ],
   },

@@ -18,7 +18,7 @@ function MenuList({ setclosebtn }) {
     const value = e.target.getAttribute('value');
     fetch(`${port}/api/product/product-by-category/${value}`)
     .then((res)=> res.json())
-    .then((data)=> navigate(`/items` , {state: data }))
+    .then((data)=> navigate(`/items/${value}` , {state: data }))
     .catch((err) => console.error(err))
     setclosebtn(false);
     ;

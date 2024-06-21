@@ -1,10 +1,11 @@
 import "./Nav.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { MdManageAccounts } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import MenuList from "./MenuList";
@@ -16,10 +17,17 @@ function Nav() {
   const [showInput, setShowInput] = useState(false);
   const { isOnline } = useIsOnline(false);
   const [modalNav, setModalNav] = useState(false);
+  const [infoUser, setInfoUser] = useState("");
 
   const handleClick = () => {
     setModalNav(true);
   };
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/7`)
+      .then((response) => response.json())
+      .then((data) => setInfoUser(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
   const navigate = useNavigate();
   return (
@@ -33,6 +41,12 @@ function Nav() {
           Gems
         </h1>
         <div className="menu-icons">
+          {infoUser.role === "admin" ? (
+            <MdManageAccounts
+              onClick={() => navigate(`/admin`)}
+              className="icon-admin"
+            />
+          ) : null}
           {isOnline === false ? (
             <FaUser onClick={() => navigate(`/login`)} className="icons" />
           ) : (

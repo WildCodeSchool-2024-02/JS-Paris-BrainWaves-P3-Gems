@@ -49,7 +49,6 @@ function SellingPage() {
     setPictureJewell("");
     setPictureValidation("");
   };
-
   return (
     <div id="sellingPage">
       {errors && <p className="error-picture">{errors.picture}</p>}
