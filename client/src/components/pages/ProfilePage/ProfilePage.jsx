@@ -23,17 +23,26 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/7`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
+  function capitalizeFirstLetter(string) {
+    if (!string) return '';
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+const firstName = capitalizeFirstLetter(infoUser.firstname);
+const lastName = capitalizeFirstLetter(infoUser.lastname);
+
+
   return (
     <div id="ProfilePage">
       <div className="background-image">
         <h1>
-          {infoUser.firstname} {infoUser.lastname}
+        {firstName} {lastName}
         </h1>
         <div
           className="fav-profile"
