@@ -12,8 +12,8 @@ CREATE TABLE user(
    firstname VARCHAR(100)  NOT NULL,
    lastname VARCHAR(100)  NOT NULL,
    mail VARCHAR(120)  NOT NULL,
-   password VARCHAR(150)  NOT NULL,
-   role ENUM ("user", "admin") NOT NULL,
+   hashed_password varchar(255) not null,
+   is_admin boolean not null default false
    PRIMARY KEY(Id_user)
 );
 

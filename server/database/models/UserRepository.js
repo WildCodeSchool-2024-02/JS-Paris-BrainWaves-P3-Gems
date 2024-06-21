@@ -13,14 +13,16 @@ class UserRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+    const [rows] = await this.database.query(
+      `select  mail, is_admin from ${this.table}`
+    );
     return rows;
   }
 
   async add(user) {
     const [result] = await this.database.query(
-      `INSERT INTO user(firstname,lastname,mail,password,role) VALUES (?,?,?,?,"user")`,
-      [user.firstname, user.lastname, user.mail, user.password]
+      `INSERT INTO user(firstname,lastname,mail,hashed_password,role) VALUES (?,?,?,?,"user")`,
+      [user.firstname, user.lastname, user.mail, user.hashedPassword]
     );
     return result;
   }
@@ -31,6 +33,15 @@ class UserRepository extends AbstractRepository {
       [id]
     );
     return rows;
+  }
+
+  async readByEmailWithPassword(mail) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where mail = ?`,
+      [mail]
+    );
+
+    return rows[0];
   }
 }
 
