@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const { add, read, browse } = require("../../../controllers/userActions");
+const { add,  browse } = require("../../../controllers/userActions");
 
 const { login } = require("../../../controllers/authActions");
 
@@ -15,8 +15,6 @@ router.get("/", browse);
 router.post("/", validateUser, hashPassword, add);
 
 router.post("/login", login);
-
-router.get("/:id", read);
 
 router.use(verifyToken);
 
