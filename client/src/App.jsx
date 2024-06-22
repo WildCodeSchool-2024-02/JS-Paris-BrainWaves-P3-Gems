@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
 import Nav from "./components/Nav/Nav";
+import { useAuth } from "./contexts/AuthContext";
 
 function App() {
-  const [auth, setAuth] = useState();
+  const { auth } = useAuth();
 
   return (
     <div id="App">
       <Nav />
-      <Outlet context={{auth, setAuth }} />
+      <Outlet context={{ auth }} />
     </div>
   );
 }
