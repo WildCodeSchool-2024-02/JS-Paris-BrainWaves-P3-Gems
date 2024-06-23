@@ -71,6 +71,10 @@ function AdminPage() {
                     <p> {product.details}</p>
                     <p className="admin-title">Prix: </p>
                     <p> {product.price}€</p>
+                    <p className="admin-title">Catégorie: </p>
+                    <p> {product.title}</p>
+                    <p className="admin-title">Vendeur: </p>
+                    <p> {product.firstname} {product.lastname}</p>
                   </div>
                 </div>
                 <div className="buttons">

@@ -1,6 +1,6 @@
 CREATE TABLE category(
    Id_category_list INT AUTO_INCREMENT,
-   name VARCHAR(100),
+   title VARCHAR(100),
    picture TEXT,
    details TEXT NOT NULL,
    exist BOOLEAN NOT NULL,

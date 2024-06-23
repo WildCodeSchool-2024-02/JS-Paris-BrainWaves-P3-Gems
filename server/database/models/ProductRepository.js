@@ -53,7 +53,11 @@ class ProductRepository extends AbstractRepository {
 
   async readProductToValidate(){
     const [rows] = await this.database.query(
-      `SELECT* from ${this.table} WHERE ${this.table}.validated = false`
+     `SELECT * 
+     FROM ${this.table} 
+     INNER JOIN category ON ${this.table}.Id_category = category.Id_category_list 
+     INNER JOIN user ON ${this.table}.Id_user = user.Id_user
+     WHERE ${this.table}.validated = false`
     );
     return [rows];
   }

@@ -126,7 +126,7 @@ function SellingPage() {
             onChange={(e) => setIdCategory(e.target.value)}
           >
             <option value="0">{null}</option>
-            {categories.map((category) => <option key={category.id_category_list} value={category.Id_category_list}>{category.name}</option>)}
+            {categories.map((category) => <option key={category.id_category_list} value={category.Id_category_list}>{category.title}</option>)}
           </select>
         </div>
         <div className="input-div">
