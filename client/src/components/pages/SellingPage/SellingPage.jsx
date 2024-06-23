@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
 
@@ -11,6 +11,26 @@ function SellingPage() {
   const [pictureValidation, setPictureValidation] = useState("");
   const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/category`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setCategories(data);
+        } else {
+          console.error("Failed to fetch");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,17 +58,18 @@ function SellingPage() {
         setErrors(result.errors);
       } else {
         setErrors({});
+        setName("");
+        setDetails("");
+        setIdCategory(0);
+        setPrice("");
+        setPictureJewell("");
+        setPictureValidation("");
       }
     } catch (error) {
       console.error(error);
     }
-    setName("");
-    setDetails("");
-    setIdCategory("");
-    setPrice("");
-    setPictureJewell("");
-    setPictureValidation("");
   };
+
   return (
     <div id="sellingPage">
       {errors && <p className="error-picture">{errors.picture}</p>}
@@ -100,11 +121,7 @@ function SellingPage() {
             onChange={(e) => setIdCategory(e.target.value)}
           >
             <option value="0">{null}</option>
-            <option value="5">Collier</option>
-            <option value="2">Bague</option>
-            <option value="4">Boucles d'oreilles</option>
-            <option value="1">Bracelet</option>
-            <option value="3">Watch</option>
+            {categories.map((category) => <option key={category.id_category_list} value={category.Id_category_list}>{category.name}</option>)}
           </select>
         </div>
         <div className="input-div">
