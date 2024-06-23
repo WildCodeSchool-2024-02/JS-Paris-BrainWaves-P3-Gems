@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
+import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -12,6 +13,8 @@ function SellingPage() {
   const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
+
+  const [modalConfOpen, setModalConfOpen] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -33,6 +36,8 @@ function SellingPage() {
   }, []);
 
   const handleSubmit = async (e) => {
+    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation  && IdUser) 
+    setModalConfOpen(true);
     e.preventDefault();
     try {
       const response = await fetch(
@@ -142,11 +147,16 @@ function SellingPage() {
           />
         </div>
         <div className="button-div">
-          <button type="submit" onClick={handleSubmit}>
+          <button className="add-button" type="submit" onClick={handleSubmit}>
             Ajouter
           </button>
         </div>
       </form>
+      {modalConfOpen && (
+        <ModalConfForm
+          setModalConfOpen={setModalConfOpen}
+        />
+      )}
     </div>
   );
 }

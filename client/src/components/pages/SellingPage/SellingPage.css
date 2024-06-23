@@ -55,7 +55,7 @@
 #sellingPage .error {
   text-align: center;
 }
-#sellingPage button {
+#sellingPage .add-button {
   width: 80vw;
   height: 5vh;
   font-size: 2vh;
@@ -95,7 +95,7 @@
     min-height: 80vh;
   }
 
-  #sellingPage button {
+  #sellingPage .add-button {
     width: 23vw;
     height: 5vh;
     font-size: 2vh;
