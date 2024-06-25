@@ -3,6 +3,7 @@ import "./ModalFav.css";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 
+
 const favmodals = [
   {
     id: 1,

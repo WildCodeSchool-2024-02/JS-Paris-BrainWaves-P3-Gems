@@ -5,6 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 function Card({ product, setShowInput }) {
   const port = import.meta.env.VITE_API_URL;
@@ -33,6 +34,24 @@ function Card({ product, setShowInput }) {
     navigate("/profile");
   };
 
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const localCart = localStorage.getItem("cart");
+    if (localCart) {
+      setCart(JSON.parse(localCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    // localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const handleCart = (article) => {
+    localStorage.setItem("cart", JSON.stringify([...cart, article]));
+    setCart([...cart, article]);
+  };
+
   return (
     <div className="card">
       <img
@@ -46,7 +65,12 @@ function Card({ product, setShowInput }) {
       <FaRegHeart className="heart-logo" />
       <div className="logo-container">
         <div>
-          <HiOutlineShoppingBag className="icon" />
+          <HiOutlineShoppingBag
+            className="icon"
+            onKeyDown={() => handleCart(product)}
+            role="presentation"
+            onClick={() => handleCart(product)}
+          />
         </div>
         <div
           onClick={addToWishList}
@@ -62,7 +86,12 @@ function Card({ product, setShowInput }) {
       <div className="card-title">
         <p className="title">{product.name}</p>
         <div className="price-and-logo">
-          <HiOutlineShoppingBag className="cart" />
+          <HiOutlineShoppingBag
+            className="cart"
+            onKeyDown={() => handleCart(product)}
+            role="presentation"
+            onClick={() => handleCart(product)}
+          />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
             <span>{product.price}</span>

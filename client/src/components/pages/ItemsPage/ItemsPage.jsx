@@ -1,11 +1,12 @@
 import { useLocation } from "react-router-dom";
-
 import "./ItemsPage.css";
 import Card from "../../Card/Card";
 
 function ItemsPage() {
   const location = useLocation();
   const displayProduct = location.state;
+  
+  
 
   return (
     <div id="ItemsPage">

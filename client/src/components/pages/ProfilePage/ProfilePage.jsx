@@ -23,7 +23,7 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
