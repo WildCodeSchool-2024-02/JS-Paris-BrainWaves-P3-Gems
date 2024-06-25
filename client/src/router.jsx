@@ -9,6 +9,8 @@ import AddToCart from "./components/pages/AddToCardPage/AddToCart";
 import SellingPage from "./components/pages/SellingPage/SellingPage";
 import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import AdminPage from "./components/pages/AdminPage/AdminPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AdminRoute from "./components/auth/AdminRoute";
 
 const api = import.meta.env.VITE_API_URL;
 const router = createBrowserRouter([
@@ -30,15 +32,38 @@ const router = createBrowserRouter([
       },
       {
         path: "/addToCart",
-        element: <AddToCart />,
+
+        element: (
+          <ProtectedRoute>
+            <AddToCart />,
+          </ProtectedRoute>
+        ),
       },
-      { path: "/selling", element: <SellingPage /> },
+      {
+        path: "/selling",
+        element: (
+          <ProtectedRoute>
+            <SellingPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/profile",
-        element: <ProfilePage />,
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
         loader: () => fetch(`${api}/api/product/user/1`),
       },
-      { path: "/admin", element: <AdminPage /> },
+      {
+        path: "/admin",
+        element: (
+          <AdminRoute>
+            <AdminPage />
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

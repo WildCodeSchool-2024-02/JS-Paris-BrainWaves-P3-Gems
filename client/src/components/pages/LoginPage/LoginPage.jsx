@@ -1,14 +1,13 @@
 import { useRef } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import "./LoginPage.css";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function LoginPage() {
   const mailRef = useRef();
   const passwordRef = useRef();
-
-  const { setAuth } = useOutletContext();
-
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleCreateAccountClick = () => {
@@ -22,7 +21,7 @@ function LoginPage() {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/user/login`,
         {
-          method: "post",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             mail: mailRef.current.value,
@@ -33,9 +32,7 @@ function LoginPage() {
 
       if (response.status === 200) {
         const auth = await response.json();
-
         setAuth(auth);
-
         navigate("/");
       } else {
         console.info(response);
@@ -66,7 +63,7 @@ function LoginPage() {
       <div
         className="create-account"
         onClick={handleCreateAccountClick}
-        onKeyUp={handleCreateAccountClick}
+        onKeyDown={handleCreateAccountClick}
         role="button"
         tabIndex={0}
       >

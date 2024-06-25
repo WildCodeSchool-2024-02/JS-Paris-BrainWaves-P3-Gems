@@ -4,14 +4,15 @@ import { GiDiamondRing } from "react-icons/gi";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { IoBagSharp } from "react-icons/io5";
 import "./ProfilePage.css";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
-  const [infoUser, setInfoUser] = useState("");
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -23,26 +24,16 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
-      .then((response) => response.json())
-      .then((data) => setInfoUser(data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
-
-  function capitalizeFirstLetter(string) {
-    if (!string) return '';
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-const firstName = capitalizeFirstLetter(infoUser.firstname);
-const lastName = capitalizeFirstLetter(infoUser.lastname);
-
+    if (!auth) {
+      navigate("/login");
+    }
+  }, [auth, navigate]);
 
   return (
     <div id="ProfilePage">
       <div className="background-image">
         <h1>
-        {firstName} {lastName}
+          {auth?.user?.firstname} {auth?.user?.lastname}
         </h1>
         <div
           className="fav-profile"

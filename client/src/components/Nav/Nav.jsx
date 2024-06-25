@@ -9,13 +9,13 @@ import { MdManageAccounts } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import MenuList from "./MenuList";
-import { useIsOnline } from "../../contexts/OnlineContext";
+import { useAuth } from "../../contexts/AuthContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
 
 function Nav() {
   const [closeBtn, setclosebtn] = useState(false);
   const [showInput, setShowInput] = useState(false);
-  const { isOnline } = useIsOnline(false);
+  const { Auth } = useAuth(false);
   const [modalNav, setModalNav] = useState(false);
   const [infoUser, setInfoUser] = useState("");
 
@@ -47,7 +47,7 @@ function Nav() {
               className="icon-admin"
             />
           ) : null}
-          {isOnline === false ? (
+          {Auth === false ? (
             <FaUser onClick={() => navigate(`/login`)} className="icons" />
           ) : (
             <FaUser onClick={() => navigate(`/profile`)} className="icons" />
