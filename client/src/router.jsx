@@ -10,6 +10,7 @@ import SellingPage from "./components/pages/SellingPage/SellingPage";
 import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import AdminPage from "./components/pages/AdminPage/AdminPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AdminRoute from "./components/auth/AdminRoute";
 
 const api = import.meta.env.VITE_API_URL;
 const router = createBrowserRouter([
@@ -58,9 +59,9 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: (
-          <ProtectedRoute>
+          <AdminRoute>
             <AdminPage />
-          </ProtectedRoute>
+          </AdminRoute>
         ),
       },
     ],
