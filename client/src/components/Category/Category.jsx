@@ -19,6 +19,7 @@ function Category() {
       console.error(error);
     }
   };
+
   return (
     <div className="all-containers">
       {cat.map((category) => (
@@ -30,7 +31,7 @@ function Category() {
             style={{ backgroundImage: `url(${category.picture})` }}
             className="category-image"
           >
-            <h1 className="category-title">{category.name}</h1>
+            <h1 className="category-title">{category.title}</h1>
             <h2 className="order-title">{category.details}</h2>
           </div>
         </div>
