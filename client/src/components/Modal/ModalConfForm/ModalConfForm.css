@@ -1,16 +1,19 @@
 /* MOBILE */
-#modal-conf-profile {
+#modal-conf-form-profile {
   right: 17%;
   position: absolute;
   z-index: 99;
   top: 45%;
 }
 
-#modal-conf-profile h1 {
+#modal-conf-form-profile p {
   color: white;
+  text-align: center;
+  font-weight: 300;
+  padding: 0 1vw;
 }
 
-.container-conf-image {
+.container-conf-form-image {
   background-color: rgb(53 53 53 / 95%);
   width: 65vw;
   display: flex;
@@ -22,40 +25,37 @@
   justify-content: space-evenly;
 }
 
-.buttons-conf-modal {
-  display: flex;
-  flex-direction: row;
-}
-
-.buttons-conf-modal button {
+#modal-conf-form-profile button {
   padding: 10px 30px;
   margin: 0 5px;
   background-color: white;
   color: black;
+  width: 22vw;
+  height: 4vh;
+  font-size: 2vh;
 }
 
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
-  #modal-conf-profile {
-    left: 35%;
+  #modal-conf-form-profile {
+    left: 40%;
     top: 35%;
   }
 
-  #modal-conf-profile h1 {
+  #modal-conf-form-profile p {
     font-size: 2.5vh;
   }
 
-  .container-conf-image {
+  .container-conf-form-image {
     width: 20vw;
     height: 20vh;
   }
 
-  .buttons-conf-modal button {
-    padding: 11px 35px;
-    margin: 0 10px;
+  #modal-conf-form-profile button {
+    width: 6vw;
   }
 
-  .buttons-conf-modal button:hover {
+  #modal-conf-form-profile button:hover {
     background-color: transparent;
     border: 1px solid white;
     color: white;

@@ -9,6 +9,8 @@ const {
   deleteProductByUser,
   readSingleProduct,
   getFilter,
+  readProductToValidate,
+  validate,
 } = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
@@ -24,6 +26,7 @@ router.get("/user/:id", verifyToken, readProductByUser);
 router.get("/product-by-category/:id", readProductByCategoryId);
 router.get("/single-Product/:id", readSingleProduct);
 router.get("/searching_for_product", getFilter);
-router.use(verifyToken);
+router.get("/product-to-validate", readProductToValidate);
+router.put("/validate/:Id_product", validate);
 
 module.exports = router;
