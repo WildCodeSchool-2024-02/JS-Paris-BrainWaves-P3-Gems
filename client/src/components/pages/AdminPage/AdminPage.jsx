@@ -14,7 +14,7 @@ function AdminPage() {
           "Content-Type": "application/json",
         },
       })
-      
+
       const filteredProduct = productsToValidate.filter(
         (product) => product.Id_product !== IdProduct
       );
@@ -24,6 +24,28 @@ function AdminPage() {
     }
   }
 
+  const handleDelete = async (IdProduct) => {
+    try {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Id_product: IdProduct,
+        }),
+      });
+
+      const filteredData = productsToValidate.filter(
+        (product) => product.Id_product !== IdProduct
+      );
+      setProductsToValidate(filteredData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
       .then((response) => response.json())
@@ -32,7 +54,9 @@ function AdminPage() {
 
     fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`)
       .then((response) => response.json())
-      .then((data) => setProductsToValidate(data))
+      .then((data) => {
+        setProductsToValidate(data)
+      })
       .catch((error) => console.error("Error:", error));
   }, []);
 
@@ -56,7 +80,7 @@ function AdminPage() {
         </div>
         <div className="articles-displayed-container">
           {productsToValidate.length > 0 &&
-            productsToValidate[0].map((product, index) => (
+            productsToValidate.map((product, index) => (
               <div key={product.Id_product}>
                 <p className="index">{index+1}</p>
                 <div className="admin-all-details">
@@ -78,12 +102,12 @@ function AdminPage() {
                   </div>
                 </div>
                 <div className="buttons">
-                  <button type="button">Supprimer</button>
+                  <button type="button" onClick={() => handleDelete(product.Id_product)}>Supprimer</button>
                   <button type="button" onClick={() => handleValidate(product.Id_product)}>Valider</button>
                 </div>
               </div>
             ))}
-       {productsToValidate[0] && productsToValidate[0].length === 0 && <p>Plus de produit à valider</p>}
+       {productsToValidate.length === 0 && <p>Plus de produit à valider</p>}
         </div>
       </div>
     </div>

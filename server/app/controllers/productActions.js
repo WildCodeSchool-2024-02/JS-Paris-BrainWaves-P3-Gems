@@ -61,7 +61,7 @@ const deleteProductByUser = async (req, res, next) => {
 
 const readProductToValidate = async (req, res, next) => {
   try {
-    const results = await tables.product.readProductToValidate();
+    const [results] = await tables.product.readProductToValidate();
     res.json(results);
   } catch (error) {
     next(error);

@@ -3,7 +3,7 @@
   left: 0px;
   position: absolute;
   z-index: 1;
-  top: 28%;
+  top: 10%;
 }
 .container-heart {
   display: flex;
@@ -65,7 +65,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  max-height: 45vh;
+  max-height: 80vh;
   overflow-y: auto;
 }
 .image-modal {

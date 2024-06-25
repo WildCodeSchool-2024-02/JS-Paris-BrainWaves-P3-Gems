@@ -23,7 +23,7 @@ class ProductRepository extends AbstractRepository {
 
   async getProductByCategory(id) {
     const [result] = await this.database.query(
-      `SELECT p.*, cat.name, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? AND p.validated = true`,
+      `SELECT p.*, cat.title, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? AND p.validated = true`,
       [id]
     );
     return result;
@@ -31,7 +31,7 @@ class ProductRepository extends AbstractRepository {
 
   async getSingleProduct(id) {
     const [result] = await this.database.query(
-      `SELECT p.*, cat.name as catname, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.Id_product= ? `,
+      `SELECT p.*, cat.title as catname, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.Id_product= ? `,
       [id]
     );
     return result;
