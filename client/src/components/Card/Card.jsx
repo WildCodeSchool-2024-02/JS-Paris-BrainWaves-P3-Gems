@@ -5,12 +5,19 @@ import { FaRegHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function Card({ product, setShowInput, setCart }) {
+function Card({ product, setShowInput,cart, setCart }) {
   const port = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
+
+  useEffect(() => {
+    const isProductInCart = cart.some(
+      (item) => item.Id_product === product.Id_product
+    );
+    setDisabledButton(isProductInCart);
+  }, [cart, product.Id_product]);
 
   const handleCard = () => {
     fetch(`${port}/api/product/single-Product/${product.Id_product}`)
@@ -103,6 +110,14 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      Id_product: PropTypes.number.isRequired,
+      picture_jewell: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ).isRequired,
   setCart: PropTypes.func.isRequired,
 };
 
