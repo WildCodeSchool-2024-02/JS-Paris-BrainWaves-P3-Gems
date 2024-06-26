@@ -59,7 +59,6 @@ function AdminPage() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
 
     fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`, {
