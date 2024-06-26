@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 function AdminRoute({ children }) {
   const { auth } = useAuth();
 
-  if (!auth || auth.user.role !== "admin") {
+  if (!auth || !auth.user.is_admin) {
     return <Navigate to="/login" />;
   }
 

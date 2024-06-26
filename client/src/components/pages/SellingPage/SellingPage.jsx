@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ function SellingPage() {
   const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
-
+  const { auth } = useAuth();
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ function SellingPage() {
         {
           method: "POST",
           headers: {
+            Authorization: `Bearer ${auth.token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({

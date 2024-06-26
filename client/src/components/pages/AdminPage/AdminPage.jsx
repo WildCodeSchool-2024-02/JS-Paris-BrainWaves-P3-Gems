@@ -1,10 +1,13 @@
 import "./AdminPage.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
+
 
 function AdminPage() {
   const [infoUser, setInfoUser] = useState("");
   const [productsToValidate, setProductsToValidate] = useState([]);
+  const { auth } = useAuth();
 
   const handleValidate = async(IdProduct) => {
     try {
@@ -12,6 +15,7 @@ function AdminPage() {
         method: "PUT",
         headers:{
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`
         },
       })
 
@@ -30,6 +34,7 @@ function AdminPage() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`
         },
         body: JSON.stringify({
           Id_product: IdProduct,
@@ -47,7 +52,7 @@ function AdminPage() {
 
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
