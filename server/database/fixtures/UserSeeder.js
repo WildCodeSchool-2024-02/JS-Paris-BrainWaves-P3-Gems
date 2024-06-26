@@ -1,17 +1,19 @@
+const argon2 = require("argon2")
 const AbstractSeeder = require("./AbstractSeeder");
+
 
 class UserSeeder extends AbstractSeeder {
   constructor() {
     super({ table: "user", truncate: true });
   }
 
-  run() {
+  async run () {
     const users = [
       {
         firstname: "curtis",
         lastname: "dakouri",
         mail: "curtis.dakouri@gmail.com",
-        password: "kirikou.24@",
+        password: await argon2.hash("kirikou.24@"),
         is_admin: 1,
         refName: "use_1",
       },
@@ -19,7 +21,7 @@ class UserSeeder extends AbstractSeeder {
         firstname: "maxime",
         lastname: "maufront",
         mail: "maximmft@gmail.com",
-        password: "kirikou.24@",
+        password: await argon2.hash("kirikou.24@"),
         is_admin: 1,
         refName: "use_2",
       },
@@ -27,7 +29,7 @@ class UserSeeder extends AbstractSeeder {
         firstname: "coline",
         lastname: "grosso",
         mail: "coline.grosso94@gmail.com",
-        password: "FindusIsa86@",
+        password: await argon2.hash("FindusIsa86@"),
         is_admin: 1,
         refName: "use_3",
       },
@@ -35,7 +37,7 @@ class UserSeeder extends AbstractSeeder {
         firstname: "mickael",
         lastname: "beaugrand",
         mail: "kirikou@gmail.com",
-        password: "kirikou.24@",
+        password: await argon2.hash("kirikou.24@"),
         is_admin: 1,
         refName: "use_4",
       },
