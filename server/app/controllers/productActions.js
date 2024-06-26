@@ -10,7 +10,16 @@ const add = async (req, res, next) => {
   }
 };
 
-const readProductByCategoryId = async (req, res, next) => {
+const browse = async (req, res, next) => {
+  try {
+    const products = await tables.product.readAll();
+    res.json(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const readProductByCategoryId = async (req, res, next )=>{
   try {
     const parseId = parseInt(req.params.id, 10);
     const results = await tables.product.getProductByCategory(parseId);
@@ -80,6 +89,7 @@ const validate= async (req, res, next) => {
 
 module.exports = {
   add,
+  browse,
   readProductByCategoryId,
   readSingleProduct,
   getFilter,

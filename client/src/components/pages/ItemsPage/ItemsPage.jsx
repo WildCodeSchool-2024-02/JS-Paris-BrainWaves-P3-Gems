@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-
 import "./ItemsPage.css";
+import { useEffect, useState } from "react";
 import Card from "../../Card/Card";
 import Flower from "../../../assets/images/illustrations/flower2.png"
 import Flower2 from "../../../assets/images/illustrations/flower1.jpg"
@@ -9,6 +9,19 @@ import Flower3 from "../../../assets/images/illustrations/flower2bis.png"
 function ItemsPage() {
   const location = useLocation();
   const displayProduct = location.state;
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const initialLocalCart = localStorage.getItem("cart");
+    if (initialLocalCart && JSON.parse(initialLocalCart).length !== 0) {
+      setCart(JSON.parse(initialLocalCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <div id="ItemsPage">
       <h2>{displayProduct[0].title.toUpperCase()}</h2>
@@ -23,7 +36,8 @@ function ItemsPage() {
       <div className="container-items">
         {displayProduct.map((product, index) => (
           <>
-          <Card key={product.Id_product} product={product} />
+          <Card key={product.Id_product} product={product} cart={cart}
+            setCart={setCart} />
           {(index + 1) % 6 === 0 && (
               <img
                 src={(Math.floor(index / 6) % 2 === 0) ? Flower : Flower2}

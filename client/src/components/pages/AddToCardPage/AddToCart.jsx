@@ -1,31 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddToCart.css";
-import bague from "../../../assets/images/Items/bague/2.webp";
-import collier from "../../../assets/images/Items/coliers/2.webp";
 
 function AddToCart() {
   const navigate = useNavigate();
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: "Bague en or 12 carats",
-      price: 1200,
-      imageUrl: bague,
-    },
-    {
-      id: 2,
-      name: "Collier Argent Emeraude",
-      price: 5400,
-      imageUrl: collier,
-    },
-    {
-      id: 3,
-      name: "Collier Argent Emeraude",
-      price: 5500,
-      imageUrl: collier,
-    },
-  ]);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const initialLocalCart = localStorage.getItem("cart");
+    if (initialLocalCart && JSON.parse(initialLocalCart).length !== 0) {
+      setItems(JSON.parse(initialLocalCart));
+    }
+  }, []);
 
   const handleHomePageClick = () => {
     navigate("/");

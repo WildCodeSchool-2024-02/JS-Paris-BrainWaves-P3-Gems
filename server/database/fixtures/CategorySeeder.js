@@ -6,7 +6,6 @@ class CategorySeeder extends AbstractSeeder {
   }
 
   run() {
-    const newLocal = "http://localhost:3311/categoryPhotos/watch.jpg";
     const categories = [
       {
         title: "Bracelets",
@@ -38,7 +37,7 @@ class CategorySeeder extends AbstractSeeder {
       },
       {
         title: "Montres",
-        picture: newLocal,
+        picture: "http://localhost:3311/categoryPhotos/watcch.jpg",
         details: "Commander",
         exist: 1,
         refName: "cat_5",
