@@ -1,4 +1,4 @@
-const tables = require ("../../database/tables");
+const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
