@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             <ProfilePage />
           </ProtectedRoute>
         ),
-        loader: () => fetch(`${api}/api/product/user/1`),
+        // loader: () => fetch(`${api}/api/product/user`),
       },
       {
         path: "/admin",

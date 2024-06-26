@@ -3,30 +3,32 @@ import { GiDiamondRing } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 
-
 function AdminPage() {
-  const [infoUser, setInfoUser] = useState("");
+  const [ setInfoUser ] = useState("");
   const [productsToValidate, setProductsToValidate] = useState([]);
   const { auth } = useAuth();
 
-  const handleValidate = async(IdProduct) => {
+  const handleValidate = async (IdProduct) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/product/validate/${IdProduct}`,{
-        method: "PUT",
-        headers:{
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`
-        },
-      })
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/api/product/validate/${IdProduct}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
 
       const filteredProduct = productsToValidate.filter(
         (product) => product.Id_product !== IdProduct
       );
-      setProductsToValidate(filteredProduct)
+      setProductsToValidate(filteredProduct);
     } catch (error) {
       console.error("Error validating product:", error);
     }
-  }
+  };
 
   const handleDelete = async (IdProduct) => {
     try {
@@ -34,7 +36,7 @@ function AdminPage() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           Id_product: IdProduct,
@@ -50,28 +52,35 @@ function AdminPage() {
     }
   };
 
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        setProductsToValidate(data)
+        setProductsToValidate(data);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+  }, [auth.token, setInfoUser]);
 
   function capitalizeFirstLetter(string) {
     if (!string) return "";
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const firstName = capitalizeFirstLetter(infoUser.firstname);
-  const lastName = capitalizeFirstLetter(infoUser.lastname);
+  const firstName = capitalizeFirstLetter(auth?.user?.firstname);
+  const lastName = capitalizeFirstLetter(auth?.user?.lastname);
 
   return (
     <div id="AdminPage">
@@ -87,7 +96,7 @@ function AdminPage() {
           {productsToValidate.length > 0 &&
             productsToValidate.map((product, index) => (
               <div key={product.Id_product}>
-                <p className="index">{index+1}</p>
+                <p className="index">{index + 1}</p>
                 <div className="admin-all-details">
                   <div className="admin-images">
                     <img src={product.picture_jewell} alt={product.name} />
@@ -103,16 +112,29 @@ function AdminPage() {
                     <p className="admin-title">Catégorie: </p>
                     <p> {product.title}</p>
                     <p className="admin-title">Vendeur: </p>
-                    <p> {product.firstname} {product.lastname}</p>
+                    <p>
+                      {" "}
+                      {product.firstname} {product.lastname}
+                    </p>
                   </div>
                 </div>
                 <div className="buttons">
-                  <button type="button" onClick={() => handleDelete(product.Id_product)}>Supprimer</button>
-                  <button type="button" onClick={() => handleValidate(product.Id_product)}>Valider</button>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(product.Id_product)}
+                  >
+                    Supprimer
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleValidate(product.Id_product)}
+                  >
+                    Valider
+                  </button>
                 </div>
               </div>
             ))}
-       {productsToValidate.length === 0 && <p>Plus de produit à valider</p>}
+          {productsToValidate.length === 0 && <p>Plus de produit à valider</p>}
         </div>
       </div>
     </div>
