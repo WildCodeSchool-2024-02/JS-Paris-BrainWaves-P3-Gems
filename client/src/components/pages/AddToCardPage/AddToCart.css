@@ -3,7 +3,7 @@
   background-image: url("src/assets/images/illustrations/flower4.png");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   font-family: "League Spartan", sans-serif;
 }
