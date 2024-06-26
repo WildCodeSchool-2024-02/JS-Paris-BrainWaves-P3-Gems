@@ -23,17 +23,16 @@ function ItemDetailsPage() {
       <div className="container">
         <div className="container-img">
           <img src={detailProduct.picture_validation} alt={detailProduct.name} className="image-detail" />
-          {detailProduct.validated === 1 && <div className="verified"> <p>Verified</p> </div>}
         </div>
         <FaHeart className="heart-img" />
       </div>
       <div className="container-text">
         <h2>{detailProduct.name}</h2>
+        <p className='price'> <MdOutlineEuroSymbol className="euro-logo" /> {detailProduct.price}</p>
         <p>{detailProduct.details}</p>
-        <p> <MdOutlineEuroSymbol className="euro-logo" /> {detailProduct.price}</p>
         <div className="container-button">
           <button type="button" className="button-detail">
-            Ajouter au panier
+            Ajouter
           </button>
         </div>
       <div className="more-Info">
