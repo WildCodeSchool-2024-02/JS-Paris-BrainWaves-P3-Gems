@@ -23,7 +23,7 @@ class ProductRepository extends AbstractRepository {
 
   async getProductByCategory(id) {
     const [result] = await this.database.query(
-      `SELECT p.*, cat.name, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? `,
+      `SELECT p.*, cat.title, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.id_category = ? AND p.validated = true`,
       [id]
     );
     return result;
@@ -31,7 +31,7 @@ class ProductRepository extends AbstractRepository {
 
   async getSingleProduct(id) {
     const [result] = await this.database.query(
-      `SELECT p.*, cat.name as catname, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.Id_product= ? `,
+      `SELECT p.*, cat.title as catname, us.firstname, us.lastname, us.mail FROM gems.product AS p JOIN gems.category AS cat  ON p.id_category = cat.Id_category_list JOIN gems.user AS us ON p.id_user = us.id_user WHERE p.Id_product= ? `,
       [id]
     );
     return result;
@@ -45,11 +45,23 @@ class ProductRepository extends AbstractRepository {
 
   async readProductByUser(id) {
     const [rows] = await this.database.query(
-      `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user`,
+      `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user AND ${this.table}.validated = true`,
       [id]
     );
     return [rows];
   }
+
+  async readProductToValidate(){
+    const [rows] = await this.database.query(
+     `SELECT * 
+     FROM ${this.table} 
+     INNER JOIN category ON ${this.table}.Id_category = category.Id_category_list 
+     INNER JOIN user ON ${this.table}.Id_user = user.Id_user
+     WHERE ${this.table}.validated = false`
+    );
+    return [rows];
+  }
+  
 
   async deleteProductByUser(data) {
     const [rows] = await this.database.query(
@@ -57,6 +69,15 @@ class ProductRepository extends AbstractRepository {
       [data.Id_user, data.Id_product]
     );
     return [rows];
+  }
+
+  async validateProduct(IdProduct){
+  
+    const [rows] = await this.database.query(
+       `UPDATE ${this.table} SET validated = true WHERE Id_product = ?`
+       ,[IdProduct]
+    );
+    return [rows]
   }
 }
 

@@ -49,12 +49,6 @@
   border-radius: 10px;
   color: aliceblue;
 }
-#ItemDetailsPage .verified p {
-  color: rgb(255, 255, 255);
-  transform: translateX(8px);
-  filter: drop-shadow(0 0 4px black);
-  font-weight: 350;
-}
 
 #ItemDetailsPage .euro-logo {
   transform: translateY(3px);

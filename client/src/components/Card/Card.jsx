@@ -5,11 +5,12 @@ import { FaRegHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function Card({ product, setShowInput }) {
+function Card({ product, setShowInput, setCart }) {
   const port = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
+  const [disabledButton, setDisabledButton] = useState(false);
 
   const handleCard = () => {
     fetch(`${port}/api/product/single-Product/${product.Id_product}`)
@@ -34,22 +35,14 @@ function Card({ product, setShowInput }) {
     navigate("/profile");
   };
 
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const localCart = localStorage.getItem("cart");
-    if (localCart) {
-      setCart(JSON.parse(localCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    // localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
   const handleCart = (article) => {
-    localStorage.setItem("cart", JSON.stringify([...cart, article]));
-    setCart([...cart, article]);
+    if (disabledButton) return;
+    setCart((prevCart) => {
+      const newCart = [...prevCart, article];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      return newCart;
+    });
+    setDisabledButton(true);
   };
 
   return (
@@ -66,8 +59,8 @@ function Card({ product, setShowInput }) {
       <div className="logo-container">
         <div>
           <HiOutlineShoppingBag
-            className="icon"
             onKeyDown={() => handleCart(product)}
+            className={`icon ${disabledButton ? "disabled" : ""}`}
             role="presentation"
             onClick={() => handleCart(product)}
           />
@@ -87,7 +80,7 @@ function Card({ product, setShowInput }) {
         <p className="title">{product.name}</p>
         <div className="price-and-logo">
           <HiOutlineShoppingBag
-            className="cart"
+            className={`cart ${disabledButton ? "disabled" : ""}`}
             onKeyDown={() => handleCart(product)}
             role="presentation"
             onClick={() => handleCart(product)}
@@ -110,6 +103,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
+  setCart: PropTypes.func.isRequired,
 };
 
 export default Card;

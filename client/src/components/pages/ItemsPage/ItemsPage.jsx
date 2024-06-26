@@ -1,12 +1,24 @@
 import { useLocation } from "react-router-dom";
 import "./ItemsPage.css";
+import { useEffect, useState } from "react";
 import Card from "../../Card/Card";
 
 function ItemsPage() {
   const location = useLocation();
   const displayProduct = location.state;
-  
-  
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const initialLocalCart = localStorage.getItem("cart");
+    if (initialLocalCart && JSON.parse(initialLocalCart).length !== 0) {
+      setCart(JSON.parse(initialLocalCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div id="ItemsPage">
@@ -21,7 +33,12 @@ function ItemsPage() {
 
       <div className="container-items">
         {displayProduct.map((product) => (
-          <Card key={product.Id_product} product={product} />
+          <Card
+            key={product.Id_product}
+            product={product}
+            cart={cart}
+            setCart={setCart}
+          />
         ))}
       </div>
     </div>

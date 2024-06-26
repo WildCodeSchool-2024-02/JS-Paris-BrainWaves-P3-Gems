@@ -12,7 +12,7 @@ class UserSeeder extends AbstractSeeder {
         lastname: "dakouri",
         mail: "curtis.dakouri@gmail.com",
         hashed_password: "kirikou.24@",
-        is_admin: 0,
+        is_admin: 1,
         refName: "use_1",
       },
       {
@@ -36,7 +36,7 @@ class UserSeeder extends AbstractSeeder {
         lastname: "beaugrand",
         mail: "kirikou@gmail.com",
         hashed_password: "kirikou.24@",
-        is_admin: 0,
+        is_admin: 1,
         refName: "use_4",
       },
     ];
