@@ -11,6 +11,7 @@ import SearchInput from "./SearchInput";
 import MenuList from "./MenuList";
 import { useIsOnline } from "../../contexts/OnlineContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
+import { useCart } from "../../contexts/CartContext";
 
 function Nav() {
   const [closeBtn, setclosebtn] = useState(false);
@@ -19,9 +20,11 @@ function Nav() {
   const [modalNav, setModalNav] = useState(false);
   const [infoUser, setInfoUser] = useState("");
 
+  const {cart} = useCart();
   const handleClick = () => {
     setModalNav(true);
   };
+ 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
       .then((response) => response.json())
@@ -57,6 +60,9 @@ function Nav() {
             onClick={() => navigate(`/addToCart`)}
             className="icons"
           />
+          <article className="notification-cart"  onClick={() => navigate(`/addToCart`)} onKeyDown={() => navigate(`/addToCart`)} role="presentation">
+            {cart.length === 0 ? null : <p>{cart.length}</p>}
+          </article>
           <FaHeart
             onClick={handleClick}
             onKeyDown={handleClick}
