@@ -17,8 +17,9 @@ const { verifyToken } = require("../../../services/auth");
 
 router.post("/", verifyToken, validateProduct, add);
 
-router.get("/user/:id",verifyToken, readProductByUser);
+router.get("/user/:id", verifyToken, readProductByUser);
 
+// verifyToken get
 router.delete("/", verifyToken, deleteProductByUser);
 
 router.get("/product-by-category/:id", readProductByCategoryId);

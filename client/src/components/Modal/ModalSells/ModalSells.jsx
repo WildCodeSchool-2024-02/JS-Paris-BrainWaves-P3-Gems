@@ -4,12 +4,16 @@ import { GiDiamondRing } from "react-icons/gi";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import ModalConf from "../ModalConf/ModalConf";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function ModalSells({ setModalSellsOpen }) {
   const data = useLoaderData();
-  const [sellings, setSellings] = useState(data);
+  const [sellings, setSellings] = useState(data || []);
   const [modalConfOpen, setModalConfOpen] = useState(false);
   const [modalToDelete, setModalToDelete] = useState(null);
+  const { auth } = useAuth();
+
+
 
   const handleClickConf = (modal) => {
     setModalConfOpen(true);
@@ -26,6 +30,7 @@ function ModalSells({ setModalSellsOpen }) {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           Id_user: IdUser,
