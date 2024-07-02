@@ -1,12 +1,14 @@
 import "./AdminPage.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function AdminPage() {
-  const [infoUser, setInfoUser] = useState("");
+  const [ setInfoUser ] = useState("");
   const [productsToValidate, setProductsToValidate] = useState([]);
   const [widerImageId, setWiderImageId] = useState();
   const [widerImage, setWiderImage] = useState(false);
+  const { auth } = useAuth();
 
   const handleValidate = async (IdProduct) => {
     try {
@@ -16,6 +18,7 @@ function AdminPage() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
           },
         }
       );
@@ -35,6 +38,7 @@ function AdminPage() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           Id_product: IdProduct,
@@ -57,26 +61,33 @@ function AdminPage() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
       .then((response) => response.json())
-      .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setProductsToValidate(data);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+  }, [auth.token, setInfoUser]);
 
   function capitalizeFirstLetter(string) {
     if (!string) return "";
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const firstName = capitalizeFirstLetter(infoUser.firstname);
-  const lastName = capitalizeFirstLetter(infoUser.lastname);
+  const firstName = capitalizeFirstLetter(auth?.user?.firstname);
+  const lastName = capitalizeFirstLetter(auth?.user?.lastname);
 
   return (
     <div id="AdminPage">
@@ -84,11 +95,11 @@ function AdminPage() {
         <h1>
           {firstName} {lastName}
         </h1>
+        <div className="articles-displayed-container">
         <div className="admin-profile">
           <GiDiamondRing className="ring-profile" />
           <p>Articles à valider</p>
         </div>
-        <div className="articles-displayed-container">
           {productsToValidate.length > 0 &&
             productsToValidate.map((product, index) => (
               <div key={product.Id_product}>

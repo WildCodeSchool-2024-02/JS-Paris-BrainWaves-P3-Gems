@@ -17,7 +17,6 @@
 .admin-profile {
   display: flex;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.9);
   padding: 10px 0;
   padding-left: 2%;
   font-weight: 300;
@@ -129,8 +128,10 @@
   }
 
   #AdminPage .articles-displayed-container {
-    height: 60vh;
+    height: 65vh;
     width: 90vh;
+    position: absolute;
+    bottom: 5vh;
   }
 
   #AdminPage .admin-all-details {
@@ -158,5 +159,9 @@
     font-size: 15px;
     font-weight: 400;
     width: 100vw;
+  }
+
+  #AdminPage .buttons {
+    margin: 30px 0;
   }
 }

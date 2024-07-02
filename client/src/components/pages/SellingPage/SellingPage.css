@@ -1,13 +1,13 @@
 /* MOBILE */
 .input-image {
-  height: 30vh;
+  height: 25vh;
   text-align: center;
   font-size: 2vh;
   font-weight: 600;
 }
 
 .inputs-section {
-  height: 70vh;
+  height: 60vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
