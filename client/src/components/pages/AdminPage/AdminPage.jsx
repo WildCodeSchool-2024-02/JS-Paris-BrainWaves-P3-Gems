@@ -5,24 +5,29 @@ import { useEffect, useState } from "react";
 function AdminPage() {
   const [infoUser, setInfoUser] = useState("");
   const [productsToValidate, setProductsToValidate] = useState([]);
+  const [widerImageId, setWiderImageId] = useState();
+  const [widerImage, setWiderImage] = useState(false);
 
-  const handleValidate = async(IdProduct) => {
+  const handleValidate = async (IdProduct) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/product/validate/${IdProduct}`,{
-        method: "PUT",
-        headers:{
-          "Content-Type": "application/json",
-        },
-      })
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/api/product/validate/${IdProduct}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const filteredProduct = productsToValidate.filter(
         (product) => product.Id_product !== IdProduct
       );
-      setProductsToValidate(filteredProduct)
+      setProductsToValidate(filteredProduct);
     } catch (error) {
       console.error("Error validating product:", error);
     }
-  }
+  };
 
   const handleDelete = async (IdProduct) => {
     try {
@@ -45,6 +50,10 @@ function AdminPage() {
     }
   };
 
+  const handleWideImage = (IdProduct) => {
+    setWiderImageId(IdProduct);
+    setWiderImage(!widerImage);
+  };
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/3`)
@@ -55,7 +64,7 @@ function AdminPage() {
     fetch(`${import.meta.env.VITE_API_URL}/api/product/product-to-validate`)
       .then((response) => response.json())
       .then((data) => {
-        setProductsToValidate(data)
+        setProductsToValidate(data);
       })
       .catch((error) => console.error("Error:", error));
   }, []);
@@ -82,11 +91,33 @@ function AdminPage() {
           {productsToValidate.length > 0 &&
             productsToValidate.map((product, index) => (
               <div key={product.Id_product}>
-                <p className="index">{index+1}</p>
+                <p className="index">{index + 1}</p>
                 <div className="admin-all-details">
                   <div className="admin-images">
-                    <img src={product.picture_jewell} alt={product.name} />
-                    <img src={product.picture_validation} alt={product.name} />
+                    <img
+                      onClick={() => handleWideImage(product.Id_product)}
+                      onKeyDown={handleWideImage(product.Id_product)}
+                      role="presentation"
+                      src={product.picture_jewell}
+                      alt={product.name}
+                      className={
+                        product.Id_product === widerImageId && widerImage
+                          ? "wider"
+                          : ""
+                      }
+                    />
+                    <img
+                      onClick={() => handleWideImage(product.Id_product)}
+                      onKeyDown={handleWideImage(product.Id_product)}
+                      role="presentation"
+                      src={product.picture_validation}
+                      alt={product.name}
+                      className={
+                        product.Id_product === widerImageId && widerImage
+                          ? "wider"
+                          : ""
+                      }
+                    />
                   </div>
                   <div className="admin-name-details-price">
                     <p className="admin-title">Titre: </p>
@@ -98,16 +129,29 @@ function AdminPage() {
                     <p className="admin-title">Catégorie: </p>
                     <p> {product.title}</p>
                     <p className="admin-title">Vendeur: </p>
-                    <p> {product.firstname} {product.lastname}</p>
+                    <p>
+                      {" "}
+                      {product.firstname} {product.lastname}
+                    </p>
                   </div>
                 </div>
                 <div className="buttons">
-                  <button type="button" onClick={() => handleDelete(product.Id_product)}>Supprimer</button>
-                  <button type="button" onClick={() => handleValidate(product.Id_product)}>Valider</button>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(product.Id_product)}
+                  >
+                    Supprimer
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleValidate(product.Id_product)}
+                  >
+                    Valider
+                  </button>
                 </div>
               </div>
             ))}
-       {productsToValidate.length === 0 && <p>Plus de produit à valider</p>}
+          {productsToValidate.length === 0 && <p>Plus de produit à valider</p>}
         </div>
       </div>
     </div>
