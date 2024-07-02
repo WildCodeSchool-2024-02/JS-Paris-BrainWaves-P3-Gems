@@ -21,7 +21,7 @@ class UserSeeder extends AbstractSeeder {
         firstname: "maxime",
         lastname: "maufront",
         mail: "maximmft@gmail.com",
-        password: await argon2.hash("kirikou.24@"),
+        password: await argon2.hash("Azerty12!"),
         is_admin: 1,
         refName: "use_2",
       },

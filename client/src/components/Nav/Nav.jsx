@@ -11,6 +11,7 @@ import SearchInput from "./SearchInput";
 import MenuList from "./MenuList";
 import { useAuth } from "../../contexts/AuthContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
+import { useCart } from "../../contexts/CartContext";
 
 function Nav() {
   const [closeBtn, setclosebtn] = useState(false);
@@ -18,6 +19,7 @@ function Nav() {
   const { auth } = useAuth();
   const [modalNav, setModalNav] = useState(false);
 
+  const {cart} = useCart();
   const handleClick = () => {
     setModalNav(true);
   };
@@ -51,6 +53,9 @@ function Nav() {
             onClick={() => navigate(`/addToCart`)}
             className="icons"
           />
+          <article className="notification-cart"  onClick={() => navigate(`/addToCart`)} onKeyDown={() => navigate(`/addToCart`)} role="presentation">
+            {cart.length === 0 ? null : <p>{cart.length}</p>}
+          </article>
           <FaHeart
             onClick={handleClick}
             onKeyDown={handleClick}

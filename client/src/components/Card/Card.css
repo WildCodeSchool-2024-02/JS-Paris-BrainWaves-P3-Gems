@@ -53,6 +53,10 @@
   background-color: white;
   z-index: 100;
 }
+.icon.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .icon {
   font-size: 30px;
 }
@@ -140,6 +144,10 @@
 
   .cart {
     font-size: 15px;
+  }
+  .cart.disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   .card:hover .logo-container {

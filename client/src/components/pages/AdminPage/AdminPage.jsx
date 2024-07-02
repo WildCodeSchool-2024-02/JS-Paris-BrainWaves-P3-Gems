@@ -6,6 +6,8 @@ import { useAuth } from "../../../contexts/AuthContext";
 function AdminPage() {
   const [ setInfoUser ] = useState("");
   const [productsToValidate, setProductsToValidate] = useState([]);
+  const [widerImageId, setWiderImageId] = useState();
+  const [widerImage, setWiderImage] = useState(false);
   const { auth } = useAuth();
 
   const handleValidate = async (IdProduct) => {
@@ -52,6 +54,12 @@ function AdminPage() {
     }
   };
 
+  const handleWideImage = (IdProduct) => {
+    setWiderImageId(IdProduct);
+    setWiderImage(!widerImage);
+
+  };
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
       headers: {
@@ -87,19 +95,41 @@ function AdminPage() {
         <h1>
           {firstName} {lastName}
         </h1>
+        <div className="articles-displayed-container">
         <div className="admin-profile">
           <GiDiamondRing className="ring-profile" />
           <p>Articles à valider</p>
         </div>
-        <div className="articles-displayed-container">
           {productsToValidate.length > 0 &&
             productsToValidate.map((product, index) => (
               <div key={product.Id_product}>
                 <p className="index">{index + 1}</p>
                 <div className="admin-all-details">
                   <div className="admin-images">
-                    <img src={product.picture_jewell} alt={product.name} />
-                    <img src={product.picture_validation} alt={product.name} />
+                    <img
+                      onClick={() => handleWideImage(product.Id_product)}
+                      onKeyDown={() =>handleWideImage(product.Id_product)}
+                      role="presentation"
+                      src={product.picture_jewell}
+                      alt={product.name}
+                      className={
+                        product.Id_product === widerImageId && widerImage
+                          ? "wider"
+                          : ""
+                      }
+                    />
+                    <img
+                      onClick={() =>handleWideImage(product.Id_product)}
+                      onKeyDown={() =>handleWideImage(product.Id_product)}
+                      role="presentation"
+                      src={product.picture_validation}
+                      alt={product.name}
+                      className={
+                        product.Id_product === widerImageId && widerImage
+                          ? "wider"
+                          : ""
+                      }
+                    />
                   </div>
                   <div className="admin-name-details-price">
                     <p className="admin-title">Titre: </p>

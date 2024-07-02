@@ -1,13 +1,13 @@
 /* MOBILE */
 .input-image {
-  height: 30vh;
+  height: 25vh;
   text-align: center;
   font-size: 2vh;
   font-weight: 600;
 }
 
 .inputs-section {
-  height: 70vh;
+  height: 72vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@
     margin-bottom: 5vh;
     background: rgba(255, 255, 255, 70%);
     padding: 1vh 0;
-    margin: 0 25% 2% 25%;
+    margin: 0 30% 2% 30%;
   }
 
   .input-image-div {
@@ -90,19 +90,18 @@
 
   .inputs-section {
     padding-top: 2%;
-    object-fit: cover;
-    background-size: cover;
-    min-height: 80vh;
-  }
-
-  #sellingPage .add-button {
-    width: 23vw;
-    height: 5vh;
-    font-size: 2vh;
-    font-weight: 500;
-    background: linear-gradient(43deg, black, transparent);
+    height: 66vh;
   }
 }
+
+#sellingPage .add-button {
+  width: 23vw;
+  height: 5vh;
+  font-size: 2vh;
+  font-weight: 500;
+  background: linear-gradient(43deg, black, transparent);
+}
+
 /* TABLET */
 @media screen and (max-width: 1060px) {
 }

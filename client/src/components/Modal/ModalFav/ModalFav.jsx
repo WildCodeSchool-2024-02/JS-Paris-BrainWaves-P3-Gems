@@ -3,24 +3,25 @@ import "./ModalFav.css";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 
+
 const favmodals = [
   {
     id: 1,
-    img: "src/assets/images/categoryPhotos/necklace.png",
+    img: "src/assets/images/categoryPhotos/necklace.webp",
     name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€1300",
   },
   {
     id: 2,
-    img: "src/assets/images/categoryPhotos/bracelet.jpg",
+    img: "src/assets/images/categoryPhotos/bracelet_1.webp",
     name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€10300",
   },
   {
     id: 3,
-    img: "src/assets/images/categoryPhotos/earrings.jpg",
+    img: "src/assets/images/categoryPhotos/earrings_1.webp",
     name: "Collier argent",
     details: "Marque Tiffany & Co, sertie de 40 diamants",
     price: "€3500",

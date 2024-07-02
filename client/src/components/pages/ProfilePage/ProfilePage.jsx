@@ -22,18 +22,30 @@ function ProfilePage() {
   const handleClickSells = () => {
     setModalSellsOpen(true);
   };
-
   useEffect(() => {
     if (!auth) {
       navigate("/login");
+    } else {
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
+        .then((response) => response.json())
+        .catch((error) => console.error("Error:", error));
     }
   }, [auth, navigate]);
+
+  function capitalizeFirstLetter(string) {
+    if (!string) return "";
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const firstName = capitalizeFirstLetter(auth?.user?.firstname);
+  const lastName = capitalizeFirstLetter(auth?.user?.lastname);
+
 
   return (
     <div id="ProfilePage">
       <div className="background-image">
         <h1>
-          {auth?.user?.firstname} {auth?.user?.lastname}
+          {firstName} {lastName}
         </h1>
         <div
           className="fav-profile"
