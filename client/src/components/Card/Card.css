@@ -1,11 +1,10 @@
 .heart-logo {
   display: none;
   z-index: 10;
-  border: 2px solid green;
 }
 .card {
   width: 300px;
-  height: 350px;
+  height: 420px;
   position: relative;
   background-color: #000;
   transition: all 0.1s ease-in-out;
@@ -15,8 +14,44 @@
   margin: 5px;
 }
 .card-title {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  padding: 20px;
+  color: #000;
+  width: 100%;
+  margin: 0 auto;
+  line-height: 10px;
+  background-color: white;
+  height: 100%;
+  margin-top: -5px;
 }
+.price-and-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding-bottom: 5px;
+}
+.price-and-logo .price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3px;
+}
+.price span {
+  transform: translateY(1px);
+}
+.card p {
+  font-family: "League Spartan", sans-serif;
+  font-size: 20px;
+}
+
+.cart {
+  font-size: 25px;
+}
+
 .card-picture {
   object-fit: cover;
   background-image: cover;
@@ -37,11 +72,7 @@
   transition: all 0.5s ease-in-out;
   z-index: 100;
 }
-.logo-container div:nth-child(2):hover {
-  color: red;
-}
 .logo-container div {
-  border: 2px solid white;
   padding: 5px;
   width: 50px;
   height: 50px;
@@ -50,7 +81,7 @@
   justify-content: center;
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
-  background-color: white;
+  background-color: rgb(53, 52, 52);
   z-index: 100;
 }
 .icon.disabled {
@@ -58,11 +89,10 @@
   opacity: 0.5;
 }
 .icon {
-  font-size: 30px;
+  font-size: 25px;
 }
 .icon:hover {
   font-size: 30px;
-  color: #000;
 }
 .card:hover .card-picture {
   filter: blur(2px);
