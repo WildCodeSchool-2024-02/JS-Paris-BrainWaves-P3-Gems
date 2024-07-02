@@ -41,7 +41,6 @@ const getFilter = async(req, res, next)=>{
   }
 }
   
-
   const readProductByUser = async (req, res, next) =>{
    try {
     const parseId = parseInt(req.params.id,10)
@@ -63,11 +62,45 @@ const getFilter = async(req, res, next)=>{
   }
   
 
+  const getFromWishlist = async(req,res,next) =>{
+    try {
+      const value = parseInt(req.params.id, 10)
+      const result = await tables.product.getProductFromWishlist(value);
+      res.status(200).json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+const showFromCheapestProduct = async (res,req,next )=> {
+ try {
+  const value = parseInt(req.params.id, 10)
+  const show = await tables.product.getProductByAsc(value)
+  res.status(200).json(show)
+ } catch (error) {
+  next(error)
+ }
+}
+
+const showFromBiggerProduct = async (res,req,next )=> {
+  try {
+    const value = Number(req.params.id)
+   const show = await tables.product.getProductByDesc(value)
+   res.status(200).json(show)
+  } catch (error) {
+   next(error)
+  }
+ }
+ 
+
 module.exports = {
   add,
   readProductByCategoryId,
   readSingleProduct,
   getFilter,
   readProductByUser,
-  deleteProductByUser
+  deleteProductByUser,
+  getFromWishlist,
+  showFromCheapestProduct,
+  showFromBiggerProduct,
 };

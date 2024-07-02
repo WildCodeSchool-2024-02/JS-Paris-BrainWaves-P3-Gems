@@ -1,4 +1,5 @@
 import "./Nav.css";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
@@ -12,7 +13,7 @@ import MenuList from "./MenuList";
 import { useIsOnline } from "../../contexts/OnlineContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
 
-function Nav() {
+function Nav({ favorite, setFavorite }) {
   const [closeBtn, setclosebtn] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const { isOnline } = useIsOnline(false);
@@ -22,11 +23,12 @@ function Nav() {
   const handleClick = () => {
     setModalNav(true);
   };
+
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/7`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/2`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => console.error(error));
   }, []);
 
   const navigate = useNavigate();
@@ -63,7 +65,13 @@ function Nav() {
             role="presentation"
             className="icons"
           />
-          {modalNav && <ModalNav setModalNav={setModalNav} />}
+          {modalNav && (
+            <ModalNav
+              setFavorite={setFavorite}
+              favorite={favorite}
+              setModalNav={setModalNav}
+            />
+          )}
           <div
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -90,3 +98,8 @@ function Nav() {
 }
 
 export default Nav;
+
+Nav.propTypes = {
+  setFavorite: PropTypes.func.isRequired,
+  favorite: PropTypes.bool.isRequired,
+};

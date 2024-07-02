@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { GiDiamondRing } from "react-icons/gi";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
@@ -12,6 +12,7 @@ function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
   const [infoUser, setInfoUser] = useState("");
+  const {setFavorite} = useOutletContext();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -23,7 +24,7 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/7`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/2`)
       .then((response) => response.json())
       .then((data) => setInfoUser(data))
       .catch((error) => console.error("Error:", error));
@@ -44,7 +45,7 @@ function ProfilePage() {
           <FaHeart className="heart-profile" />
           <p>Mes articles favoris</p>
         </div>
-        {modalOpen && <ModalFav setModalOpen={setModalOpen} />}
+        {modalOpen && <ModalFav setModalOpen={setModalOpen} setFavorite={setFavorite} />}
         <div
           onClick={handleClickSells}
           onKeyDown={handleClickSells}
@@ -54,7 +55,7 @@ function ProfilePage() {
           <GiDiamondRing className="ring-profile" />
           <p>Ma boîte à bijoux</p>
         </div>
-        {modalSellsOpen && <ModalSells setModalSellsOpen={setModalSellsOpen} />}
+        {modalSellsOpen && <ModalSells setModalSellsOpen={setModalSellsOpen}   setFavorite={setFavorite} />}
         <div className="fav-profile">
           <LiaFileInvoiceSolid className="invoice-profile" />
           <p>Mes ventes</p>

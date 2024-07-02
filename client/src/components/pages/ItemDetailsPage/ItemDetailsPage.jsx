@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaHeart } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-import { MdOutlineEuroSymbol } from "react-icons/md";
+import { useNavigate, useLocation, useOutletContext } from "react-router-dom";
+import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 
 import "./ItemDetailsPage.css";
@@ -10,22 +10,25 @@ function ItemDetailsPage() {
   const[showMore, setShowMore] = useState(false)
   const location = useLocation();
   const { details: detailProduct } = location.state || {};
- 
+  const {favorite} = useOutletContext()
   const sellerEmail = `mailto:${detailProduct.mail}`
-
+ const navigate = useNavigate()
   if (!detailProduct) {
     return <div><h2>Product details not found</h2></div>;
   }
 
+
   return (
     <div id="ItemDetailsPage">
+
+      <MdOutlineKeyboardBackspace onClick={()=> navigate(-1)}/>
 
       <div className="container">
         <div className="container-img">
           <img src={detailProduct.picture_validation} alt={detailProduct.name} className="image-detail" />
           {detailProduct.validated === 1 && <div className="verified"> <p>Verified</p> </div>}
         </div>
-        <FaHeart className="heart-img" />
+        <FaHeart className="heart-img" style={{color: favorite ? "white" : "gray" }} />
       </div>
       <div className="container-text">
         <h2>{detailProduct.name}</h2>
