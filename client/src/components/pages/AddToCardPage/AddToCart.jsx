@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./AddToCart.css";
+import { useCart } from "../../../contexts/CartContext";
 
 function AddToCart() {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
+  const {setCart} = useCart()
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -17,12 +19,17 @@ function AddToCart() {
     navigate("/");
   };
 
-  const handleRemoveItem = (id) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
-
+  const handleRemoveItem = (IdProduct) => {
+    const updatedItems = items.filter((item) => item.Id_product !== IdProduct);
+    setItems(updatedItems);
+    localStorage.setItem("cart", JSON.stringify(updatedItems));
+    setCart(updatedItems)
+  };  
+  
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+  
   const getTotal = () => items.reduce((total, item) => total + item.price, 0);
-
+  
   return (
     <div id="AddToCart">
       <h1>Panier</h1>
@@ -36,27 +43,27 @@ function AddToCart() {
           </div>
         ) : (
           <>
-            <div>
+            <div className="all-carts">
               {items.map((item) => (
                 <div key={item.id} className="cart-container">
                   <img
                     className="cart-img"
-                    src={item.imageUrl}
+                    src={item.picture_jewell}
                     alt={item.name}
                   />
                   <div className="info-price-container">
                     <div className="info-name">
                       <h2>{item.name}</h2>
-                    </div>
+                                  </div>
                     <div className="item-details">
                       <button
                         className="remove-item"
                         type="button"
-                        onClick={() => handleRemoveItem(item.id)}
+                        onClick={() => handleRemoveItem(item.Id_product)}
                       >
                         Supprimer
                       </button>
-                      <span>€{item.price.toFixed(2)}</span>
+                      <span className="price">€{formatPrice(item.price)}</span>
                     </div>
                   </div>
                 </div>
@@ -65,8 +72,9 @@ function AddToCart() {
 
             <div className="card-desktop">
               <div className="cart-total">
-                <h2>Sous-total</h2>
-                <span id="total">€{getTotal().toFixed(2)}</span>
+                <h2>Sous-total:</h2>
+                <span id="total">€{formatPrice(getTotal())}</span>
+
               </div>
               <div className="cart-actions">
                 <button

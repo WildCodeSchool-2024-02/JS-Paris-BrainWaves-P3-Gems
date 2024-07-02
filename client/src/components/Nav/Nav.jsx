@@ -1,5 +1,5 @@
 import "./Nav.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
@@ -9,27 +9,23 @@ import { MdManageAccounts } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import MenuList from "./MenuList";
-import { useIsOnline } from "../../contexts/OnlineContext";
+import { useAuth } from "../../contexts/AuthContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
+import { useCart } from "../../contexts/CartContext";
 
 function Nav() {
   const [closeBtn, setclosebtn] = useState(false);
   const [showInput, setShowInput] = useState(false);
-  const { isOnline } = useIsOnline(false);
+  const { auth } = useAuth();
   const [modalNav, setModalNav] = useState(false);
-  const [infoUser, setInfoUser] = useState("");
 
+  const {cart} = useCart();
   const handleClick = () => {
     setModalNav(true);
   };
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
-      .then((response) => response.json())
-      .then((data) => setInfoUser(data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
 
   const navigate = useNavigate();
+
   return (
     <div id="Nav">
       <div className="nav-container">
@@ -41,22 +37,25 @@ function Nav() {
           Gems
         </h1>
         <div className="menu-icons">
-          {infoUser.role === "admin" ? (
+          {auth?.user?.is_admin ? (
             <MdManageAccounts
               onClick={() => navigate(`/admin`)}
               className="icon-admin"
             />
           ) : null}
-          {isOnline === false ? (
-            <FaUser onClick={() => navigate(`/login`)} className="icons" />
-          ) : (
+          {auth ? (
             <FaUser onClick={() => navigate(`/profile`)} className="icons" />
+          ) : (
+            <FaUser onClick={() => navigate(`/login`)} className="icons" />
           )}
           <RiSearchFill onClick={() => setShowInput(true)} className="icons" />
           <IoBagSharp
             onClick={() => navigate(`/addToCart`)}
             className="icons"
           />
+          <article className="notification-cart"  onClick={() => navigate(`/addToCart`)} onKeyDown={() => navigate(`/addToCart`)} role="presentation">
+            {cart.length === 0 ? null : <p>{cart.length}</p>}
+          </article>
           <FaHeart
             onClick={handleClick}
             onKeyDown={handleClick}

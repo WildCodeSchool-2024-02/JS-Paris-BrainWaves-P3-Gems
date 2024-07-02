@@ -1,6 +1,6 @@
 /* MOBILE */
 .background-image {
-  height: 93vh;
+  height: 95vh;
   background-size: cover;
   background-position: right;
   background-image: url("../../../assets/images/illustrations/flower3.jpeg");
@@ -17,7 +17,6 @@
 .admin-profile {
   display: flex;
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.9);
   padding: 10px 0;
   padding-left: 2%;
   font-weight: 300;
@@ -90,6 +89,16 @@
   margin-top: 20px;
 }
 
+#AdminPage .wider {
+  height: 85vh;
+  width: 90vw;
+  position: absolute;
+  top: 10vh;
+  right: 5vw;
+  object-fit: cover;
+  z-index: 999;
+}
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   .background-image {
@@ -119,8 +128,10 @@
   }
 
   #AdminPage .articles-displayed-container {
-    height: 52vh;
-    width: 70vh;
+    height: 65vh;
+    width: 90vh;
+    position: absolute;
+    bottom: 5vh;
   }
 
   #AdminPage .admin-all-details {
@@ -134,9 +145,23 @@
     padding-top: 10px;
   }
 
+  #AdminPage .wider {
+    height: 85vh;
+    width: 50vw;
+    position: absolute;
+    top: 10vh;
+    right: 26vw;
+    object-fit: contain;
+    z-index: 999;
+  }
+
   #AdminPage p {
     font-size: 15px;
     font-weight: 400;
     width: 100vw;
+  }
+
+  #AdminPage .buttons {
+    margin: 30px 0;
   }
 }

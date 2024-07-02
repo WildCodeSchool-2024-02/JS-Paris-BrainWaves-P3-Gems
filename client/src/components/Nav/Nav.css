@@ -32,6 +32,21 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
+
+#Nav .notification-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: 21px;
+  right: 88px;
+}
+
+#Nav .notification-cart p {
+  color: white;
+}
+
 .close-icons {
   position: absolute;
   right: 5px;
@@ -176,5 +191,22 @@
 
   .menu-icons .icons:hover {
     font-size: 25px;
+  }
+
+  #Nav .notification-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 33px;
+    right: 119px;
+  }
+
+  #Nav .notification-cart p {
+    font-size: 1.5vh;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
   }
 }

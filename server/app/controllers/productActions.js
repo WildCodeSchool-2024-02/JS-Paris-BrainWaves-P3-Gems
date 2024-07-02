@@ -3,6 +3,7 @@ const tables = require("../../database/tables");
 const add = async (req, res, next) => {
   try {
     const productData = req.body;
+    productData.Id_user = req.auth.id;
     const result = await tables.product.add(productData);
     res.status(201).json(result);
   } catch (err) {

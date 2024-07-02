@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -10,10 +11,9 @@ function SellingPage() {
   const [price, setPrice] = useState("");
   const [pictureJewell, setPictureJewell] = useState("");
   const [pictureValidation, setPictureValidation] = useState("");
-  const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
-
+  const { auth } = useAuth();
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function SellingPage() {
   }, []);
 
   const handleSubmit = async (e) => {
-    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation  && IdUser) 
+    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation) 
     setModalConfOpen(true);
     e.preventDefault();
     try {
@@ -45,6 +45,7 @@ function SellingPage() {
         {
           method: "POST",
           headers: {
+            Authorization: `Bearer ${auth.token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -54,7 +55,6 @@ function SellingPage() {
             price,
             picture_jewell: pictureJewell,
             picture_validation: pictureValidation,
-            Id_user: IdUser,
           }),
         }
       );
@@ -137,14 +137,6 @@ function SellingPage() {
             onChange={(e) => setPrice(e.target.value)}
           />
           {errors && <p className="error">{errors.price}</p>}
-        </div>
-        <div className="input-div">
-          <label htmlFor="id-user">Id-user :</label>
-          <input
-            type="number"
-            value={IdUser}
-            onChange={(e) => setIdUser(e.target.value)}
-          />
         </div>
         <div className="button-div">
           <button className="add-button" type="submit" onClick={handleSubmit}>
