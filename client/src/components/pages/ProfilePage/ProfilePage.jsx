@@ -26,7 +26,11 @@ function ProfilePage() {
     if (!auth) {
       navigate("/login");
     } else {
-      fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      })
         .then((response) => response.json())
         .catch((error) => console.error("Error:", error));
     }
@@ -39,7 +43,6 @@ function ProfilePage() {
 
   const firstName = capitalizeFirstLetter(auth?.user?.firstname);
   const lastName = capitalizeFirstLetter(auth?.user?.lastname);
-
 
   return (
     <div id="ProfilePage">
