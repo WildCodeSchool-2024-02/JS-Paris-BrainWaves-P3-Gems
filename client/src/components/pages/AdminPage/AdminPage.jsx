@@ -53,6 +53,7 @@ function AdminPage() {
   const handleWideImage = (IdProduct) => {
     setWiderImageId(IdProduct);
     setWiderImage(!widerImage);
+
   };
 
   useEffect(() => {
@@ -96,7 +97,7 @@ function AdminPage() {
                   <div className="admin-images">
                     <img
                       onClick={() => handleWideImage(product.Id_product)}
-                      onKeyDown={handleWideImage(product.Id_product)}
+                      onKeyDown={() =>handleWideImage(product.Id_product)}
                       role="presentation"
                       src={product.picture_jewell}
                       alt={product.name}
@@ -107,8 +108,8 @@ function AdminPage() {
                       }
                     />
                     <img
-                      onClick={() => handleWideImage(product.Id_product)}
-                      onKeyDown={handleWideImage(product.Id_product)}
+                      onClick={() =>handleWideImage(product.Id_product)}
+                      onKeyDown={() =>handleWideImage(product.Id_product)}
                       role="presentation"
                       src={product.picture_validation}
                       alt={product.name}
