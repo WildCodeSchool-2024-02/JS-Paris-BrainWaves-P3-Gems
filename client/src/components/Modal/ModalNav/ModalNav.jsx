@@ -6,25 +6,25 @@ import "./ModalNav.css";
 function ModalNav({ setModalNav, setFavorite }) {
   const [modalNavigation, setModalNavigation] = useState([]);
 
-  const port = import.meta.env.VITE_API_URL;
+  const urlApi = import.meta.env.VITE_API_URL;
 
   const handleCloseModal = () => {
     setModalNav(false);
   };
  
   useEffect(() => {
-    fetch(`${port}/api/product//get-from-wishlist/${2}`)
+    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
       .then((res) => res.json())
       .then((data) => setModalNavigation(data))
       .catch((error) => console.error(error));
-  }, [port]);
+  }, [urlApi]);
  
 
   async function handleRemoveItem (productid) {
 
     try {
       const response = await fetch(
-        `${port}/api/wishlist/remove/product/${productid}/user/${2}`,
+        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 function ModalFav({ setModalOpen , setFavorite }) {
   const [modals, setModals] = useState([]);
 
-  const port = import.meta.env.VITE_API_URL;
+  const urlApi = import.meta.env.VITE_API_URL;
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -15,7 +15,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
   async function handleRemoveItem(productid) {
     try {
       const response = await fetch(
-        `${port}/api/wishlist/remove/product/${productid}/user/${2}`,
+        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -37,11 +37,11 @@ function ModalFav({ setModalOpen , setFavorite }) {
 
 
   useEffect(() => {
-    fetch(`${port}/api/product//get-from-wishlist/${2}`)
+    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
       .then((res) => res.json())
       .then((data) => setModals(data))
       .catch((error) => console.error(error));
-  }, [port]);
+  }, [urlApi]);
 
   return (
     <div id="modal-profile">

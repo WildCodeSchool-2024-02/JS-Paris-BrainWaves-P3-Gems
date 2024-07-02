@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  }) {
-  const port = import.meta.env.VITE_API_URL;
+  const urlApi = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
 
@@ -23,7 +23,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
   const isFavorite = favorites.includes(product.Id_product);
 
   function handleCard() {
-    fetch(`${port}/api/product/single-Product/${product.Id_product}`)
+    fetch(`${urlApi}/api/product/single-Product/${product.Id_product}`)
       .then((res) => res.json())
       .then((data) =>
         navigate(`/ItemDetails/${product.Id_product}`, {
@@ -42,7 +42,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
 
   async function addToWishList(prod, user) {
     try {
-      const response = await fetch(`${port}/api/wishlist/like`, {
+      const response = await fetch(`${urlApi}/api/wishlist/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Id_product: prod, Id_user: user }),
@@ -80,7 +80,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
 
   async function removeFromWishList(prod, user) {
     try {
-      const response = await fetch(`${port}/api/wishlist/unlike`, {
+      const response = await fetch(`${urlApi}/api/wishlist/unlike`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Id_product: prod, Id_user: user }),
