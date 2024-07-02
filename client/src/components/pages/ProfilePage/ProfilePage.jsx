@@ -28,7 +28,6 @@ function ProfilePage() {
     } else {
       fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
         .then((response) => response.json())
-        // .then((data) => setInfoUser(data))
         .catch((error) => console.error("Error:", error));
     }
   }, [auth, navigate]);
