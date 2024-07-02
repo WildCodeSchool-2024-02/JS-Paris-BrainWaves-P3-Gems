@@ -6,39 +6,38 @@ class CategorySeeder extends AbstractSeeder {
   }
 
   run() {
-    const newLocal = "http://localhost:3311/categoryPhotos/watch.jpg";
     const categories = [
       {
-        name: "Bracelets",
+        title: "Bracelets",
         picture: "http://localhost:3311/categoryPhotos/bracelet.jpg",
         details: "Commander",
         exist: 1,
         refName: "cat_1",
       },
       {
-        name: "Bagues",
+        title: "Bagues",
         picture: "http://localhost:3311/categoryPhotos/ring.jpg",
         details: "Commander",
         exist: 1,
         refName: "cat_2",
       },
       {
-        name: "Colliers",
+        title: "Colliers",
         picture: "http://localhost:3311/categoryPhotos/necklace.png",
         details: "Commander",
         exist: 1,
         refName: "cat_3",
       },
       {
-        name: "Boucles d'oreilles",
+        title: "Boucles d'oreilles",
         picture: "http://localhost:3311/categoryPhotos/earrings.jpg",
         details: "Commander",
         exist: 1,
         refName: "cat_4",
       },
       {
-        name: "Montres",
-        picture: newLocal,
+        title: "Montres",
+        picture: "http://localhost:3311/categoryPhotos/watcch.jpg",
         details: "Commander",
         exist: 1,
         refName: "cat_5",

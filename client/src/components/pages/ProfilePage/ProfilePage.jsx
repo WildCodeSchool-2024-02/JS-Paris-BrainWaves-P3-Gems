@@ -4,15 +4,16 @@ import { GiDiamondRing } from "react-icons/gi";
 import { LiaFileInvoiceSolid } from "react-icons/lia";
 import { IoBagSharp } from "react-icons/io5";
 import "./ProfilePage.css";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
-  const [infoUser, setInfoUser] = useState("");
   const {setFavorite} = useOutletContext();
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,19 +23,30 @@ function ProfilePage() {
   const handleClickSells = () => {
     setModalSellsOpen(true);
   };
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/2`)
-      .then((response) => response.json())
-      .then((data) => setInfoUser(data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
+    if (!auth) {
+      navigate("/login");
+    } else {
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
+        .then((response) => response.json())
+        .catch((error) => console.error("Error:", error));
+    }
+  }, [auth, navigate]);
+
+  function capitalizeFirstLetter(string) {
+    if (!string) return "";
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const firstName = capitalizeFirstLetter(auth?.user?.firstname);
+  const lastName = capitalizeFirstLetter(auth?.user?.lastname);
+
 
   return (
     <div id="ProfilePage">
       <div className="background-image">
         <h1>
-          {infoUser.firstname} {infoUser.lastname}
+          {firstName} {lastName}
         </h1>
         <div
           className="fav-profile"

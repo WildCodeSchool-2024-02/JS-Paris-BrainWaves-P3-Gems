@@ -1,7 +1,7 @@
 .container-items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   gap: 10px;
   width: 100vw;
@@ -26,12 +26,36 @@
 
 #ItemsPage h3 {
   padding: 20px;
-
   text-align: right;
+}
+
+#ItemsPage .container-items .illustrations-desktop {
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+}
+
+.illustrations-mobile {
+  display: none;
 }
 
 @media screen and (max-width: 430px) {
   #ItemsPage h3 {
+    display: none;
+  }
+
+  #ItemsPage .container-items .illustrations-mobile:nth-of-type(1) {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+  }
+
+  #ItemsPage .illustrations-mobile {
+    display: block;
+    width: 100vw;
+  }
+
+  .illustrations-desktop {
     display: none;
   }
 }

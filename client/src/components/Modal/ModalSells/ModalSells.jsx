@@ -1,15 +1,29 @@
 import PropTypes from "prop-types";
 import "../ModalFav/ModalFav.css";
 import { GiDiamondRing } from "react-icons/gi";
-import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 import ModalConf from "../ModalConf/ModalConf";
 
 function ModalSells({ setModalSellsOpen }) {
-  const data = useLoaderData();
-  const [sellings, setSellings] = useState(data);
+  const [sellings, setSellings] = useState([]);
   const [modalConfOpen, setModalConfOpen] = useState(false);
   const [modalToDelete, setModalToDelete] = useState(null);
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/product/user/${auth.token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => setSellings(data))
+      .catch((error) => console.error("Error:", error));
+  }, [auth.token]);
 
   const handleClickConf = (modal) => {
     setModalConfOpen(true);

@@ -82,9 +82,9 @@
 
 .password-input-container .reveal {
   position: absolute;
-  right: 10px; /* Adjust as necessary */
+  right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   cursor: pointer;
 }
 

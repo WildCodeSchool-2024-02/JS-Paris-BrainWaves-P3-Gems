@@ -6,10 +6,19 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-function Card({ product, favorites, setFavorites }) {
+function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  }) {
   const port = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
+  const [disabledButton, setDisabledButton] = useState(false);
+
+  useEffect(() => {
+    const isProductInCart = cart.some(
+      (item) => item.Id_product === product.Id_product
+    );
+    setDisabledButton(isProductInCart);
+  }, [cart, product.Id_product]);
 
   const isFavorite = favorites.includes(product.Id_product);
 
@@ -22,6 +31,7 @@ function Card({ product, favorites, setFavorites }) {
         })
       )
       .catch((err) => console.error(err));
+      setShowInput(false)
   }
 
   const handleKeyDown = (event) => {
@@ -99,6 +109,16 @@ function Card({ product, favorites, setFavorites }) {
     }
   }
 
+  const handleCart = (article) => {
+    if (disabledButton) return;
+    setCart((prevCart) => {
+      const newCart = [...prevCart, article];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      return newCart;
+    });
+    setDisabledButton(true);
+  };
+
   return (
     <div className="card">
       <img
@@ -119,7 +139,12 @@ function Card({ product, favorites, setFavorites }) {
       />
       <div className="logo-container">
         <div>
-          <HiOutlineShoppingBag className="icon" />
+          <HiOutlineShoppingBag
+            onKeyDown={() => handleCart(product)}
+            className={`icon ${disabledButton ? "disabled" : ""}`}
+            role="presentation"
+            onClick={() => handleCart(product)}
+          />
         </div>
         <div
           onClick={() => (isFavorite ? removeFromWishList(product.Id_product, 2) : addToWishList(product.Id_product, 2))}
@@ -139,7 +164,12 @@ function Card({ product, favorites, setFavorites }) {
       <div className="card-title">
         <p className="title">{product.name}</p>
         <div className="price-and-logo">
-          <HiOutlineShoppingBag className="cart" />
+          <HiOutlineShoppingBag
+            className={`cart ${disabledButton ? "disabled" : ""}`}
+            onKeyDown={() => handleCart(product)}
+            role="presentation"
+            onClick={() => handleCart(product)}
+          />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
             <span>{product.price}</span>
@@ -151,6 +181,7 @@ function Card({ product, favorites, setFavorites }) {
 }
 
 Card.propTypes = {
+  setShowInput:PropTypes.func.isRequired,
   product: PropTypes.shape({
     Id_product: PropTypes.number.isRequired,
     picture_jewell: PropTypes.string.isRequired,
@@ -159,6 +190,16 @@ Card.propTypes = {
   }).isRequired,
   favorites: PropTypes.func.isRequired,
   setFavorites: PropTypes.func.isRequired,
+ 
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      Id_product: PropTypes.number.isRequired,
+      picture_jewell: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  setCart: PropTypes.func.isRequired,
 };
 
 export default Card;

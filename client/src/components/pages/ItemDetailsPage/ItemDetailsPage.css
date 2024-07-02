@@ -20,8 +20,15 @@
 }
 #ItemDetailsPage p {
   margin-top: 10px;
-  font-weight: 300;
+  font-weight: 400;
 }
+
+#ItemDetailsPage h2 {
+  letter-spacing: 3px;
+  font-weight: 400;
+  margin-top: 1vh;
+}
+
 #ItemDetailsPage h3 {
   font-weight: 300;
 }
@@ -35,26 +42,9 @@
 #ItemDetailsPage .button-detail {
   color: black;
   background-color: transparent;
-  font-weight: 300;
-}
-.verified {
-  display: flex;
-  width: 80px;
-  height: 20px;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 10px;
-  left: 1px;
-  text-align: center;
-  border-radius: 10px;
-  color: aliceblue;
-}
-#ItemDetailsPage .verified p {
-  color: rgb(255, 255, 255);
-  transform: translateX(8px);
-  filter: drop-shadow(0 0 4px black);
-  font-weight: 350;
+  font-weight: 600;
+  font-size: 3vh;
+  margin-top: 2vh;
 }
 
 #ItemDetailsPage .euro-logo {
@@ -67,7 +57,7 @@
   color: white;
 }
 #ItemDetailsPage .more-Info {
-  margin: 30px auto;
+  margin: 15px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -112,10 +102,12 @@
 @media screen and (min-width: 1060px) {
   #ItemDetailsPage {
     display: flex;
+    margin: 0 1%;
   }
+
   .image-detail {
-    width: 50vw;
-    height: 95vh;
+    width: 45vw;
+    height: 91vh;
     object-fit: cover;
   }
 
@@ -128,8 +120,25 @@
     min-width: 400px;
     margin-top: 30px;
   }
+
   #ItemDetailsPage button:hover {
     background: black;
+  }
+  #ItemDetailsPage p {
+    font-weight: 300;
+  }
+
+  #ItemDetailsPage .price {
+    font-weight: 400;
+    margin-bottom: 4vh;
+  }
+
+  #ItemDetailsPage .button-detail {
+    margin-top: 15vh;
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    padding: 1.5vh;
   }
 }
 /* TABLET */

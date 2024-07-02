@@ -2,16 +2,22 @@ const express = require("express");
 
 const router = express.Router();
 
-const {add,readProductByCategoryId, readProductByUser, deleteProductByUser,readSingleProduct,getFilter,getFromWishlist,showFromCheapestProduct,showFromBiggerProduct } = require("../../../controllers/productActions");
+const {add,readProductByCategoryId, readProductByUser, deleteProductByUser,readSingleProduct,getFilter,getFromWishlist,showFromCheapestProduct,showFromBiggerProduct,readProductToValidate,
+  validate, } = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
+const { verifyToken } = require("../../../services/auth");
 
-router.post("/",validateProduct, add);
+router.post("/", verifyToken, validateProduct, add);
 
-router.get("/user/:id", readProductByUser)
+router.get("/user/:id",verifyToken, readProductByUser);
 
-router.delete("/", deleteProductByUser)
+router.delete("/", verifyToken, deleteProductByUser);
 
-router.get("/user/:id", readProductByUser)
+router.get("/product-by-category/:id", readProductByCategoryId);
+router.get("/single-Product/:id", readSingleProduct);
+router.get("/searching_for_product", getFilter);
+router.get("/product-to-validate", readProductToValidate);
+router.put("/validate/:Id_product", validate);
 
 router.delete("/", deleteProductByUser)
 
