@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-import { MdOutlineEuroSymbol } from "react-icons/md";
-import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+import { useNavigate, useLocation, useOutletContext } from "react-router-dom";
+import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
+import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 
 import "./ItemDetailsPage.css";
+
 import { useCart } from "../../../contexts/CartContext";
 
 function ItemDetailsPage() {
   const [showMore, setShowMore] = useState(false);
   const location = useLocation();
   const { details: detailProduct } = location.state || {};
+  const {favorite} = useOutletContext()
+ const navigate = useNavigate()
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
@@ -46,8 +49,12 @@ function ItemDetailsPage() {
     );
   }
 
+
   return (
     <div id="ItemDetailsPage">
+
+      <MdOutlineKeyboardBackspace className="goBackButton" onClick={()=> navigate(-1)}/>
+
       <div className="container">
         <div className="container-img">
           <img
@@ -56,7 +63,7 @@ function ItemDetailsPage() {
             className="image-detail"
           />
         </div>
-        <FaHeart className="heart-img" />
+        <FaHeart className="heart-img" style={{color: favorite ? "white" : "gray" }} />
       </div>
       <div className="container-text">
         <h2>{detailProduct.name}</h2>

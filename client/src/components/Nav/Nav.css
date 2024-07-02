@@ -49,11 +49,20 @@
 
 .close-icons {
   position: absolute;
-  right: 5px;
-  font-size: 22px;
+  right: 10px;
+  font-size: 45px;
   z-index: 100;
   cursor: pointer;
-  font-size: 25px;
+  color: rgb(255, 255, 255);
+  background-color: gray;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+}
+
+.close-icons:hover {
+  background-color: black;
+  font-size: 43px;
+  transition: all 0.5s ease-in-out;
 }
 .menu-icons .icons:hover {
   opacity: 1;
@@ -65,7 +74,7 @@
   position: fixed;
   padding: 20px;
   width: 90%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   top: 0;

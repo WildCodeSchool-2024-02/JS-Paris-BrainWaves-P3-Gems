@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import "./Nav.css";
 
-function SearchResult({ setShowInput, results}) {
+function SearchResult({ setShowInput, results }) {
   return (
     <div id="searchResult">
       <div className="result-container">
