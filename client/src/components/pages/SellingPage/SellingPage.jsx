@@ -11,7 +11,6 @@ function SellingPage() {
   const [price, setPrice] = useState("");
   const [pictureJewell, setPictureJewell] = useState("");
   const [pictureValidation, setPictureValidation] = useState("");
-  const [IdUser, setIdUser] = useState("");
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
   const { auth } = useAuth();
@@ -37,7 +36,7 @@ function SellingPage() {
   }, []);
 
   const handleSubmit = async (e) => {
-    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation  && IdUser) 
+    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation) 
     setModalConfOpen(true);
     e.preventDefault();
     try {
@@ -56,7 +55,6 @@ function SellingPage() {
             price,
             picture_jewell: pictureJewell,
             picture_validation: pictureValidation,
-            Id_user: IdUser,
           }),
         }
       );
@@ -139,14 +137,6 @@ function SellingPage() {
             onChange={(e) => setPrice(e.target.value)}
           />
           {errors && <p className="error">{errors.price}</p>}
-        </div>
-        <div className="input-div">
-          <label htmlFor="id-user">Id-user :</label>
-          <input
-            type="number"
-            value={IdUser}
-            onChange={(e) => setIdUser(e.target.value)}
-          />
         </div>
         <div className="button-div">
           <button className="add-button" type="submit" onClick={handleSubmit}>

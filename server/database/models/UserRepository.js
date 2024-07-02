@@ -12,27 +12,12 @@ class UserRepository extends AbstractRepository {
     return [rows];
   }
 
-  async readAll() {
-    const [rows] = await this.database.query(
-      `select  mail, is_admin from ${this.table}`
-    );
-    return rows;
-  }
-
   async add(user) {
     const [result] = await this.database.query(
       `INSERT INTO user(firstname,lastname,mail,password) VALUES (?,?,?,?)`,
       [user.firstname, user.lastname, user.mail, user.hashedPassword]
     );
     return result;
-  }
-
-  async read(id) {
-    const [[rows]] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE Id_user = ?`,
-      [id]
-    );
-    return rows;
   }
 
   async readByEmailWithPassword(mail) {

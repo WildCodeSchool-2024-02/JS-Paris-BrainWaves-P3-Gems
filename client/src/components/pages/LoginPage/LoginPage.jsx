@@ -46,7 +46,7 @@ function LoginPage() {
     <div id="LoginPage">
       <div className="inputflex">
         <label className="inputLogin">
-          Saissisez votre addresse e-mail
+          Saisissez votre adresse e-mail
           <input
             className="inputLogin"
             type="email"
