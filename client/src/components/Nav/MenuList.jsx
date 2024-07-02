@@ -1,6 +1,3 @@
-
-
-
 import { GiHeartNecklace, GiHeartEarrings } from "react-icons/gi";
 import { LiaRingSolid } from "react-icons/lia";
 import { BsWatch } from "react-icons/bs";
