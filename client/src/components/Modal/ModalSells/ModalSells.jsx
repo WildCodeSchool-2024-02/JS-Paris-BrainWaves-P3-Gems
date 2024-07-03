@@ -70,6 +70,7 @@ function ModalSells({ setModalSellsOpen }) {
         </div>
         {sellings.map((modal) => (
           <div className="modal-style" key={modal.Id_product}>
+            
             <img src={modal.picture_jewell} alt="" className="image-modal" />
             <div className="modal-details">
               <h1>{modal.name}</h1>
