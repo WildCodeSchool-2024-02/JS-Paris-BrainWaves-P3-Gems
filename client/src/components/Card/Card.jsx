@@ -1,17 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { FaHeart } from "react-icons/fa";
+import { GoHeart } from "react-icons/go";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  }) {
+function Card({
+  product,
+  setShowInput,
+  cart,
+  setCart,
+  favorites,
+  setFavorites,
+}) {
   const urlApi = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+
 
   useEffect(() => {
     const isProductInCart = cart.some(
@@ -31,7 +40,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
         })
       )
       .catch((err) => console.error(err));
-      setShowInput(false)
+    setShowInput(false);
   }
 
   const handleKeyDown = (event) => {
@@ -68,7 +77,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
         position: "top-center",
         autoClose: 3000,
         draggable: true,
-        theme: "dark",
+        theme: "light",
         closeOnClick: true,
       });
       return false;
@@ -91,7 +100,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           position: "top-center",
           autoClose: 3000,
           draggable: true,
-          theme: "dark",
+          theme: "light",
           closeOnClick: true,
         });
 
@@ -129,14 +138,14 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
         onKeyDown={handleKeyDown}
         role="presentation"
       />
-      <FaHeart
-        onClick={() =>  addToWishList(product.Id_product, 2)}
-
-        onDoubleClick={() =>  removeFromWishList(product.Id_product, 2)}
+      <GoHeart
+        onClick={() => addToWishList(product.Id_product, 2)}
+        onDoubleClick={() => removeFromWishList(product.Id_product, 2)}
         role="presentation"
         className="heart-logo"
-        style={{ color: isFavorite ? "white" : "gray" }}
+        style={{ color: isFavorite ? "red" : "white" }}
       />
+
       <div className="logo-container">
         <div>
           <HiOutlineShoppingBag
@@ -147,19 +156,22 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           />
         </div>
         <div
-          onClick={() => (isFavorite ? removeFromWishList(product.Id_product, 2) : addToWishList(product.Id_product, 2))}
+          onClick={() =>
+            isFavorite
+              ? removeFromWishList(product.Id_product, 2)
+              : addToWishList(product.Id_product, 2)
+          }
           role="presentation"
         >
-          <FaHeart
+          <GoHeart
             className="icon"
-            style={{ color: isFavorite ? "white" : "gray" }}
+            style={{ color: isFavorite ? "red" : "white" }}
           />
         </div>
         <div>
-          <SlOptionsVertical className="icon" onClick={()=> handleCard()} />
+          <SlOptionsVertical className="icon" onClick={() => handleCard()} />
         </div>
       </div>
-
 
       <div className="card-title">
         <p className="title">{product.name}</p>
@@ -172,7 +184,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
-            <span>{product.price}</span>
+            <span>{formatPrice(product.price)}</span>
           </p>
         </div>
       </div>
@@ -181,7 +193,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
 }
 
 Card.propTypes = {
-  setShowInput:PropTypes.func.isRequired,
+  setShowInput: PropTypes.func.isRequired,
   product: PropTypes.shape({
     Id_product: PropTypes.number.isRequired,
     picture_jewell: PropTypes.string.isRequired,
@@ -190,7 +202,7 @@ Card.propTypes = {
   }).isRequired,
   favorites: PropTypes.func.isRequired,
   setFavorites: PropTypes.func.isRequired,
- 
+
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       Id_product: PropTypes.number.isRequired,

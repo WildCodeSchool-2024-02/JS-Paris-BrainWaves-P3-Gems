@@ -6,7 +6,7 @@
   width: 300px;
   height: 420px;
   position: relative;
-  background-color: #000;
+  background-color: #6d6d6d;
   transition: all 0.1s ease-in-out;
   border-radius: 5px;
   overflow: hidden;
@@ -17,14 +17,15 @@
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  padding: 20px;
+  letter-spacing: 2px;
+  padding: 12px 0 0 0;
   color: #000;
   width: 100%;
   margin: 0 auto;
   line-height: 10px;
   background-color: white;
   height: 100%;
-  margin-top: -5px;
+  font-weight: 400;
 }
 .price-and-logo {
   display: flex;
@@ -45,11 +46,13 @@
 }
 .card p {
   font-family: "League Spartan", sans-serif;
-  font-size: 20px;
+  font-size: 17px;
+  padding-bottom: 5px;
 }
 
 .cart {
   font-size: 25px;
+  display: none;
 }
 
 .card-picture {
@@ -63,7 +66,7 @@
 .logo-container {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 14%;
   transform: translateY(-50%);
   gap: 30px;
@@ -81,7 +84,8 @@
   justify-content: center;
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
-  background-color: rgb(53, 52, 52);
+  background-color: transparent;
+  border: solid 2px white;
   z-index: 100;
 }
 .icon.disabled {
@@ -90,16 +94,16 @@
 }
 .icon {
   font-size: 25px;
+  color: white;
 }
 .icon:hover {
   font-size: 30px;
 }
 .card:hover .card-picture {
   filter: blur(2px);
+  opacity: 0.8;
 }
-.card:hover .card-picture {
-  opacity: 0.5;
-}
+
 .card:hover .logo-container {
   display: flex;
 }
@@ -161,6 +165,7 @@
   .card p {
     font-family: "League Spartan", sans-serif;
     font-size: 12px;
+    padding: 0;
   }
 
   .logo-container {
@@ -174,6 +179,7 @@
 
   .cart {
     font-size: 15px;
+    display: block;
   }
   .cart.disabled {
     pointer-events: none;

@@ -1,12 +1,40 @@
-import { createContext, useState, useContext, useMemo } from "react";
+import { createContext, useState, useContext, useMemo, useEffect } from "react";
+import { toast } from 'react-toastify';
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
-  const value = useMemo(() => ({ auth, setAuth }), [auth]);
+  useEffect(() =>{
+    const getAuth = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/user/refresh`,
+          { credentials: "include"}
+        );
+        if (response.ok) {
+          const token = response.headers.get("Authorization");
+          const user = await response.json();
+          setAuth({user, token})
+          setIsLoading(false)
+        }
+        else{
+          toast.warning("Veuillez vous reconnecter")
+          setIsLoading(false)
+        }
+      } catch (error) {
+        toast.error("Une erreur est survenue");
+        setIsLoading(false)
+      }
+    }
+    getAuth()
+  },[]);
+
+
+  const value = useMemo(() => ({ auth, setAuth, isLoading }), [auth, isLoading]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

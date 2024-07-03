@@ -1,16 +1,21 @@
-import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
-function ProtectedRoute({ children }) {
-  const { auth } = useAuth();
 
-  if (!auth) {
-    return <Navigate to="/login" />;
-  }
+function ProtectedRoute ({children}) {
+  const {isLoading, auth} = useAuth();
+  const navigate = useNavigate();
 
-  return children;
-}
+  useEffect(() => {
+    if(!isLoading) {
+      if(!auth) navigate("/login");
+    }
+  },[auth, isLoading, navigate])
+  if (!isLoading && auth) return children;
+  return "...loading";
+};
 
 ProtectedRoute.propTypes = {
   children: PropTypes.node.isRequired,
