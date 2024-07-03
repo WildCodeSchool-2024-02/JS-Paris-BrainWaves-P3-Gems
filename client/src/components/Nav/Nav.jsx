@@ -1,5 +1,6 @@
 import "./Nav.css";
-import { useState } from "react";
+import PropTypes from "prop-types";
+import {  useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
@@ -13,7 +14,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import ModalNav from "../Modal/ModalNav/ModalNav";
 import { useCart } from "../../contexts/CartContext";
 
-function Nav() {
+function Nav({ favorite, setFavorite }) {
   const [closeBtn, setclosebtn] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const { auth } = useAuth();
@@ -62,7 +63,13 @@ function Nav() {
             role="presentation"
             className="icons"
           />
-          {modalNav && <ModalNav setModalNav={setModalNav} />}
+          {modalNav && (
+            <ModalNav
+              setFavorite={setFavorite}
+              favorite={favorite}
+              setModalNav={setModalNav}
+            />
+          )}
           <div
             onClick={handleClick}
             onKeyDown={handleClick}
@@ -89,3 +96,8 @@ function Nav() {
 }
 
 export default Nav;
+
+Nav.propTypes = {
+  setFavorite: PropTypes.func.isRequired,
+  favorite: PropTypes.bool.isRequired,
+};

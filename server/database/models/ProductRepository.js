@@ -71,6 +71,11 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
+async getProductFromWishlist(id){
+  const [rows] = await this.database.query(`SELECT p.*, cat.title AS categoryName FROM product AS p JOIN category AS cat  ON p.id_category = cat.Id_category_list  JOIN wish_list AS w ON w.Id_product = p.Id_product  WHERE w.Id_user=?`, [id])
+  return rows;
+}
+
   async validateProduct(IdProduct){
   
     const [rows] = await this.database.query(
@@ -79,6 +84,21 @@ class ProductRepository extends AbstractRepository {
     );
     return [rows]
   }
+
+
+async getProductByAsc (id) {   
+
+  const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price asc`, [id]);
+  return rows
+ }
+ 
+ async getProductByDesc (id) {   
+ 
+   const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price desc`, [id]);
+   return rows
+ }
+ 
 }
+
 
 module.exports = ProductRepository;
