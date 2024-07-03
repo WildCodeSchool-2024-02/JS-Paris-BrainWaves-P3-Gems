@@ -13,7 +13,7 @@ function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
   const {setFavorite} = useOutletContext();
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -23,13 +23,17 @@ function ProfilePage() {
   const handleClickSells = () => {
     setModalSellsOpen(true);
   };
+
   useEffect(() => {
     if (!auth) {
       navigate("/login");
     } else {
-      fetch(`${import.meta.env.VITE_API_URL}/api/user/`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
+        credentials: "include"
+      })
         .then((response) => response.json())
         .catch((error) => console.error("Error:", error));
+
     }
   }, [auth, navigate]);
 
@@ -41,6 +45,13 @@ function ProfilePage() {
   const firstName = capitalizeFirstLetter(auth?.user?.firstname);
   const lastName = capitalizeFirstLetter(auth?.user?.lastname);
 
+  const logout = async () => {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/user/logout`, {
+      credentials: "include",
+    });
+    setAuth({ auth: false, user: null, token: null });
+    navigate("/login");
+  };
 
   return (
     <div id="ProfilePage">
@@ -84,8 +95,8 @@ function ProfilePage() {
           >
             Vendre un article
           </button>
-          <button className="return-button" type="button">
-            Retour
+          <button className="return-button" type="button" onClick={logout}>
+            Déconnexion
           </button>
         </div>
       </div>

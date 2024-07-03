@@ -118,6 +118,8 @@
   #AddToCart {
     height: 91vh;
     width: 100vw;
+    margin-bottom: -2%;
+    padding: 0;
   }
 
   #AddToCart h1 {

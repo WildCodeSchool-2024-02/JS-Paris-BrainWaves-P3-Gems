@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHeart } from "react-icons/fa";
+import { GoHeart } from "react-icons/go";
 import { useNavigate, useLocation, useOutletContext } from "react-router-dom";
 import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
@@ -49,13 +49,14 @@ function ItemDetailsPage() {
     );
   }
 
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
 
   return (
     <div id="ItemDetailsPage">
 
-      <MdOutlineKeyboardBackspace className="goBackButton" onClick={()=> navigate(-1)}/>
 
       <div className="container">
+      <MdOutlineKeyboardBackspace className="goBackButton" onClick={()=> navigate(-1)}/>
         <div className="container-img">
           <img
             src={detailProduct.picture_validation}
@@ -63,14 +64,14 @@ function ItemDetailsPage() {
             className="image-detail"
           />
         </div>
-        <FaHeart className="heart-img" style={{color: favorite ? "white" : "gray" }} />
-      </div>
+        <GoHeart className="heart-img" style={{color: favorite ? "red" : "white" }} />
+        </div>
       <div className="container-text">
         <h2>{detailProduct.name}</h2>
-        <p className="price">
-          <MdOutlineEuroSymbol className="euro-logo" /> {detailProduct.price}
-        </p>
         <p>{detailProduct.details}</p>
+        <p className="price">
+          <MdOutlineEuroSymbol className="euro-logo" /> {formatPrice(detailProduct.price)}
+        </p>
         <div className="container-button">
           <button
             type="button"
@@ -95,9 +96,6 @@ function ItemDetailsPage() {
 
           {showMore && (
             <div className="display-info">
-              <p>
-                Vendu par : {detailProduct.firstname} {detailProduct.lastname}
-              </p>
               <button type="button">
                 <a href={sellerEmail}>Contactez le vendeur</a>
               </button>

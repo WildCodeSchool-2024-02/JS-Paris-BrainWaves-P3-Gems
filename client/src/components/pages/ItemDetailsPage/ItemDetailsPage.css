@@ -11,7 +11,7 @@
 }
 .heart-img {
   position: absolute;
-  top: 10px;
+  top: 25px;
   right: 10px;
   font-size: 35px;
   opacity: 1;
@@ -42,7 +42,7 @@
 #ItemDetailsPage .button-detail {
   color: black;
   background-color: transparent;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 3vh;
   margin-top: 2vh;
 }
@@ -52,10 +52,6 @@
   font-weight: 200;
 }
 
-#ItemDetailsPage .button-detail:hover {
-  background: black;
-  color: white;
-}
 #ItemDetailsPage .more-Info {
   margin: 15px auto;
   display: flex;
@@ -64,6 +60,17 @@
   align-items: center;
   max-width: 80%;
 }
+
+.display-info button {
+  background: transparent;
+}
+
+.display-info a {
+  color: black;
+  font-size: 2vh;
+  font-weight: 400;
+}
+
 @keyframes showAnim {
   from {
     transform: scale(0);
@@ -106,8 +113,8 @@
   }
 
   .image-detail {
-    width: 45vw;
-    height: 91vh;
+    width: 42vw;
+    height: 88vh;
     object-fit: cover;
   }
 
@@ -121,9 +128,6 @@
     margin-top: 30px;
   }
 
-  #ItemDetailsPage button:hover {
-    background: black;
-  }
   #ItemDetailsPage p {
     font-weight: 300;
   }
@@ -139,6 +143,14 @@
     color: white;
     font-weight: 400;
     padding: 1.5vh;
+  }
+
+  #ItemDetailsPage .show-logo {
+    margin-top: 3vh;
+  }
+
+  .display-info button:hover {
+    background: transparent;
   }
 }
 /* TABLET */
