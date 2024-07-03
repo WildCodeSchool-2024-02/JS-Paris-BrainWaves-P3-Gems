@@ -1,14 +1,25 @@
 import { Outlet } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
+import { useEffect, useState } from "react";
 import { useAuth } from "./contexts/AuthContext";
 
-function App() {
-  const { auth } = useAuth();
+import Nav from "./components/Nav/Nav";
 
+function App() {
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+  const { auth } = useAuth();
   return (
     <div id="App">
-      <Nav />
-      <Outlet context={{ auth }} />
+      <Nav setFavorite={setFavorites} favorite={favorites} />
+      <Outlet context={{ favorites, setFavorites, auth }} />
     </div>
   );
 }

@@ -1,43 +1,52 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { FaHeart } from "react-icons/fa";
-
 import "./ModalNav.css";
 
-const favmodals = [
-  {
-    id: 1,
-    img: "src/assets/images/categoryPhotos/necklace.png",
-    name: "Collier argent",
-    details: "Marque Tiffany & Co, sertie de 40 diamants",
-    price: "€1300",
-  },
-  {
-    id: 2,
-    img: "src/assets/images/categoryPhotos/bracelet.jpg",
-    name: "Collier argent",
-    details: "Marque Tiffany & Co, sertie de 40 diamants",
-    price: "€10300",
-  },
-  {
-    id: 3,
-    img: "src/assets/images/categoryPhotos/earrings.jpg",
-    name: "Collier argent",
-    details: "Marque Tiffany & Co, sertie de 40 diamants",
-    price: "€3500",
-  },
-];
+function ModalNav({ setModalNav, setFavorite }) {
+  const [modalNavigation, setModalNavigation] = useState([]);
 
-function ModalNav({ setModalNav }) {
-  const [modalNavigation, setModalNavigation] = useState(favmodals);
+  const urlApi = import.meta.env.VITE_API_URL;
+
   const handleCloseModal = () => {
     setModalNav(false);
   };
-  const handleRemoveItem = (id) => {
-    setModalNavigation(
-      modalNavigation.filter((modalsNav) => modalsNav.id !== id)
-    );
+ 
+  useEffect(() => {
+    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
+      .then((res) => res.json())
+      .then((data) => setModalNavigation(data))
+      .catch((error) => console.error(error));
+  }, [urlApi]);
+ 
+
+  async function handleRemoveItem (productid) {
+
+    try {
+      const response = await fetch(
+        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (response.ok) {
+        
+        setModalNavigation(
+          modalNavigation.filter( (modalsNav) => modalsNav.Id_product !== productid)
+        );
+        setFavorite(false)
+        return response.json();
+      } 
+        return false;
+      
+    } catch (error) {
+      console.error(error);
+      return false;
+    }  
   };
+            
+
   return (
     <div id="modal-nav">
       <button type="button" onClick={handleCloseModal} className="btn-closeNav">
@@ -49,8 +58,8 @@ function ModalNav({ setModalNav }) {
           <p>Mes articles favoris</p>
         </div>
         {modalNavigation.map((modalsNav) => (
-          <div className="modal-styleNav" key={modalsNav.id}>
-            <img src={modalsNav.img} alt="" className="image-modalNav" />
+          <div className="modal-styleNav" key={modalsNav.Id_product}>
+            <img src={modalsNav.picture_jewell} alt="" className="image-modalNav" />
             <div className="modal-detailsNav">
               <h1>{modalsNav.name}</h1>
               <h3>{modalsNav.details}</h3>
@@ -58,7 +67,7 @@ function ModalNav({ setModalNav }) {
                 <button
                   className="modal-deleteNav"
                   type="button"
-                  onClick={() => handleRemoveItem(modalsNav.id)}
+                  onClick={() => handleRemoveItem(modalsNav.Id_product)}
                 >
                   Supprimer
                 </button>
@@ -74,5 +83,6 @@ function ModalNav({ setModalNav }) {
 
 ModalNav.propTypes = {
   setModalNav: PropTypes.func.isRequired,
+  setFavorite: PropTypes.func.isRequired,
 };
 export default ModalNav;
