@@ -40,6 +40,7 @@ function ModalSells({ setModalSellsOpen }) {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           Id_user: IdUser,
