@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminRoute from "./components/auth/AdminRoute";
 
 const api = import.meta.env.VITE_API_URL;
+
 const router = createBrowserRouter([
   {
     path: "/",

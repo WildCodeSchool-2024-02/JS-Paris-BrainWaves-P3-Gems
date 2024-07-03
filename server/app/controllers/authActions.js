@@ -24,13 +24,23 @@ const login = async (req, res, next) => {
           expiresIn: "1h",
         }
       );
+      const refreshToken = jwt.sign(
+        { id: user.Id_user, isAdmin: user.is_admin },
+        process.env.APP_SECRET,
+        {
+          expiresIn: "1d",
+        }
+      );
 
-      
-
-      res.json({
-        token,
-        user,
-      });
+      res
+      .status(200)
+      .cookie("refreshToken", refreshToken, {
+        HttpOnly: true,
+        sameSite: "lax",
+        expires: new Date(Date.now()+900000000)
+      })
+      .header("Authorization", token)
+      .json(user);
     } else {
       res.sendStatus(422);
     }
@@ -39,6 +49,34 @@ const login = async (req, res, next) => {
   }
 };
 
+const refresh = async (req,res,next) => {
+  try {
+    const {refreshToken} = req.cookies;
+    if(!refreshToken) {
+      return res.status(401).send("Access Denied, No refesh token provided.");
+    }
+    const decoded = jwt.verify(refreshToken, process.env.APP_SECRET);
+    const user = await tables.user.read(decoded.id);
+    delete user.password;
+    const accessToken = jwt.sign(
+      { id: user.Id_user, isAdmin: user.is_admin },
+      process.env.APP_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    return res.header("Authorization", accessToken).json(user);
+  } catch (error) {
+    return next (error);
+  }
+}
+
+const logout = async ({ res }) => {
+  res.clearCookie("refreshToken").sendStatus(200);
+};
+
 module.exports = {
   login,
+  refresh,
+  logout
 };

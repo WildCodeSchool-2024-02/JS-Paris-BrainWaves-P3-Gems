@@ -27,12 +27,14 @@ function LoginPage() {
             mail: mailRef.current.value,
             password: passwordRef.current.value,
           }),
+          credentials: "include"
         }
       );
 
       if (response.status === 200) {
-        const auth = await response.json();
-        setAuth(auth);
+        const token = response.headers.get("Authorization");
+        const user = await response.json();
+        setAuth({user, token});
         navigate("/");
       } else {
         console.info(response);

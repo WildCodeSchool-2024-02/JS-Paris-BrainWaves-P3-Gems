@@ -69,7 +69,7 @@
   background-image: url(src/assets/images/illustrations/flower2.png);
   background-position: cover;
   background-size: cover;
-  height: 43vh;
+  height: 52vh;
 }
 
 .flowerLogin {
@@ -97,8 +97,8 @@
     gap: 15px;
   }
   .login-image-container {
-    width: 98vw;
-    margin: 0 auto 10px;
+    width: 100vw;
+    margin: 0;
     background-image: url(src/assets/images/illustrations/flower2bis.png);
     background-position: center;
     background-size: cover;
