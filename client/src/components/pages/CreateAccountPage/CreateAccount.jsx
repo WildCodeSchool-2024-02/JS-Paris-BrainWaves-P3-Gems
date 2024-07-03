@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FiEye } from "react-icons/fi";
 import "./CreateAccount.css";
+import ModalConfAccount from "../../Modal/ModalConfAccount/ModalConfAccount";
 
 function CreateAccount() {
   const firstname = useRef();
@@ -9,8 +9,7 @@ function CreateAccount() {
   const mail = useRef();
   const password = useRef();
   const confirmPassword = useRef();
-
-  const navigate = useNavigate();
+  const [modalConfOpen, setModalConfOpen] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [strengthPassword, setStrengthPassword] = useState(0);
@@ -51,7 +50,7 @@ function CreateAccount() {
       });
 
       if (response.ok) {
-        navigate("/profile");
+        setModalConfOpen(true);
       } else {
         const data = await response.json();
         setErrors(data.errors || {});
@@ -138,6 +137,11 @@ function CreateAccount() {
           Rejoignez-nous
         </button>
       </div>
+      {modalConfOpen && (
+        <ModalConfAccount
+          setModalConfOpen={setModalConfOpen}
+        />
+      )}
     </div>
   );
 }
