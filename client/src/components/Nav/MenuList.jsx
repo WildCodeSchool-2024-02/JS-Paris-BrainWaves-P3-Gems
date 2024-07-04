@@ -27,6 +27,7 @@ function MenuList({ setclosebtn }) {
   };
 
   const showLogo = (title) => {
+    
     switch (title) {
       case "Colliers":
         return <GiHeartNecklace />;

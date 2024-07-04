@@ -15,7 +15,7 @@ function ItemsPage() {
   const {cart, setCart} = useCart();
   const [showProducts, setShowProduct] = useState([]);
 
-  const ApiUrl =import.meta.env.VITE_API_URL
+  const ApiUrl =import.meta.env.VITE_API_URL;
 
   useEffect(()=>{
     fetch(`${ApiUrl}/api/product/product-by-category/${id}`)
@@ -35,6 +35,32 @@ function ItemsPage() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  
+  const ascendingPrice = async () => {
+    try {
+      const response = await fetch(`${ApiUrl}/api/product/ascending-prices/${id}`);
+      const result = await response.json();
+
+      if(response.ok){
+        setShowProduct(result)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const descendingPrice = async () => {
+    try {
+      const response = await fetch(`${ApiUrl}/api/product/descending-prices/${id}`);
+      const result = await response.json();
+      if(response.ok){
+        setShowProduct(result)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+         
 
   return (
     <div id="ItemsPage">
@@ -42,8 +68,8 @@ function ItemsPage() {
       <MdOutlineKeyboardBackspace onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="the-filter">
         <div>
-          <button type="button" >Prix croissant</button>
-          <button type="button" >Prix décroissant</button>
+          <button type="button" onClick={ascendingPrice} >Prix croissant</button>
+          <button type="button" onClick={descendingPrice}>Prix décroissant</button>
         </div>
         <h3>FILTRER PAR</h3>
       </div>
