@@ -19,7 +19,18 @@ const deleteSingleProductFromWishlist = async (req, res, next) => {
   }
 };
 
+const showWishlistCount = async (req, res, next)=> {
+ try {
+  const value = parseInt(req.params.id, 10);
+  const count = await tables.wishlist.WishListCount(value);
+  res.status(200).json(count);
+ } catch (error) {
+  next(error)
+ }
+}
+
 module.exports = {
   addWishlist,
   deleteSingleProductFromWishlist,
+  showWishlistCount,
 };
