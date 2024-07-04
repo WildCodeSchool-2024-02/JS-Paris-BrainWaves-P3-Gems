@@ -82,7 +82,7 @@ function ItemDetailsPage() {
             className="button-detail"
             onClick={() => handleCart(detailProduct)}
           >
-            Ajouter
+            Ajouter au panier
           </button>
         </div>
         <div className="more-Info">

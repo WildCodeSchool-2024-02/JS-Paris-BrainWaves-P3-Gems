@@ -14,6 +14,7 @@ function Category() {
       const data = await response.json();
       if (response.ok) {
         navigate(`/items/${id}`, { state: data });
+        window.scrollTo(0,0);
       }
     } catch (error) {
       console.error(error);
