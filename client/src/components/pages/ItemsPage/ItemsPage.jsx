@@ -65,7 +65,7 @@ function ItemsPage() {
   return (
     <div id="ItemsPage">
       <h2>{name.toUpperCase()}</h2>
-      <MdOutlineKeyboardBackspace onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
+      <MdOutlineKeyboardBackspace className="goBackButton" onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="the-filter">
         <div>
           <button type="button" onClick={ascendingPrice} >Prix croissant</button>
