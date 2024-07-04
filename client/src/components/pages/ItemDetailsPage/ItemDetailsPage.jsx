@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { useNavigate, useLocation, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 
@@ -9,14 +9,26 @@ import "./ItemDetailsPage.css";
 import { useCart } from "../../../contexts/CartContext";
 
 function ItemDetailsPage() {
+ const {name, id} = useParams()
   const [showMore, setShowMore] = useState(false);
-  const location = useLocation();
-  const { details: detailProduct } = location.state || {};
   const {favorite} = useOutletContext()
  const navigate = useNavigate()
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
-  const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
+  const [detailProduct, setDetailProduct]= useState([]);
+
+  
+
+  const apiUrl = import.meta.env.VITE_API_URL
+
+useEffect(()=>{
+  fetch(`${apiUrl}/api/product/single-Product/${id}`)
+  .then((res) => res.json())
+  .then((data) =>setDetailProduct(data))
+  .catch((error)=> console.error(error))
+  
+  .catch((err) => console.error(err));
+},[apiUrl, id, name])
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -49,7 +61,7 @@ function ItemDetailsPage() {
     );
   }
 
-
+  const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
   return (
     <div id="ItemDetailsPage">
 
@@ -68,7 +80,7 @@ function ItemDetailsPage() {
       <div className="container-text">
         <h2>{detailProduct.name}</h2>
         <p className="price">
-          <MdOutlineEuroSymbol className="euro-logo" /> {detailProduct.price}
+          <MdOutlineEuroSymbol className="euro-logo"/> {detailProduct.price}
         </p>
         <p>{detailProduct.details}</p>
         <div className="container-button">

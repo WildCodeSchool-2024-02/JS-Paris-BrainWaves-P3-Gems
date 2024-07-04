@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {add,readProductByCategoryId, readProductByUser, deleteProductByUser,readSingleProduct,getFilter,getFromWishlist,showFromCheapestProduct,showFromBiggerProduct,readProductToValidate,
+const {add,readProductByCategoryId, readProductByUser, deleteProductByUser,readSingleProduct,getFilter,getFromWishlist,ascendingProduct,descendingProduct,readProductToValidate,
   validate, } = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
@@ -29,7 +29,7 @@ router.get("/get-from-wishlist/:id", getFromWishlist)
 
 
 
-router.get("/ascending-prices/:id", showFromCheapestProduct)
-router.get("/descending-prices/:id", showFromBiggerProduct)
+router.get("/ascending-prices/:id", ascendingProduct)
+router.get("/descending-prices/:id", descendingProduct)
 
 module.exports = router;

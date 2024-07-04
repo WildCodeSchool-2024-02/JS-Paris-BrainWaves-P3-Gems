@@ -1,7 +1,7 @@
-import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import {  useNavigate, useOutletContext ,useParams} from "react-router-dom";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import "./ItemsPage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../Card/Card";
 import Flower from "../../../assets/images/illustrations/flower2.png"
 import Flower2 from "../../../assets/images/illustrations/flower1.jpg"
@@ -9,11 +9,20 @@ import Flower3 from "../../../assets/images/illustrations/flower2bis.png"
 import { useCart } from "../../../contexts/CartContext";
 
 function ItemsPage() {
-  const location = useLocation();
-  const displayProduct = location.state;
+  const {name, id} = useParams();
   const navigate = useNavigate();
   const { favorites, setFavorites } = useOutletContext();  
   const {cart, setCart} = useCart();
+  const [showProducts, setShowProduct] = useState([]);
+
+  const ApiUrl =import.meta.env.VITE_API_URL
+
+  useEffect(()=>{
+    fetch(`${ApiUrl}/api/product/product-by-category/${id}`)
+    .then((res) => res.json())
+    .then((data) => setShowProduct(data))
+    .catch((err) => console.error(err));
+  },[ApiUrl, name, id])
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -26,9 +35,10 @@ function ItemsPage() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+
   return (
     <div id="ItemsPage">
-      <h2>{displayProduct[0].title.toUpperCase()}</h2>
+      <h2>{name.toUpperCase()}</h2>
       <MdOutlineKeyboardBackspace onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="the-filter">
         <div>
@@ -38,7 +48,7 @@ function ItemsPage() {
         <h3>FILTRER PAR</h3>
       </div>
       <div className="container-items">
-        {displayProduct.map((product, index) => (
+        {showProducts.map((product, index) => (
           <>
           <Card key={product.Id_product} product={product} cart={cart}
             setCart={setCart}  favorites={favorites} setFavorites={setFavorites}/>

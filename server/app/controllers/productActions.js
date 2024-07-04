@@ -98,19 +98,21 @@ const validate= async (req, res, next) => {
     }
   }
 
-const showFromCheapestProduct = async (res,req,next )=> {
+const ascendingProduct = async (req,res,next )=> {
  try {
   const value = parseInt(req.params.id, 10)
-  const show = await tables.product.getProductByAsc(value)
+
+  const show = await tables.product.getProductByAsc(value);
   res.status(200).json(show)
+  
  } catch (error) {
   next(error)
  }
 }
 
-const showFromBiggerProduct = async (res,req,next )=> {
+const descendingProduct = async (req,res,next)=> {
   try {
-    const value = Number(req.params.id)
+    const value = parseInt(req.params.id, 10)
    const show = await tables.product.getProductByDesc(value)
    res.status(200).json(show)
   } catch (error) {
@@ -128,8 +130,8 @@ module.exports = {
   readProductByUser,
   deleteProductByUser,
   getFromWishlist,
-  showFromCheapestProduct,
-  showFromBiggerProduct,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
 };

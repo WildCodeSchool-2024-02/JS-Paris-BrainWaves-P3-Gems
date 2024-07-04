@@ -1,6 +1,3 @@
-
-
-
 import { GiHeartNecklace, GiHeartEarrings } from "react-icons/gi";
 import { LiaRingSolid } from "react-icons/lia";
 import { BsWatch } from "react-icons/bs";
@@ -9,63 +6,60 @@ import PropTypes from "prop-types";
 
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function MenuList({ setclosebtn }) {
   const navigate = useNavigate();
- const port =import.meta.env.VITE_API_URL
+  const ApiUrl = import.meta.env.VITE_API_URL;
 
-  const handleMenuListBtn = (e) => {
-    const value = e.target.getAttribute('value');
-    fetch(`${port}/api/product/product-by-category/${value}`)
-    .then((res)=> res.json())
-    .then((data)=> navigate(`/items/${value}` , {state: data }))
-    .catch((err) => console.error(err))
+  const [menuList, setMenuList] = useState([]);
+
+  useEffect(() => {
+    fetch(`${ApiUrl}/api/category`)
+      .then((res) => res.json())
+      .then((data) => setMenuList(data))
+      .catch((error) => console.error(error));
+  }, [ApiUrl]);
+
+  const handleMenuListBtn = (data) => {
+    navigate(`/items/${data.title}/${data.Id_category_list}`);
     setclosebtn(false);
-    ;
   };
+
+  const showLogo = (title) => {
+    switch (title) {
+      case "Colliers":
+        return <GiHeartNecklace />;
+      case "Bracelets":
+        return <FaRing />;
+
+      case "Bagues":
+        return <LiaRingSolid />;
+
+      case "Boucles d'oreilles":
+        return <GiHeartEarrings />;
+
+      case "Montres":
+        return <BsWatch />;
+      
+      default:
+        return <GiHeartEarrings />;
+    }
+  };
+
   return (
     <div id="menu-list">
       <ul className="list">
-        <li
-          onClick={handleMenuListBtn}
-          onKeyDown={handleMenuListBtn}
-          role="presentation"
-          value="3"
-        >
-          <GiHeartNecklace className="list-icon" /> Colliers{" "}
-        </li>
-        <li
-          onClick={handleMenuListBtn}
-          onKeyDown={handleMenuListBtn}
-          role="presentation"
-          value="2"
-        >
-          <LiaRingSolid className="list-icon" /> Bagues{" "}
-        </li>
-        <li
-          onClick={handleMenuListBtn}
-          onKeyDown={handleMenuListBtn}
-          role="presentation"
-          value="4"
-        >
-          <GiHeartEarrings className="list-icon" /> Boucles d'oreilles{" "}
-        </li>
-        <li
-          onClick={handleMenuListBtn}
-          onKeyDown={handleMenuListBtn}
-          role="presentation"
-          value="5"
-        >
-          <BsWatch className="list-icon" /> Montres{" "}
-        </li>
-        <li
-          onClick={handleMenuListBtn}
-          onKeyDown={handleMenuListBtn}
-          role="presentation"
-          value="1"
-        >
-          <FaRing className="list-icon" /> Bracelets{" "}
-        </li>
+        {menuList.map((catList) => (
+          <li
+            key={catList.Id_category_list}
+            onClick={() => handleMenuListBtn(catList)}
+            onKeyDown={() => handleMenuListBtn(catList)}
+            role="presentation"
+          >
+            {showLogo(catList.title)} {catList.title}
+          </li>
+        ))}
       </ul>
     </div>
   );

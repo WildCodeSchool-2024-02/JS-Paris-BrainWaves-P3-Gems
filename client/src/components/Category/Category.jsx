@@ -6,14 +6,14 @@ function Category() {
   const navigate = useNavigate();
   const port = import.meta.env.VITE_API_URL;
 
-  const handleCategories = async (id) => {
+  const handleCategories = async (data) => {
     try {
       const response = await fetch(
-        `${port}/api/product/product-by-category/${id}`
+        `${port}/api/product/product-by-category/${data.Id_category_list}`
       );
-      const data = await response.json();
+      const result = await response.json();
       if (response.ok) {
-        navigate(`/items/${id}`, { state: data });
+        navigate(`/items/${data.title}/${data.Id_category_list}`, { state: result });
       }
     } catch (error) {
       console.error(error);
@@ -25,7 +25,7 @@ function Category() {
       {cat.map((category) => (
         <div key={category.Id_category_list} className="category-container">
           <div
-            onClick={() => handleCategories(category.Id_category_list)}
+            onClick={() => handleCategories(category)}
             onKeyDown={handleCategories}
             role="presentation"
             style={{ backgroundImage: `url(${category.picture})` }}

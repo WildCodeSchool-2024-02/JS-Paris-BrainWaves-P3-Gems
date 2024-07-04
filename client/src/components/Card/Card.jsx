@@ -22,16 +22,9 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
 
   const isFavorite = favorites.includes(product.Id_product);
 
-  function handleCard() {
-    fetch(`${urlApi}/api/product/single-Product/${product.Id_product}`)
-      .then((res) => res.json())
-      .then((data) =>
-        navigate(`/ItemDetails/${product.Id_product}`, {
-          state: { details: data },
-        })
-      )
-      .catch((err) => console.error(err));
-      setShowInput(false)
+  function handleCard(data) {
+    navigate(`/ItemDetails/${data.name}/${data.Id_product}`);
+    setShowInput(false) ;  
   }
 
   const handleKeyDown = (event) => {
@@ -125,7 +118,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
         className="card-picture"
         src={product.picture_jewell}
         alt={product.name}
-        onClick={handleCard}
+        onClick={() => handleCard(product)}
         onKeyDown={handleKeyDown}
         role="presentation"
       />
