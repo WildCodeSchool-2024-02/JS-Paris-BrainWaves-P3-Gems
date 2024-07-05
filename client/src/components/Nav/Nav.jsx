@@ -99,5 +99,10 @@ export default Nav;
 
 Nav.propTypes = {
   setFavorite: PropTypes.func.isRequired,
-  favorite: PropTypes.bool.isRequired,
+  favorite: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

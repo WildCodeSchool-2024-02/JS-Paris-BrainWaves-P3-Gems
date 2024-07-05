@@ -6,7 +6,7 @@ function ModalConfAccount({ setModalConfOpen }) {
   const navigate = useNavigate();
   const handleCloseModal = () => {
     setModalConfOpen(false);
-    navigate("/profile");
+    navigate("/login");
   };
 
   return (
