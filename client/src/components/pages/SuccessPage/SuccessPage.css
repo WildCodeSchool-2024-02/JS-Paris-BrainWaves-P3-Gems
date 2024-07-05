@@ -59,15 +59,6 @@
   width: 54vw;
 }
 
-/* #SuccessPage .card-desktop {
-    display: flex;
-    gap: 15px;
-    flex-direction: column;
-    width: 100%;
-    font-size: large;
-    background-color: #ffffffbd;
-  } */
-
 #SuccessPage .cart-recap {
   display: flex;
   flex-direction: column;
