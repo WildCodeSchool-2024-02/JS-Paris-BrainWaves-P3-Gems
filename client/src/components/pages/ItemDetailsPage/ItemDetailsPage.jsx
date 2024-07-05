@@ -7,6 +7,7 @@ import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 import "./ItemDetailsPage.css";
 
 import { useCart } from "../../../contexts/CartContext";
+import ModalCart from "../../Modal/ModalCart/ModalCart";
 
 function ItemDetailsPage() {
   const [showMore, setShowMore] = useState(false);
@@ -17,6 +18,8 @@ function ItemDetailsPage() {
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
+  const [modalConfOpen, setModalConfOpen] = useState(false);
+
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -39,6 +42,7 @@ function ItemDetailsPage() {
       return newCart;
     });
     setDisabledButton(true);
+    setModalConfOpen(true)
   };
 
   if (!detailProduct) {
@@ -78,7 +82,7 @@ function ItemDetailsPage() {
             className="button-detail"
             onClick={() => handleCart(detailProduct)}
           >
-            Ajouter
+            Ajouter au panier
           </button>
         </div>
         <div className="more-Info">
@@ -103,6 +107,11 @@ function ItemDetailsPage() {
           )}
         </div>
       </div>
+      {modalConfOpen && (
+        <ModalCart
+          setModalConfOpen={setModalConfOpen}
+        />
+      )}
     </div>
   );
 }
