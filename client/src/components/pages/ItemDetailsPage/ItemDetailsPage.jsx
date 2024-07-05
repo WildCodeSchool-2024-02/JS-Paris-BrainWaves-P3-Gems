@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 
@@ -11,7 +11,6 @@ import { useCart } from "../../../contexts/CartContext";
 function ItemDetailsPage() {
  const {name, id} = useParams()
   const [showMore, setShowMore] = useState(false);
-  const {favorite} = useOutletContext()
  const navigate = useNavigate()
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
@@ -75,7 +74,7 @@ useEffect(()=>{
             className="image-detail"
           />
         </div>
-        <FaHeart className="heart-img" style={{color: favorite ? "white" : "gray" }} />
+        <FaHeart className="heart-img" style={{color:"gray" }} />
       </div>
       <div className="container-text">
         <h2>{detailProduct.name}</h2>

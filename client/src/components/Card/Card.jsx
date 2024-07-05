@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  }) {
+function Card({ product, setShowInput, cart, setCart }) {
+
   const urlApi = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
@@ -20,7 +21,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
     setDisabledButton(isProductInCart);
   }, [cart, product.Id_product]);
 
-  const isFavorite = favorites.includes(product.Id_product);
+ 
 
   function handleCard(data) {
     navigate(`/ItemDetails/${data.name}/${data.Id_product}`);
@@ -49,10 +50,6 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           theme: "dark",
           closeOnClick: true,
         });
-
-        const newFavorites = [...favorites, prod];
-        setFavorites(newFavorites);
-        localStorage.setItem("favorites", JSON.stringify(newFavorites));
 
         return response.json();
       }
@@ -87,11 +84,6 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           theme: "dark",
           closeOnClick: true,
         });
-
-        const newFavorites = favorites.filter((id) => id !== prod);
-        setFavorites(newFavorites);
-        localStorage.setItem("favorites", JSON.stringify(newFavorites));
-
         return response.json();
       }
 
@@ -128,7 +120,7 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
         onDoubleClick={() =>  removeFromWishList(product.Id_product, 2)}
         role="presentation"
         className="heart-logo"
-        style={{ color: isFavorite ? "white" : "gray" }}
+        style={{ color: "gray" }}
       />
       <div className="logo-container">
         <div>
@@ -140,12 +132,12 @@ function Card({ product, setShowInput, cart, setCart , favorites, setFavorites  
           />
         </div>
         <div
-          onClick={() => (isFavorite ? removeFromWishList(product.Id_product, 2) : addToWishList(product.Id_product, 2))}
+          onClick={" "}
           role="presentation"
         >
           <FaHeart
             className="icon"
-            style={{ color: isFavorite ? "white" : "gray" }}
+            style={{ color:"gray"}}
           />
         </div>
         <div>
@@ -181,9 +173,7 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
-  favorites: PropTypes.func.isRequired,
-  setFavorites: PropTypes.func.isRequired,
- 
+
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       Id_product: PropTypes.number.isRequired,

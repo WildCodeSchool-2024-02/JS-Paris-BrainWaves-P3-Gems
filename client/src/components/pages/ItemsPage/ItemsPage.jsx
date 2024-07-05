@@ -1,4 +1,4 @@
-import {  useNavigate, useOutletContext ,useParams} from "react-router-dom";
+import {  useNavigate,useParams} from "react-router-dom";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import "./ItemsPage.css";
 import { useEffect, useState } from "react";
@@ -11,7 +11,6 @@ import { useCart } from "../../../contexts/CartContext";
 function ItemsPage() {
   const {name, id} = useParams();
   const navigate = useNavigate();
-  const { favorites, setFavorites } = useOutletContext();  
   const {cart, setCart} = useCart();
   const [showProducts, setShowProduct] = useState([]);
 
@@ -77,7 +76,7 @@ function ItemsPage() {
         {showProducts.map((product, index) => (
           <>
           <Card key={product.Id_product} product={product} cart={cart}
-            setCart={setCart}  favorites={favorites} setFavorites={setFavorites}/>
+            setCart={setCart} />
           {(index + 1) % 6 === 0 && (
               <img
                 src={(Math.floor(index / 6) % 2 === 0) ? Flower : Flower2}
