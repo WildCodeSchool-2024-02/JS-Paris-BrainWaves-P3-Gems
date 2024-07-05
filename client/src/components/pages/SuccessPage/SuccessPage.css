@@ -1,5 +1,5 @@
 /* Mobile */
-#AddToCart {
+#SuccessPage {
   background-image: url("src/assets/images/illustrations/flower4.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,17 +9,18 @@
   font-family: "League Spartan", sans-serif;
 }
 
-#AddToCart h1 {
+#SuccessPage h1 {
   padding: 10px 0 0 5px;
+  font-size: 2.5vh;
 }
 
-#AddToCart h2 {
-  font-size: 2.5vh;
+#SuccessPage h2 {
+  font-size: 2vh;
   font-weight: 400;
   margin-top: 1vh;
 }
 
-#AddToCart .empty-cart {
+#SuccessPage .empty-cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +29,7 @@
   text-align: center;
 }
 
-#AddToCart .text-empty-cart {
+#SuccessPage .text-empty-cart {
   background-color: #585858c2;
   font-size: 4vh;
   color: white;
@@ -36,21 +37,21 @@
   padding: 1vh;
 }
 
-#AddToCart .cart-container {
-  background-color: #ffffffd4;
+#SuccessPage .cart-container {
+  background-color: #ffffffc2;
   display: flex;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-#AddToCart .cart-img {
+#SuccessPage .cart-img {
   width: 40vw;
   padding-right: 5px;
   height: 22vh;
   object-fit: cover;
 }
 
-#AddToCart .item-details {
+#SuccessPage .item-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,21 +59,62 @@
   width: 54vw;
 }
 
-#AddToCart .card-desktop {
+/* #SuccessPage .card-desktop {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    width: 100%;
+    font-size: large;
+    background-color: #ffffffbd;
+  } */
+
+#SuccessPage .cart-recap {
   display: flex;
-  gap: 15px;
   flex-direction: column;
-  width: 100%;
-  font-size: large;
+  align-items: flex-start;
   background-color: #ffffffbd;
+  height: auto;
+  padding-left: 12vw;
+  max-height: 51vh;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
-#AddToCart .cart-total {
+#SuccessPage .cart-recap .button-container {
   display: flex;
-  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+  justify-content: center;
+}
+
+#SuccessPage .cart-recap h2 {
+  font-size: 2.5vh;
+  font-weight: 400;
+  margin-top: 2vh;
+}
+
+#SuccessPage .cart-recap h3 {
+  font-weight: 400;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  margin-top: 19px;
+}
+
+#SuccessPage .cart-recap p {
+  font-weight: 300;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  padding-top: 4px;
+}
+
+#SuccessPage .cart-total {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  background-color: #ffffffbd;
-  height: 40px;
+  padding: 2vh 0;
+  width: 75vw;
+  justify-content: space-between;
+  font-size: 2.5vh;
 }
 
 .info-name p {
@@ -81,7 +123,7 @@
   margin-top: 1vh;
 }
 
-#AddToCart .cart-actions {
+#SuccessPage .cart-actions {
   display: flex;
   flex-direction: column;
   margin: 10px auto;
@@ -89,16 +131,7 @@
   margin: 0 10px 0 10px;
 }
 
-#AddToCart .continue-shopping {
-  background-color: transparent;
-  color: black;
-  width: 100%;
-  padding: 14px;
-  font-weight: 500;
-  font-size: 20px;
-}
-
-#AddToCart .proceed-payment {
+#SuccessPage .proceed-payment {
   background: linear-gradient(45deg, black, black, transparent);
   width: 100%;
   padding: 12px;
@@ -106,67 +139,63 @@
   font-size: 17px;
 }
 
-#AddToCart .all-carts {
+#SuccessPage .all-carts {
   max-height: 70vh;
   overflow: hidden;
   width: 100vw;
   overflow-y: auto;
 }
 
+#SuccessPage .cart-total h2 {
+  margin: 1vh 0 0 0;
+  padding: 0;
+}
+
 /* desktop */
 
 @media screen and (min-width: 1024px) {
-  #AddToCart {
+  #SuccessPage {
     height: 91vh;
     width: 100vw;
     padding: 0;
   }
 
-  #AddToCart h1 {
+  #SuccessPage h1 {
     font-size: 4vh;
   }
 
-  #AddToCart .container-add {
+  #SuccessPage .container-add {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     margin-top: 2vh;
   }
 
-  #AddToCart .cart-container {
+  #SuccessPage .cart-container {
     display: flex;
   }
 
-  #AddToCart .cart-img {
+  #SuccessPage .cart-img {
     width: 13vw;
     height: 25vh;
     object-fit: cover;
   }
-  #AddToCart .info-price-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
 
-  #AddToCart .text-empty-cart {
-    font-size: 6vh;
-  }
-
-  #AddToCart h2 {
+  #SuccessPage h2 {
     font-size: 3vh;
     font-weight: 300;
     margin-top: 2%;
   }
 
-  #AddToCart .price {
+  #SuccessPage .price {
     margin-top: 8px;
   }
 
-  #AddToCart .info-name,
+  #SuccessPage .info-name,
   h2 {
     margin: 0;
   }
-  #AddToCart .item-details {
+  #SuccessPage .item-details {
     display: flex;
     flex-direction: column-reverse;
     padding: 0;
@@ -174,71 +203,50 @@
     height: 21vh;
   }
 
-  #AddToCart .cart-item {
-    background-color: #ffffffbd;
+  #SuccessPage .cart-recap h3 {
+    font-size: 2.5vh;
   }
 
-  #AddToCart .remove-item {
-    background: none;
-    color: black;
-    font-family: "League Spartan", sans-serif;
-    font-size: medium;
+  #SuccessPage .cart-recap h2 {
+    font-size: 3vh;
     font-weight: 400;
+    margin-bottom: 2vh;
   }
 
-  #AddToCart .cart-total span {
-    padding-top: 15px;
-    font-size: 2vh;
-    font-weight: 500;
+  #SuccessPage .cart-recap p {
+    font-size: 2.5vh;
   }
 
-  #AddToCart .remove-item {
-    background: none;
-    color: black;
-    font-size: 2vh;
-  }
-
-  #AddToCart .card-desktop {
-    background-color: #ffffffbd;
-    width: 50vh;
-    height: 35vh;
-    display: flex;
-    justify-content: space-evenly;
-    font-family: "League Spartan", sans-serif;
-    padding: 0 20px 0 20px;
-  }
-
-  #AddToCart .cart-total {
+  #SuccessPage .cart-total {
     background-color: transparent;
+    width: 23vw;
   }
 
-  #AddToCart .cart-total h2 {
+  #SuccessPage .cart-total h2 {
     font-weight: 300;
     font-size: 3.5vh;
   }
 
-  #AddToCart .continue-shopping {
+  #SuccessPage .cart-recap {
+    padding: 30px;
+    overflow: visible;
+    overflow-y: hidden;
+    max-height: 90vh;
+  }
+
+  #SuccessPage .continue-shopping {
     color: black;
     background-color: rgba(255, 255, 255, 0.389);
     border-style: solid;
     border-color: black;
   }
 
-  #AddToCart .continue-shopping:hover {
-    background-color: white;
-  }
-
-  #AddToCart .proceed-payment {
-    color: white;
-    background-color: black;
-  }
-
-  #AddToCart #total {
+  #SuccessPage #total {
     font-size: 3.5vh;
     font-weight: 400;
   }
 
-  #AddToCart .all-carts {
+  #SuccessPage .all-carts {
     max-height: 78vh;
     overflow: hidden;
     width: 40vw;

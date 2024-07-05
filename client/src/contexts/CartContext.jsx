@@ -28,7 +28,9 @@ export function CartProvider({ children }) {
   );
 }
 
+
 CartProvider.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
+
 export const useCart = () => useContext(CartContext);

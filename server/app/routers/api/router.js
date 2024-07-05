@@ -18,11 +18,9 @@ const userRouter = require("./user/router");
 
 router.use("/user", userRouter);
 
-
 const wishlistRouter = require("./wishlist/router")
 
 router.use('/wishlist', wishlistRouter)
-
 
 /* ************************************************************************* */
 
