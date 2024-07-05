@@ -13,7 +13,7 @@ function Category() {
       );
       const result = await response.json();
       if (response.ok) {
-        navigate(`/items/${data.title}/${data.Id_category_list}`, { state: result });
+        navigate(`/items/${data.title}/${data.Id_category_list}`, { state: result }); 
       }
     } catch (error) {
       console.error(error);

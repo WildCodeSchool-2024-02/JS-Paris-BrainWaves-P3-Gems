@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
 import "./AddToCart.css";
 import { useCart } from "../../../contexts/CartContext";
 
 function AddToCart() {
-  const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  const {setCart} = useCart()
+  const { setCart } = useCart();
+  const navigate = useNavigate();
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+  const getTotal = () => items.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -23,13 +26,42 @@ function AddToCart() {
     const updatedItems = items.filter((item) => item.Id_product !== IdProduct);
     setItems(updatedItems);
     localStorage.setItem("cart", JSON.stringify(updatedItems));
-    setCart(updatedItems)
-  };  
+    setCart(updatedItems);
+  };
+
+  const makePayment = async () => {
+    try {
+      const stripe = await loadStripe("pk_test_51PYqIBHIfAsQN5u3cQZXuouYiH9oXXtqsy7SELHw0OTfwGCA3W4Uh5Tz15byaETg9IKc7Pclm9gTSQ0N1bKTSqk5008wLqVCDx");
+      const body = {
+        products: items,
+      };
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/product/checkoutSession`,
+        {
+          method: "POST",
+          headers,
+          body: JSON.stringify(body),
+        }
+      );
   
-  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+      const session = await response.json();
   
-  const getTotal = () => items.reduce((total, item) => total + item.price, 0);
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
   
+      if (result.error) {
+        console.error("Error during Stripe Checkout:", result.error);
+      }
+    } catch (error) {
+      console.error("Error during payment process:", error);
+    }
+  };
+  
+
   return (
     <div id="AddToCart">
       <h1>Panier</h1>
@@ -45,7 +77,7 @@ function AddToCart() {
           <>
             <div className="all-carts">
               {items.map((item) => (
-                <div key={item.id} className="cart-container">
+                <div key={item.Id_product} className="cart-container">
                   <img
                     className="cart-img"
                     src={item.picture_jewell}
@@ -54,7 +86,7 @@ function AddToCart() {
                   <div className="info-price-container">
                     <div className="info-name">
                       <h2>{item.name}</h2>
-                                  </div>
+                    </div>
                     <div className="item-details">
                       <button
                         className="remove-item"
@@ -74,7 +106,6 @@ function AddToCart() {
               <div className="cart-total">
                 <h2>Sous-total:</h2>
                 <span id="total">€{formatPrice(getTotal())}</span>
-
               </div>
               <div className="cart-actions">
                 <button
@@ -84,7 +115,11 @@ function AddToCart() {
                 >
                   Continuer la commande
                 </button>
-                <button className="proceed-payment" type="button">
+                <button
+                  className="proceed-payment"
+                  type="button"
+                  onClick={makePayment}
+                >
                   Procéder au paiement
                 </button>
               </div>
