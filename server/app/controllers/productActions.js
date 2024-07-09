@@ -107,16 +107,28 @@ const showFromCheapestProduct = async (res, req, next) => {
   }
 };
 
-const showFromBiggerProduct = async (res, req, next) => {
+
+const ascendingProduct = async (req,res,next )=> {
+ try {
+  const value = parseInt(req.params.id, 10)
+
+  const show = await tables.product.getProductByAsc(value);
+  res.status(200).json(show)
+  
+ } catch (error) {
+  next(error)
+ }
+}
+
+const descendingProduct = async (req,res,next)=> {
   try {
-    const value = Number(req.params.id);
-    const show = await tables.product.getProductByDesc(value);
-    res.status(200).json(show);
-  } catch (error) {
+    const value = parseInt(req.params.id, 10)
+   const show = await tables.product.getProductByDesc(value)
+   res.status(200).json(show)
+    } catch (error) {
     next(error);
   }
 };
-
 const checkoutSession = async (req, res, next) => {
   try {
     const {products } = req.body;
@@ -139,6 +151,7 @@ const checkoutSession = async (req, res, next) => {
       cancel_url: `${process.env.CLIENT_URL}/addToCart`,
     });
     res.status(200).json({ id: session.id });
+
   } catch (error) {
     next(error);
   }
@@ -153,8 +166,8 @@ module.exports = {
   readProductByUser,
   deleteProductByUser,
   getFromWishlist,
-  showFromCheapestProduct,
-  showFromBiggerProduct,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
   checkoutSession,

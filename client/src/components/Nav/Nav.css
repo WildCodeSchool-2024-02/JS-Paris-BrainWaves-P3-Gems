@@ -50,7 +50,7 @@
 .close-icons {
   position: absolute;
   right: 10px;
-  font-size: 45px;
+  font-size: 30px;
   z-index: 100;
   cursor: pointer;
   color: rgb(255, 255, 255);
@@ -216,6 +216,14 @@
     font-size: 1.5vh;
     font-weight: 500;
     color: white;
+    cursor: pointer;
+  }
+
+  .close-icons {
+    position: absolute;
+    right: 10px;
+    font-size: 40px;
+    z-index: 100;
     cursor: pointer;
   }
 }

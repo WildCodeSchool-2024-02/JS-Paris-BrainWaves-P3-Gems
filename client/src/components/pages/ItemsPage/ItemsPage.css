@@ -9,7 +9,9 @@
 #ItemsPage h2 {
   padding: 20px;
 }
-
+#ItemsPage .goBackButton {
+  top: 125px;
+}
 .the-filter {
   display: flex;
   align-items: center;
@@ -42,6 +44,9 @@
 @media screen and (max-width: 430px) {
   #ItemsPage h3 {
     display: none;
+  }
+  .the-filter {
+    margin-top: -20px;
   }
 
   #ItemsPage .container-items .illustrations-mobile:nth-of-type(1) {
