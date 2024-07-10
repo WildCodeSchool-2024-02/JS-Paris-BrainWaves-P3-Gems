@@ -18,7 +18,7 @@ function AdminPage() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${auth.token}`,
+            Authorization: `Bearer ${auth.token}`,   
           },
         }
       );

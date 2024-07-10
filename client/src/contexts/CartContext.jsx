@@ -4,7 +4,7 @@ import { createContext, useContext, useMemo, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const contextValue = useMemo(
     () => ({
@@ -22,13 +22,13 @@ export function CartProvider({ children }) {
   }, []);
 
   return (
-    <CartContext.Provider value={contextValue}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 }
 
+
 CartProvider.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
+
 export const useCart = () => useContext(CartContext);

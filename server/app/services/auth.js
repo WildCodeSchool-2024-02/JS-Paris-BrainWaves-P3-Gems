@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const hashingOptions = {
   type: argon2.argon2id,
-  memoryCost: 19 * 2 ** 10 ,
+  memoryCost: 19 * 2 ** 10,
   timeCost: 2,
   parallelism: 1,
 };

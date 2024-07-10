@@ -40,6 +40,7 @@ function ModalSells({ setModalSellsOpen }) {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           Id_user: IdUser,
@@ -69,6 +70,7 @@ function ModalSells({ setModalSellsOpen }) {
         </div>
         {sellings.map((modal) => (
           <div className="modal-style" key={modal.Id_product}>
+            
             <img src={modal.picture_jewell} alt="" className="image-modal" />
             <div className="modal-details">
               <h1>{modal.name}</h1>

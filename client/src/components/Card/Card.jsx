@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { FaHeart } from "react-icons/fa";
+import { GoHeart } from "react-icons/go";
+import {FaHeart} from "react-icons/fa"
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -10,12 +11,13 @@ import { useWishlist } from "../../contexts/WishlistContext";
 
 import { useAuth } from "../../contexts/AuthContext";
 
+
 function Card({ product, setShowInput, cart, setCart }) {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
   const { favorites, addToWishList, removeFromWishList } = useWishlist();
-
   const { auth } = useAuth();
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
 
 
   useEffect(() => {
@@ -56,7 +58,7 @@ function Card({ product, setShowInput, cart, setCart }) {
         onKeyDown={handleKeyDown}
         role="presentation"
       />
-      <FaHeart
+      <GoHeart
         onClick={() => {
           if (
             favorites.find(
@@ -82,6 +84,7 @@ function Card({ product, setShowInput, cart, setCart }) {
             : "gray",
         }}
       />
+
       <div className="logo-container">
         <div>
           <HiOutlineShoppingBag
@@ -138,7 +141,7 @@ function Card({ product, setShowInput, cart, setCart }) {
           />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
-            <span>{product.price}</span>
+            <span>{formatPrice(product.price)}</span>
           </p>
         </div>
       </div>

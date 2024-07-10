@@ -13,7 +13,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
     setModalOpen(false);
   };
 
-  async function handleRemoveItem(productid) {
+  const handleRemoveItem = async(productid) => {
     try {
       const response = await fetch(
         `${urlApi}/api/wishlist/remove/product/${productid}/user/${auth.user.Id_user}`,

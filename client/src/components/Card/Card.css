@@ -81,7 +81,7 @@
   justify-content: center;
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
-  background-color: rgb(53, 52, 52);
+  border: 1px solid white;
   z-index: 100;
 }
 .icon.disabled {
@@ -90,6 +90,7 @@
 }
 .icon {
   font-size: 25px;
+  color: white;
 }
 .icon:hover {
   font-size: 30px;

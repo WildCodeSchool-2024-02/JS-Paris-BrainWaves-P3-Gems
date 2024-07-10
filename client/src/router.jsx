@@ -13,8 +13,10 @@ import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
 import AdminPage from "./components/pages/AdminPage/AdminPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminRoute from "./components/auth/AdminRoute";
+import SuccessPage from "./components/pages/SuccessPage/SuccessPage";
 
 const api = import.meta.env.VITE_API_URL;
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
 
         element: (
           <ProtectedRoute>
-            <AddToCart />,
+            <AddToCart />
           </ProtectedRoute>
         ),
       },
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <SellingPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/success",
+        element: (
+          <ProtectedRoute>
+            <SuccessPage />
           </ProtectedRoute>
         ),
       },
