@@ -3,9 +3,9 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import "./ItemsPage.css";
 import { useEffect, useState } from "react";
 import Card from "../../Card/Card";
-import Flower from "../../../assets/images/illustrations/flower2.png"
-import Flower2 from "../../../assets/images/illustrations/flower1.jpg"
-import Flower3 from "../../../assets/images/illustrations/flower2bis.png"
+import Flower from "../../../assets/images/illustrations/flower2.png";
+import Flower2 from "../../../assets/images/illustrations/flower1.jpg";
+import Flower3 from "../../../assets/images/illustrations/flower2bis.png";
 import { useCart } from "../../../contexts/CartContext";
 
 function ItemsPage() {
@@ -13,6 +13,7 @@ function ItemsPage() {
   const navigate = useNavigate();
   const {cart, setCart} = useCart();
   const [showProducts, setShowProduct] = useState([]);
+  
 
   const ApiUrl =import.meta.env.VITE_API_URL;
 
@@ -79,14 +80,14 @@ function ItemsPage() {
             setCart={setCart} />
           {(index + 1) % 6 === 0 && (
               <img
-                src={(Math.floor(index / 6) % 2 === 0) ? Flower : Flower2}
+                src={Math.floor(index / 6) % 2 === 0 ? Flower : Flower2}
                 alt="Flower"
                 className="illustrations-mobile"
               />
             )}
             {(index + 1) % 8 === 0 && (
               <img
-                src={(Math.floor(index / 8) % 2 === 0) ? Flower2 : Flower3}
+                src={Math.floor(index / 8) % 2 === 0 ? Flower2 : Flower3}
                 alt="Flower"
                 className="illustrations-desktop"
               />
