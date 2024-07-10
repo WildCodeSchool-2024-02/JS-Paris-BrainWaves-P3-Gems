@@ -1,6 +1,6 @@
 /* MOBILE */
 .background-image {
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: right;
   background-image: url("../../../assets/images/illustrations/flower3.jpeg");

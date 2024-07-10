@@ -17,7 +17,7 @@ class AbstractRepository {
     // Provide access to the database client
     this.database = database;
   }
-  
+
   async readAll() {
     const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
     return rows;
@@ -29,6 +29,13 @@ class AbstractRepository {
       [id]
     );
     return rows;
+  }
+
+  update(body, id) {
+    return this.database.query(`UPDATE ${this.table} SET ? WHERE id=?`, [
+      body,
+      id,
+    ]);
   }
 }
 

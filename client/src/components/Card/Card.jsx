@@ -97,7 +97,7 @@ function Card({ product, setShowInput, cart, setCart }) {
       return false;
     }
   }
-
+  
   const handleCart = (article) => {
     if (disabledButton) return;
     setCart((prevCart) => {

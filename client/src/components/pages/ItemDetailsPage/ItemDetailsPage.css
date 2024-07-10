@@ -83,7 +83,10 @@
   align-items: center;
   max-width: 80%;
 }
-
+.button-detail.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .display-info button {
   background: transparent;
 }

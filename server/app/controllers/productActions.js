@@ -3,8 +3,17 @@ const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
   try {
+    const uploadDest = `${process.env.APP_HOST}/upload/`;
+    if (req.files.picture_jewell)
+      req.body.picture_jewell =
+        uploadDest + req.files.picture_jewell[0].filename;
+    if (req.files.picture_validation)
+      req.body.picture_validation =
+        uploadDest + req.files.picture_validation[0].filename;
+
     const productData = req.body;
     productData.Id_user = req.auth.id;
+
     const result = await tables.product.add(productData);
     res.status(201).json(result);
   } catch (err) {
@@ -97,9 +106,10 @@ const getFromWishlist = async (req, res, next) => {
   }
 };
 
-const showFromCheapestProduct = async (res, req, next) => {
+const ascendingProduct = async (req, res, next) => {
   try {
     const value = parseInt(req.params.id, 10);
+
     const show = await tables.product.getProductByAsc(value);
     res.status(200).json(show);
   } catch (error) {
@@ -107,32 +117,19 @@ const showFromCheapestProduct = async (res, req, next) => {
   }
 };
 
-
-const ascendingProduct = async (req,res,next )=> {
- try {
-  const value = parseInt(req.params.id, 10)
-
-  const show = await tables.product.getProductByAsc(value);
-  res.status(200).json(show)
-  
- } catch (error) {
-  next(error)
- }
-}
-
-const descendingProduct = async (req,res,next)=> {
+const descendingProduct = async (req, res, next) => {
   try {
-    const value = parseInt(req.params.id, 10)
-   const show = await tables.product.getProductByDesc(value)
-   res.status(200).json(show)
-    } catch (error) {
+    const value = parseInt(req.params.id, 10);
+    const show = await tables.product.getProductByDesc(value);
+    res.status(200).json(show);
+  } catch (error) {
     next(error);
   }
 };
 const checkoutSession = async (req, res, next) => {
   try {
-    const {products } = req.body;
-    const lineItems  = products.map((product) => ({
+    const { products } = req.body;
+    const lineItems = products.map((product) => ({
       price_data: {
         currency: "eur",
         product_data: {
@@ -151,7 +148,6 @@ const checkoutSession = async (req, res, next) => {
       cancel_url: `${process.env.CLIENT_URL}/addToCart`,
     });
     res.status(200).json({ id: session.id });
-
   } catch (error) {
     next(error);
   }

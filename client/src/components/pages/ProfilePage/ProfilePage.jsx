@@ -12,7 +12,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
-  const {setFavorite} = useOutletContext();
+  const { setFavorite } = useOutletContext();
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -29,11 +29,13 @@ function ProfilePage() {
       navigate("/login");
     } else {
       fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
-        credentials: "include"
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+        credentials: "include",
       })
         .then((response) => response.json())
         .catch((error) => console.error("Error:", error));
-
     }
   }, [auth, navigate]);
 
@@ -68,7 +70,9 @@ function ProfilePage() {
           <FaHeart className="heart-profile" />
           <p>Mes articles favoris</p>
         </div>
-        {modalOpen && <ModalFav setModalOpen={setModalOpen} setFavorite={setFavorite} />}
+        {modalOpen && (
+          <ModalFav setModalOpen={setModalOpen} setFavorite={setFavorite} />
+        )}
         <div
           onClick={handleClickSells}
           onKeyDown={handleClickSells}
@@ -78,7 +82,12 @@ function ProfilePage() {
           <GiDiamondRing className="ring-profile" />
           <p>Ma boîte à bijoux</p>
         </div>
-        {modalSellsOpen && <ModalSells setModalSellsOpen={setModalSellsOpen}   setFavorite={setFavorite} />}
+        {modalSellsOpen && (
+          <ModalSells
+            setModalSellsOpen={setModalSellsOpen}
+            setFavorite={setFavorite}
+          />
+        )}
         <div className="fav-profile">
           <LiaFileInvoiceSolid className="invoice-profile" />
           <p>Mes ventes</p>

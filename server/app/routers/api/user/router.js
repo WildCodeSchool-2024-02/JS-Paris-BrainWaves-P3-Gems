@@ -22,4 +22,5 @@ router.get("/logout", logout);
 
 router.use(verifyToken);
 
+
 module.exports = router;
