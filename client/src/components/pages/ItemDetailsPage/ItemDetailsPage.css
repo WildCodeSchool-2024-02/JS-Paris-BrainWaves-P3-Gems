@@ -8,6 +8,8 @@
 .image-detail {
   width: 96vw;
   z-index: 1;
+  height: 67vh;
+  object-fit: cover;
 }
 .heart-img {
   position: absolute;
@@ -19,14 +21,14 @@
   cursor: pointer;
 }
 #ItemDetailsPage p {
-  margin-top: 10px;
+  margin-top: 7px;
   font-weight: 400;
 }
 
 #ItemDetailsPage h2 {
   letter-spacing: 3px;
   font-weight: 400;
-  margin-top: 1vh;
+  margin-top: 0.5vh;
 }
 
 #ItemDetailsPage h3 {
@@ -43,8 +45,9 @@
   color: black;
   background-color: transparent;
   font-weight: 500;
-  font-size: 3vh;
-  margin-top: 2vh;
+  font-size: 2.5vh;
+  margin: 1vh;
+  padding: 4px;
 }
 
 #ItemDetailsPage .euro-logo {
@@ -53,14 +56,17 @@
 }
 
 #ItemDetailsPage .more-Info {
-  margin: 15px auto;
+  margin: 5px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   max-width: 80%;
 }
-
+.button-detail.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .display-info button {
   background: transparent;
 }
@@ -82,10 +88,10 @@
 
 @keyframes upanddown {
   from {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
   }
   to {
-    transform: translateY(5px);
+    transform: translateY(3px);
   }
 }
 
@@ -151,6 +157,10 @@
 
   .display-info button:hover {
     background: transparent;
+  }
+
+  .display-info a {
+    font-size: 2.5vh;
   }
 }
 /* TABLET */

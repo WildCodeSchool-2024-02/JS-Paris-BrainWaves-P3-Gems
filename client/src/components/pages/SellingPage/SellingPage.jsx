@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./SellingPage.css";
 import background from "../../../assets/images/illustrations/flower1.jpg";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
@@ -9,8 +9,8 @@ function SellingPage() {
   const [details, setDetails] = useState("");
   const [IdCategory, setIdCategory] = useState(0);
   const [price, setPrice] = useState("");
-  const [pictureJewell, setPictureJewell] = useState("");
-  const [pictureValidation, setPictureValidation] = useState("");
+  const pictureJewell = useRef();
+  const pictureValidation = useRef();
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
   const { auth } = useAuth();
@@ -35,10 +35,14 @@ function SellingPage() {
     fetchCategories();
   }, []);
 
-  const handleSubmit = async (e) => {
-    if (name && details && IdCategory > 0 && price && pictureJewell && pictureValidation) 
-    setModalConfOpen(true);
-    e.preventDefault();
+  const handleSubmit = async () => {
+    const form = new FormData();
+    form.append("picture_jewell", pictureJewell.current.files[0]);
+    form.append("picture_validation", pictureValidation.current.files[0]);
+    form.append("name", name);
+    form.append("details", details);
+    form.append("Id_category", IdCategory);
+    form.append("price", price);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/product`,
@@ -46,16 +50,9 @@ function SellingPage() {
           method: "POST",
           headers: {
             Authorization: `Bearer ${auth.token}`,
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name,
-            details,
-            Id_category: IdCategory,
-            price,
-            picture_jewell: pictureJewell,
-            picture_validation: pictureValidation,
-          }),
+          body: form,
         }
       );
       if (!response.ok) {
@@ -67,8 +64,9 @@ function SellingPage() {
         setDetails("");
         setIdCategory(0);
         setPrice("");
-        setPictureJewell("");
-        setPictureValidation("");
+        setModalConfOpen(true);
+        pictureJewell.current.value = "";
+        pictureValidation.current.value = "";
       }
     } catch (error) {
       console.error(error);
@@ -80,16 +78,17 @@ function SellingPage() {
       {errors && <p className="error-picture">{errors.picture}</p>}
       <div className="input-image-div">
         <input
+          type="file"
           className="input-image"
-          placeholder="Ajouter une photo"
-          value={pictureJewell}
-          onChange={(e) => setPictureJewell(e.target.value)}
+          ref={pictureJewell}
+          accept="image/png, image/jpeg, image/jpg"
         />
         <input
+          type="file"
           className="input-image"
           placeholder="Ajouter une facture"
-          value={pictureValidation}
-          onChange={(e) => setPictureValidation(e.target.value)}
+          ref={pictureValidation}
+          accept="image/png, image/jpeg, image/jpg"
         />
       </div>
       {errors && <p className="error">{errors.all}</p>}
@@ -126,7 +125,14 @@ function SellingPage() {
             onChange={(e) => setIdCategory(e.target.value)}
           >
             <option value="0">{null}</option>
-            {categories.map((category) => <option key={category.id_category_list} value={category.Id_category_list}>{category.title}</option>)}
+            {categories.map((category) => (
+              <option
+                key={category.id_category_list}
+                value={category.Id_category_list}
+              >
+                {category.title}
+              </option>
+            ))}
           </select>
         </div>
         <div className="input-div">
@@ -139,16 +145,12 @@ function SellingPage() {
           {errors && <p className="error">{errors.price}</p>}
         </div>
         <div className="button-div">
-          <button className="add-button" type="submit" onClick={handleSubmit}>
+          <button className="add-button" type="button" onClick={handleSubmit}>
             Ajouter
           </button>
         </div>
       </form>
-      {modalConfOpen && (
-        <ModalConfForm
-          setModalConfOpen={setModalConfOpen}
-        />
-      )}
+      {modalConfOpen && <ModalConfForm setModalConfOpen={setModalConfOpen} />}
     </div>
   );
 }
