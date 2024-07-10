@@ -75,8 +75,8 @@ function ItemDetailsPage() {
     );
   }
 
-  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
+  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
 
   return (
     <div id="ItemDetailsPage">
