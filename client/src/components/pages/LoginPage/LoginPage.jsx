@@ -1,6 +1,7 @@
-import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./LoginPage.css";
 import { useAuth } from "../../../contexts/AuthContext";
 
@@ -9,6 +10,8 @@ function LoginPage() {
   const passwordRef = useRef();
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const [shown, setShown] = useState(false);
+  const [error, setError] = useState("");
 
   const handleCreateAccountClick = () => {
     navigate("/createAccount");
@@ -16,6 +19,11 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!mailRef.current.value || !passwordRef.current.value) {
+      setError("Veuillez remplir tous les champs.");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -27,67 +35,84 @@ function LoginPage() {
             mail: mailRef.current.value,
             password: passwordRef.current.value,
           }),
-          credentials: "include"
+          credentials: "include",
         }
       );
 
       if (response.status === 200) {
         const token = response.headers.get("Authorization");
         const user = await response.json();
-        setAuth({user, token});
+        setAuth({ user, token });
         navigate("/");
       } else {
+        setError(
+          "Erreur lors de la connexion. Veuillez vérifier vos informations."
+        );
         console.info(response);
       }
     } catch (err) {
+      setError("Erreur serveur. Veuillez réessayer plus tard.");
       console.error(err);
     }
   };
 
   return (
     <div id="LoginPage">
-      <div className="inputflex">
-        <label className="inputLogin">
-          Saisissez votre adresse e-mail
-          <input
-            className="inputLogin"
-            type="email"
-            ref={mailRef}
-            placeholder="Adresse e-mail"
-          />
-        </label>
-        <label className="inputLogin">
-          Mot de passe
-          <input type="password" ref={passwordRef} placeholder="Mot de passe" />
-        </label>
-      </div>
-
-      <div
-        className="create-account"
-        onClick={handleCreateAccountClick}
-        onKeyDown={handleCreateAccountClick}
-        role="button"
-        tabIndex={0}
-      >
-        Créer un compte
-      </div>
-      <div className="nextButton">
-        <button
-          className="nextHome"
-          onClick={handleSubmit}
-          onKeyUp={handleSubmit}
-          type="button"
+      <form onSubmit={handleSubmit}>
+        <div className="inputflex">
+          <label className="inputLogin">
+            Saisissez votre adresse e-mail
+            <input
+              className="inputLogin"
+              type="email"
+              ref={mailRef}
+              placeholder="Adresse e-mail"
+              aria-label="Adresse e-mail"
+            />
+          </label>
+          <label className="inputLogin">
+            Mot de passe
+            <div className="password-input-container">
+              <input
+                className="inputLogin"
+                type={shown ? "text" : "password"}
+                ref={passwordRef}
+                placeholder="Mot de passe"
+                aria-label="Mot de passe"
+              />
+              {shown ? (
+                <FiEye className="reveal" onClick={() => setShown(!shown)} />
+              ) : (
+                <FiEyeOff className="reveal" onClick={() => setShown(!shown)} />
+              )}
+            </div>
+          </label>
+        </div>
+        {error && <p className="error-message">{error}</p>}
+        <div
+          className="create-account"
+          onClick={handleCreateAccountClick}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleCreateAccountClick();
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Créer un compte"
         >
-          Suivant
-        </button>
-      </div>
+          Créer un compte
+        </div>
+        <div className="nextButton">
+          <button className="nextHome" type="submit">
+            Suivant
+          </button>
+        </div>
+      </form>
       <div className="inputflex">
         <p className="wishlist">
           <FaHeart className="heart" />
           Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
-
       <div className="login-image-container" />
     </div>
   );

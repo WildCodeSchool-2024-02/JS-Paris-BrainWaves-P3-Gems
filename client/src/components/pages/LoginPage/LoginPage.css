@@ -6,6 +6,7 @@
 #LoginPage h1 {
   padding: 10px;
 }
+
 .inputLogin {
   display: flex;
   flex-direction: column;
@@ -28,7 +29,6 @@
 .inputLogin input {
   border: 1px solid;
   padding: 12px;
-  margin-bottom: 20px;
 }
 
 .create-account {
@@ -36,7 +36,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   width: 90%;
-  margin: -15px auto 15px;
+  margin: 5px auto 15px;
 }
 
 .nextButton {
@@ -74,6 +74,30 @@
 
 .flowerLogin {
   transform: scale(1.1);
+}
+
+#LoginPage .password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+#LoginPage .password-input-container input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+#LoginPage .password-input-container .reveal {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#LoginPage .error-message {
+  text-align: center;
+  margin-top: 5px;
+  color: #c50000c7;
 }
 
 /* desktop */

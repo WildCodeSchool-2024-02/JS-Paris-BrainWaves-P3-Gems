@@ -2,9 +2,18 @@ const express = require("express");
 
 const router = express.Router();
 
-const {add,readProductByCategoryId, readProductByUser, deleteProductByUser,readSingleProduct,getFilter,getFromWishlist,ascendingProduct,descendingProduct,readProductToValidate,
-  validate,checkoutSession, } = require("../../../controllers/productActions");
-
+const {
+  add,
+  readProductByCategoryId,
+  readProductByUser,
+  deleteProductByUser,
+  readSingleProduct,
+  getFilter,
+  getFromWishlist,
+  readProductToValidate,
+  validate,
+  checkoutSession,
+} = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
 const fileUpload = require("../../../services/fileUpload");
@@ -35,8 +44,9 @@ router.get('/searching_for_product', getFilter)
 
 router.get("/get-from-wishlist/", verifyToken,  getFromWishlist)
 
-router.get("/ascending-prices/:id", ascendingProduct)
-router.get("/descending-prices/:id", descendingProduct)
+
+router.get("/ascending-prices/:id");
+router.get("/descending-prices/:id");
 
 router.put("/validate/:Id_product", validate);
 
