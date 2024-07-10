@@ -28,10 +28,6 @@ const validateProduct = (req, res, next) => {
     errors.price = "Entrez une valeur positive";
   }
 
-  // if (req.body.picture_jewell.length === 0 ||req.body.picture_validation.length === 0) {
-  //   errors.picture = "Veuillez ajouter une photo" ;
-  // }
-
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({ errors });
   }
