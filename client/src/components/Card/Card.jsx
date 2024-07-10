@@ -78,7 +78,7 @@ function Card({ product, setShowInput, cart, setCart }) {
               fav.Id_product === product.Id_product &&
               fav.Id_user === auth?.user?.Id_user
           )
-            ? "red"
+            ? "white"
             : "gray",
         }}
       />
@@ -115,7 +115,7 @@ function Card({ product, setShowInput, cart, setCart }) {
                   fav.Id_product === product.Id_product &&
                   fav.Id_user === auth?.user?.Id_user
               )
-                ? "red"
+                ? "white"
                 : "gray",
             }}
           />
