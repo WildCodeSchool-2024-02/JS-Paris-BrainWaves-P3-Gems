@@ -198,4 +198,8 @@
     right: 6px;
     font-size: 18px;
   }
+
+  .heart-logo .active {
+    color: red;
+  }
 }

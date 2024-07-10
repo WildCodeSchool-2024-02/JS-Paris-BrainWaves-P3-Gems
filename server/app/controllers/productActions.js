@@ -90,7 +90,7 @@ const validate= async (req, res, next) => {
 
   const getFromWishlist = async(req,res,next) =>{
     try {
-      const value = parseInt(req.params.id, 10)
+      const value = req.auth.id
       const result = await tables.product.getProductFromWishlist(value);
       res.status(200).json(result)
     } catch (error) {

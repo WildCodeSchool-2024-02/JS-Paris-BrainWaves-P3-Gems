@@ -25,7 +25,7 @@ router.get('/product-by-category/:id', readProductByCategoryId)
 router.get('/single-Product/:id', readSingleProduct)
 router.get('/searching_for_product', getFilter)
 
-router.get("/get-from-wishlist/:id", getFromWishlist)
+router.get("/get-from-wishlist/", verifyToken,  getFromWishlist)
 
 
 
