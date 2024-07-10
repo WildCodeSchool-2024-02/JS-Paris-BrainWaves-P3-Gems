@@ -3,36 +3,36 @@ import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
-import { IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
+import {
+  MdOutlineEuroSymbol,
+  MdOutlineKeyboardBackspace,
+} from "react-icons/md";
+import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
 import "./ItemDetailsPage.css";
 
 import { useCart } from "../../../contexts/CartContext";
-// import ModalCart from "../../Modal/ModalCart/ModalCart";
+import ModalCart from "../../Modal/ModalCart/ModalCart";
 
 function ItemDetailsPage() {
- const {name, id} = useParams()
+  const { name, id } = useParams();
   const [showMore, setShowMore] = useState(false);
- const navigate = useNavigate()
+  const navigate = useNavigate();
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
-  const [detailProduct, setDetailProduct]= useState([]);
+  const [detailProduct, setDetailProduct] = useState([]);
+  const [modalConfOpen, setModalConfOpen] = useState(false);
 
-  
+  const apiUrl = import.meta.env.VITE_API_URL;
 
-  const apiUrl = import.meta.env.VITE_API_URL
+  useEffect(() => {
+    fetch(`${apiUrl}/api/product/single-Product/${id}`)
+      .then((res) => res.json())
+      .then((data) => setDetailProduct(data))
+      .catch((error) => console.error(error))
 
-useEffect(()=>{
-  fetch(`${apiUrl}/api/product/single-Product/${id}`)
-  .then((res) => res.json())
-  .then((data) =>setDetailProduct(data))
-  .catch((error)=> console.error(error))
-  
-  .catch((err) => console.error(err));
-},[apiUrl, id, name])
-
-  
+      .catch((err) => console.error(err));
+  }, [apiUrl, id, name]);
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -64,7 +64,7 @@ useEffect(()=>{
       return newCart;
     });
     setDisabledButton(true);
-    // setModalConfOpen(true);
+    setModalConfOpen(true);
   };
 
   if (!detailProduct) {
@@ -75,10 +75,8 @@ useEffect(()=>{
     );
   }
 
-
-  const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
-
+  const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
 
   return (
     <div id="ItemDetailsPage">
@@ -95,7 +93,7 @@ useEffect(()=>{
           />
         </div>
 
-        <FaHeart className="heart-img" style={{color:"gray" }} />
+        <FaHeart className="heart-img" style={{ color: "gray" }} />
       </div>
 
       <div className="container-text">
@@ -104,7 +102,6 @@ useEffect(()=>{
         <p className="price">
           <MdOutlineEuroSymbol className="euro-logo" />
           {formatPrice(detailProduct.price)}
-
         </p>
         <div className="container-button">
           <button
@@ -137,7 +134,7 @@ useEffect(()=>{
           )}
         </div>
       </div>
-      {/* {modalConfOpen && <ModalCart setModalConfOpen={setModalConfOpen} />} */}
+      {modalConfOpen && <ModalCart setModalConfOpen={setModalConfOpen} />}
     </div>
   );
 }
