@@ -16,6 +16,7 @@ function SearchInput({ setShowInput }) {
   };
 
   const handleClick = async () => {
+   
     try {
       await fetch(
         `${port}/api/product/searching_for_product?name=${inputValue}`

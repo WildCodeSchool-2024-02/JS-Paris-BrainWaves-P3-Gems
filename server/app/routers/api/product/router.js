@@ -10,8 +10,6 @@ const {
   readSingleProduct,
   getFilter,
   getFromWishlist,
-  showFromCheapestProduct,
-  showFromBiggerProduct,
   readProductToValidate,
   validate,
   checkoutSession,
@@ -36,8 +34,9 @@ router.get("/product-by-category/:id", readProductByCategoryId);
 router.get("/single-Product/:id", readSingleProduct);
 router.get("/searching_for_product", getFilter);
 router.get("/get-from-wishlist/:id", getFromWishlist);
-router.get("/ascending-prices/:id", showFromCheapestProduct);
-router.get("/descending-prices/:id", showFromBiggerProduct);
+
+router.get("/ascending-prices/:id");
+router.get("/descending-prices/:id");
 
 router.put("/validate/:Id_product", validate);
 
