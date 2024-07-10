@@ -21,6 +21,7 @@ function ItemDetailsPage() {
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
   const [detailProduct, setDetailProduct] = useState([]);
+  // console.log("detail",detailProduct);
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
