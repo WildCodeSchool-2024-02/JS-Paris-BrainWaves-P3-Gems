@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./ModalNav.css";
 
@@ -11,17 +11,15 @@ function ModalNav({ setModalNav, setFavorite }) {
   const handleCloseModal = () => {
     setModalNav(false);
   };
- 
+
   useEffect(() => {
     fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
       .then((res) => res.json())
       .then((data) => setModalNavigation(data))
       .catch((error) => console.error(error));
   }, [urlApi]);
- 
 
-  async function handleRemoveItem (productid) {
-
+  const handleRemoveItem = async (productid) => {
     try {
       const response = await fetch(
         `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
@@ -31,21 +29,20 @@ function ModalNav({ setModalNav, setFavorite }) {
         }
       );
       if (response.ok) {
-        
         setModalNavigation(
-          modalNavigation.filter( (modalsNav) => modalsNav.Id_product !== productid)
+          modalNavigation.filter(
+            (modalsNav) => modalsNav.Id_product !== productid
+          )
         );
-        setFavorite(false)
+        setFavorite(false);
         return response.json();
-      } 
-        return false;
-      
+      }
+      return false;
     } catch (error) {
       console.error(error);
       return false;
-    }  
+    }
   };
-            
 
   return (
     <div id="modal-nav">
@@ -59,7 +56,11 @@ function ModalNav({ setModalNav, setFavorite }) {
         </div>
         {modalNavigation.map((modalsNav) => (
           <div className="modal-styleNav" key={modalsNav.Id_product}>
-            <img src={modalsNav.picture_jewell} alt="" className="image-modalNav" />
+            <img
+              src={modalsNav.picture_jewell}
+              alt=""
+              className="image-modalNav"
+            />
             <div className="modal-detailsNav">
               <h1>{modalsNav.name}</h1>
               <h3>{modalsNav.details}</h3>

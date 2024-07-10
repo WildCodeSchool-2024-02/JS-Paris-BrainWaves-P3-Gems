@@ -29,7 +29,9 @@ function ProfilePage() {
       navigate("/login");
     } else {
       fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
-        headers: { Authorization: `Bearer ${auth.token}` },
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
         credentials: "include",
       })
         .then((response) => response.json())

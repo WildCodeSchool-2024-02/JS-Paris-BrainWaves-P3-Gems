@@ -16,10 +16,18 @@ const {
 } = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
+const fileUpload = require("../../../services/fileUpload");
 
-router.post("/", verifyToken, validateProduct, add);
-
-router.get("/user/:id", verifyToken, readProductByUser);
+router.post(
+  "/",
+  verifyToken,
+  fileUpload.fields([
+    { name: "picture_jewell", maxCount: 1 },
+    { name: "picture_validation", maxCount: 1 },
+  ]),
+  validateProduct,
+  add
+);
 router.post("/checkoutSession", checkoutSession);
 
 router.delete("/", verifyToken, deleteProductByUser);

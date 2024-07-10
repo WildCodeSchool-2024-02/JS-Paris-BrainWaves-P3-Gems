@@ -31,7 +31,9 @@ function AddToCart() {
 
   const makePayment = async () => {
     try {
-      const stripe = await loadStripe("pk_test_51PYqIBHIfAsQN5u3cQZXuouYiH9oXXtqsy7SELHw0OTfwGCA3W4Uh5Tz15byaETg9IKc7Pclm9gTSQ0N1bKTSqk5008wLqVCDx");
+      const stripe = await loadStripe(
+        "pk_test_51PYqIBHIfAsQN5u3cQZXuouYiH9oXXtqsy7SELHw0OTfwGCA3W4Uh5Tz15byaETg9IKc7Pclm9gTSQ0N1bKTSqk5008wLqVCDx"
+      );
       const body = {
         products: items,
       };
@@ -46,13 +48,13 @@ function AddToCart() {
           body: JSON.stringify(body),
         }
       );
-  
+
       const session = await response.json();
-  
+
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
-  
+
       if (result.error) {
         console.error("Error during Stripe Checkout:", result.error);
       }
@@ -60,7 +62,6 @@ function AddToCart() {
       console.error("Error during payment process:", error);
     }
   };
-  
 
   return (
     <div id="AddToCart">
