@@ -76,9 +76,6 @@ function ItemDetailsPage() {
   }
 
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
-  const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
-    // console.log("detail", detailProduct);
-
 
   return (
     <div id="ItemDetailsPage">
@@ -103,7 +100,7 @@ function ItemDetailsPage() {
         <p>{detailProduct.details}</p>
         <p className="price">
           <MdOutlineEuroSymbol className="euro-logo" />
-          {formatPrice(detailProduct.price)}
+          {detailProduct.price}
         </p>
         <div className="container-button">
           <button
