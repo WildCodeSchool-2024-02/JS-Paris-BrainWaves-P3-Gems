@@ -50,7 +50,6 @@ function SellingPage() {
           method: "POST",
           headers: {
             Authorization: `Bearer ${auth.token}`,
-            // "Content-Type": "application/json",
           },
           body: form,
         }

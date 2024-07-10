@@ -86,21 +86,18 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
-  async getProductByAsc(id) {
-    const [rows] = await this.database.query(
-      `SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price asc`,
-      [id]
-    );
-    return rows;
-  }
+async getProductByAsc(id){   
 
-  async getProductByDesc(id) {
-    const [rows] = await this.database.query(
-      `SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price desc`,
-      [id]
-    );
-    return rows;
-  }
+  const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price asc`, [id]);
+  return rows
+ }
+ 
+ async getProductByDesc(id){   
+ 
+   const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price desc`, [id]);
+   return rows
+ }
+ 
 }
 
 module.exports = ProductRepository;

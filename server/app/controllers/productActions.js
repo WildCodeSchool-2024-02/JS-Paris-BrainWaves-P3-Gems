@@ -5,10 +5,12 @@ const add = async (req, res, next) => {
   try {
     const uploadDest = `${process.env.APP_HOST}/upload/`;
     if (req.files.picture_jewell)
-      req.body.picture_jewell = uploadDest + req.files.picture_jewell[0].filename;
+      req.body.picture_jewell =
+        uploadDest + req.files.picture_jewell[0].filename;
     if (req.files.picture_validation)
-      req.body.picture_validation = uploadDest + req.files.picture_validation[0].filename;
-   
+      req.body.picture_validation =
+        uploadDest + req.files.picture_validation[0].filename;
+
     const productData = req.body;
     productData.Id_user = req.auth.id;
 
@@ -104,9 +106,10 @@ const getFromWishlist = async (req, res, next) => {
   }
 };
 
-const showFromCheapestProduct = async (res, req, next) => {
+const ascendingProduct = async (req, res, next) => {
   try {
     const value = parseInt(req.params.id, 10);
+
     const show = await tables.product.getProductByAsc(value);
     res.status(200).json(show);
   } catch (error) {
@@ -114,16 +117,15 @@ const showFromCheapestProduct = async (res, req, next) => {
   }
 };
 
-const showFromBiggerProduct = async (res, req, next) => {
+const descendingProduct = async (req, res, next) => {
   try {
-    const value = Number(req.params.id);
+    const value = parseInt(req.params.id, 10);
     const show = await tables.product.getProductByDesc(value);
     res.status(200).json(show);
   } catch (error) {
     next(error);
   }
 };
-
 const checkoutSession = async (req, res, next) => {
   try {
     const { products } = req.body;
@@ -160,8 +162,8 @@ module.exports = {
   readProductByUser,
   deleteProductByUser,
   getFromWishlist,
-  showFromCheapestProduct,
-  showFromBiggerProduct,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
   checkoutSession,
