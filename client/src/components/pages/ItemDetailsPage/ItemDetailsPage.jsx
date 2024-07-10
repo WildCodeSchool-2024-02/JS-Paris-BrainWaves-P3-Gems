@@ -21,7 +21,6 @@ function ItemDetailsPage() {
   const { cart, setCart } = useCart();
   const [disabledButton, setDisabledButton] = useState(false);
   const [detailProduct, setDetailProduct] = useState([]);
-  // console.log("detail",detailProduct);
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -78,6 +77,8 @@ function ItemDetailsPage() {
 
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+    // console.log("detail", detailProduct);
+
 
   return (
     <div id="ItemDetailsPage">
