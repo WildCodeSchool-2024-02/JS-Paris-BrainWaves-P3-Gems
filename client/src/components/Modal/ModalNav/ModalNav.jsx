@@ -20,6 +20,7 @@ function ModalNav({ setModalNav }) {
   };
 
   useEffect(() => {
+
     fetch(`${urlApi}/api/wishlist/show-counter/`,{
       headers:{"Content-Type": "application/json", Authorization: ` Bearer ${auth?.token}`}
     })
