@@ -1,6 +1,6 @@
 import "./Nav.css";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
@@ -20,16 +20,6 @@ function Nav({ favorite, setFavorite }) {
   const { auth } = useAuth();
   const [modalNav, setModalNav] = useState(false);
 
-  const [likeCount, setLikeCount] = useState(44);
-
-  const ApiUrl = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    fetch(`${ApiUrl}/api/wishlist/show-counter/${5}`)
-      .then((res) => res.json())
-      .then((data) => setLikeCount(data.count))
-      .catch((error) => console.error(error));
-  }, [ApiUrl]);
 
   const { cart } = useCart();
   const handleClick = () => {
@@ -80,7 +70,6 @@ function Nav({ favorite, setFavorite }) {
               role="presentation"
               className="icons"
             />{" "}
-           {likeCount === 0 && <p>{likeCount}</p> }
           </div>
           {modalNav && (
             <ModalNav
