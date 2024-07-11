@@ -3,46 +3,41 @@ import "./ModalFav.css";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import {useAuth} from '../../../contexts/AuthContext'
+import { useWishlist } from "../../../contexts/WishlistContext";
 
 function ModalFav({ setModalOpen , setFavorite }) {
   const [modals, setModals] = useState([]);
   const {auth} = useAuth()
   const urlApi = import.meta.env.VITE_API_URL;
 
+  const {removeFromWishList  } = useWishlist()
+
   const handleCloseModal = () => {
     setModalOpen(false);
   };
 
   const handleRemoveItem = async(productid) => {
-    try {
-      const response = await fetch(
-        `${urlApi}/api/wishlist/remove/product/${productid}/user/${auth.user.Id_user}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (response.ok) {
+    removeFromWishList(productid)
+      if ( removeFromWishList(productid) ) {
         setModals(modals.filter((modal) => modal.Id_product !== productid));
         setFavorite(false)
-        return response.json();
       } 
-        
-  
-    } catch (error) {
-      console.error(error);
-    }
     return true
   }
 
 
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/${5}`)
+    fetch(`${urlApi}/api/product//get-from-wishlist/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${auth?.token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setModals(data))
       .catch((error) => console.error(error));
-  }, [urlApi]);
+  }, [urlApi, auth]);
 
   return (
     <div id="modal-profile">
