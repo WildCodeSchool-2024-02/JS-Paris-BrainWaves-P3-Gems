@@ -24,6 +24,8 @@ function ModalFav({ setModalOpen , setFavorite }) {
       } 
   }
 
+  
+
 
 
   useEffect(() => {

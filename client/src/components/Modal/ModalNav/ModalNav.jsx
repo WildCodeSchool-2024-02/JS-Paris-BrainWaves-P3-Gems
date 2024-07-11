@@ -7,6 +7,7 @@ import { useWishlist } from "../../../contexts/WishlistContext";
 
 function ModalNav({ setModalNav }) {
   const [modalNavigation, setModalNavigation] = useState([]);
+  const [likeCount, setLikeCount] = useState(null);
 
   const {auth}=useAuth()
 
@@ -17,6 +18,16 @@ function ModalNav({ setModalNav }) {
   const handleCloseModal = () => {
     setModalNav(false);
   };
+
+  useEffect(() => {
+    fetch(`${urlApi}/api/wishlist/show-counter/`,{
+      headers:{"Content-Type": "application/json", Authorization: ` Bearer ${auth?.token}`}
+    })
+      .then((res) => res.json())
+      .then((data) => setLikeCount(data.count))
+      .catch((error) => console.error(error));
+  }, [urlApi, auth]);
+  
 
   useEffect(() => {
     fetch(`${urlApi}/api/product/get-from-wishlist/`, {
@@ -45,7 +56,7 @@ function ModalNav({ setModalNav }) {
       <div className="container-imgNav">
         <div className="container-heartNav">
           <FaHeart className="heart-profileNav" />
-          <p>Mes articles favoris</p>  
+          <p>Mes articles favoris {likeCount > 0 ? `(${likeCount})`: ""}  </p>    
         </div>
         {modalNavigation.map((modalsNav) => (
           <div className="modal-styleNav" key={modalsNav.Id_product}>
