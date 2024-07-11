@@ -6,7 +6,7 @@
   width: 300px;
   height: 420px;
   position: relative;
-  background-color: #000;
+  background-color: #ffffff;
   transition: all 0.1s ease-in-out;
   border-radius: 5px;
   overflow: hidden;
@@ -24,7 +24,6 @@
   line-height: 10px;
   background-color: white;
   height: 100%;
-  margin-top: -5px;
 }
 .price-and-logo {
   display: flex;
@@ -58,6 +57,7 @@
   width: 300px;
   height: 350px;
   z-index: -1;
+  margin-bottom: 0px;
 }
 
 .logo-container {
@@ -96,10 +96,8 @@
   font-size: 30px;
 }
 .card:hover .card-picture {
-  filter: blur(2px);
-}
-.card:hover .card-picture {
-  opacity: 0.5;
+  filter: grayscale(50%) blur(5px);
+  background-color: #000;
 }
 .card:hover .logo-container {
   display: flex;

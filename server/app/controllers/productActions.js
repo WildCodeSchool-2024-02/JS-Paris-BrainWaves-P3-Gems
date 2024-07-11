@@ -1,4 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
