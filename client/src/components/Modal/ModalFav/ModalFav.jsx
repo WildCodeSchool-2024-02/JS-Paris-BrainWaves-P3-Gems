@@ -2,20 +2,21 @@ import PropTypes from "prop-types";
 import "./ModalFav.css";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import {useAuth} from '../../../contexts/AuthContext'
 
 function ModalFav({ setModalOpen , setFavorite }) {
   const [modals, setModals] = useState([]);
-
+  const {auth} = useAuth()
   const urlApi = import.meta.env.VITE_API_URL;
 
   const handleCloseModal = () => {
     setModalOpen(false);
   };
 
-  async function handleRemoveItem(productid) {
+  const handleRemoveItem = async(productid) => {
     try {
       const response = await fetch(
-        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
+        `${urlApi}/api/wishlist/remove/product/${productid}/user/${auth.user.Id_user}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -37,7 +38,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
 
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
+    fetch(`${urlApi}/api/product//get-from-wishlist/${5}`)
       .then((res) => res.json())
       .then((data) => setModals(data))
       .catch((error) => console.error(error));

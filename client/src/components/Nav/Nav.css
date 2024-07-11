@@ -47,10 +47,31 @@
   color: white;
 }
 
+#Nav .like-continer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  gap: 0px;
+}
+
+#Nav .like-continer .icons {
+  position: relative;
+}
+#Nav .like-continer p {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  position: absolute;
+  transform: translate(100%);
+  margin-right: -60px;
+  padding: 0;
+  z-index: 10;
+}
+
 .close-icons {
   position: absolute;
   right: 10px;
-  font-size: 45px;
+  font-size: 30px;
   z-index: 100;
   cursor: pointer;
   color: rgb(255, 255, 255);
@@ -216,6 +237,14 @@
     font-size: 1.5vh;
     font-weight: 500;
     color: white;
+    cursor: pointer;
+  }
+
+  .close-icons {
+    position: absolute;
+    right: 10px;
+    font-size: 40px;
+    z-index: 100;
     cursor: pointer;
   }
 }

@@ -51,9 +51,9 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
-  async readProductToValidate(){
+  async readProductToValidate() {
     const [rows] = await this.database.query(
-     `SELECT * 
+      `SELECT * 
      FROM ${this.table} 
      INNER JOIN category ON ${this.table}.Id_category = category.Id_category_list 
      INNER JOIN user ON ${this.table}.Id_user = user.Id_user
@@ -61,7 +61,6 @@ class ProductRepository extends AbstractRepository {
     );
     return [rows];
   }
-  
 
   async deleteProductByUser(data) {
     const [rows] = await this.database.query(
@@ -71,34 +70,34 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
-async getProductFromWishlist(id){
-  const [rows] = await this.database.query(`SELECT p.*, cat.title AS categoryName FROM product AS p JOIN category AS cat  ON p.id_category = cat.Id_category_list  JOIN wish_list AS w ON w.Id_product = p.Id_product  WHERE w.Id_user=?`, [id])
-  return rows;
-}
-
-  async validateProduct(IdProduct){
-  
+  async getProductFromWishlist(id) {
     const [rows] = await this.database.query(
-       `UPDATE ${this.table} SET validated = true WHERE Id_product = ?`
-       ,[IdProduct]
+      `SELECT p.*, cat.title AS categoryName FROM product AS p JOIN category AS cat  ON p.id_category = cat.Id_category_list  JOIN wish_list AS w ON w.Id_product = p.Id_product  WHERE w.Id_user=?`,
+      [id]
     );
-    return [rows]
+    return rows;
   }
 
+  async validateProduct(IdProduct) {
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} SET validated = true WHERE Id_product = ?`,
+      [IdProduct]
+    );
+    return [rows];
+  }
 
-async getProductByAsc (id) {   
+async getProductByAsc(id){   
 
   const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price asc`, [id]);
   return rows
  }
  
- async getProductByDesc (id) {   
+ async getProductByDesc(id){   
  
    const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price desc`, [id]);
    return rows
  }
  
 }
-
 
 module.exports = ProductRepository;

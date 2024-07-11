@@ -2,25 +2,22 @@ import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { GoHeart } from "react-icons/go";
+import {FaHeart} from "react-icons/fa"
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
-import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { useWishlist } from "../../contexts/WishlistContext";
+
+import { useAuth } from "../../contexts/AuthContext";
 
 
-function Card({
-  product,
-  setShowInput,
-  cart,
-  setCart,
-  favorites,
-  setFavorites,
-  setModalConfOpen
+function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
 }) {
-  const urlApi = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
+  const { favorites, addToWishList, removeFromWishList } = useWishlist();
+  const { auth } = useAuth();
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
 
 
@@ -31,17 +28,8 @@ function Card({
     setDisabledButton(isProductInCart);
   }, [cart, product.Id_product]);
 
-  const isFavorite = favorites.includes(product.Id_product);
-
-  function handleCard() {
-    fetch(`${urlApi}/api/product/single-Product/${product.Id_product}`)
-      .then((res) => res.json())
-      .then((data) =>
-        navigate(`/ItemDetails/${product.Id_product}`, {
-          state: { details: data },
-        })
-      )
-      .catch((err) => console.error(err));
+  function handleCard(data) {
+    navigate(`/ItemDetails/${data.name}/${data.Id_product}`);
     setShowInput(false);
   }
 
@@ -50,75 +38,6 @@ function Card({
       handleCard();
     }
   };
-
-  async function addToWishList(prod, user) {
-    try {
-      const response = await fetch(`${urlApi}/api/wishlist/like`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Id_product: prod, Id_user: user }),
-      });
-
-      if (response.status === 200) {
-        toast.success("Ajouté aux favoris", {
-          position: "top-center",
-          autoClose: 3000,
-          draggable: true,
-          theme: "dark",
-          closeOnClick: true,
-        });
-
-        const newFavorites = [...favorites, prod];
-        setFavorites(newFavorites);
-        localStorage.setItem("favorites", JSON.stringify(newFavorites));
-
-        return response.json();
-      }
-
-      toast.info("Déjà dans vos favoris", {
-        position: "top-center",
-        autoClose: 3000,
-        draggable: true,
-        theme: "light",
-        closeOnClick: true,
-      });
-      return false;
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
-  }
-
-  async function removeFromWishList(prod, user) {
-    try {
-      const response = await fetch(`${urlApi}/api/wishlist/unlike`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Id_product: prod, Id_user: user }),
-      });
-
-      if (response.status === 200) {
-        toast.success("Retiré des favoris", {
-          position: "top-center",
-          autoClose: 3000,
-          draggable: true,
-          theme: "light",
-          closeOnClick: true,
-        });
-
-        const newFavorites = favorites.filter((id) => id !== prod);
-        setFavorites(newFavorites);
-        localStorage.setItem("favorites", JSON.stringify(newFavorites));
-
-        return response.json();
-      }
-
-      return false;
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
-  }
 
   const handleCart = (article) => {
     if (disabledButton) return;
@@ -138,16 +57,35 @@ function Card({
         className="card-picture"
         src={product.picture_jewell}
         alt={product.name}
-        onClick={handleCard}
+        onClick={() => handleCard(product)}
         onKeyDown={handleKeyDown}
         role="presentation"
       />
       <GoHeart
-        onClick={() => addToWishList(product.Id_product, 2)}
-        onDoubleClick={() => removeFromWishList(product.Id_product, 2)}
+        onClick={() => {
+          if (
+            favorites.find(
+              (fav) =>
+                fav.Id_product === product.Id_product &&
+                fav.Id_user === auth?.user?.Id_user
+            )
+          ) {
+            removeFromWishList(product.Id_product);
+          } else {
+            addToWishList(product.Id_product);
+          }
+        }}
         role="presentation"
         className="heart-logo"
-        style={{ color: isFavorite ? "red" : "white" }}
+        style={{
+          color: favorites.find(
+            (fav) =>
+              fav.Id_product === product.Id_product &&
+              fav.Id_user === auth?.user?.Id_user
+          )
+            ? "white"
+            : "gray",
+        }}
       />
 
       <div className="logo-container">
@@ -160,23 +98,41 @@ function Card({
           />
         </div>
         <div
-          onClick={() =>
-            isFavorite
-              ? removeFromWishList(product.Id_product, 2)
-              : addToWishList(product.Id_product, 2)
-          }
+          onClick={() => {
+            if (
+              favorites.find(
+                (fav) =>
+                  fav.Id_product === product.Id_product &&
+                  fav.Id_user === auth?.user?.Id_user
+              )
+            ) {
+              removeFromWishList(product.Id_product);
+            } else {
+              addToWishList(product.Id_product);
+            }
+          }}
           role="presentation"
         >
-          <GoHeart
+          <FaHeart
             className="icon"
-            style={{ color: isFavorite ? "red" : "white" }}
+            style={{
+              color: favorites.find(
+                (fav) =>
+                  fav.Id_product === product.Id_product &&
+                  fav.Id_user === auth?.user?.Id_user
+              )
+                ? "white"
+                : "gray",
+            }}
           />
         </div>
         <div>
-          <SlOptionsVertical className="icon" onClick={() => handleCard()} />
+          <SlOptionsVertical
+            className="icon"
+            onClick={() => handleCard(product)}
+          />
         </div>
       </div>
-
       <div className="card-title">
         <p className="title">{product.name}</p>
         <div className="price-and-logo">
@@ -204,8 +160,6 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
-  favorites: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setFavorites: PropTypes.func.isRequired,
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       Id_product: PropTypes.number.isRequired,

@@ -1,10 +1,20 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
   try {
+    const uploadDest = `${process.env.APP_HOST}/upload/`;
+    if (req.files.picture_jewell)
+      req.body.picture_jewell =
+        uploadDest + req.files.picture_jewell[0].filename;
+    if (req.files.picture_validation)
+      req.body.picture_validation =
+        uploadDest + req.files.picture_validation[0].filename;
+
     const productData = req.body;
     productData.Id_user = req.auth.id;
+
     const result = await tables.product.add(productData);
     res.status(201).json(result);
   } catch (err) {
@@ -87,7 +97,29 @@ const validate = async (req, res, next) => {
   }
 };
 
-const getFromWishlist = async (req, res, next) => {
+  const getFromWishlist = async(req,res,next) =>{
+    try {
+      const value = req.auth.id
+      const result = await tables.product.getProductFromWishlist(value);
+      res.status(200).json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+const ascendingProduct = async (req,res,next )=> {
+ try {
+  const value = parseInt(req.params.id, 10)
+
+  const show = await tables.product.getProductByAsc(value);
+  res.status(200).json(show)
+  
+ } catch (error) {
+  next(error)
+ }
+}
+
+const descendingProduct = async (req,res,next)=> {
   try {
     const value = parseInt(req.params.id, 10);
     const result = await tables.product.getProductFromWishlist(value);
@@ -97,30 +129,10 @@ const getFromWishlist = async (req, res, next) => {
   }
 };
 
-const showFromCheapestProduct = async (res, req, next) => {
-  try {
-    const value = parseInt(req.params.id, 10);
-    const show = await tables.product.getProductByAsc(value);
-    res.status(200).json(show);
-  } catch (error) {
-    next(error);
-  }
-};
-
-const showFromBiggerProduct = async (res, req, next) => {
-  try {
-    const value = Number(req.params.id);
-    const show = await tables.product.getProductByDesc(value);
-    res.status(200).json(show);
-  } catch (error) {
-    next(error);
-  }
-};
-
 const checkoutSession = async (req, res, next) => {
   try {
-    const {products } = req.body;
-    const lineItems  = products.map((product) => ({
+    const { products } = req.body;
+    const lineItems = products.map((product) => ({
       price_data: {
         currency: "eur",
         product_data: {
@@ -163,8 +175,8 @@ module.exports = {
   readProductByUser,
   deleteProductByUser,
   getFromWishlist,
-  showFromCheapestProduct,
-  showFromBiggerProduct,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
   checkoutSession,
