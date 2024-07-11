@@ -2,9 +2,12 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./ModalNav.css";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function ModalNav({ setModalNav, setFavorite }) {
   const [modalNavigation, setModalNavigation] = useState([]);
+
+  const {auth}=useAuth()
 
   const urlApi = import.meta.env.VITE_API_URL;
 
@@ -13,7 +16,7 @@ function ModalNav({ setModalNav, setFavorite }) {
   };
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
+    fetch(`${urlApi}/api/product//get-from-wishlist/${auth.user.Id_user}`)
       .then((res) => res.json())
       .then((data) => setModalNavigation(data))
       .catch((error) => console.error(error));
@@ -22,7 +25,7 @@ function ModalNav({ setModalNav, setFavorite }) {
   const handleRemoveItem = async (productid) => {
     try {
       const response = await fetch(
-        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
+        `${urlApi}/api/wishlist/remove/product/${productid}/user/${auth.user.Id_user}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
