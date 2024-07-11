@@ -113,6 +113,10 @@
   overflow-y: auto;
 }
 
+#AddToCart .all-carts::-webkit-scrollbar {
+  width: 8px;
+}
+
 /* desktop */
 
 @media screen and (min-width: 1024px) {

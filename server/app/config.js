@@ -116,7 +116,7 @@ app.use(express.static(publicFolderPath));
 
 // Serve server resources
 
-// app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
+app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
 // // Redirect unhandled requests to the react index file
 

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
+
 function Card({
   product,
   setShowInput,
@@ -15,6 +16,7 @@ function Card({
   setCart,
   favorites,
   setFavorites,
+  setModalConfOpen
 }) {
   const urlApi = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
@@ -126,6 +128,8 @@ function Card({
       return newCart;
     });
     setDisabledButton(true);
+    setModalConfOpen(true)
+
   };
 
   return (
@@ -200,9 +204,8 @@ Card.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
-  favorites: PropTypes.func.isRequired,
+  favorites: PropTypes.arrayOf(PropTypes.number).isRequired,
   setFavorites: PropTypes.func.isRequired,
-
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       Id_product: PropTypes.number.isRequired,
@@ -212,6 +215,7 @@ Card.propTypes = {
     })
   ).isRequired,
   setCart: PropTypes.func.isRequired,
+  setModalConfOpen: PropTypes.func.isRequired,
 };
 
 export default Card;

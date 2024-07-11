@@ -135,7 +135,7 @@ const checkoutSession = async (req, res, next) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/success`,
+      success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.CLIENT_URL}/addToCart`,
     });
     res.status(200).json({ id: session.id });
@@ -143,6 +143,16 @@ const checkoutSession = async (req, res, next) => {
     next(error);
   }
 };
+
+const retrieveSession = async (req, res, next) => {
+  const {sessionId} = req.params;
+  try {  
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    res.status(200).json(session)
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   add,
@@ -158,4 +168,5 @@ module.exports = {
   readProductToValidate,
   validate,
   checkoutSession,
+  retrieveSession
 };

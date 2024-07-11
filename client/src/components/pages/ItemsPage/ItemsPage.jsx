@@ -1,12 +1,14 @@
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import "./ItemsPage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../Card/Card";
 import Flower from "../../../assets/images/illustrations/flower2.png"
 import Flower2 from "../../../assets/images/illustrations/flower1.jpg"
 import Flower3 from "../../../assets/images/illustrations/flower2bis.png"
 import { useCart } from "../../../contexts/CartContext";
+import ModalCart from "../../Modal/ModalCart/ModalCart";
+
 
 function ItemsPage() {
   const location = useLocation();
@@ -14,6 +16,9 @@ function ItemsPage() {
   const navigate = useNavigate();
   const { favorites, setFavorites } = useOutletContext();  
   const {cart, setCart} = useCart();
+  const [modalConfOpen, setModalConfOpen] = useState(false);
+
+
 
   useEffect(() => {
     const initialLocalCart = localStorage.getItem("cart");
@@ -41,7 +46,7 @@ function ItemsPage() {
         {displayProduct.map((product, index) => (
           <>
           <Card key={product.Id_product} product={product} cart={cart}
-            setCart={setCart}  favorites={favorites} setFavorites={setFavorites}/>
+            setCart={setCart}  favorites={favorites} setFavorites={setFavorites} setModalConfOpen={setModalConfOpen}/>
           {(index + 1) % 6 === 0 && (
               <img
                 src={(Math.floor(index / 6) % 2 === 0) ? Flower : Flower2}
@@ -59,6 +64,11 @@ function ItemsPage() {
           </>
         ))}
       </div>
+      {modalConfOpen && (
+        <ModalCart
+          setModalConfOpen={setModalConfOpen}
+        />
+      )}
     </div>
   );
 }
