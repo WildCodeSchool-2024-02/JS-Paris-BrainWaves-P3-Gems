@@ -22,10 +22,8 @@ const deleteSingleProductFromWishlist = async (req, res, next) => {
 
 const showWishlistCount = async (req, res, next)=> {
  try {
-
- const userId = req.auth.id
+  const userId = req.auth.id
   const [[count]] = await tables.wishlist.WishListCount(userId);
- 
   res.status(200).json(count);
  } catch (error) {
   next(error)

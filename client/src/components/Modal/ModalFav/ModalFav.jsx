@@ -27,7 +27,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
 
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/`, {
+    fetch(`${urlApi}/api/product/get-from-wishlist/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${auth?.token}`,
