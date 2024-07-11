@@ -16,11 +16,11 @@ function ModalNav({ setModalNav, setFavorite }) {
   };
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/${auth.user.Id_user}`)
+    fetch(`${urlApi}/api/product/get-from-wishlist/${auth.user.Id_user}`)
       .then((res) => res.json())
       .then((data) => setModalNavigation(data))
       .catch((error) => console.error(error));
-  }, [urlApi]);
+  }, [urlApi,auth]);
 
   const handleRemoveItem = async (productid) => {
     try {
