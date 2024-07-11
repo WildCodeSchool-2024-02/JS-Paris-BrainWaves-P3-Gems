@@ -79,11 +79,9 @@ function ItemDetailsPage() {
 
   return (
     <div id="ItemDetailsPage">
+       <MdOutlineKeyboardBackspace className="goBackButton" onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="container">
-        <MdOutlineKeyboardBackspace
-          className="goBackButton"
-          onClick={() => navigate(-1)}
-        />
+     
         <div className="container-img">
           <img
             src={detailProduct.picture_jewell}
