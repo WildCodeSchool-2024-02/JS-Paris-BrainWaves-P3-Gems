@@ -12,6 +12,7 @@
   overflow: hidden;
   box-sizing: border-box;
   margin: 5px;
+  cursor: pointer;
 }
 .card-title {
   display: flex;
@@ -58,6 +59,7 @@
   height: 350px;
   z-index: -1;
   margin-bottom: 0px;
+  transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .logo-container {
@@ -96,7 +98,8 @@
   font-size: 30px;
 }
 .card:hover .card-picture {
-  filter: grayscale(50%) blur(5px);
+  filter: grayscale(50%) blur(2px);
+  transition: filter 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   background-color: #000;
 }
 .card:hover .logo-container {
