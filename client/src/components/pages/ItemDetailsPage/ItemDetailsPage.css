@@ -136,7 +136,7 @@
   #ItemDetailsPage {
     display: flex;
     width: 95vw;
-    margin: 50px auto 20px;
+    margin: 0 1vw;
   }
 
   .goBackButton {
@@ -147,8 +147,8 @@
   }
 
   .image-detail {
-    width: 42vw;
-    height: 88vh;
+    width: 43vw;
+    height: 90vh;
     object-fit: cover;
   }
 
