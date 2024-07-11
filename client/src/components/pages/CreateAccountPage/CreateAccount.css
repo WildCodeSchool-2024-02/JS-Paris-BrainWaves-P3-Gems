@@ -70,21 +70,21 @@
   background-color: green;
 }
 
-.password-input-container {
+#CreateAccount .password-input-container {
   position: relative;
   width: 100%;
 }
 
-.password-input-container input {
+#CreateAccount .password-input-container input {
   width: 100%;
   padding-right: 30px;
 }
 
-.password-input-container .reveal {
+#CreateAccount .password-input-container .reveal {
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-100%);
+  transform: translateY(-50%);
   cursor: pointer;
 }
 
