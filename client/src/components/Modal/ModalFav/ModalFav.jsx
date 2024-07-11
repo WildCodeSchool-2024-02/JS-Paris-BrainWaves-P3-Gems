@@ -22,7 +22,6 @@ function ModalFav({ setModalOpen , setFavorite }) {
         setModals(modals.filter((modal) => modal.Id_product !== productid));
         setFavorite(false)
       } 
-    return true
   }
 
 
