@@ -17,7 +17,7 @@ tables.item = new ItemRepository();
 tables.category = new CategoryRepository();
 tables.product = new ProductRepository();
 tables.user = new UserRepository();
-tables.wishlist = new WishListRepository()
+tables.wishlist = new WishListRepository();
 
 /* ************************************************************************* */
 

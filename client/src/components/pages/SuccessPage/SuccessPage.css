@@ -10,7 +10,7 @@
 }
 
 #SuccessPage h1 {
-  padding: 10px 0 0 5px;
+  padding: 10px 0 15px 5px;
   font-size: 2.5vh;
 }
 
@@ -45,9 +45,9 @@
 }
 
 #SuccessPage .cart-img {
-  width: 40vw;
+  width: 25vw;
   padding-right: 5px;
-  height: 22vh;
+  height: 15vh;
   object-fit: cover;
 }
 
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 105px;
+  padding-top: 85px;
   width: 54vw;
 }
 
@@ -131,7 +131,7 @@
 }
 
 #SuccessPage .all-carts {
-  max-height: 70vh;
+  max-height: 36vh;
   overflow: hidden;
   width: 100vw;
   overflow-y: auto;
@@ -157,7 +157,7 @@
 
   #SuccessPage .container-add {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: flex-start;
     margin-top: 2vh;
   }
