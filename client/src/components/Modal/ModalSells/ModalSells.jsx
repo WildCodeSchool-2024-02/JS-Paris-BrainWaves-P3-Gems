@@ -12,14 +12,11 @@ function ModalSells({ setModalSellsOpen }) {
   const { auth } = useAuth();
 
   useEffect(() => {
-    fetch(
-      `${import.meta.env.VITE_API_URL}/api/product/user/${auth.token}`,
-      {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      }
-    )
+    fetch(`${import.meta.env.VITE_API_URL}/api/product/user/${auth.token}`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => setSellings(data))
       .catch((error) => console.error("Error:", error));

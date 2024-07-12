@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { FiEye } from "react-icons/fi";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./CreateAccount.css";
 import ModalConfAccount from "../../Modal/ModalConfAccount/ModalConfAccount";
 
@@ -112,7 +112,11 @@ function CreateAccount() {
               ref={password}
               onChange={handlePasswordChange}
             />
-            <FiEye className="reveal" onClick={() => setShown(!shown)} />
+            {shown ? (
+              <FiEye className="reveal" onClick={() => setShown(!shown)} />
+            ) : (
+              <FiEyeOff className="reveal" onClick={() => setShown(!shown)} />
+            )}
           </div>
           {errors.password && <span className="error">{errors.password}</span>}
         </label>
@@ -125,7 +129,11 @@ function CreateAccount() {
               placeholder="Confirmez le mot de passe"
               ref={confirmPassword}
             />
-            <FiEye className="reveal" onClick={() => setShown(!shown)} />
+            {shown ? (
+              <FiEye className="reveal" onClick={() => setShown(!shown)} />
+            ) : (
+              <FiEyeOff className="reveal" onClick={() => setShown(!shown)} />
+            )}
           </div>
           {errors.confirmPassword && (
             <span className="error">{errors.confirmPassword}</span>
@@ -138,9 +146,7 @@ function CreateAccount() {
         </button>
       </div>
       {modalConfOpen && (
-        <ModalConfAccount
-          setModalConfOpen={setModalConfOpen}
-        />
+        <ModalConfAccount setModalConfOpen={setModalConfOpen} />
       )}
     </div>
   );
