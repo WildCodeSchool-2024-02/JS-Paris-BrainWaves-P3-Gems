@@ -13,6 +13,8 @@ const {
   readProductToValidate,
   validate,
   checkoutSession,
+  ascendingProduct,
+  descendingProduct,
 } = require("../../../controllers/productActions");
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
@@ -41,8 +43,8 @@ router.get("/product-to-validate", readProductToValidate);
 router.get("/get-from-wishlist/", verifyToken,  getFromWishlist)
 
 
-router.get("/ascending-prices/:id");
-router.get("/descending-prices/:id");
+router.get("/ascending-prices/:id", ascendingProduct);
+router.get("/descending-prices/:id", descendingProduct);
 
 router.put("/validate/:Id_product", validate);
 
