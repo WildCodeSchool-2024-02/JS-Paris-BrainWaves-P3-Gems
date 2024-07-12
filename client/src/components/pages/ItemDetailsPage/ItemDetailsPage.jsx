@@ -8,6 +8,8 @@ import {
   MdOutlineKeyboardBackspace,
 } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+import { useWishlist } from "../../../contexts/WishlistContext";
+import { useAuth } from "../../../contexts/AuthContext"
 
 import "./ItemDetailsPage.css";
 
@@ -22,6 +24,10 @@ function ItemDetailsPage() {
   const [disabledButton, setDisabledButton] = useState(false);
   const [detailProduct, setDetailProduct] = useState([]);
   const [modalConfOpen, setModalConfOpen] = useState(false);
+
+  const {favorites, addToWishList, removeFromWishList} = useWishlist();
+
+  const {auth} = useAuth()
 
   const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -90,7 +96,19 @@ function ItemDetailsPage() {
           />
         </div>
 
-        <FaHeart className="heart-img" style={{ color: "gray" }} />
+        <FaHeart 
+        onClick={ () => {
+          if(
+            favorites.find( (fav) => fav.Id_product === detailProduct.Id_product &&
+          fav.Id_user === auth?.user?.Id_user
+         )
+          ){ removeFromWishList(detailProduct.Id_product);
+
+          }else{ 
+            addToWishList(detailProduct.Id_product)
+          }
+        } }
+        className="heart-img" style={{ color: favorites.find( (fav) => fav.Id_product === detailProduct.Id_product && fav.Id_user === auth?.user?.Id_user ) ? "white" : "gray" }} />
       </div>
 
       <div className="container-text">

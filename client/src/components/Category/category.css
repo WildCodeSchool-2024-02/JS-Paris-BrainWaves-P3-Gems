@@ -6,16 +6,40 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 15px 15px;
+    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .all-containers:hover .category-container {
+    padding: 0px;
+  }
+
+  .category-container {
+    transition: all 1s ease-in-out;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .category-container :hover {
+    transition: all 1s ease-in-out;
+    transform: scale(1.02);
+    z-index: 2;
+    filter: drop-shadow(0 0 10px black);
   }
 
   .all-containers > :nth-child(1) {
     grid-row-start: span 1;
     grid-column-start: span 2;
+    animation: zoomIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
   }
 
   .all-containers > :nth-child(2) {
     grid-row-start: span 1;
     grid-column-start: span 1;
+    animation: Smooth 2s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
+  }
+
+  .all-containers > :nth-child(3) {
+    animation: SmoothRev 2s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
   }
 
   .all-containers > :nth-child(4) {
@@ -31,7 +55,7 @@
   .category-title {
     font-family: League Spartan;
     font-size: 5vh;
-    padding: 3vh 3vh 2vh 3vh;
+    padding: 10px 30px;
     letter-spacing: 5px;
   }
 
@@ -42,7 +66,7 @@
     text-decoration: underline;
     text-underline-offset: 5px;
     text-decoration-thickness: 1px;
-    padding: 0 4vh;
+    padding: 1px 30px;
     font-size: 3vh;
   }
 
@@ -85,5 +109,34 @@
     text-underline-offset: 5px;
     text-decoration-thickness: 1px;
     margin: 0 4vw;
+  }
+}
+
+@keyframes Smooth {
+  0% {
+    transform: translateX(-2000px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes SmoothRev {
+  0% {
+    transform: translateX(2000px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    filter: blur(20px) grayscale(200%);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px) grayscale(0%);
   }
 }
