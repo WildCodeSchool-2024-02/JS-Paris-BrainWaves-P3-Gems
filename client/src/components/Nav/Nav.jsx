@@ -1,6 +1,6 @@
 import "./Nav.css";
 import PropTypes from "prop-types";
-import {  useState } from "react";
+import { useState } from "react";
 import { FaUser, FaHeart } from "react-icons/fa";
 import { RiSearchFill } from "react-icons/ri";
 import { IoBagSharp } from "react-icons/io5";
@@ -20,7 +20,8 @@ function Nav({ favorite, setFavorite }) {
   const { auth } = useAuth();
   const [modalNav, setModalNav] = useState(false);
 
-  const {cart} = useCart();
+
+  const { cart } = useCart();
   const handleClick = () => {
     setModalNav(true);
   };
@@ -54,15 +55,22 @@ function Nav({ favorite, setFavorite }) {
             onClick={() => navigate(`/addToCart`)}
             className="icons"
           />
-          <article className="notification-cart"  onClick={() => navigate(`/addToCart`)} onKeyDown={() => navigate(`/addToCart`)} role="presentation">
+          <article
+            className="notification-cart"
+            onClick={() => navigate(`/addToCart`)}
+            onKeyDown={() => navigate(`/addToCart`)}
+            role="presentation"
+          >
             {cart.length === 0 ? null : <p>{cart.length}</p>}
           </article>
-          <FaHeart
-            onClick={handleClick}
-            onKeyDown={handleClick}
-            role="presentation"
-            className="icons"
-          />
+          <div className="like-continer">
+            <FaHeart
+              onClick={handleClick}
+              onKeyDown={handleClick}
+              role="presentation"
+              className="icons"
+            />{" "}
+          </div>
           {modalNav && (
             <ModalNav
               setFavorite={setFavorite}

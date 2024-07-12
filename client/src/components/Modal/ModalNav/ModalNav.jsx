@@ -2,45 +2,50 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./ModalNav.css";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useWishlist } from "../../../contexts/WishlistContext";
 
-function ModalNav({ setModalNav, setFavorite }) {
+function ModalNav({ setModalNav }) {
   const [modalNavigation, setModalNavigation] = useState([]);
+  const [likeCount, setLikeCount] = useState(null);
+
+  const {auth}=useAuth()
 
   const urlApi = import.meta.env.VITE_API_URL;
+
+  const {removeFromWishList} = useWishlist()
 
   const handleCloseModal = () => {
     setModalNav(false);
   };
 
   useEffect(() => {
-    fetch(`${urlApi}/api/product//get-from-wishlist/${2}`)
+
+    fetch(`${urlApi}/api/wishlist/show-counter/`,{
+      headers:{"Content-Type": "application/json", Authorization: ` Bearer ${auth?.token}`}
+    })
+      .then((res) => res.json())
+      .then((data) => setLikeCount(data.count))
+      .catch((error) => console.error(error));
+  }, [urlApi, auth]);
+  
+
+  useEffect(() => {
+    fetch(`${urlApi}/api/product/get-from-wishlist/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${auth?.token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setModalNavigation(data))
       .catch((error) => console.error(error));
-  }, [urlApi]);
+  }, [urlApi, auth]);
 
   const handleRemoveItem = async (productid) => {
-    try {
-      const response = await fetch(
-        `${urlApi}/api/wishlist/remove/product/${productid}/user/${2}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (response.ok) {
-        setModalNavigation(
-          modalNavigation.filter(
-            (modalsNav) => modalsNav.Id_product !== productid
-          )
-        );
-        setFavorite(false);
-        return response.json();
-      }
-      return false;
-    } catch (error) {
-      console.error(error);
-      return false;
+    removeFromWishList(productid)
+      if (removeFromWishList(productid)) {
+        setModalNavigation( modalNavigation.filter( (modalsNav) => modalsNav.Id_product !== productid ) )
     }
   };
 
@@ -52,7 +57,7 @@ function ModalNav({ setModalNav, setFavorite }) {
       <div className="container-imgNav">
         <div className="container-heartNav">
           <FaHeart className="heart-profileNav" />
-          <p>Mes articles favoris</p>
+          <p>Mes articles favoris {likeCount > 0 ? `(${likeCount})`: ""}  </p>    
         </div>
         {modalNavigation.map((modalsNav) => (
           <div className="modal-styleNav" key={modalsNav.Id_product}>
@@ -84,6 +89,5 @@ function ModalNav({ setModalNav, setFavorite }) {
 
 ModalNav.propTypes = {
   setModalNav: PropTypes.func.isRequired,
-  setFavorite: PropTypes.func.isRequired,
 };
 export default ModalNav;

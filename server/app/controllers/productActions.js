@@ -1,4 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const tables = require("../../database/tables");
 
 const add = async (req, res, next) => {
@@ -96,7 +97,29 @@ const validate = async (req, res, next) => {
   }
 };
 
-const getFromWishlist = async (req, res, next) => {
+  const getFromWishlist = async(req,res,next) =>{
+    try {
+      const value = req.auth.id
+      const result = await tables.product.getProductFromWishlist(value);
+      res.status(200).json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+const ascendingProduct = async (req,res,next )=> {
+ try {
+  const value = parseInt(req.params.id, 10)
+
+  const show = await tables.product.getProductByAsc(value);
+  res.status(200).json(show)
+  
+ } catch (error) {
+  next(error)
+ }
+}
+
+const descendingProduct = async (req,res,next)=> {
   try {
     const value = parseInt(req.params.id, 10);
     const result = await tables.product.getProductFromWishlist(value);
@@ -106,26 +129,6 @@ const getFromWishlist = async (req, res, next) => {
   }
 };
 
-const ascendingProduct = async (req, res, next) => {
-  try {
-    const value = parseInt(req.params.id, 10);
-
-    const show = await tables.product.getProductByAsc(value);
-    res.status(200).json(show);
-  } catch (error) {
-    next(error);
-  }
-};
-
-const descendingProduct = async (req, res, next) => {
-  try {
-    const value = parseInt(req.params.id, 10);
-    const show = await tables.product.getProductByDesc(value);
-    res.status(200).json(show);
-  } catch (error) {
-    next(error);
-  }
-};
 const checkoutSession = async (req, res, next) => {
   try {
     const { products } = req.body;

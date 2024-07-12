@@ -47,6 +47,27 @@
   color: white;
 }
 
+#Nav .like-continer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  gap: 0px;
+}
+
+#Nav .like-continer .icons {
+  position: relative;
+}
+#Nav .like-continer p {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  position: absolute;
+  transform: translate(100%);
+  margin-right: -60px;
+  padding: 0;
+  z-index: 10;
+}
+
 .close-icons {
   position: absolute;
   right: 10px;
