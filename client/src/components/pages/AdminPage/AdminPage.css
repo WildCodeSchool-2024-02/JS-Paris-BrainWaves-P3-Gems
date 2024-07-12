@@ -146,11 +146,11 @@
   }
 
   #AdminPage .wider {
-    height: 85vh;
+    height: 70vh;
     width: 50vw;
     position: absolute;
     top: 10vh;
-    right: 26vw;
+    right: Ovh;
     object-fit: contain;
     z-index: 999;
   }

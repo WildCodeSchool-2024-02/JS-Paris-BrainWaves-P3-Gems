@@ -49,7 +49,6 @@
   display: flex;
   background-color: #d4d4d4;
   justify-content: space-evenly;
-  margin-bottom: 20px;
 }
 
 .input-image::placeholder {
@@ -75,10 +74,14 @@
 #sellingPage .error-picture {
   text-align: center;
   background-color: #d4d4d4;
+  color: #c50000c7;
+  font-weight: 300;
 }
 
 #sellingPage .error {
   text-align: center;
+  color: #c50000c7;
+  font-weight: 300;
 }
 #sellingPage .add-button {
   width: 80vw;

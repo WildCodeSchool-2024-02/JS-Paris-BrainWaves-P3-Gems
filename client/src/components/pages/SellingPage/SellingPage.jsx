@@ -105,7 +105,7 @@ function SellingPage() {
             className="input-image"
             id="pictureValidation"
             ref={pictureValidation}
-            accept="image/png, image/jpeg, image/jpg, image/webp, image/pdf"
+            accept="image/png, image/jpeg, image/jpg, image/webp"
             onChange={(e) => {
               const file = e.target.files[0];
               setFileValidation(file ? URL.createObjectURL(file) : undefined);
