@@ -63,13 +63,11 @@
   font-size: 25px;
 }
 
-.login-image-container {
+#login-image-container {
   width: 100vw;
   overflow: hidden;
-  background-image: url(src/assets/images/illustrations/flower2.png);
-  background-position: cover;
-  background-size: cover;
-  height: 52vh;
+  object-fit: cover;
+  height: 53vh;
 }
 
 .flowerLogin {

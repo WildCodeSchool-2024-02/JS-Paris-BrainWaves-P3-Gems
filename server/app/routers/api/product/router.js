@@ -10,12 +10,14 @@ const {
   readSingleProduct,
   getFilter,
   getFromWishlist,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
   checkoutSession,
-  ascendingProduct,
-  descendingProduct,
+  retrieveSession,
 } = require("../../../controllers/productActions");
+
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
 const fileUpload = require("../../../services/fileUpload");
@@ -33,22 +35,21 @@ router.post(
 router.post("/checkoutSession", checkoutSession);
 
 router.delete("/", verifyToken, deleteProductByUser);
-router.delete("/", deleteProductByUser);
 
 router.get("/user/:id", verifyToken, readProductByUser);
 router.get("/product-by-category/:id", readProductByCategoryId);
 router.get("/single-Product/:id", readSingleProduct);
 router.get("/searching_for_product", getFilter);
 router.get("/product-to-validate", readProductToValidate);
-router.get('/product-by-category/:id', readProductByCategoryId)
-router.get('/single-Product/:id', readSingleProduct)
-router.get('/searching_for_product', getFilter)
 
 router.get("/get-from-wishlist/", verifyToken,  getFromWishlist)
 
 
 router.get("/ascending-prices/:id", ascendingProduct);
 router.get("/descending-prices/:id", descendingProduct);
+
+router.get("/stripe/:sessionId", retrieveSession)
+
 
 router.put("/validate/:Id_product", validate);
 

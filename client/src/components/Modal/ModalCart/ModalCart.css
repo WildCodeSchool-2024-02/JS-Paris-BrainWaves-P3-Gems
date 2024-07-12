@@ -1,7 +1,7 @@
 /* MOBILE */
 #modal-conf-cart-profile {
   right: 17%;
-  position: absolute;
+  position: fixed;
   z-index: 99;
   top: 30%;
 }

@@ -1,11 +1,35 @@
 /* MOBILE */
 .input-image {
-  height: 25vh;
-  text-align: center;
-  font-size: 2vh;
-  font-weight: 600;
+  font-size: 1rem;
 }
-
+.preview-image {
+  max-width: 100%;
+  max-height: 100px;
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  object-fit: contain;
+  height: 20vh;
+}
+.pg-validation {
+  margin-top: 13vh;
+  margin-bottom: 11vh;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  font-family: "League Spartan", sans-serif;
+  text-decoration: none;
+}
+.container-picture {
+  display: flex;
+  flex-direction: column;
+}
+.container-validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .inputs-section {
   height: 72vh;
   background-size: cover;
@@ -17,14 +41,15 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 5vh;
-  background: rgba(255, 255, 255, 70%);
+  background: rgba(255, 255, 255, 80%);
   padding: 1vh 0;
 }
 
 .input-image-div {
   display: flex;
-  justify-content: center;
   background-color: #d4d4d4;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .input-image::placeholder {
@@ -42,8 +67,19 @@
   height: 4vh;
 }
 
+#sellingPage #backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: blur(4px) grayscale(0.2);
+}
+
 #sellingPage label {
-  font-size: 2.5vh;
+  font-size: 2vh;
   margin-left: 1vw;
 }
 
@@ -66,12 +102,20 @@
   display: flex;
   justify-content: center;
 }
+
+.container-picture,
+.container-validation {
+  position: relative;
+}
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   #sellingPage {
     max-height: 100vh;
   }
-
+  .preview-image {
+    margin-top: 8vh;
+  }
   .input-div {
     display: flex;
     flex-direction: column;
@@ -82,7 +126,7 @@
   }
 
   .input-image-div {
-    height: 25vh;
+    height: 30vh;
   }
   .all-input {
     position: fixed;
