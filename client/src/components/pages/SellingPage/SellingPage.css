@@ -1,11 +1,27 @@
 /* MOBILE */
 .input-image {
-  height: 25vh;
-  text-align: center;
-  font-size: 2vh;
-  font-weight: 600;
+  font-size: 1rem;
 }
-
+.preview-image {
+  margin-top: 1vh;
+  object-fit: contain;
+  height: 20vh;
+}
+.pg-validation {
+  margin-top: 11vh;
+  margin-bottom: 11vh;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.container-picture {
+  display: flex;
+  flex-direction: column;
+}
+.container-validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .inputs-section {
   height: 72vh;
   background-size: cover;
@@ -82,7 +98,7 @@
   }
 
   .input-image-div {
-    height: 25vh;
+    height: 30vh;
   }
   .all-input {
     position: fixed;
