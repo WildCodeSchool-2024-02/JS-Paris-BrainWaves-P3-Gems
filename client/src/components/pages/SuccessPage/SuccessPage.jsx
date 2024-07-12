@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./SuccessPage.css";
 import { useLocation } from "react-router-dom";
 import { useCart } from "../../../contexts/CartContext";
+import video from "../../../assets/images/videos/background2.mp4"
 
 function SuccessPage() {
   const location = useLocation();
@@ -54,6 +55,9 @@ function SuccessPage() {
 
   return (
     <div id="SuccessPage">
+         <video autoPlay muted loop id="backgroundVideo">
+          <source src={video} type="video/mp4" />
+        </video>
       <h1>Confirmation et Commande</h1>
       <div className="container-add">
           <div className="all-carts">
