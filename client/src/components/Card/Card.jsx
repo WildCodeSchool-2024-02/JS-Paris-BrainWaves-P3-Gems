@@ -12,7 +12,8 @@ import { useWishlist } from "../../contexts/WishlistContext";
 import { useAuth } from "../../contexts/AuthContext";
 
 
-function Card({ product, setShowInput, cart, setCart }) {
+function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
+}) {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
   const { favorites, addToWishList, removeFromWishList } = useWishlist();
@@ -46,6 +47,8 @@ function Card({ product, setShowInput, cart, setCart }) {
       return newCart;
     });
     setDisabledButton(true);
+    setModalConfOpen(true)
+
   };
 
   return (
@@ -166,6 +169,7 @@ Card.propTypes = {
     })
   ).isRequired,
   setCart: PropTypes.func.isRequired,
+  setModalConfOpen: PropTypes.func.isRequired,
 };
 
 export default Card;

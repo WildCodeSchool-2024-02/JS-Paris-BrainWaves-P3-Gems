@@ -10,12 +10,17 @@ const {
   readSingleProduct,
   getFilter,
   getFromWishlist,
+  ascendingProduct,
+  descendingProduct,
   readProductToValidate,
   validate,
   checkoutSession,
+  retrieveSession,
   ascendingProduct,
   descendingProduct,
+
 } = require("../../../controllers/productActions");
+
 const validateProduct = require("../../../services/product");
 const { verifyToken } = require("../../../services/auth");
 const fileUpload = require("../../../services/fileUpload");
@@ -45,6 +50,9 @@ router.get("/get-from-wishlist/", verifyToken,  getFromWishlist)
 
 router.get("/ascending-prices/:id", ascendingProduct);
 router.get("/descending-prices/:id", descendingProduct);
+
+router.get("/stripe/:sessionId", retrieveSession)
+
 
 router.put("/validate/:Id_product", validate);
 
