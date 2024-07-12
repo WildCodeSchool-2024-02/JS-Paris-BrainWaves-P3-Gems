@@ -13,9 +13,6 @@ import {
 
 import "swiper/css/bundle";
 
-
-
-
 import "./category.css";
 
 function Category() {
@@ -39,6 +36,17 @@ function Category() {
     }
   };
 
+  const showVideo = (video) => {
+    switch(video){
+      case "Bracelets": return '../../assets/images/videos/homepage/home_bracelet.mp4';
+      case "Bagues": return '../../assets/images/videos/homepage/home_ring.mp4'
+      case "Colliers": return '../../assets/images/videos/homepage/home_necklace.mp4'
+      case "Boucles d'oreille": return '../../assets/images/videos/homepage/home_earring.mp4'
+      case "montres": return '../../assets/images/videos/homepage/home_watch.mp4';
+      default: return '../../assets/images/videos/homepage/home_watch.mp4';
+    }
+  }
+
   return (
     <div className="all-containers">
       <div className="all-video-containers">
@@ -61,7 +69,7 @@ function Category() {
             <SwiperSlide key={category.Id_category_list} className="slide">
               <div className="cat-video-container">
                 <video muted loop autoPlay className="cat-video">
-                  <source src="hello.mp4" type="video/mp4" />
+                  <source src={showVideo(category.title)} type="video/mp4" />
                 </video>
               </div>
               <div className="text-container">

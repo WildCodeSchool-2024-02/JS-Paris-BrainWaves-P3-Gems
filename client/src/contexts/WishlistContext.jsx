@@ -12,7 +12,7 @@ export function WishlistProvider({ children }) {
   const { auth } = useAuth();
 
   const [favorites, setFavorites] = useState([]);
-  
+
   useEffect(() => {
     fetch(`${urlApi}/api/wishlist/get-wishlist`, {
       headers: {
