@@ -109,9 +109,9 @@ const validate = async (req, res, next) => {
 
 const ascendingProduct = async (req,res,next )=> {
  try {
-  const value = parseInt(req.params.id, 10)
+  const id = parseInt(req.params.id, 10)
 
-  const show = await tables.product.getProductByAsc(value);
+  const show = await tables.product.getProductByAsc(id);
   res.status(200).json(show)
   
  } catch (error) {
@@ -121,9 +121,9 @@ const ascendingProduct = async (req,res,next )=> {
 
 const descendingProduct = async (req,res,next)=> {
   try {
-    const value = parseInt(req.params.id, 10);
-    const result = await tables.product.getProductFromWishlist(value);
-    res.status(200).json(result);
+    const id = parseInt(req.params.id, 10);
+    const show = await tables.product.getProductByDesc(id);
+    res.status(200).json(show);
   } catch (error) {
     next(error);
   }

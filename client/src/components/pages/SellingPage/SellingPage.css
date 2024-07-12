@@ -1,11 +1,35 @@
 /* MOBILE */
 .input-image {
-  height: 25vh;
-  text-align: center;
-  font-size: 2vh;
-  font-weight: 600;
+  font-size: 1rem;
 }
-
+.preview-image {
+  max-width: 100%;
+  max-height: 100px;
+  display: block;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  object-fit: contain;
+  height: 20vh;
+}
+.pg-validation {
+  margin-top: 13vh;
+  margin-bottom: 11vh;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  font-family: "League Spartan", sans-serif;
+  text-decoration: none;
+}
+.container-picture {
+  display: flex;
+  flex-direction: column;
+}
+.container-validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .inputs-section {
   height: 72vh;
   background-size: cover;
@@ -23,8 +47,9 @@
 
 .input-image-div {
   display: flex;
-  justify-content: center;
   background-color: #d4d4d4;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
 .input-image::placeholder {
@@ -66,12 +91,20 @@
   display: flex;
   justify-content: center;
 }
+
+.container-picture,
+.container-validation {
+  position: relative;
+}
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   #sellingPage {
     max-height: 100vh;
   }
-
+  .preview-image {
+    margin-top: 8vh;
+  }
   .input-div {
     display: flex;
     flex-direction: column;
@@ -82,7 +115,7 @@
   }
 
   .input-image-div {
-    height: 25vh;
+    height: 30vh;
   }
   .all-input {
     position: fixed;
