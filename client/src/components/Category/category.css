@@ -12,6 +12,58 @@
   .all-containers:hover .category-container {
     padding: 0px;
   }
+  .all-video-containers {
+    border: 2px solid red;
+    width: 100vw;
+    height: 600px;
+  }
+
+  .cat-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .cat-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slide:hover .cat-video {
+    filter: blur(4px);
+  }
+
+  .text-container {
+    text-align: center;
+    z-index: 10;
+    margin: 200px auto;
+    visibility: hidden;
+
+    animation: visibleShow 2s ease-in-out alternate forwards;
+  }
+
+  .slide:hover .text-container {
+    visibility: visible;
+
+    animation: visibleShow 2s ease-in-out alternate forwards;
+  }
+
+  .text-container h2 {
+    font-size: 80px;
+  }
 
   .category-container {
     transition: all 1s ease-in-out;
@@ -29,17 +81,11 @@
   .all-containers > :nth-child(1) {
     grid-row-start: span 1;
     grid-column-start: span 2;
-    animation: zoomIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
   }
 
   .all-containers > :nth-child(2) {
     grid-row-start: span 1;
     grid-column-start: span 1;
-    animation: Smooth 2s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
-  }
-
-  .all-containers > :nth-child(3) {
-    animation: SmoothRev 2s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
   }
 
   .all-containers > :nth-child(4) {
@@ -110,6 +156,51 @@
     text-decoration-thickness: 1px;
     margin: 0 4vw;
   }
+
+  .text-container h2 {
+    font-size: 50px;
+  }
+
+  /*video SLIDER  */
+
+  .all-video-containers {
+    border: 2px solid red;
+    width: 100vw;
+    height: 500px;
+  }
+
+  .cat-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .cat-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .text-container {
+    text-align: center;
+    z-index: 10;
+    margin: 200px auto;
+  }
+  .text-container h2 {
+    font-size: 40px;
+  }
 }
 
 @keyframes Smooth {
@@ -138,5 +229,15 @@
   100% {
     transform: scale(1);
     filter: blur(0px) grayscale(0%);
+  }
+}
+@keyframes visibleShow {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
