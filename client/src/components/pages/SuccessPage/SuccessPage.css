@@ -1,9 +1,5 @@
 /* Mobile */
 #SuccessPage {
-  background-image: url("src/assets/images/illustrations/flower4.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
   height: 95vh;
   width: 100vw;
   font-family: "League Spartan", sans-serif;

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "./SellingPage.css";
-import background from "../../../assets/images/illustrations/flower1.jpg";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
 import { useAuth } from "../../../contexts/AuthContext";
+import video from "../../../assets/images/videos/background5.mp4"
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -123,9 +123,11 @@ function SellingPage() {
       </div>
       {errors && <p className="error">{errors.all}</p>}
       <form
-        style={{ backgroundImage: `url(${background})` }}
         className="inputs-section"
       >
+         <video autoPlay muted loop id="backgroundVideo">
+          <source src={video} type="video/mp4" />
+        </video>
         <div className="input-div">
           <label htmlFor="title">Titre:</label>
           <input

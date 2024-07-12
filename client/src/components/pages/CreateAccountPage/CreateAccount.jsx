@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./CreateAccount.css";
 import ModalConfAccount from "../../Modal/ModalConfAccount/ModalConfAccount";
+import video from "../../../assets/images/videos/background1.mp4"
 
 function CreateAccount() {
   const firstname = useRef();
@@ -63,6 +64,9 @@ function CreateAccount() {
 
   return (
     <div id="CreateAccount">
+ <video autoPlay muted loop id="backgroundVideo">
+ <source src={video} type="video/mp4" />
+      </video>
       <p>Inscription</p>
       <div className="inputflex">
         <label className="inputLogin">
