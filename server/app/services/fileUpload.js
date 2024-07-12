@@ -6,6 +6,7 @@ const fileTypes = [
   "image/jpeg",
   "image/jpg",
   "image/pdf",
+  "image/webp"
 ];
 
 const storage = multer.diskStorage({

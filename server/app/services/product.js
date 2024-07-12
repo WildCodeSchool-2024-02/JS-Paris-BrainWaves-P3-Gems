@@ -11,6 +11,10 @@ const validateProduct = (req, res, next) => {
   ) {
     errors.all = "Veuillez remplir tous les champs";
   }
+  
+  if (!req?.files?.picture_jewell || !req?.files?.picture_validation) {
+    errors.picture = "Veuillez ajouter une photo";
+  }
 
   if (!req?.files?.picture_jewell || !req?.files?.picture_validation) {
     errors.picture = "Veuillez ajouter une photo";

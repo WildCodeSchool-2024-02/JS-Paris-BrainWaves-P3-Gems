@@ -15,6 +15,8 @@ function SellingPage() {
   const [categories, setCategories] = useState([]);
   const { auth } = useAuth();
   const [modalConfOpen, setModalConfOpen] = useState(false);
+  const [fileJewell, setFileJewell] = useState("");
+  const [fileValidation, setFileValidation] = useState("");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -76,19 +78,48 @@ function SellingPage() {
     <div id="sellingPage">
       {errors && <p className="error-picture">{errors.picture}</p>}
       <div className="input-image-div">
-        <input
-          type="file"
-          className="input-image"
-          ref={pictureJewell}
-          accept="image/png, image/jpeg, image/jpg"
-        />
-        <input
-          type="file"
-          className="input-image"
-          placeholder="Ajouter une facture"
-          ref={pictureValidation}
-          accept="image/png, image/jpeg, image/jpg"
-        />
+        <section className="container-picture">
+          <input
+            type="file"
+            className="input-image"
+            id="pictureJewell"
+            ref={pictureJewell}
+            accept="image/png, image/jpeg, image/jpg, image/webp"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              setFileJewell(file ? URL.createObjectURL(file) : undefined);
+            }}
+            style={{ display: "none" }}
+          />
+          {fileJewell ? (
+            <img src={fileJewell} alt="Preview" className="preview-image" />
+          ) : (
+            <label htmlFor="pictureJewell" className="pg-validation">
+              Ajoutez une photo
+            </label>
+          )}
+        </section>
+        <section className="container-validation">
+          <input
+            type="file"
+            className="input-image"
+            id="pictureValidation"
+            ref={pictureValidation}
+            accept="image/png, image/jpeg, image/jpg, image/webp, image/pdf"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              setFileValidation(file ? URL.createObjectURL(file) : undefined);
+            }}
+            style={{ display: "none" }}
+          />
+          {fileValidation ? (
+            <img src={fileValidation} alt="Preview" className="preview-image" />
+          ) : (
+            <label htmlFor="pictureValidation" className="pg-validation">
+              Ajoutez votre facture
+            </label>
+          )}
+        </section>
       </div>
       {errors && <p className="error">{errors.all}</p>}
       <form

@@ -4,13 +4,12 @@ import { useAuth } from "./contexts/AuthContext";
 import Nav from "./components/Nav/Nav";
 
 function App() {
-
-
   const { auth } = useAuth();
+
   return (
     <div id="App">
-      <Nav  />
-      <Outlet context={ auth } />
+      <Nav />
+      <Outlet context={auth} />
     </div>
   );
 }
