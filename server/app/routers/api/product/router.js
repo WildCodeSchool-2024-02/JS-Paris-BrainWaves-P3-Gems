@@ -16,8 +16,6 @@ const {
   validate,
   checkoutSession,
   retrieveSession,
-  ascendingProduct,
-  descendingProduct,
 
 } = require("../../../controllers/productActions");
 
