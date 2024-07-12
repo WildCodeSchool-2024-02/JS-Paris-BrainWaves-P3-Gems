@@ -82,7 +82,7 @@ function ItemsPage() {
         {showProducts.map((product, index) => (
           <>
           <Card key={product.Id_product} product={product} cart={cart}
-            setCart={setCart} setModalConfOpen={setModalConfOpen} />
+            setCart={setCart} setModalConfOpen={setModalConfOpen}/>
           {(index + 1) % 6 === 0 && (
               <img
                 src={Math.floor(index / 6) % 2 === 0 ? Flower : Flower2}
