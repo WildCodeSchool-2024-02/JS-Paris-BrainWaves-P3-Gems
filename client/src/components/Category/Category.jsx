@@ -75,7 +75,7 @@ function Category() {
           {cat.map((category) => (
             <SwiperSlide key={category.Id_category_list} className="slide">
               <div className="cat-video-container">
-                <video muted loop autoPlay className="cat-video">
+                <video muted loop autoPlay playsInline className="cat-video">
                   <source src={showVideo(category.title)} type="video/mp4" />
                 </video>
               </div>
