@@ -43,11 +43,9 @@ class CategorySeeder extends AbstractSeeder {
         refName: "cat_5",
       },
     ];
-
     categories.forEach((category) => {
       this.insert(category);
     });
   }
 }
-
 module.exports = CategorySeeder;

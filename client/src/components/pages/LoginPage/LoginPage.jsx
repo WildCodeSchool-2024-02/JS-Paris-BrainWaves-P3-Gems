@@ -111,7 +111,7 @@ function LoginPage() {
       <div className="inputflex">
         <p className="wishlist">
           <FaHeart className="heart" />
-          Créez une wishlit personnalisée avec vos articles enregistrés
+          Créez une wishlist personnalisée avec vos articles enregistrés
         </p>
       </div>
       <video autoPlay muted loop playsInline id="login-image-container">

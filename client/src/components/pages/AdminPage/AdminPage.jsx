@@ -2,7 +2,7 @@ import "./AdminPage.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
-import video from "../../../assets/images/videos/background3.mp4"
+import video from "../../../assets/images/videos/background5.mp4"
 
 function AdminPage() {
   const [ setInfoUser ] = useState("");

@@ -65,7 +65,7 @@ function Nav({ favorite, setFavorite }) {
           </article>
           <div className="like-continer">
             <FaHeart
-              onClick={handleClick}
+              onClick={ auth ? handleClick : ()=> navigate("/login") }
               onKeyDown={handleClick}
               role="presentation"
               className="icons"
