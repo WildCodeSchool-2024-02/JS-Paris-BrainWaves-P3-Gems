@@ -136,10 +136,10 @@
   }
 
   #AdminPage .articles-displayed-container {
-    height: 65vh;
-    width: 90vh;
+    height: 68vh;
+    width: 60vw;
     position: absolute;
-    bottom: 5vh;
+    bottom: 3vh;
   }
 
   #AdminPage .admin-all-details {
@@ -156,9 +156,10 @@
   #AdminPage .wider {
     height: 70vh;
     width: 50vw;
-    position: absolute;
-    top: 10vh;
-    right: Ovh;
+
+    top: -70px;
+    right: 5vw;
+
     object-fit: contain;
     z-index: 999;
   }

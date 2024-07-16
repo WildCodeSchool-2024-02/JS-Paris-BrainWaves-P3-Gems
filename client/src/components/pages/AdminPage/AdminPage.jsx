@@ -111,16 +111,10 @@ function AdminPage() {
                 <div className="admin-all-details">
                   <div className="admin-images">
                     <img
-                      onClick={() => handleWideImage(product.Id_product)}
-                      onKeyDown={() =>handleWideImage(product.Id_product)}
-                      role="presentation"
+                     
                       src={product.picture_jewell}
                       alt={product.name}
-                      className={
-                        product.Id_product === widerImageId && widerImage
-                          ? "wider"
-                          : ""
-                      }
+                     
                     />
                     <img
                       onClick={() =>handleWideImage(product.Id_product)}
