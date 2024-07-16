@@ -62,8 +62,7 @@ const getFilter = async (req, res, next) => {
 
 const readProductByUser = async (req, res, next) => {
   try {
-    const parseId = parseInt(req.params.id, 10);
-    const [results] = await tables.product.readProductByUser(parseId);
+    const [results] = await tables.product.readProductByUser(req.auth.id);
     res.status(200).json(results);
   } catch (error) {
     next(error);

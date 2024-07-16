@@ -68,6 +68,8 @@ function SellingPage() {
         setModalConfOpen(true);
         pictureJewell.current.value = "";
         pictureValidation.current.value = "";
+        setFileJewell("");
+        setFileValidation("");
       }
     } catch (error) {
       console.error(error);
