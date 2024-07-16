@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./SellingPage.css";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
 import { useAuth } from "../../../contexts/AuthContext";
-import video from "../../../assets/images/videos/background5.mp4"
+import video from "../../../assets/images/videos/background5.mp4";
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -17,6 +17,7 @@ function SellingPage() {
   const [modalConfOpen, setModalConfOpen] = useState(false);
   const [fileJewell, setFileJewell] = useState("");
   const [fileValidation, setFileValidation] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -38,6 +39,9 @@ function SellingPage() {
   }, []);
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     const form = new FormData();
     form.append("picture_jewell", pictureJewell.current.files[0]);
     form.append("picture_validation", pictureValidation.current.files[0]);
@@ -73,6 +77,8 @@ function SellingPage() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -124,10 +130,8 @@ function SellingPage() {
         </section>
       </div>
       {errors && <p className="error">{errors.all}</p>}
-      <form
-        className="inputs-section"
-      >
-         <video autoPlay muted loop playsInline id="backgroundVideo">
+      <form className="inputs-section">
+        <video autoPlay muted loop playsInline id="backgroundVideo">
           <source src={video} type="video/mp4" />
         </video>
         <div className="input-div">
