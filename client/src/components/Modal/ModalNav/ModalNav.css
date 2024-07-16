@@ -20,6 +20,11 @@
   max-height: 47vh;
   overflow-y: auto;
 }
+
+h1 .noFav {
+  font-size: 6vh;
+}
+
 .image-modalNav {
   width: 49vw;
   height: 19vh;
@@ -80,6 +85,11 @@
   font-weight: 400;
 }
 
+#modal-nav .noFav {
+  font-size: 2vh;
+  padding: 1vh 0;
+}
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   #modal-nav {
@@ -99,5 +109,10 @@
   .image-modalNav {
     width: 15vw;
     height: 24vh;
+  }
+
+  #modal-nav .noFav {
+    font-size: 2.5vh;
+    padding: 1vh 0 5vh 0;
   }
 }

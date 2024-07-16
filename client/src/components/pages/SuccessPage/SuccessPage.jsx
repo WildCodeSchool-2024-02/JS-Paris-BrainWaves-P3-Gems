@@ -55,7 +55,7 @@ function SuccessPage() {
 
   return (
     <div id="SuccessPage">
-         <video autoPlay muted loop id="backgroundVideo">
+         <video autoPlay muted loop playsInline id="backgroundVideo">
           <source src={video} type="video/mp4" />
         </video>
       <h1>Confirmation et Commande</h1>

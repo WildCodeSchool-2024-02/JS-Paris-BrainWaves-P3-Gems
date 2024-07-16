@@ -49,7 +49,6 @@
   display: flex;
   background-color: #d4d4d4;
   justify-content: space-evenly;
-  margin-bottom: 20px;
 }
 
 .input-image::placeholder {
@@ -75,7 +74,7 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: blur(4px) grayscale(0.2);
+  filter: grayscale(0.2);
 }
 
 #sellingPage label {
@@ -86,10 +85,14 @@
 #sellingPage .error-picture {
   text-align: center;
   background-color: #d4d4d4;
+  color: #c50000c7;
+  font-weight: 300;
 }
 
 #sellingPage .error {
   text-align: center;
+  color: #c50000c7;
+  font-weight: 300;
 }
 #sellingPage .add-button {
   width: 80vw;
@@ -111,7 +114,10 @@
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   #sellingPage {
-    max-height: 100vh;
+    overflow-y: hidden;
+  }
+  #backgroundVideo {
+    min-height: 100vh;
   }
   .preview-image {
     margin-top: 8vh;

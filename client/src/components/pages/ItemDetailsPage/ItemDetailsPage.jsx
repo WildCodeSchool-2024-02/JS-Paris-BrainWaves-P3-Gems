@@ -122,8 +122,8 @@ function ItemDetailsPage() {
           <button
             type="button"
             className={`button-detail ${disabledButton ? "disabled" : ""}`}
-            onClick={() => handleCart(detailProduct)}
-          >
+            onClick={auth ? () => handleCart(detailProduct) : () => navigate("/login")}
+            >
             Ajouter au panier
           </button>
         </div>
