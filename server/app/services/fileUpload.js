@@ -5,7 +5,6 @@ const fileTypes = [
   "image/png",
   "image/jpeg",
   "image/jpg",
-  "image/pdf",
   "image/webp"
 ];
 
