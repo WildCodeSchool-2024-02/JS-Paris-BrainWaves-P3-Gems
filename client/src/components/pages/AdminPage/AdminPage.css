@@ -1,6 +1,6 @@
 /* MOBILE */
 .background {
-  height: 95vh;
+  max-height: 95vh;
 }
 #AdminPage h1 {
   color: white;

@@ -1,6 +1,6 @@
 /* MOBILE */
 .background {
-  min-height: 100vh;
+  max-height: 95vh;
 }
 
 #ProfilePage #backgroundVideo {
@@ -92,7 +92,6 @@
     flex-direction: column;
     align-items: center;
     padding-top: 5%;
-    height: 100vh;
     object-fit: cover;
   }
   #ProfilePage h1 {

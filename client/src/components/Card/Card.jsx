@@ -94,7 +94,8 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
             onKeyDown={() => handleCart(product)}
             className={`icon ${disabledButton ? "disabled" : ""}`}
             role="presentation"
-            onClick={() => handleCart(product)}
+            onClick={auth ? () => handleCart(product) : () => navigate("/login")}
+
           />
         </div>
         <div
@@ -140,7 +141,7 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
             className={`cart ${disabledButton ? "disabled" : ""}`}
             onKeyDown={() => handleCart(product)}
             role="presentation"
-            onClick={() => handleCart(product)}
+            onClick={auth ? () => handleCart(product) : () => navigate("/login")}
           />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />
