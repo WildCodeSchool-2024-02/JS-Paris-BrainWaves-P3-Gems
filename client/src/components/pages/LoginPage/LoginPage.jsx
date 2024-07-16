@@ -114,7 +114,7 @@ function LoginPage() {
           Créez une wishlist personnalisée avec vos articles enregistrés
         </p>
       </div>
-      <video autoPlay muted loop id="login-image-container">
+      <video autoPlay muted loop playsInline id="login-image-container">
           <source src={video} type="video/mp4" />
         </video>
     </div>

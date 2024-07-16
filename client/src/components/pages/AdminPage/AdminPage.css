@@ -1,6 +1,6 @@
 /* MOBILE */
 .background {
-  max-height: 95vh;
+  max-height: 90vh;
 }
 #AdminPage h1 {
   color: white;
@@ -154,10 +154,12 @@
   }
 
   #AdminPage .wider {
-    height: 85vh;
+    height: 70vh;
     width: 50vw;
+
     top: -70px;
     right: 5vw;
+
     object-fit: contain;
     z-index: 999;
   }
