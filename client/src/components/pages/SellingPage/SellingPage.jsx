@@ -105,7 +105,7 @@ function SellingPage() {
             className="input-image"
             id="pictureValidation"
             ref={pictureValidation}
-            accept="image/png, image/jpeg, image/jpg, image/webp, image/pdf"
+            accept="image/png, image/jpeg, image/jpg, image/webp"
             onChange={(e) => {
               const file = e.target.files[0];
               setFileValidation(file ? URL.createObjectURL(file) : undefined);
@@ -125,7 +125,7 @@ function SellingPage() {
       <form
         className="inputs-section"
       >
-         <video autoPlay muted loop id="backgroundVideo">
+         <video autoPlay muted loop playsInline id="backgroundVideo">
           <source src={video} type="video/mp4" />
         </video>
         <div className="input-div">
@@ -177,7 +177,7 @@ function SellingPage() {
           {errors && <p className="error">{errors.price}</p>}
         </div>
         <div className="button-div">
-          <button className="add-button" type="button" onClick={handleSubmit}>
+          <button className="add-button" type="button" onClick={handleSubmit} onTouchEnd={handleSubmit}>
             Ajouter
           </button>
         </div>
