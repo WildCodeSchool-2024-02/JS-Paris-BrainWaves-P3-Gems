@@ -30,7 +30,6 @@ function ModalSells({ setModalSellsOpen }) {
   const handleCloseModal = () => {
     setModalSellsOpen(false);
   };
-
   const handleDelete = async (IdUser, IdProduct) => {
     try {
       await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
