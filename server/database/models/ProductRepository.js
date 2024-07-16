@@ -45,8 +45,10 @@ class ProductRepository extends AbstractRepository {
 
   async readProductByUser(id) {
     const [rows] = await this.database.query(
-      `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user AND ${this.table}.validated = true`,
-      [id]
+      `SELECT * FROM ${this.table} 
+      INNER JOIN user ON ${this.table}.Id_user = user.Id_user 
+      WHERE ${this.table}.Id_user = ? AND ${this.table}.validated = true`,
+     [id]
     );
     return [rows];
   }
