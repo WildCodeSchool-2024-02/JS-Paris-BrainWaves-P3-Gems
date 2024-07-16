@@ -47,21 +47,26 @@
 
   .text-container {
     text-align: center;
-    z-index: 10;
+    z-index: 50;
     margin: 200px auto;
     visibility: hidden;
-
-    animation: visibleShow 2s ease-in-out alternate forwards;
+    cursor: pointer;
+    animation: visibleShow 2s cubic-bezier(0.075, 0.82, 0.165, 2) alternate;
   }
 
   .slide:hover .text-container {
     visibility: visible;
-
-    animation: visibleShow 2s ease-in-out alternate forwards;
+    animation: visibleShow 2s alternate;
+  }
+  .text-container h1 {
+    color: white;
+    text-shadow: 0 0 15px black;
   }
 
   .text-container h2 {
-    font-size: 80px;
+    font-size: 100px;
+    color: white;
+    text-shadow: 0 0 15px black;
   }
 
   .category-container {
@@ -158,12 +163,17 @@
 
   .text-container h2 {
     font-size: 50px;
+    color: white;
+    text-shadow: 0 0 15px black;
   }
 
+  .text-container h1 {
+    color: white;
+    text-shadow: 0 0 15px black;
+  }
   /*video SLIDER  */
 
   .all-video-containers {
-    border: 2px solid red;
     width: 100vw;
     height: 500px;
   }

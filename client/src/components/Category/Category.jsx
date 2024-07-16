@@ -1,8 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { useLoaderData, useNavigate } from "react-router-dom";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import {
   Navigation,
   Pagination,
@@ -10,6 +8,13 @@ import {
   Scrollbar,
   EffectFade,
 } from "swiper/modules";
+import bracelets from '../../assets/images/videos/homepage/home_bracelet.mp4';
+import Bagues from '../../assets/images/videos/homepage/home_ring.mp4'
+import Colliers from '../../assets/images/videos/homepage/home_necklace.mp4'
+import Boucles from '../../assets/images/videos/homepage/home_earring.mp4'
+import Montres from '../../assets/images/videos/homepage/home_watch.mp4';
+
+
 
 import "swiper/css/bundle";
 
@@ -38,14 +43,18 @@ function Category() {
 
   const showVideo = (video) => {
     switch(video){
-      case "Bracelets": return '../../assets/images/videos/homepage/home_bracelet.mp4';
-      case "Bagues": return '../../assets/images/videos/homepage/home_ring.mp4'
-      case "Colliers": return '../../assets/images/videos/homepage/home_necklace.mp4'
-      case "Boucles d'oreille": return '../../assets/images/videos/homepage/home_earring.mp4'
-      case "montres": return '../../assets/images/videos/homepage/home_watch.mp4';
-      default: return '../../assets/images/videos/homepage/home_watch.mp4';
+      case "Bracelets": return bracelets
+      case "Bagues": return Bagues
+      case "Colliers": return Colliers
+      case "Boucles d'oreilles": return Boucles
+      case "Montres": return Montres
+      default: return Boucles
     }
   }
+
+  const videoTitle = (data) => {
+    navigate(`/items/${data.title}/${data.Id_category_list}`);
+  };
 
   return (
     <div className="all-containers">
@@ -58,10 +67,8 @@ function Category() {
           grabCursor
           centeredSlides
           loop
-          navigation
-          pagination={{ clickable: true }}
           autoplay={{
-            delay: 10000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
         >
@@ -74,7 +81,7 @@ function Category() {
               </div>
               <div className="text-container">
                 <h1 className="video-h1">Gems</h1>
-                <h2>{category.title}</h2>
+                <h2  onClick={()=> videoTitle(category)}  role="presentation">{category.title}</h2>
               </div>
             </SwiperSlide>
           ))}
