@@ -16,7 +16,6 @@ const {
   validate,
   checkoutSession,
   retrieveSession,
-
 } = require("../../../controllers/productActions");
 
 const validateProduct = require("../../../services/product");

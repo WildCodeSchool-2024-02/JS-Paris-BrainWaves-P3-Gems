@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./CreateAccount.css";
 import ModalConfAccount from "../../Modal/ModalConfAccount/ModalConfAccount";
+import video from "../../../assets/images/videos/background1.mp4"
 
 function CreateAccount() {
   const firstname = useRef();
@@ -35,7 +36,7 @@ function CreateAccount() {
   const handleSubmit = async () => {
     setErrors({});
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/API/user`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,6 +64,9 @@ function CreateAccount() {
 
   return (
     <div id="CreateAccount">
+ <video autoPlay muted loop playsInline id="backgroundVideo">
+ <source src={video} type="video/mp4" />
+      </video>
       <p>Inscription</p>
       <div className="inputflex">
         <label className="inputLogin">
@@ -141,7 +145,7 @@ function CreateAccount() {
         </label>
       </div>
       <div className="btn-container">
-        <button className="join-btn" onClick={handleSubmit} type="button">
+        <button className="join-btn" onClick={handleSubmit} onTouchEnd={handleSubmit} type="button">
           Rejoignez-nous
         </button>
       </div>

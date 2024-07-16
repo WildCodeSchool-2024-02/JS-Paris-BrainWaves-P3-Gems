@@ -4,6 +4,7 @@ import { FaHeart } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./LoginPage.css";
 import { useAuth } from "../../../contexts/AuthContext";
+import video from "../../../assets/images/videos/background2.mp4"
 
 function LoginPage() {
   const mailRef = useRef();
@@ -113,7 +114,9 @@ function LoginPage() {
           Créez une wishlit personnalisée avec vos articles enregistrés
         </p>
       </div>
-      <div className="login-image-container" />
+      <video autoPlay muted loop playsInline id="login-image-container">
+          <source src={video} type="video/mp4" />
+        </video>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
 import { useAuth } from "../../../contexts/AuthContext";
+import video from "../../../assets/images/videos/background1.mp4"
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -57,7 +58,10 @@ function ProfilePage() {
 
   return (
     <div id="ProfilePage">
-      <div className="background-image">
+      <div className="background">
+        <video autoPlay muted loop playsInline id="backgroundVideo">
+          <source src={video} type="video/mp4" />
+        </video>
         <h1>
           {firstName} {lastName}
         </h1>
