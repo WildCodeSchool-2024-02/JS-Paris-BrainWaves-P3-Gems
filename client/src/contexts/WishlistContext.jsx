@@ -47,7 +47,7 @@ export function WishlistProvider({ children }) {
               position: "top-center",
               autoClose: 3000,
               draggable: true,
-              theme: "dark",
+              theme: "light",
               closeOnClick: true,
             });
             return response.json();
@@ -56,7 +56,7 @@ export function WishlistProvider({ children }) {
             position: "top-center",
             autoClose: 3000,
             draggable: true,
-            theme: "dark",
+            theme: "light",
             closeOnClick: true,
           });
           return false;
@@ -91,7 +91,7 @@ export function WishlistProvider({ children }) {
               position: "top-center",
               autoClose: 3000,
               draggable: true,
-              theme: "dark",
+              theme: "light",
               closeOnClick: true,
             });
             return response.json();
@@ -100,7 +100,7 @@ export function WishlistProvider({ children }) {
             position: "top-center",
             autoClose: 3000,
             draggable: true,
-            theme: "dark",
+            theme: "light",
             closeOnClick: true,
           });
     
