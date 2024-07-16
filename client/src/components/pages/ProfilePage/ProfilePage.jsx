@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
 import { useAuth } from "../../../contexts/AuthContext";
-import video from "../../../assets/images/videos/background1.mp4"
+import video from "../../../assets/images/videos/background1.mp4";
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -52,7 +52,7 @@ function ProfilePage() {
     await fetch(`${import.meta.env.VITE_API_URL}/api/user/logout`, {
       credentials: "include",
     });
-    setAuth({ auth: false, user: null, token: null });
+    setAuth(null);
     navigate("/login");
   };
 
