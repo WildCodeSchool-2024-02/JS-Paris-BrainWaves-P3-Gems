@@ -2,30 +2,28 @@ import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { GoHeart } from "react-icons/go";
-import {FaHeart} from "react-icons/fa"
+import { FaHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useWishlist } from "../../contexts/WishlistContext";
-
 import { useAuth } from "../../contexts/AuthContext";
 
-
-function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
-}) {
+function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
   const { favorites, addToWishList, removeFromWishList } = useWishlist();
   const { auth } = useAuth();
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
 
-
   useEffect(() => {
-    const isProductInCart = cart.some(
-      (item) => item.Id_product === product.Id_product
-    );
-    setDisabledButton(isProductInCart);
+    if (cart && Array.isArray(cart)) {
+      const isProductInCart = cart.some(
+        (item) => item.Id_product === product.Id_product
+      );
+      setDisabledButton(isProductInCart);
+    }
   }, [cart, product.Id_product]);
 
   function handleCard(data) {
@@ -47,8 +45,7 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
       return newCart;
     });
     setDisabledButton(true);
-    setModalConfOpen(true)
-
+    setModalConfOpen(true);
   };
 
   return (
@@ -95,7 +92,6 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
             className={`icon ${disabledButton ? "disabled" : ""}`}
             role="presentation"
             onClick={auth ? () => handleCart(product) : () => navigate("/login")}
-
           />
         </div>
         <div
