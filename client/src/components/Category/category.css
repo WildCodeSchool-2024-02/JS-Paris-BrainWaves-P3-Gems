@@ -7,6 +7,62 @@
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 10px;
   }
+  .all-video-containers {
+    width: 100vw;
+    height: 600px;
+  }
+
+  .cat-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .cat-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slide:hover .cat-video {
+    filter: blur(4px);
+  }
+
+  .text-container {
+    text-align: center;
+    z-index: 50;
+    margin: 200px auto;
+    visibility: hidden;
+    cursor: pointer;
+    animation: visibleShow 2s cubic-bezier(0.075, 0.82, 0.165, 2) alternate;
+  }
+
+  .slide:hover .text-container {
+    visibility: visible;
+    animation: visibleShow 2s alternate;
+  }
+  .text-container h1 {
+    color: white;
+    text-shadow: 0 0 15px black;
+  }
+
+  .text-container h2 {
+    font-size: 100px;
+    color: white;
+    text-shadow: 0 0 15px black;
+  }
 
   .category-container {
     cursor: pointer;
@@ -89,5 +145,55 @@
     text-underline-offset: 5px;
     text-decoration-thickness: 1px;
     margin: 0 4vw;
+  }
+
+  .text-container h2 {
+    font-size: 50px;
+    color: white;
+    text-shadow: 0 0 15px black;
+  }
+
+  .text-container h1 {
+    color: white;
+    text-shadow: 0 0 15px black;
+  }
+  /*video SLIDER  */
+
+  .all-video-containers {
+    width: 100vw;
+    height: 500px;
+  }
+
+  .cat-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .cat-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .text-container {
+    text-align: center;
+    z-index: 10;
+    margin: 200px auto;
+  }
+  .text-container h2 {
+    font-size: 40px;
   }
 }
