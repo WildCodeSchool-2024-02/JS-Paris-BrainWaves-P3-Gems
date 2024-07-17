@@ -67,7 +67,7 @@ function Category() {
           centeredSlides
           loop
           autoplay={{
-            delay: 6500,
+            delay: 7000,
             disableOnInteraction: false,
           }}
           initialSlide={initialSlide} 
