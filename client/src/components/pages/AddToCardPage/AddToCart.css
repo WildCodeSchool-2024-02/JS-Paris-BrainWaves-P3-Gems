@@ -1,6 +1,6 @@
 /* Mobile */
 #AddToCart {
-  max-height: 100vh;
+  max-height: 95vh;
   width: 100vw;
   font-family: "League Spartan", sans-serif;
 }
@@ -61,6 +61,7 @@
   width: 100%;
   font-size: large;
   background-color: #ffffffbd;
+  padding: 0 0 1vh 0;
 }
 
 #AddToCart .cart-total {
