@@ -31,7 +31,6 @@
   justify-content: space-around;
 }
 .inputs-section {
-  height: 72vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -94,13 +93,15 @@
   color: #c50000c7;
   font-weight: 300;
 }
+
 #sellingPage .add-button {
-  width: 80vw;
+  width: 65vw;
   height: 5vh;
   font-size: 2vh;
   font-weight: 500;
   background: linear-gradient(43deg, black, transparent);
 }
+
 .button-div {
   display: flex;
   justify-content: center;
@@ -140,18 +141,13 @@
 
   .inputs-section {
     padding-top: 2%;
-    height: 66vh;
+    max-height: 70vh;
+  }
+
+  #sellingPage .add-button {
+    width: 18vw;
   }
 }
-
-#sellingPage .add-button {
-  width: 23vw;
-  height: 5vh;
-  font-size: 2vh;
-  font-weight: 500;
-  background: linear-gradient(43deg, black, transparent);
-}
-
 /* TABLET */
 @media screen and (max-width: 1060px) {
 }

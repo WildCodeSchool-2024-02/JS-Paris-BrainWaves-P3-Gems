@@ -73,17 +73,23 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin-top: 15%;
+  width: 60vw;
+  padding: 1.5vh;
+  border: black 1px solid;
 }
 .sale-button:hover {
   background-color: transparent;
 }
 .return-button {
   color: white;
-  background-color: rgb(0, 0, 0, 0.5);
+  background: linear-gradient(43deg, black, transparent);
   font-size: 1.5rem;
   width: 80vw;
   height: 5vh;
   margin-top: 5%;
+  width: 60vw;
+  padding: 1.5vh;
+  font-weight: 300;
 }
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
@@ -91,13 +97,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 10vh;
     object-fit: cover;
   }
   #ProfilePage h1 {
     padding-top: 0;
-    padding-bottom: 6%;
-    font-size: 5rem;
+    padding-bottom: 6vh;
+    font-size: 4.5rem;
   }
   .fav-profile {
     margin-top: 0%;
@@ -113,7 +119,7 @@
   .sale-button {
     background-color: transparent;
     border: 1px solid black;
-    margin-top: 2%;
+    margin-top: 3vh;
     width: 20vw;
     height: 7vh;
   }
@@ -122,7 +128,6 @@
   }
   .return-button {
     color: white;
-    background-color: black;
     width: 20vw;
     padding: 0.7rem;
     margin-top: 1.8%;
