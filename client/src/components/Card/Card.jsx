@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { GoHeart } from "react-icons/go";
-import { FaHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -80,8 +79,8 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
               fav.Id_product === product.Id_product &&
               fav.Id_user === auth?.user?.Id_user
           )
-            ? "white"
-            : "gray",
+            ? "rgb(170 6 6 / 77%)"
+            : "white",
         }}
       />
 
@@ -110,7 +109,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
           }}
           role="presentation"
         >
-          <FaHeart
+          <GoHeart
             className="icon"
             style={{
               color: favorites.find(
@@ -118,8 +117,8 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
                   fav.Id_product === product.Id_product &&
                   fav.Id_user === auth?.user?.Id_user
               )
-                ? "white"
-                : "gray",
+                ? "rgb(170 6 6 / 77%)"
+                : "white",
             }}
           />
         </div>
