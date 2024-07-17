@@ -70,12 +70,12 @@
 
 .close-icons {
   position: absolute;
-  right: 10px;
-  font-size: 30px;
-  z-index: 100;
+  right: 25px;
+  font-size: 20px;
+  z-index: 1000;
   cursor: pointer;
   color: rgb(255, 255, 255);
-  background-color: gray;
+  background-color: rgb(77, 77, 77);
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
 }
@@ -94,13 +94,19 @@
   color: white;
   position: fixed;
   padding: 20px;
-  width: 90%;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
   top: 0;
   left: 0;
   animation: slideMenu 1s ease-in-out forwards alternate;
+}
+
+#legal-mentions-li {
+  font-size: 2.5vh;
+  position: absolute;
+  bottom: 10vh;
 }
 
 @keyframes slideMenu {
@@ -246,5 +252,11 @@
     font-size: 40px;
     z-index: 100;
     cursor: pointer;
+  }
+
+  #legal-mentions-li {
+    font-size: 2.5vh;
+    position: absolute;
+    bottom: 25px;
   }
 }
