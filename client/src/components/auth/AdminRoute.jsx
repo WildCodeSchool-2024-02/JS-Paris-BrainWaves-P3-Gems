@@ -5,8 +5,7 @@ function AdminRoute({ children }) {
   const { auth } = useAuth();
 
   if (!auth || !auth.user.is_admin) {
-    return null;
-  }
+    return <div>Accès refusé. Vous n'avez pas les droits nécessaires pour accéder à cette page.</div>;
 
   return children;
 }
