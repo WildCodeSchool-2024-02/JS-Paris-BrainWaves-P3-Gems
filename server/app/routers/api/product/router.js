@@ -14,6 +14,7 @@ const {
   descendingProduct,
   readProductToValidate,
   validate,
+  sell,
   checkoutSession,
   retrieveSession,
 } = require("../../../controllers/productActions");
@@ -52,5 +53,6 @@ router.get("/stripe/:sessionId", retrieveSession)
 
 
 router.put("/validate/:Id_product", validate);
+router.put("/sell/:Id_product", verifyToken, sell)
 
 module.exports = router;

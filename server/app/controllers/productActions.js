@@ -95,6 +95,14 @@ const validate = async (req, res, next) => {
     next(error);
   }
 };
+const sell = async (req, res, next) => {
+  try {
+    const product = await tables.product.sellProduct(req.params.Id_product);
+    res.status(204).json(product);
+  } catch (error) {
+    next(error);
+  }
+};
 
   const getFromWishlist = async(req,res,next) =>{
     try {
@@ -178,6 +186,7 @@ module.exports = {
   descendingProduct,
   readProductToValidate,
   validate,
+  sell,
   checkoutSession,
   retrieveSession
 };

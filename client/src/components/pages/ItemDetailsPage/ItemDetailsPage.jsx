@@ -81,6 +81,10 @@ function ItemDetailsPage() {
     );
   }
 
+  if (detailProduct.sold === 1) {
+    return null;
+  }
+
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
 
   return (

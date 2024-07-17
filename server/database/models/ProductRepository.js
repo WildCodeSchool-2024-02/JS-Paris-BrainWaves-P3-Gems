@@ -88,6 +88,14 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
+  async sellProduct(IdProduct) {
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} SET sold = true WHERE Id_product = ?`,
+      [IdProduct]
+    );
+    return [rows];
+  }
+
 async getProductByAsc(id){   
 
   const [rows] =  await this.database.query(`SELECT p.* FROM ${this.table} AS p JOIN category AS cat on p.Id_category = cat.Id_category_list  where p.Id_category = ?  order by p.price asc`, [id]);

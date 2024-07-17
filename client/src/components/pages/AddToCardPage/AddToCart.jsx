@@ -31,7 +31,7 @@ function AddToCart() {
   };
 
   const makePayment = async () => {
-    try {
+      try {
       const stripe = await loadStripe(
         "pk_test_51PYqIBHIfAsQN5u3cQZXuouYiH9oXXtqsy7SELHw0OTfwGCA3W4Uh5Tz15byaETg9IKc7Pclm9gTSQ0N1bKTSqk5008wLqVCDx"
       );
@@ -47,7 +47,7 @@ function AddToCart() {
           method: "POST",
           headers,
           body: JSON.stringify(body),
-        }
+        },
       );
 
       const session = await response.json();
