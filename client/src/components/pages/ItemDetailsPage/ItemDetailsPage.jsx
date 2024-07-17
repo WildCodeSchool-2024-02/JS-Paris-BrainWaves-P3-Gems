@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { FaHeart } from "react-icons/fa";
+import { GoHeart } from "react-icons/go";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -96,7 +96,7 @@ function ItemDetailsPage() {
           />
         </div>
 
-        <FaHeart 
+        <GoHeart 
         onClick={ () => {
           if(
             favorites.find( (fav) => fav.Id_product === detailProduct.Id_product &&
@@ -108,7 +108,7 @@ function ItemDetailsPage() {
             addToWishList(detailProduct.Id_product)
           }
         } }
-        className="heart-img" style={{ color: favorites.find( (fav) => fav.Id_product === detailProduct.Id_product && fav.Id_user === auth?.user?.Id_user ) ? "white" : "gray" }} />
+        className="heart-img" style={{ color: favorites.find( (fav) => fav.Id_product === detailProduct.Id_product && fav.Id_user === auth?.user?.Id_user ) ? "rgb(170 6 6 / 77%)" : "white" }} />
       </div>
 
       <div className="container-text">

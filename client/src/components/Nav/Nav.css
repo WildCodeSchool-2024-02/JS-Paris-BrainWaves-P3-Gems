@@ -82,7 +82,7 @@
 
 .close-icons:hover {
   background-color: black;
-  font-size: 43px;
+  font-size: 30px;
   transition: all 0.5s ease-in-out;
 }
 .menu-icons .icons:hover {
@@ -248,9 +248,9 @@
 
   .close-icons {
     position: absolute;
-    right: 10px;
-    font-size: 40px;
-    z-index: 100;
+    right: 25px;
+    font-size: 25px;
+    z-index: 1000;
     cursor: pointer;
   }
 
@@ -258,5 +258,9 @@
     font-size: 2.5vh;
     position: absolute;
     bottom: 25px;
+  }
+
+  #menu-list {
+    min-height: 100vh;
   }
 }
