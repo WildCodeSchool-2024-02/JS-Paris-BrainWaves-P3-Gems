@@ -3,6 +3,7 @@ import "./SuccessPage.css";
 import { useLocation } from "react-router-dom";
 import { useCart } from "../../../contexts/CartContext";
 import video from "../../../assets/images/videos/background2.mp4"
+import { useAuth } from "../../../contexts/AuthContext";
 
 function SuccessPage() {
   const location = useLocation();
@@ -10,6 +11,7 @@ function SuccessPage() {
   const [sessionData, setSessionData] = useState(null);
   const [items, setItems] = useState([]);
   const { setCart } = useCart();
+  const { auth } = useAuth();
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
   const getTotal = () => items.reduce((total, item) => total + item.price, 0);
 
@@ -49,6 +51,21 @@ function SuccessPage() {
     fetchSession();
     setCart([])
   }, [sessionId, setCart]);
+
+  useEffect(()=>{
+    items.map((item) =>
+      fetch(
+        `${import.meta.env.VITE_API_URL}/api/product/sell/${item.Id_product}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      )
+    );
+  }, [items, auth.token])
 
   const unixDate = sessionData?.created;
   const formatDate = new Date(unixDate*1000).toLocaleDateString("fr-FR");
