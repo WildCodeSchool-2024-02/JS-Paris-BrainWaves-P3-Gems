@@ -66,6 +66,7 @@
     color: white;
     text-shadow: 0 0 15px black;
     font-weight: 200;
+    letter-spacing: 5px;
   }
 
   .category-container {
@@ -164,6 +165,7 @@
     font-size: 50px;
     color: white;
     text-shadow: 0 0 15px black;
+    letter-spacing: 3px;
   }
 
   .text-container h1 {

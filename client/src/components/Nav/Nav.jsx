@@ -20,7 +20,6 @@ function Nav({ favorite, setFavorite }) {
   const { auth } = useAuth();
   const [modalNav, setModalNav] = useState(false);
 
-
   const { cart } = useCart();
   const handleClick = () => {
     setModalNav(true);
@@ -61,8 +60,8 @@ function Nav({ favorite, setFavorite }) {
             onKeyDown={() => navigate(`/addToCart`)}
             role="presentation"
           >
-            {cart.length === 0 ? null : <p>{cart.length}</p>}
-          </article>
+            {auth && cart.length !== 0 ? <p>{cart.length}</p> : null}
+            </article>
           <div className="like-continer">
             <FaHeart
               onClick={ auth ? handleClick : ()=> navigate("/login") }

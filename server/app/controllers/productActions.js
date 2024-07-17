@@ -72,8 +72,10 @@ const readProductByUser = async (req, res, next) => {
 const deleteProductByUser = async (req, res, next) => {
   try {
     const data = req.body;
-    const results = await tables.product.deleteProductByUser(data);
-    res.json(results);
+    const results = await tables.product.deleteProductByUser(data, req.auth.id);
+    if (results.affectedRows >= 1)
+      res.status(200).json(results) 
+    else res.sendStatus(404)
   } catch (error) {
     next(error);
   }
