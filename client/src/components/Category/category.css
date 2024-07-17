@@ -1,17 +1,14 @@
 /* DESKTOP TABLET*/
 
+.point {
+  visibility: hidden;
+}
 @media screen and (min-width: 600px) {
   .all-containers {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 10px;
   }
-  .all-video-containers {
-    width: 100vw;
-    height: 600px;
-  }
-
   .cat-video-container {
     position: fixed;
     top: 0;
