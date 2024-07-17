@@ -17,6 +17,7 @@
     "react-router-dom": "^6.23.0",
     "react-toastify": "^10.0.5",
     "save": "^2.9.0",
+    "stripe": "^16.2.0",
     "swiper": "^11.1.4"
   },
   "devDependencies": {

@@ -15,6 +15,7 @@ function ProfilePage() {
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
   const { setFavorite } = useOutletContext();
   const { auth, setAuth } = useAuth();
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -54,6 +55,11 @@ function ProfilePage() {
     });
     setAuth(null);
     navigate("/login");
+
+    const initialLocalCart = localStorage.getItem("cart");
+    if (initialLocalCart && JSON.parse(initialLocalCart).length !== 0) {
+      localStorage.removeItem("cart");
+    }
   };
 
   return (

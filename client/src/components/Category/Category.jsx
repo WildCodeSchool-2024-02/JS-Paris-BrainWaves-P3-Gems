@@ -17,7 +17,6 @@ import Montres from '../../assets/images/videos/homepage/home_watch.mp4';
 
 
 import "swiper/css/bundle";
-
 import "./category.css";
 
 function Category() {

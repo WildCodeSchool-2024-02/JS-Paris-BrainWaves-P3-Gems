@@ -64,12 +64,12 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
-  async deleteProductByUser(data) {
+  async deleteProductByUser(data, IdUser) {
     const [rows] = await this.database.query(
       `DELETE FROM ${this.table} WHERE Id_user = ? AND Id_product = ?`,
-      [data.Id_user, data.Id_product]
+      [IdUser, data.Id_product]
     );
-    return [rows];
+    return rows;
   }
 
   async getProductFromWishlist(id) {

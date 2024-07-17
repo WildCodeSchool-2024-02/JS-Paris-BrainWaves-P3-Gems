@@ -35,7 +35,8 @@ function AdminPage() {
 
   const handleDelete = async (IdProduct) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
+  
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -45,16 +46,20 @@ function AdminPage() {
           Id_product: IdProduct,
         }),
       });
-
+    
+      if (!response.ok) {
+        throw new Error(`Failed to delete product: ${response.statusText}`);
+      }
+  
       const filteredData = productsToValidate.filter(
         (product) => product.Id_product !== IdProduct
       );
       setProductsToValidate(filteredData);
     } catch (error) {
-      console.error(error);
+      console.error("Error deleting product:", error);
     }
   };
-
+  
   const handleWideImage = (IdProduct) => {
     setWiderImageId(IdProduct);
     setWiderImage(!widerImage);
