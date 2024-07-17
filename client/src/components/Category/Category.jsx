@@ -84,8 +84,8 @@ function Category() {
               </div>
             </SwiperSlide>
           ))}
-          ...
         </Swiper>
+        <span className="point">...</span>
       </div>
       {cat.map((category) => (
         <div key={category.Id_category_list} className="category-container">
