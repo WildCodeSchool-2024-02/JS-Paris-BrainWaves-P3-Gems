@@ -42,9 +42,9 @@ function Category() {
 
   const showVideo = (video) => {
     switch(video){
-      case "Bracelets": return bracelets
       case "Bagues": return Bagues
       case "Colliers": return Colliers
+      case "Bracelets": return bracelets
       case "Boucles d'oreilles": return Boucles
       case "Montres": return Montres
       default: return Boucles
