@@ -102,7 +102,7 @@ function ItemDetailsPage() {
           />
         ) : (
           <GoHeart
-            onClick={() => addToWishList(detailProduct.Id_product)}
+            onClick={auth ? () => addToWishList(detailProduct.Id_product) : ()=>navigate("/login")}
             className="heart-img"
             style={{ color: "white" }}
           />
