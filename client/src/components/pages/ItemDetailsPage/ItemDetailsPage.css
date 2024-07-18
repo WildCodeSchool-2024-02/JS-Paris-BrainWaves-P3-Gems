@@ -142,7 +142,7 @@
   #ItemDetailsPage {
     display: flex;
     width: 95vw;
-    margin: 0 1vw;
+    margin: 9vh 1vw;
   }
 
   .goBackButton {
