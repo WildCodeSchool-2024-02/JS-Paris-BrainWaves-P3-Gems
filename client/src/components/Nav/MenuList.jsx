@@ -26,6 +26,11 @@ function MenuList({ setclosebtn }) {
     setclosebtn(false);
   };
 
+  const handleLegalMention = () => {
+    navigate("/legalMentions")
+    setclosebtn(false)
+  }
+
   const showLogo = (title) => {
     
     switch (title) {
@@ -60,7 +65,9 @@ function MenuList({ setclosebtn }) {
           >
             {showLogo(catList.title)} {catList.title}
           </li>
+          
         ))}
+        <li id="legal-mentions-li" onClick={handleLegalMention} onKeyDown={handleLegalMention} role="presentation">Mentions Légales</li>
       </ul>
     </div>
   );

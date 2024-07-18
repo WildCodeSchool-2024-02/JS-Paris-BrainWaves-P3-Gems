@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { GoHeart } from "react-icons/go";
-import { FaHeart } from "react-icons/fa";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -48,6 +47,12 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
     setModalConfOpen(true);
   };
 
+  const isFavorite = favorites.some(
+    (fav) =>
+      fav.Id_product === product.Id_product &&
+      fav.Id_user === auth?.user?.Id_user
+  );
+
   return (
     <div className="card">
       <img
@@ -58,32 +63,21 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
         onKeyDown={handleKeyDown}
         role="presentation"
       />
-      <GoHeart
-        onClick={() => {
-          if (
-            favorites.find(
-              (fav) =>
-                fav.Id_product === product.Id_product &&
-                fav.Id_user === auth?.user?.Id_user
-            )
-          ) {
-            removeFromWishList(product.Id_product);
-          } else {
-            addToWishList(product.Id_product);
-          }
-        }}
-        role="presentation"
-        className="heart-logo"
-        style={{
-          color: favorites.find(
-            (fav) =>
-              fav.Id_product === product.Id_product &&
-              fav.Id_user === auth?.user?.Id_user
-          )
-            ? "white"
-            : "gray",
-        }}
-      />
+      {isFavorite ? (
+        <GoHeartFill
+          onClick={() => removeFromWishList(product.Id_product)}
+          role="presentation"
+          className="heart-logo"
+          style={{ color: "white" }}
+        />
+      ) : (
+        <GoHeart
+          onClick={() => addToWishList(product.Id_product)}
+          role="presentation"
+          className="heart-logo"
+          style={{ color: "white" }}
+        />
+      )}
 
       <div className="logo-container">
         <div>
@@ -96,13 +90,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
         </div>
         <div
           onClick={() => {
-            if (
-              favorites.find(
-                (fav) =>
-                  fav.Id_product === product.Id_product &&
-                  fav.Id_user === auth?.user?.Id_user
-              )
-            ) {
+            if (isFavorite) {
               removeFromWishList(product.Id_product);
             } else {
               addToWishList(product.Id_product);
@@ -110,18 +98,11 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
           }}
           role="presentation"
         >
-          <FaHeart
-            className="icon"
-            style={{
-              color: favorites.find(
-                (fav) =>
-                  fav.Id_product === product.Id_product &&
-                  fav.Id_user === auth?.user?.Id_user
-              )
-                ? "white"
-                : "gray",
-            }}
-          />
+          {isFavorite ? (
+            <GoHeartFill className="icon" style={{ color: "white" }} />
+          ) : (
+            <GoHeart className="icon" style={{ color: "white" }} />
+          )}
         </div>
         <div>
           <SlOptionsVertical

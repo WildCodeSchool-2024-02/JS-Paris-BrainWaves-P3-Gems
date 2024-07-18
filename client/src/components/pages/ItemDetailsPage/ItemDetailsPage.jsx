@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
-
-import { FaHeart } from "react-icons/fa";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import { useNavigate, useParams } from "react-router-dom";
-
-import {
-  MdOutlineEuroSymbol,
-  MdOutlineKeyboardBackspace,
-} from "react-icons/md";
+import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import { useWishlist } from "../../../contexts/WishlistContext";
-import { useAuth } from "../../../contexts/AuthContext"
-
+import { useAuth } from "../../../contexts/AuthContext";
 import "./ItemDetailsPage.css";
-
 import { useCart } from "../../../contexts/CartContext";
 import ModalCart from "../../Modal/ModalCart/ModalCart";
 
@@ -25,19 +18,15 @@ function ItemDetailsPage() {
   const [detailProduct, setDetailProduct] = useState([]);
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
-  const {favorites, addToWishList, removeFromWishList} = useWishlist();
-
-  const {auth} = useAuth()
-
+  const { favorites, addToWishList, removeFromWishList } = useWishlist();
+  const { auth } = useAuth();
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(`${apiUrl}/api/product/single-Product/${id}`)
       .then((res) => res.json())
       .then((data) => setDetailProduct(data))
-      .catch((error) => console.error(error))
-
-      .catch((err) => console.error(err));
+      .catch((error) => console.error(error));
   }, [apiUrl, id, name]);
 
   useEffect(() => {
@@ -87,11 +76,16 @@ function ItemDetailsPage() {
 
   const sellerEmail = detailProduct ? `mailto:${detailProduct.mail}` : "";
 
+  const isFavorite = favorites.some(
+    (fav) =>
+      fav.Id_product === detailProduct.Id_product &&
+      fav.Id_user === auth?.user?.Id_user
+  );
+
   return (
     <div id="ItemDetailsPage">
-       <MdOutlineKeyboardBackspace className="goBackButton" onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
+      <MdOutlineKeyboardBackspace className="goBackButton" onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="container">
-     
         <div className="container-img">
           <img
             src={detailProduct.picture_jewell}
@@ -100,19 +94,19 @@ function ItemDetailsPage() {
           />
         </div>
 
-        <FaHeart 
-        onClick={ () => {
-          if(
-            favorites.find( (fav) => fav.Id_product === detailProduct.Id_product &&
-          fav.Id_user === auth?.user?.Id_user
-         )
-          ){ removeFromWishList(detailProduct.Id_product);
-
-          }else{ 
-            addToWishList(detailProduct.Id_product)
-          }
-        } }
-        className="heart-img" style={{ color: favorites.find( (fav) => fav.Id_product === detailProduct.Id_product && fav.Id_user === auth?.user?.Id_user ) ? "white" : "gray" }} />
+        {isFavorite ? (
+          <GoHeartFill
+            onClick={() => removeFromWishList(detailProduct.Id_product)}
+            className="heart-img"
+            style={{ color: "white" }}
+          />
+        ) : (
+          <GoHeart
+            onClick={() => addToWishList(detailProduct.Id_product)}
+            className="heart-img"
+            style={{ color: "white" }}
+          />
+        )}
       </div>
 
       <div className="container-text">
@@ -127,7 +121,7 @@ function ItemDetailsPage() {
             type="button"
             className={`button-detail ${disabledButton ? "disabled" : ""}`}
             onClick={auth ? () => handleCart(detailProduct) : () => navigate("/login")}
-            >
+          >
             Ajouter au panier
           </button>
         </div>
