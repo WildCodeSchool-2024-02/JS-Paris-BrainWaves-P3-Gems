@@ -2,7 +2,6 @@
 .background {
   max-height: 90vh;
 }
-
 #ProfilePage #backgroundVideo {
   position: absolute;
   top: 0;
@@ -13,7 +12,6 @@
   z-index: -11;
   filter: blur(2px);
 }
-
 #ProfilePage h1 {
   color: white;
   text-align: center;
@@ -91,16 +89,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 10vh;
     object-fit: cover;
   }
   #ProfilePage h1 {
     padding-top: 0;
-    padding-bottom: 6%;
-    font-size: 5rem;
+    padding-bottom: 6vh;
+    font-size: 4.5rem;
   }
   .fav-profile {
-    margin-top: 0%;
+    margin-top: 0vh;
     padding: 1.8rem;
     width: 24vw;
   }
@@ -113,7 +111,7 @@
   .sale-button {
     background-color: transparent;
     border: 1px solid black;
-    margin-top: 2%;
+    margin-top: 3vh;
     width: 20vw;
     height: 7vh;
   }

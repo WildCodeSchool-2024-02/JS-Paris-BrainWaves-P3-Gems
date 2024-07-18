@@ -94,7 +94,7 @@
   color: #c50000c7;
   font-weight: 300;
 }
-#sellingPage .add-button {
+.add-button {
   width: 80vw;
   height: 5vh;
   font-size: 2vh;
@@ -142,14 +142,9 @@
     padding-top: 2%;
     height: 66vh;
   }
-}
-
-#sellingPage .add-button {
-  width: 23vw;
-  height: 5vh;
-  font-size: 2vh;
-  font-weight: 500;
-  background: linear-gradient(43deg, black, transparent);
+  .add-button {
+    width: 23vw;
+  }
 }
 
 /* TABLET */
