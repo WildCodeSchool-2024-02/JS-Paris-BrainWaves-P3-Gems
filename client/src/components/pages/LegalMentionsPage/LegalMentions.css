@@ -1,7 +1,7 @@
 /* Mobile */
 
-#legal-mentions {
-  height: 95vh;
+#legal-mentions #backgroundVideo {
+  min-height: 850px;
 }
 
 .legal-mentions-div {
@@ -28,6 +28,9 @@
 @media screen and (min-width: 1024px) {
   #legal-mentions {
     height: 90vh;
+  }
+  #legal-mentions #backgroundVideo {
+    min-height: 100vh;
   }
 
   .legal-mentions-div {
