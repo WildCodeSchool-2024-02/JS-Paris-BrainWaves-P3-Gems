@@ -72,7 +72,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
         />
       ) : (
         <GoHeart
-          onClick={() => addToWishList(product.Id_product)}
+          onClick={auth ? () => addToWishList(product.Id_product) : () => navigate("/login")}
           role="presentation"
           className="heart-logo"
           style={{ color: "white" }}
@@ -93,6 +93,8 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
             if (isFavorite) {
               removeFromWishList(product.Id_product);
             } else {
+              if (!auth)
+              navigate("/login")
               addToWishList(product.Id_product);
             }
           }}
