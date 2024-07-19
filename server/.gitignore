@@ -1,4 +1,4 @@
 node_modules
 coverage
 .env
-UserSeeder.js
+server\database\fixtures\UserSeeder.js
