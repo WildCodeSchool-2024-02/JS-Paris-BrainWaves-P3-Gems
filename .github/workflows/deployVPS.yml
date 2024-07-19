@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: install Node
+    - uses: actions/setup-node@v4
     - name: ssh deploy
       uses: appleboy/ssh-action@master
       with:
@@ -21,6 +23,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
+          npm i -g pm2
           cd /var/www/html/gems
           git pull origin main
           npm i
