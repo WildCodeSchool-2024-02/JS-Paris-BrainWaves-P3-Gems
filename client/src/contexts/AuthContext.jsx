@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
           setAuth({ user, token });
           setIsLoading(false);
         } else {
-          toast.warning("Veuillez vous reconnecter");
           setIsLoading(false);
         }
       } catch (error) {

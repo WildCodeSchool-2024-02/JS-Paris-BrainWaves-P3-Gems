@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
-
 import App from "./App";
 import HomePage from "./components/pages/Home/HomePage";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
@@ -14,6 +13,7 @@ import AdminPage from "./components/pages/AdminPage/AdminPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminRoute from "./components/auth/AdminRoute";
 import SuccessPage from "./components/pages/SuccessPage/SuccessPage";
+import LegalMentions from "./components/pages/LegalMentionsPage/LegalMentions";
 
 const api = import.meta.env.VITE_API_URL;
 
@@ -74,6 +74,10 @@ const router = createBrowserRouter([
             <AdminPage />
           </AdminRoute>
         ),
+      },
+      {
+        path: "/legalMentions",
+        element: <LegalMentions />,
       },
     ],
   },

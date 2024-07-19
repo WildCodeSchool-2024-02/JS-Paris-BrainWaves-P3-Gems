@@ -24,8 +24,8 @@ const validateProduct = (req, res, next) => {
     errors.name = "Maximum 25 caractères autorisés";
   }
 
-  if (details.length > 30) {
-    errors.details = "Maximum 30 caractères autorisés";
+  if (details.length > 60) {
+    errors.details = "Maximum 60 caractères autorisés";
   }
 
   if (price.length > 6) {

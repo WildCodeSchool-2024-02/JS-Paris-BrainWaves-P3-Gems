@@ -12,7 +12,7 @@ function ModalSells({ setModalSellsOpen }) {
   const { auth } = useAuth();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/product/user/${auth.token}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/product/user/`, {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
@@ -30,7 +30,6 @@ function ModalSells({ setModalSellsOpen }) {
   const handleCloseModal = () => {
     setModalSellsOpen(false);
   };
-
   const handleDelete = async (IdUser, IdProduct) => {
     try {
       await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
@@ -65,6 +64,8 @@ function ModalSells({ setModalSellsOpen }) {
           <GiDiamondRing className="ring-profile" />
           <p>Ma boite à bijoux</p>
         </div>
+        {sellings.length === 0 && <h1 className="noFav">Vous n'avez pas d'annonces postées</h1>}
+
         {sellings.map((modal) => (
           <div className="modal-style" key={modal.Id_product}>
             

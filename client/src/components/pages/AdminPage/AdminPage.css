@@ -1,6 +1,6 @@
 /* MOBILE */
 .background {
-  height: 95vh;
+  max-height: 90vh;
 }
 #AdminPage h1 {
   color: white;
@@ -136,10 +136,10 @@
   }
 
   #AdminPage .articles-displayed-container {
-    height: 65vh;
-    width: 90vh;
+    height: 68vh;
+    width: 60vw;
     position: absolute;
-    bottom: 5vh;
+    bottom: 3vh;
   }
 
   #AdminPage .admin-all-details {
@@ -154,11 +154,12 @@
   }
 
   #AdminPage .wider {
-    height: 85vh;
+    height: 70vh;
     width: 50vw;
-    position: absolute;
-    top: 10vh;
-    right: 26vw;
+
+    top: -70px;
+    right: 5vw;
+
     object-fit: contain;
     z-index: 999;
   }

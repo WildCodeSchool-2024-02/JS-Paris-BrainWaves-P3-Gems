@@ -2,7 +2,7 @@
 #modal-conf-cart-profile {
   right: 17%;
   position: fixed;
-  z-index: 99;
+  z-index: 9999;
   top: 30%;
 }
 
@@ -17,7 +17,7 @@
   background-color: rgb(53 53 53 / 95%);
   width: 70vw;
   display: flex;
-  z-index: 99;
+  z-index: 9999;
   height: 15vh;
   display: flex;
   flex-direction: column;

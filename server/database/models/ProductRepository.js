@@ -45,8 +45,10 @@ class ProductRepository extends AbstractRepository {
 
   async readProductByUser(id) {
     const [rows] = await this.database.query(
-      `SELECT* from ${this.table} INNER JOIN user ON ${this.table}.Id_user = user.Id_user AND ${this.table}.validated = true`,
-      [id]
+      `SELECT * FROM ${this.table} 
+      INNER JOIN user ON ${this.table}.Id_user = user.Id_user 
+      WHERE ${this.table}.Id_user = ? AND ${this.table}.validated = true`,
+     [id]
     );
     return [rows];
   }
@@ -62,12 +64,12 @@ class ProductRepository extends AbstractRepository {
     return [rows];
   }
 
-  async deleteProductByUser(data) {
+  async deleteProductByUser(data, IdUser) {
     const [rows] = await this.database.query(
       `DELETE FROM ${this.table} WHERE Id_user = ? AND Id_product = ?`,
-      [data.Id_user, data.Id_product]
+      [IdUser, data.Id_product]
     );
-    return [rows];
+    return rows;
   }
 
   async getProductFromWishlist(id) {
@@ -81,6 +83,14 @@ class ProductRepository extends AbstractRepository {
   async validateProduct(IdProduct) {
     const [rows] = await this.database.query(
       `UPDATE ${this.table} SET validated = true WHERE Id_product = ?`,
+      [IdProduct]
+    );
+    return [rows];
+  }
+
+  async sellProduct(IdProduct) {
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} SET sold = true WHERE Id_product = ?`,
       [IdProduct]
     );
     return [rows];

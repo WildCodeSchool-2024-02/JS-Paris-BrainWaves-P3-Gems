@@ -9,14 +9,13 @@ import {
   Scrollbar,
   EffectFade,
 } from "swiper/modules";
-import bracelets from "../../assets/images/videos/homepage/home_bracelet.mp4";
-import Bagues from "../../assets/images/videos/homepage/home_ring.mp4";
-import Colliers from "../../assets/images/videos/homepage/home_necklace.mp4";
-import Boucles from "../../assets/images/videos/homepage/home_earring.mp4";
-import Montres from "../../assets/images/videos/homepage/home_watch.mp4";
+import Bagues from '../../assets/images/videos/homepage/home_ring.mp4'
+import Colliers from '../../assets/images/videos/homepage/home_necklace.mp4'
+import bracelets from '../../assets/images/videos/homepage/home_bracelet.mp4';
+import Boucles from '../../assets/images/videos/homepage/home_earring.mp4'
+import Montres from '../../assets/images/videos/homepage/home_watch.mp4';
 
 import "swiper/css/bundle";
-
 import "./category.css";
 
 function Category() {
@@ -56,6 +55,8 @@ function Category() {
     navigate(`/items/${data.title}/${data.Id_category_list}`);
   };
 
+  const initialSlide = parseInt(localStorage.getItem('currentSlideIndex'), 10) || 0;
+
   return (
     <div className="all-containers">
       <div className="all-video-containers">
@@ -68,14 +69,18 @@ function Category() {
           centeredSlides
           loop
           autoplay={{
-            delay: 8000,
+            delay: 7000,
             disableOnInteraction: false,
+          }}
+          initialSlide={initialSlide} 
+          onSlideChange={(swiper) => {
+            localStorage.setItem('currentSlideIndex', swiper.realIndex);
           }}
         >
           {cat.map((category) => (
             <SwiperSlide key={category.Id_category_list} className="slide">
               <div className="cat-video-container">
-                <video muted loop autoPlay className="cat-video">
+                <video muted loop autoPlay playsInline className="cat-video">
                   <source src={showVideo(category.title)} type="video/mp4" />
                 </video>
               </div>
@@ -87,9 +92,8 @@ function Category() {
               </div>
             </SwiperSlide>
           ))}
-          
-           </Swiper>
-        <span className="point"><h2>Nos categories </h2></span>
+        </Swiper>
+        <span className="point">...</span>
       </div>
       {cat.map((category) => (
         <div key={category.Id_category_list} className="category-container">

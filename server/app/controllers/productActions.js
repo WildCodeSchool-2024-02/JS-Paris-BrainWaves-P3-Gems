@@ -62,8 +62,7 @@ const getFilter = async (req, res, next) => {
 
 const readProductByUser = async (req, res, next) => {
   try {
-    const parseId = parseInt(req.params.id, 10);
-    const [results] = await tables.product.readProductByUser(parseId);
+    const [results] = await tables.product.readProductByUser(req.auth.id);
     res.status(200).json(results);
   } catch (error) {
     next(error);
@@ -73,8 +72,10 @@ const readProductByUser = async (req, res, next) => {
 const deleteProductByUser = async (req, res, next) => {
   try {
     const data = req.body;
-    const results = await tables.product.deleteProductByUser(data);
-    res.json(results);
+    const results = await tables.product.deleteProductByUser(data, req.auth.id);
+    if (results.affectedRows >= 1)
+      res.status(200).json(results) 
+    else res.sendStatus(404)
   } catch (error) {
     next(error);
   }
@@ -91,6 +92,14 @@ const readProductToValidate = async (req, res, next) => {
 const validate = async (req, res, next) => {
   try {
     const product = await tables.product.validateProduct(req.params.Id_product);
+    res.status(204).json(product);
+  } catch (error) {
+    next(error);
+  }
+};
+const sell = async (req, res, next) => {
+  try {
+    const product = await tables.product.sellProduct(req.params.Id_product);
     res.status(204).json(product);
   } catch (error) {
     next(error);
@@ -179,6 +188,7 @@ module.exports = {
   descendingProduct,
   readProductToValidate,
   validate,
+  sell,
   checkoutSession,
   retrieveSession
 };

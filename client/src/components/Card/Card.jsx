@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { GoHeart } from "react-icons/go";
-import { FaHeart } from "react-icons/fa";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useWishlist } from "../../contexts/WishlistContext";
-
 import { useAuth } from "../../contexts/AuthContext";
 import { useToast } from "../../contexts/ToastContext";
 
@@ -21,10 +19,12 @@ function Card({ product, setShowInput, cart, setCart }) {
   const { addToast } = useToast();
 
   useEffect(() => {
-    const isProductInCart = cart.some(
-      (item) => item.Id_product === product.Id_product
-    );
-    setDisabledButton(isProductInCart);
+    if (cart && Array.isArray(cart)) {
+      const isProductInCart = cart.some(
+        (item) => item.Id_product === product.Id_product
+      );
+      setDisabledButton(isProductInCart);
+    }
   }, [cart, product.Id_product]);
 
   function handleCard(data) {
@@ -50,6 +50,12 @@ function Card({ product, setShowInput, cart, setCart }) {
     addToast("basket", "Bien ajouté au panier", 4000,);
   };
 
+  const isFavorite = favorites.some(
+    (fav) =>
+      fav.Id_product === product.Id_product &&
+      fav.Id_user === auth?.user?.Id_user
+  );
+
   return (
     <div className="card">
       <img
@@ -60,34 +66,21 @@ function Card({ product, setShowInput, cart, setCart }) {
         onKeyDown={handleKeyDown}
         role="presentation"
       />
-      <GoHeart
-        onClick={() => {
-          if (
-            favorites.find(
-              (fav) =>
-                fav.Id_product === product.Id_product &&
-                fav.Id_user === auth?.user?.Id_user
-            )
-          ) {
-            removeFromWishList(product.Id_product);
-            addToast("unlike", "Bien retiré des favoris", 4000,);
-          } else {
-            addToWishList(product.Id_product);
-            addToast("like", "Bien ajouté aux favoris", 4000,);
-          }
-        }}
-        role="presentation"
-        className="heart-logo"
-        style={{
-          color: favorites.find(
-            (fav) =>
-              fav.Id_product === product.Id_product &&
-              fav.Id_user === auth?.user?.Id_user
-          )
-            ? "white"
-            : "gray",
-        }}
-      />
+      {isFavorite ? (
+        <GoHeartFill
+          onClick={() => {removeFromWishList(product.Id_product); addToast("unlike", "Bien retiré des favoris", 4000,);}}
+          role="presentation"
+          className="heart-logo"
+          style={{ color: "white" }}
+        />
+      ) : (
+        <GoHeart
+          onClick={auth ? () => {addToWishList(product.Id_product); addToast("like", "Bien ajouté aux favoris", 4000,);} : () => navigate("/login")}
+          role="presentation"
+          className="heart-logo"
+          style={{ color: "white" }}
+        />
+      )}
 
       <div className="logo-container">
         <div>
@@ -95,39 +88,28 @@ function Card({ product, setShowInput, cart, setCart }) {
             onKeyDown={() => handleCart(product)}
             className={`icon ${disabledButton ? "disabled" : ""}`}
             role="presentation"
-            onClick={() => {handleCart(product)}}
+            onClick={auth ? () => handleCart(product) : () => navigate("/login")}
           />
         </div>
         <div
           onClick={() => {
-            if (
-              favorites.find(
-                (fav) =>
-                  fav.Id_product === product.Id_product &&
-                  fav.Id_user === auth?.user?.Id_user
-              )
-            ) {
+            if (isFavorite) {
               removeFromWishList(product.Id_product);
               addToast("unlike", "Bien retiré des favoris", 4000,);
             } else {
+              if (!auth)
+              navigate("/login")
               addToWishList(product.Id_product);
               addToast("like", "Bien ajouté aux favoris", 4000,);
             }
           }}
           role="presentation"
         >
-          <FaHeart
-            className="icon"
-            style={{
-              color: favorites.find(
-                (fav) =>
-                  fav.Id_product === product.Id_product &&
-                  fav.Id_user === auth?.user?.Id_user
-              )
-                ? "white"
-                : "gray",
-            }}
-          />
+          {isFavorite ? (
+            <GoHeartFill className="icon" style={{ color: "white" }} />
+          ) : (
+            <GoHeart className="icon" style={{ color: "white" }} />
+          )}
         </div>
         <div>
           <SlOptionsVertical
@@ -143,7 +125,7 @@ function Card({ product, setShowInput, cart, setCart }) {
             className={`cart ${disabledButton ? "disabled" : ""}`}
             onKeyDown={() => handleCart(product)}
             role="presentation"
-            onClick={() => handleCart(product)}
+            onClick={auth ? () => handleCart(product) : () => navigate("/login")}
           />
           <p className="price">
             <MdOutlineEuroSymbol className="euro-logo" />

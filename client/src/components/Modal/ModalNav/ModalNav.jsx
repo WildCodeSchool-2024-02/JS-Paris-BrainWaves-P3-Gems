@@ -64,6 +64,7 @@ function ModalNav({ setModalNav }) {
           <FaHeart className="heart-profileNav" />
           <p>Mes articles favoris {likeCount > 0 ? `(${likeCount})`: ""}  </p>    
         </div>
+        {modalNavigation.length === 0 && <h1 className="noFav">Vous n'avez pas d'articles favoris</h1>}
         {modalNavigation.map((modalsNav) => (
           <div className="modal-styleNav" key={modalsNav.Id_product}>
             <img

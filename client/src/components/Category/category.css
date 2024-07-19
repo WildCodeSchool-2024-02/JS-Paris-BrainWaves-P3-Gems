@@ -1,22 +1,12 @@
 /* DESKTOP TABLET*/
 .point {
-  text-align: center;
+  visibility: hidden;
 }
-
 @media screen and (min-width: 600px) {
   .all-containers {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 15px 15px;
-    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .all-containers:hover .category-container {
-    padding: 0px;
-  }
-  .swiper {
-    position: relative;
+    gap: 10px;
   }
   .cat-video-container {
     position: fixed;
@@ -62,25 +52,21 @@
   .text-container h1 {
     color: white;
     text-shadow: 0 0 15px black;
+    font-weight: 100;
+    font-size: 40px;
+    margin-bottom: 5px;
   }
 
   .text-container h2 {
     font-size: 100px;
     color: white;
     text-shadow: 0 0 15px black;
+    font-weight: 200;
+    letter-spacing: 5px;
   }
 
   .category-container {
-    transition: all 1s ease-in-out;
     cursor: pointer;
-    padding: 10px;
-  }
-
-  .category-container :hover {
-    transition: all 1s ease-in-out;
-    transform: scale(1.02);
-    z-index: 2;
-    filter: drop-shadow(0 0 10px black);
   }
 
   .all-containers > :nth-child(1) {
@@ -90,15 +76,24 @@
 
   .all-containers > :nth-child(2) {
     grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
+
+  .all-containers > :nth-child(3) {
+    grid-row-start: span 1;
     grid-column-start: span 1;
   }
 
   .all-containers > :nth-child(4) {
     grid-row-start: span 1;
-    grid-column-start: span 2;
+    grid-column-start: span 1;
   }
 
   .all-containers > :nth-child(5) {
+    grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
+  .all-containers > :nth-child(6) {
     grid-row-start: span 1;
     grid-column-start: span 2;
   }
@@ -139,7 +134,7 @@
   }
   .category-image {
     width: 95vw;
-    height: 70vh;
+    height: 60vh;
     background-position: top;
     background-size: cover;
     object-fit: contain;
@@ -166,6 +161,7 @@
     font-size: 50px;
     color: white;
     text-shadow: 0 0 15px black;
+    letter-spacing: 3px;
   }
 
   .text-container h1 {
@@ -210,44 +206,5 @@
   }
   .text-container h2 {
     font-size: 40px;
-  }
-}
-
-@keyframes Smooth {
-  0% {
-    transform: translateX(-2000px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-
-@keyframes SmoothRev {
-  0% {
-    transform: translateX(2000px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    transform: scale(0);
-    filter: blur(20px) grayscale(200%);
-  }
-  100% {
-    transform: scale(1);
-    filter: blur(0px) grayscale(0%);
-  }
-}
-@keyframes visibleShow {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }

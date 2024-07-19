@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./SellingPage.css";
 import ModalConfForm from "../../Modal/ModalConfForm/ModalConfForm";
 import { useAuth } from "../../../contexts/AuthContext";
-import video from "../../../assets/images/videos/background5.mp4"
+import video from "../../../assets/images/videos/background5.mp4";
 
 function SellingPage() {
   const [name, setName] = useState("");
@@ -17,6 +17,7 @@ function SellingPage() {
   const [modalConfOpen, setModalConfOpen] = useState(false);
   const [fileJewell, setFileJewell] = useState("");
   const [fileValidation, setFileValidation] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -38,6 +39,9 @@ function SellingPage() {
   }, []);
 
   const handleSubmit = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     const form = new FormData();
     form.append("picture_jewell", pictureJewell.current.files[0]);
     form.append("picture_validation", pictureValidation.current.files[0]);
@@ -68,9 +72,13 @@ function SellingPage() {
         setModalConfOpen(true);
         pictureJewell.current.value = "";
         pictureValidation.current.value = "";
+        setFileJewell("");
+        setFileValidation("");
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -105,7 +113,7 @@ function SellingPage() {
             className="input-image"
             id="pictureValidation"
             ref={pictureValidation}
-            accept="image/png, image/jpeg, image/jpg, image/webp, image/pdf"
+            accept="image/png, image/jpeg, image/jpg, image/webp"
             onChange={(e) => {
               const file = e.target.files[0];
               setFileValidation(file ? URL.createObjectURL(file) : undefined);
@@ -122,10 +130,8 @@ function SellingPage() {
         </section>
       </div>
       {errors && <p className="error">{errors.all}</p>}
-      <form
-        className="inputs-section"
-      >
-         <video autoPlay muted loop id="backgroundVideo">
+      <form className="inputs-section">
+        <video autoPlay muted loop playsInline id="backgroundVideo">
           <source src={video} type="video/mp4" />
         </video>
         <div className="input-div">
@@ -177,7 +183,7 @@ function SellingPage() {
           {errors && <p className="error">{errors.price}</p>}
         </div>
         <div className="button-div">
-          <button className="add-button" type="button" onClick={handleSubmit}>
+          <button className="add-button" type="button" onClick={handleSubmit} onTouchEnd={handleSubmit}>
             Ajouter
           </button>
         </div>

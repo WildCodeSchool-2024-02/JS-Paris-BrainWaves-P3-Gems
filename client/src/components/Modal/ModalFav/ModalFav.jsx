@@ -54,6 +54,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
           <FaHeart className="heart-profile" />
           <p>Mes articles favoris </p>
         </div>
+        {modals.length === 0 && <h1 className="noFav">Vous n'avez pas d'articles favoris</h1>}
         {modals.map((modal) => (
           <div className="modal-style" key={modal.Id_product}>
             <img src={modal.picture_jewell} alt="" className="image-modal" />

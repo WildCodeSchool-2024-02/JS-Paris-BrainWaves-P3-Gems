@@ -14,6 +14,7 @@ const {
   descendingProduct,
   readProductToValidate,
   validate,
+  sell,
   checkoutSession,
   retrieveSession,
 } = require("../../../controllers/productActions");
@@ -36,7 +37,7 @@ router.post("/checkoutSession", checkoutSession);
 
 router.delete("/", verifyToken, deleteProductByUser);
 
-router.get("/user/:id", verifyToken, readProductByUser);
+router.get("/user", verifyToken, readProductByUser);
 router.get("/product-by-category/:id", readProductByCategoryId);
 router.get("/single-Product/:id", readSingleProduct);
 router.get("/searching_for_product", getFilter);
@@ -52,5 +53,6 @@ router.get("/stripe/:sessionId", retrieveSession)
 
 
 router.put("/validate/:Id_product", validate);
+router.put("/sell/:Id_product", verifyToken, sell)
 
 module.exports = router;

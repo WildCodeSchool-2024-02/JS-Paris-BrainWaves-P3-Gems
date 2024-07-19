@@ -36,7 +36,7 @@ function CreateAccount() {
   const handleSubmit = async () => {
     setErrors({});
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/API/user`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function CreateAccount() {
 
   return (
     <div id="CreateAccount">
- <video autoPlay muted loop id="backgroundVideo">
+ <video autoPlay muted loop playsInline id="backgroundVideo">
  <source src={video} type="video/mp4" />
       </video>
       <p>Inscription</p>
@@ -145,7 +145,7 @@ function CreateAccount() {
         </label>
       </div>
       <div className="btn-container">
-        <button className="join-btn" onClick={handleSubmit} type="button">
+        <button className="join-btn" onClick={handleSubmit} onTouchEnd={handleSubmit} type="button">
           Rejoignez-nous
         </button>
       </div>

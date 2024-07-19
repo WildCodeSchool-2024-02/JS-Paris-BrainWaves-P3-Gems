@@ -2,7 +2,7 @@ import "./AdminPage.css";
 import { GiDiamondRing } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
-import video from "../../../assets/images/videos/background3.mp4"
+import video from "../../../assets/images/videos/background5.mp4"
 
 function AdminPage() {
   const [ setInfoUser ] = useState("");
@@ -35,7 +35,8 @@ function AdminPage() {
 
   const handleDelete = async (IdProduct) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
+  
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -45,16 +46,20 @@ function AdminPage() {
           Id_product: IdProduct,
         }),
       });
-
+    
+      if (!response.ok) {
+        throw new Error(`Failed to delete product: ${response.statusText}`);
+      }
+  
       const filteredData = productsToValidate.filter(
         (product) => product.Id_product !== IdProduct
       );
       setProductsToValidate(filteredData);
     } catch (error) {
-      console.error(error);
+      console.error("Error deleting product:", error);
     }
   };
-
+  
   const handleWideImage = (IdProduct) => {
     setWiderImageId(IdProduct);
     setWiderImage(!widerImage);
@@ -93,7 +98,7 @@ function AdminPage() {
   return (
     <div id="AdminPage">
       <div className="background">
-      <video autoPlay muted loop id="backgroundVideo">
+      <video autoPlay muted loop playsInline id="backgroundVideo">
           <source src={video} type="video/mp4" />
         </video>
         <h1>
@@ -111,16 +116,10 @@ function AdminPage() {
                 <div className="admin-all-details">
                   <div className="admin-images">
                     <img
-                      onClick={() => handleWideImage(product.Id_product)}
-                      onKeyDown={() =>handleWideImage(product.Id_product)}
-                      role="presentation"
+                     
                       src={product.picture_jewell}
                       alt={product.name}
-                      className={
-                        product.Id_product === widerImageId && widerImage
-                          ? "wider"
-                          : ""
-                      }
+                     
                     />
                     <img
                       onClick={() =>handleWideImage(product.Id_product)}
