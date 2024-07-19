@@ -9,13 +9,15 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useToast } from "../../contexts/ToastContext";
 
-function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
+function Card({ product, setShowInput, cart, setCart }) {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
   const { favorites, addToWishList, removeFromWishList } = useWishlist();
   const { auth } = useAuth();
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (cart && Array.isArray(cart)) {
@@ -34,6 +36,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleCard();
+      
     }
   };
 
@@ -45,7 +48,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
       return newCart;
     });
     setDisabledButton(true);
-    setModalConfOpen(true);
+    addToast("basket", "Bien ajouté au panier", 4000,);
   };
 
   const isFavorite = favorites.some(
@@ -66,7 +69,7 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
       />
       {isFavorite ? (
         <GoHeartFill
-          onClick={() => removeFromWishList(product.Id_product)}
+          onClick={() => {removeFromWishList(product.Id_product); addToast("unlike", "Bien retiré des favoris", 4000,);}}
           role="presentation"
           className="heart-logo"
           style={{ color: "#790101" }}
@@ -93,10 +96,12 @@ function Card({ product, setShowInput, cart, setCart, setModalConfOpen }) {
           onClick={() => {
             if (isFavorite) {
               removeFromWishList(product.Id_product);
+              addToast("unlike", "Bien retiré des favoris", 4000,);
             } else {
               if (!auth)
               navigate("/login")
               addToWishList(product.Id_product);
+              addToast("like", "Bien ajouté aux favoris", 4000,);
             }
           }}
           role="presentation"
@@ -150,7 +155,6 @@ Card.propTypes = {
     })
   ).isRequired,
   setCart: PropTypes.func.isRequired,
-  setModalConfOpen: PropTypes.func.isRequired,
 };
 
 export default Card;

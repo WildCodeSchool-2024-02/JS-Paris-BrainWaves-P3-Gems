@@ -8,6 +8,7 @@ import { useWishlist } from "../../../contexts/WishlistContext";
 import { useAuth } from "../../../contexts/AuthContext";
 import "./ItemDetailsPage.css";
 import { useCart } from "../../../contexts/CartContext";
+import { useToast } from "../../../contexts/ToastContext";
 import ModalCart from "../../Modal/ModalCart/ModalCart";
 
 function ItemDetailsPage() {
@@ -19,8 +20,11 @@ function ItemDetailsPage() {
   const [detailProduct, setDetailProduct] = useState([]);
   const [modalConfOpen, setModalConfOpen] = useState(false);
 
-  const { favorites, addToWishList, removeFromWishList } = useWishlist();
-  const { auth } = useAuth();
+  const {favorites, addToWishList, removeFromWishList} = useWishlist();
+
+  const {auth} = useAuth()
+  const {addToast} = useToast()
+
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -60,7 +64,7 @@ function ItemDetailsPage() {
       return newCart;
     });
     setDisabledButton(true);
-    setModalConfOpen(true);
+    addToast("basket", "Bien ajouté au panier", 4000);
   };
 
   if (!detailProduct) {
@@ -97,7 +101,7 @@ function ItemDetailsPage() {
 
         {isFavorite ? (
           <GoHeartFill
-            onClick={() => removeFromWishList(detailProduct.Id_product)}
+            onClick={() => {removeFromWishList(detailProduct.Id_product); addToast("unlike", "Bien retiré des favoris", 4000)}}
             className="heart-img"
             style={{ color: "#790101" }}
           />
