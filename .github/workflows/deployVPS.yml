@@ -13,12 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: install Node
-      uses: actions/setup-node@v4
-      
     - name: ssh deploy
       uses: appleboy/ssh-action@master
       with:
