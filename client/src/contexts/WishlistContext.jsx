@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { toast } from "react-toastify";
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
+
 
 import { useAuth } from "./AuthContext";
 
@@ -12,7 +12,7 @@ export function WishlistProvider({ children }) {
   const { auth } = useAuth();
 
   const [favorites, setFavorites] = useState([]);
-
+ 
   useEffect(() => {
     fetch(`${urlApi}/api/wishlist/get-wishlist`, {
       headers: {
@@ -43,22 +43,11 @@ export function WishlistProvider({ children }) {
               ...prev,
               { Id_product: prod, Id_user: auth?.user?.Id_user },
             ]);
-            toast.success("Ajouté aux favoris", {
-              position: "top-center",
-              autoClose: 3000,
-              draggable: true,
-              theme: "light",
-              closeOnClick: true,
-            });
             return response.json();
           }
-          toast.error("Erreur lors de l'ajout aux favoris", {
-            position: "top-center",
-            autoClose: 3000,
-            draggable: true,
-            theme: "light",
-            closeOnClick: true,
-          });
+
+
+
           return false;
         } catch (error) {
           console.error(error);
@@ -86,24 +75,10 @@ export function WishlistProvider({ children }) {
                   fav.Id_product !== prod && fav.Id_user !== auth?.user?.Id_user
               )
             );
-    
-            toast.success("Retiré des favoris", {
-              position: "top-center",
-              autoClose: 3000,
-              draggable: true,
-              theme: "light",
-              closeOnClick: true,
-            });
+           
             return response.json();
           }
-          toast.error("Erreur lors du retrait des favoris", {
-            position: "top-center",
-            autoClose: 3000,
-            draggable: true,
-            theme: "light",
-            closeOnClick: true,
-          });
-    
+         
           return false;
         } catch (error) {
           console.error(error);
@@ -117,7 +92,9 @@ export function WishlistProvider({ children }) {
   );
 
   return (
-    <LikeContext.Provider value={contextValue}>{children}</LikeContext.Provider>
+    <LikeContext.Provider value={contextValue}>
+      {children}
+      </LikeContext.Provider>
   );
 }
 

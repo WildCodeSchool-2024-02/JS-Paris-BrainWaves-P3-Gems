@@ -4,10 +4,13 @@ import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import {useAuth} from '../../../contexts/AuthContext'
 import { useWishlist } from "../../../contexts/WishlistContext";
+import { useToast } from "../../../contexts/ToastContext";
+
 
 function ModalFav({ setModalOpen , setFavorite }) {
   const [modals, setModals] = useState([]);
   const {auth} = useAuth()
+  const {addToast} = useToast()
   const urlApi = import.meta.env.VITE_API_URL;
 
   const {removeFromWishList  } = useWishlist()
@@ -21,6 +24,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
       if ( removeFromWishList(productid) ) {
         setModals(modals.filter((modal) => modal.Id_product !== productid));
         setFavorite(false)
+       
       } 
   }
 
@@ -61,7 +65,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
                 <button
                   className="modal-delete"
                   type="button"
-                  onClick={() => handleRemoveItem(modal.Id_product)}
+                  onClick={() => {handleRemoveItem(modal.Id_product); addToast("success", "Bien retiré des favoris", 4000);}}
                 >
                   Supprimer
                 </button>
