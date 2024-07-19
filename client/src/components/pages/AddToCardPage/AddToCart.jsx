@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import "./AddToCart.css";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useCart } from "../../../contexts/CartContext";
 import video from "../../../assets/images/videos/background3.mp4"
 
@@ -70,6 +71,7 @@ function AddToCart() {
           <source src={video} type="video/mp4" />
         </video>
       <h1>Panier</h1>
+      <MdOutlineKeyboardBackspace className="goBackButton" onClick={() => navigate(-1)} style={{ marginLeft: "20px" }} />
       <div className="container-add">
         {items.length === 0 ? (
           <div className="empty-cart">

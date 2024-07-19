@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { GoHeart, GoHeartFill } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
+import { FaRegHeart } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
 import { MdOutlineEuroSymbol, MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
@@ -98,13 +99,13 @@ function ItemDetailsPage() {
           <GoHeartFill
             onClick={() => removeFromWishList(detailProduct.Id_product)}
             className="heart-img"
-            style={{ color: "white" }}
+            style={{ color: "#790101" }}
           />
         ) : (
-          <GoHeart
+          <FaRegHeart
             onClick={auth ? () => addToWishList(detailProduct.Id_product) : ()=>navigate("/login")}
             className="heart-img"
-            style={{ color: "white" }}
+            style={{ color: "#790101" }}
           />
         )}
       </div>

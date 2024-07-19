@@ -109,6 +109,7 @@
   height: 60px;
   transform: translateY(-20px);
 }
+
 @media screen and (max-width: 1024px) {
   .card {
     max-width: 150px;
@@ -187,6 +188,8 @@
   .heart-logo {
     position: absolute;
     display: flex;
+    width: 2vh;
+    height: 2vh;
     top: 8px;
     right: 6px;
     font-size: 18px;
