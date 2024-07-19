@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./Card.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { GoHeart } from "react-icons/go";
-import {FaHeart} from "react-icons/fa"
+import { FaHeart } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEuroSymbol } from "react-icons/md";
 import PropTypes from "prop-types";
@@ -10,16 +10,15 @@ import { useEffect, useState } from "react";
 import { useWishlist } from "../../contexts/WishlistContext";
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useToast } from "../../contexts/ToastContext";
 
-
-function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
-}) {
+function Card({ product, setShowInput, cart, setCart }) {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(false);
   const { favorites, addToWishList, removeFromWishList } = useWishlist();
   const { auth } = useAuth();
   const formatPrice = (price) => Number(price.toFixed(2)).toLocaleString();
-
+  const { addToast } = useToast();
 
   useEffect(() => {
     const isProductInCart = cart.some(
@@ -36,6 +35,7 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleCard();
+      
     }
   };
 
@@ -47,8 +47,7 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
       return newCart;
     });
     setDisabledButton(true);
-    setModalConfOpen(true)
-
+    addToast("basket", "Bien ajouté au panier", 4000,);
   };
 
   return (
@@ -71,8 +70,10 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
             )
           ) {
             removeFromWishList(product.Id_product);
+            addToast("unlike", "Bien retiré des favoris", 4000,);
           } else {
             addToWishList(product.Id_product);
+            addToast("like", "Bien ajouté aux favoris", 4000,);
           }
         }}
         role="presentation"
@@ -94,7 +95,7 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
             onKeyDown={() => handleCart(product)}
             className={`icon ${disabledButton ? "disabled" : ""}`}
             role="presentation"
-            onClick={() => handleCart(product)}
+            onClick={() => {handleCart(product)}}
           />
         </div>
         <div
@@ -107,8 +108,10 @@ function Card({ product, setShowInput, cart, setCart,  setModalConfOpen
               )
             ) {
               removeFromWishList(product.Id_product);
+              addToast("unlike", "Bien retiré des favoris", 4000,);
             } else {
               addToWishList(product.Id_product);
+              addToast("like", "Bien ajouté aux favoris", 4000,);
             }
           }}
           role="presentation"
@@ -169,7 +172,6 @@ Card.propTypes = {
     })
   ).isRequired,
   setCart: PropTypes.func.isRequired,
-  setModalConfOpen: PropTypes.func.isRequired,
 };
 
 export default Card;

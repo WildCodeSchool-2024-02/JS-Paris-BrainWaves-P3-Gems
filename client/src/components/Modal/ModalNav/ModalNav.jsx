@@ -5,11 +5,15 @@ import "./ModalNav.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useWishlist } from "../../../contexts/WishlistContext";
 
+
+
 function ModalNav({ setModalNav }) {
   const [modalNavigation, setModalNavigation] = useState([]);
   const [likeCount, setLikeCount] = useState(null);
 
-  const {auth}=useAuth()
+  const {auth}=useAuth();
+
+  
 
   const urlApi = import.meta.env.VITE_API_URL;
 
@@ -47,6 +51,7 @@ function ModalNav({ setModalNav }) {
       if (removeFromWishList(productid)) {
         setModalNavigation( modalNavigation.filter( (modalsNav) => modalsNav.Id_product !== productid ) )
     }
+
   };
 
   return (
@@ -73,7 +78,7 @@ function ModalNav({ setModalNav }) {
                 <button
                   className="modal-deleteNav"
                   type="button"
-                  onClick={() => handleRemoveItem(modalsNav.Id_product)}
+                  onClick={() => {handleRemoveItem(modalsNav.Id_product)}}
                 >
                   Supprimer
                 </button>

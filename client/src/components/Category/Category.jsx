@@ -1,4 +1,5 @@
 /* eslint-disable import/no-unresolved */
+
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -8,13 +9,11 @@ import {
   Scrollbar,
   EffectFade,
 } from "swiper/modules";
-import bracelets from '../../assets/images/videos/homepage/home_bracelet.mp4';
-import Bagues from '../../assets/images/videos/homepage/home_ring.mp4'
-import Colliers from '../../assets/images/videos/homepage/home_necklace.mp4'
-import Boucles from '../../assets/images/videos/homepage/home_earring.mp4'
-import Montres from '../../assets/images/videos/homepage/home_watch.mp4';
-
-
+import bracelets from "../../assets/images/videos/homepage/home_bracelet.mp4";
+import Bagues from "../../assets/images/videos/homepage/home_ring.mp4";
+import Colliers from "../../assets/images/videos/homepage/home_necklace.mp4";
+import Boucles from "../../assets/images/videos/homepage/home_earring.mp4";
+import Montres from "../../assets/images/videos/homepage/home_watch.mp4";
 
 import "swiper/css/bundle";
 
@@ -42,15 +41,16 @@ function Category() {
   };
 
   const showVideo = (video) => {
-    switch(video){
-      case "Bracelets": return bracelets
-      case "Bagues": return Bagues
-      case "Colliers": return Colliers
-      case "Boucles d'oreilles": return Boucles
-      case "Montres": return Montres
-      default: return Boucles
-    }
+  switch(video){
+  case "Bracelets": return bracelets
+  case "Bagues": return Bagues
+  case "Colliers": return Colliers
+  case "Boucles d'oreilles": return Boucles
+  case "Montres": return Montres
+  default: return Boucles
   }
+  }
+// 
 
   const videoTitle = (data) => {
     navigate(`/items/${data.title}/${data.Id_category_list}`);
@@ -61,7 +61,7 @@ function Category() {
       <div className="all-video-containers">
         <Swiper
           className="swiper"
-          modules={[Navigation, Pagination, Autoplay, Scrollbar, EffectFade]}
+          modules={[Navigation , Pagination, Autoplay, Scrollbar, EffectFade]}
           spaceBetween={10}
           slidesPerView={1}
           grabCursor
@@ -81,12 +81,15 @@ function Category() {
               </div>
               <div className="text-container">
                 <h1 className="video-h1">Gems</h1>
-                <h2  onClick={()=> videoTitle(category)}  role="presentation">{category.title}</h2>
+                <h2 onClick={() => videoTitle(category)} role="presentation">
+                  {category.title}
+                </h2>
               </div>
             </SwiperSlide>
           ))}
-          ...
-        </Swiper>
+          
+           </Swiper>
+        <span className="point"><h2>Nos categories </h2></span>
       </div>
       {cat.map((category) => (
         <div key={category.Id_category_list} className="category-container">
