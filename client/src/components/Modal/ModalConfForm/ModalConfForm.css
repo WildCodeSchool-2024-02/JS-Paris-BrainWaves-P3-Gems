@@ -1,0 +1,63 @@
+/* MOBILE */
+#modal-conf-form-profile {
+  right: 17%;
+  position: absolute;
+  z-index: 99;
+  top: 45%;
+}
+
+#modal-conf-form-profile p {
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  padding: 0 1vw;
+}
+
+.container-conf-form-image {
+  background-color: rgb(53 53 53 / 95%);
+  width: 65vw;
+  display: flex;
+  z-index: 99;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#modal-conf-form-profile button {
+  padding: 10px 30px;
+  margin: 0 5px;
+  background-color: white;
+  color: black;
+  width: 22vw;
+  height: 4vh;
+  font-size: 2vh;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  #modal-conf-form-profile {
+    left: 40%;
+    top: 35%;
+  }
+
+  #modal-conf-form-profile p {
+    font-size: 2.5vh;
+  }
+
+  .container-conf-form-image {
+    width: 20vw;
+    height: 20vh;
+  }
+
+  #modal-conf-form-profile button {
+    width: 6vw;
+  }
+
+  #modal-conf-form-profile button:hover {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
+}

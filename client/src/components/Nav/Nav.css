@@ -1,0 +1,266 @@
+/* MOBILE */
+#Nav {
+  z-index: 100;
+  position: sticky;
+  width: 100vw;
+  background-color: white;
+  top: 0px;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+}
+#Nav .nav-container h1 {
+  cursor: pointer;
+}
+.menu-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu-icons .icons {
+  font-size: 22px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.icon-admin {
+  font-size: 32px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+#Nav .notification-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: 21px;
+  right: 88px;
+}
+
+#Nav .notification-cart p {
+  color: white;
+}
+
+#Nav .like-continer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  gap: 0px;
+}
+
+#Nav .like-continer .icons {
+  position: relative;
+}
+#Nav .like-continer p {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  position: absolute;
+  transform: translate(100%);
+  margin-right: -60px;
+  padding: 0;
+  z-index: 10;
+}
+
+.close-icons {
+  position: absolute;
+  right: 25px;
+  font-size: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-color: rgb(77, 77, 77);
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+}
+
+.close-icons:hover {
+  background-color: black;
+  font-size: 30px;
+  transition: all 0.5s ease-in-out;
+}
+.menu-icons .icons:hover {
+  opacity: 1;
+}
+#menu-list {
+  z-index: 100;
+  background: linear-gradient(270deg, rgb(255 255 255 / 20%) 1%, rgb(78 78 78));
+  color: white;
+  position: fixed;
+  padding: 20px;
+  width: 100%;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  animation: slideMenu 1s ease-in-out forwards alternate;
+}
+
+#legal-mentions-li {
+  font-size: 2.5vh;
+  position: absolute;
+  bottom: 10vh;
+}
+
+@keyframes slideMenu {
+  from {
+    transform: translateX(-400px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideSearchBar {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.list {
+  list-style: none;
+  margin: auto 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.list li {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 100;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.list li:hover {
+  transform: scale(1.02);
+}
+.list-icon {
+  font-size: 25px;
+  margin: 2%;
+}
+
+#SearchInput {
+  animation: slideSearchBar 0.4s ease-in-out alternate forwards;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid black;
+  z-index: 1;
+  position: relative;
+}
+
+#SearchInput input {
+  position: relative;
+  width: 90%;
+  border-bottom: none;
+  padding-left: 10px;
+}
+#SearchInput input:hover {
+  background-color: aliceblue;
+}
+
+#SearchInput .search-btn-container {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+#SearchInput .close-search {
+  z-index: 120;
+  font-size: 18px;
+  padding: 10px;
+  width: 90%;
+  gap: 20px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  text-align: center;
+}
+
+#searchResult {
+  background-color: rgba(103, 103, 103, 0.597);
+  min-width: 100vw;
+  max-height: 100vh;
+  position: fixed;
+  top: 100%;
+  overflow: scroll;
+  scrollbar-width: 1px;
+  scrollbar-color: black, transparent;
+  padding: 10px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(20px);
+}
+
+#searchResult .result-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10px 60px;
+  justify-content: center;
+  margin: 40px auto 80px;
+}
+
+#searchResult .result-container h1 {
+  filter: drop-shadow(0 0 5px white);
+  color: white;
+}
+@media screen and (min-width: 1024px) {
+  .menu-icons .icons {
+    margin-right: 10px;
+  }
+
+  .menu-icons .icons:hover {
+    font-size: 25px;
+  }
+
+  #Nav .notification-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: 33px;
+    right: 119px;
+  }
+
+  #Nav .notification-cart p {
+    font-size: 1.5vh;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+  }
+
+  .close-icons {
+    position: absolute;
+    right: 25px;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  #legal-mentions-li {
+    font-size: 2.5vh;
+    position: absolute;
+    bottom: 25px;
+  }
+
+  #menu-list {
+    min-height: 100vh;
+  }
+}

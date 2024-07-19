@@ -1,0 +1,139 @@
+/* Mobile */
+#LoginPage {
+  text-align: left;
+}
+
+#LoginPage h1 {
+  padding: 10px;
+}
+
+.inputLogin {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  width: 100%;
+  text-align: left;
+  gap: 10px;
+}
+
+.inputflex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  margin: 3vh auto 0px;
+  width: 90%;
+}
+
+.inputLogin input {
+  border: 1px solid;
+  padding: 12px;
+}
+
+.create-account {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  width: 90%;
+  margin: 3vh auto 0vh;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
+.nextButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vh;
+}
+
+.nextHome {
+  width: 90%;
+  padding: 12px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: small;
+  padding-bottom: 20px;
+}
+
+.wishlist .heart {
+  font-size: 1rem;
+}
+
+#login-image-container {
+  width: 100vw;
+  overflow: hidden;
+  object-fit: cover;
+  height: 42.5vh;
+}
+
+.flowerLogin {
+  transform: scale(1.1);
+}
+
+#LoginPage .password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+#LoginPage .password-input-container input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+#LoginPage .password-input-container .reveal {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#LoginPage .error-message {
+  text-align: center;
+  margin-top: 5px;
+  color: #c50000c7;
+}
+
+/* desktop */
+
+@media screen and (min-width: 1024px) {
+  .inputflex {
+    width: 35%;
+  }
+
+  .create-account {
+    width: 35%;
+  }
+
+  .nextHome {
+    width: 35%;
+  }
+
+  .wishlist {
+    width: 35vw;
+    font-size: 1rem;
+    gap: 15px;
+  }
+  .create-account {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  .inputflex {
+    margin: 3vh auto 0px;
+  }
+
+  .flowerLogin {
+    height: 45vh;
+    width: 100%;
+  }
+}

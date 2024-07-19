@@ -1,0 +1,246 @@
+/* Mobile */
+#SuccessPage {
+  height: 90vh;
+  width: 100vw;
+  font-family: "League Spartan", sans-serif;
+}
+
+#SuccessPage h1 {
+  padding: 10px 0 15px 5px;
+  font-size: 2.5vh;
+}
+
+#SuccessPage h2 {
+  font-size: 2vh;
+  font-weight: 400;
+  margin-top: 1vh;
+}
+
+#SuccessPage .empty-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+}
+
+#SuccessPage .text-empty-cart {
+  background-color: #585858c2;
+  font-size: 4vh;
+  color: white;
+  margin: 2vh;
+  padding: 1vh;
+}
+
+#SuccessPage .cart-container {
+  background-color: #ffffffc2;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+#SuccessPage .cart-img {
+  width: 25vw;
+  padding-right: 5px;
+  height: 15vh;
+  object-fit: cover;
+}
+
+#SuccessPage .item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 85px;
+  width: 54vw;
+}
+
+#SuccessPage .cart-recap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffffbd;
+  height: auto;
+  padding-left: 12vw;
+  max-height: 51vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+#SuccessPage .cart-recap .button-container {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  justify-content: center;
+}
+
+#SuccessPage .cart-recap h2 {
+  font-size: 2.5vh;
+  font-weight: 400;
+  margin-top: 2vh;
+}
+
+#SuccessPage .cart-recap h3 {
+  font-weight: 400;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  margin-top: 19px;
+}
+
+#SuccessPage .cart-recap p {
+  font-weight: 300;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  padding-top: 4px;
+}
+
+#SuccessPage .cart-total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2vh 0;
+  width: 75vw;
+  justify-content: space-between;
+  font-size: 2.5vh;
+}
+
+.info-name p {
+  font-weight: 300;
+  font-size: 2vh;
+  margin-top: 1vh;
+}
+
+#SuccessPage .cart-actions {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  gap: 15px;
+  margin: 0 10px 0 10px;
+}
+
+#SuccessPage .proceed-payment {
+  background: linear-gradient(45deg, black, black, transparent);
+  width: 100%;
+  padding: 12px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+#SuccessPage .all-carts {
+  max-height: 36vh;
+  overflow: hidden;
+  width: 100vw;
+  overflow-y: auto;
+}
+
+#SuccessPage .cart-total h2 {
+  margin: 1vh 0 0 0;
+  padding: 0;
+}
+
+/* desktop */
+
+@media screen and (min-width: 1024px) {
+  #SuccessPage {
+    height: 91vh;
+    width: 100vw;
+    padding: 0;
+  }
+
+  #SuccessPage h1 {
+    font-size: 4vh;
+  }
+
+  #SuccessPage .container-add {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 2vh;
+  }
+
+  #SuccessPage .cart-container {
+    display: flex;
+  }
+
+  #SuccessPage .cart-img {
+    width: 13vw;
+    height: 25vh;
+    object-fit: cover;
+  }
+
+  #SuccessPage h2 {
+    font-size: 3vh;
+    font-weight: 300;
+    margin-top: 2%;
+  }
+
+  #SuccessPage .price {
+    margin-top: 8px;
+  }
+
+  #SuccessPage .info-name,
+  h2 {
+    margin: 0;
+  }
+  #SuccessPage .item-details {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0;
+    align-items: flex-start;
+    height: 21vh;
+  }
+
+  #SuccessPage .cart-recap h3 {
+    font-size: 2.5vh;
+  }
+
+  #SuccessPage .cart-recap h2 {
+    font-size: 3vh;
+    font-weight: 400;
+    margin-bottom: 2vh;
+  }
+
+  #SuccessPage .cart-recap p {
+    font-size: 2.5vh;
+  }
+
+  #SuccessPage .cart-total {
+    background-color: transparent;
+    width: 23vw;
+  }
+
+  #SuccessPage .cart-total h2 {
+    font-weight: 300;
+    font-size: 3.5vh;
+  }
+
+  #SuccessPage .cart-recap {
+    padding: 30px;
+    overflow: visible;
+    overflow-y: hidden;
+    max-height: 90vh;
+  }
+
+  #SuccessPage .continue-shopping {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.389);
+    border-style: solid;
+    border-color: black;
+  }
+
+  #SuccessPage #total {
+    font-size: 3.5vh;
+    font-weight: 400;
+  }
+
+  #SuccessPage .all-carts {
+    max-height: 78vh;
+    overflow: hidden;
+    width: 40vw;
+    overflow-y: auto;
+  }
+
+  .info-name p {
+    margin-bottom: 8px;
+  }
+}

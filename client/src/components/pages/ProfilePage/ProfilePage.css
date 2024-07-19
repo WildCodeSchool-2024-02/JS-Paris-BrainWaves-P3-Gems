@@ -1,0 +1,134 @@
+/* MOBILE */
+.background {
+  max-height: 90vh;
+}
+#ProfilePage #backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -11;
+  filter: blur(2px);
+}
+#ProfilePage h1 {
+  color: white;
+  text-align: center;
+  padding-top: 10vh;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  font-size: 2.3rem;
+}
+.heart-profile {
+  opacity: 0.6;
+}
+.fav-profile {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.9);
+  height: 6vh;
+  padding-left: 2%;
+  font-weight: 300;
+  margin-top: 14%;
+  cursor: pointer;
+}
+#ProfilePage p {
+  margin-left: 2%;
+  margin-top: 1%;
+  font-weight: 400;
+}
+.boxjewels-profile {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.9);
+  height: 6vh;
+  padding-left: 2%;
+  font-weight: 300;
+  margin-top: 4%;
+  cursor: pointer;
+}
+.ring-profile {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.invoice-profile {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.bag-profile {
+  opacity: 0.6;
+  font-size: 1.3rem;
+}
+.buttons-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sale-button {
+  color: black;
+  background-color: transparent;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 15%;
+  width: 60vw;
+  padding: 1.5vh;
+  border: black 1px solid;
+}
+.sale-button:hover {
+  background-color: transparent;
+}
+.return-button {
+  color: white;
+  background: linear-gradient(43deg, black, transparent);
+  font-size: 1.5rem;
+  width: 80vw;
+  height: 5vh;
+  margin-top: 5%;
+  width: 60vw;
+  padding: 1.5vh;
+  font-weight: 300;
+}
+/* DESKTOP */
+@media screen and (min-width: 1060px) {
+  .background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+    object-fit: cover;
+  }
+  #ProfilePage h1 {
+    padding-top: 0;
+    padding-bottom: 6vh;
+    font-size: 4.5rem;
+  }
+  .fav-profile {
+    margin-top: 0vh;
+    padding: 1.8rem;
+    width: 24vw;
+  }
+  .boxjewels-profile {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1.8rem;
+    width: 24vw;
+  }
+  .sale-button {
+    background-color: transparent;
+    border: 1px solid black;
+    margin-top: 3vh;
+    width: 20vw;
+    height: 7vh;
+  }
+  .sale-button:hover {
+    background-color: white;
+  }
+  .return-button {
+    color: white;
+    width: 20vw;
+    padding: 0.7rem;
+    margin-top: 1.8%;
+    height: 7vh;
+  }
+}

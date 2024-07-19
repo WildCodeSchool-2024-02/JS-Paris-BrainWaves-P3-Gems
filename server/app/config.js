@@ -25,19 +25,17 @@ const app = express();
 // 4. Be sure to only have URLs in the array with domains from which you want to allow requests.
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
-/*
 const cors = require("cors");
 
 app.use(
   cors({
+    exposedHeaders: ["Authorization"],
     origin: [
       process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
-    ]
+    ],
+    credentials: true,
   })
 );
-*/
 
 /* ************************************************************************* */
 
@@ -54,10 +52,10 @@ app.use(
 
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
-// app.use(express.json());
+app.use(express.json());
 // app.use(express.urlencoded());
 // app.use(express.text());
-// app.use(express.raw());
+//  app.use(express.raw());
 
 /* ************************************************************************* */
 
@@ -72,8 +70,9 @@ app.use(
 
 // Then, require the module and use it as middleware in your Express application:
 
-// const cookieParser = require("cookie-parser");
-// app.use(cookieParser());
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
 
 // Once `cookie-parser` is set up, you can read and set cookies in your routes.
 // For example, to set a cookie named "username" with the value "john":
@@ -85,6 +84,7 @@ app.use(
 /* ************************************************************************* */
 
 // Import the API router
+const path = require("path");
 const apiRouter = require("./routers/api/router");
 
 // Mount the API router under the "/api" endpoint
@@ -107,33 +107,28 @@ app.use("/api", apiRouter);
 // 1. Uncomment the lines related to serving static files and redirecting unhandled requests.
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
-/*
-const path = require("path");
-
-const reactBuildPath = path.join(__dirname, "/../../client/dist");
+// const reactBuildPath = path.join(__dirname, "/../../client/dist");
 const publicFolderPath = path.join(__dirname, "/../public");
 
 // Serve react resources
 
-app.use(express.static(reactBuildPath));
+app.use(express.static(publicFolderPath));
 
 // Serve server resources
 
 app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
-// Redirect unhandled requests to the react index file
+// // Redirect unhandled requests to the react index file
 
-app.get("*", (_, res) => {
-  res.sendFile(path.join(reactBuildPath, "/index.html"));
-});
-*/
+// app.get("*", (_, res) => {
+//   res.sendFile(path.join(reactBuildPath, "/index.html"));
+// });
 
 /* ************************************************************************* */
 
 // Middleware for Error Logging (Uncomment to enable)
 // Important: Error-handling middleware should be defined last, after other app.use() and routes calls.
 
-/*
 // Define a middleware function to log errors
 const logErrors = (err, req, res, next) => {
   // Log the error to the console for debugging purposes
@@ -146,7 +141,6 @@ const logErrors = (err, req, res, next) => {
 
 // Mount the logErrors middleware globally
 app.use(logErrors);
-*/
 
 /* ************************************************************************* */
 
