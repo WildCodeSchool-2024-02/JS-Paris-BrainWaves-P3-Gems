@@ -103,13 +103,13 @@ function ItemDetailsPage() {
           <GoHeartFill
             onClick={() => {removeFromWishList(detailProduct.Id_product); addToast("unlike", "Bien retiré des favoris", 4000)}}
             className="heart-img"
-            style={{ color: "#790101" }}
+            style={{ color: "white" }}
           />
         ) : (
           <FaRegHeart
             onClick={auth ? () => {addToWishList(detailProduct.Id_product); addToast("like", "Bien ajouté aux favoris", 4000)} : ()=>navigate("/login")}
             className="heart-img"
-            style={{ color: "#790101" }}
+            style={{ color: "white" }}
           />
         )}
       </div>
