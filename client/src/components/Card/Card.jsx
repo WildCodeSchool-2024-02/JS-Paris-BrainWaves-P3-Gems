@@ -72,14 +72,14 @@ function Card({ product, setShowInput, cart, setCart }) {
           onClick={() => {removeFromWishList(product.Id_product); addToast("unlike", "Bien retiré des favoris", 4000,);}}
           role="presentation"
           className="heart-logo"
-          style={{ color: "#790101" }}
+          style={{ color: "white" }}
         />
       ) : (
         <FaRegHeart
           onClick={auth ? () => {addToWishList(product.Id_product); addToast("like", "Bien ajouté aux favoris", 4000,);} : () => navigate("/login")}
           role="presentation"
           className="heart-logo"
-          style={{ color: "#790101" }}
+          style={{ color: "white" }}
         />
       )}
 
