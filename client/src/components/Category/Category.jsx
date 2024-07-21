@@ -1,4 +1,5 @@
 /* eslint-disable import/no-unresolved */
+
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -39,15 +40,16 @@ function Category() {
   };
 
   const showVideo = (video) => {
-    switch(video){
-      case "Bagues": return Bagues
-      case "Colliers": return Colliers
-      case "Bracelets": return bracelets
-      case "Boucles d'oreilles": return Boucles
-      case "Montres": return Montres
-      default: return Boucles
-    }
+  switch(video){
+  case "Bracelets": return bracelets
+  case "Bagues": return Bagues
+  case "Colliers": return Colliers
+  case "Boucles d'oreilles": return Boucles
+  case "Montres": return Montres
+  default: return Boucles
   }
+  }
+// 
 
   const videoTitle = (data) => {
     navigate(`/items/${data.title}/${data.Id_category_list}`);
@@ -60,7 +62,7 @@ function Category() {
       <div className="all-video-containers">
         <Swiper
           className="swiper"
-          modules={[Navigation, Pagination, Autoplay, Scrollbar, EffectFade]}
+          modules={[Navigation , Pagination, Autoplay, Scrollbar, EffectFade]}
           spaceBetween={10}
           slidesPerView={1}
           grabCursor
@@ -84,7 +86,9 @@ function Category() {
               </div>
               <div className="text-container">
                 <h1 className="video-h1">Gems</h1>
-                <h2  onClick={()=> videoTitle(category)}  role="presentation">{category.title}</h2>
+                <h2 onClick={() => videoTitle(category)} role="presentation">
+                  {category.title}
+                </h2>
               </div>
             </SwiperSlide>
           ))}
