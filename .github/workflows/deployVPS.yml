@@ -21,8 +21,8 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-        cd /var/www/html/gems-gems.fr
-        git pull origin main
-        npm i
-        cd client && npm build
-        pm2 reload Gems
+          cd /var/www/html/gems-gems.fr
+          git pull origin main
+          npm i
+          cd client && npm build
+          pm2 reload Gems
