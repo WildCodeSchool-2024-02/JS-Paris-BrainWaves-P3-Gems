@@ -107,7 +107,7 @@ function ItemDetailsPage() {
           />
         ) : (
           <FaRegHeart
-            onClick={auth ? () => addToWishList(detailProduct.Id_product) : ()=>navigate("/login")}
+            onClick={auth ? () => {addToWishList(detailProduct.Id_product); addToast("like", "Bien ajouté aux favoris", 4000)} : ()=>navigate("/login")}
             className="heart-img"
             style={{ color: "#790101" }}
           />

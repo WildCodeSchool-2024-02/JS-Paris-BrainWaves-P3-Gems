@@ -76,7 +76,7 @@ function Card({ product, setShowInput, cart, setCart }) {
         />
       ) : (
         <FaRegHeart
-          onClick={auth ? () => addToWishList(product.Id_product) : () => navigate("/login")}
+          onClick={auth ? () => {addToWishList(product.Id_product); addToast("like", "Bien ajouté aux favoris", 4000,);} : () => navigate("/login")}
           role="presentation"
           className="heart-logo"
           style={{ color: "#790101" }}
