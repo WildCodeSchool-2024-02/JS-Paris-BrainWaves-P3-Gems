@@ -4,9 +4,6 @@
   width: 100vw;
   font-family: "League Spartan", sans-serif;
 }
-#AddToCart #backgroundVideo {
-  height: 832px;
-}
 #AddToCart h1 {
   padding: 6vh 0 0 2vh;
 }
@@ -123,9 +120,6 @@
     height: 91vh;
     width: 100vw;
     padding: 0;
-  }
-  #AddToCart #backgroundVideo {
-    height: 100%;
   }
   #AddToCart h1 {
     font-size: 4vh;
