@@ -15,9 +15,10 @@
   margin: 2%;
   margin-left: 2%;
 }
-.modal-details {
+#modal-profile .modal-details {
   display: flex;
   flex-direction: column;
+  align-content: space-between;
   width: 50%;
 }
 #modal-profile h1 {
@@ -39,13 +40,15 @@
 
 #modal-profile .modal-bottom {
   position: relative;
+  top: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  top: 100px;
   align-items: center;
 }
 .modal-delete {
+  margin-left: 2%;
+  padding-left: 0;
   background: none;
   color: black;
   font-size: 1rem;
@@ -69,9 +72,9 @@
   max-height: 80vh;
   overflow-y: auto;
 }
-.image-modal {
-  width: 49vw;
-  height: 19vh;
+#modal-profile .image-modal {
+  width: 30vw;
+  height: 15vh;
   object-fit: cover;
   z-index: 2;
 }
@@ -94,13 +97,16 @@
     width: 65vw;
     max-height: 80vh;
   }
-  .image-modal {
-    width: 15vw;
+  #modal-profile .image-modal {
+    width: 12vw;
     height: 24vh;
   }
 
   #modal-profile .noFav {
     font-size: 2.5vh;
     padding: 1vh 0 5vh 0;
+  }
+  #modal-profile .modal-bottom {
+    top: 12vh;
   }
 }
