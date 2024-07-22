@@ -143,7 +143,7 @@
   #ItemDetailsPage {
     display: flex;
     width: 95vw;
-    margin: 9vh 1vw;
+    margin: 3vh 1vw 0vh 0.5vw;
   }
 
   .goBackButton {
@@ -153,9 +153,20 @@
   }
 
   .image-detail {
-    width: 43vw;
-    height: 90vh;
+    width: 40vw;
+    height: 87vh;
     object-fit: cover;
+  }
+
+  .heart-img {
+    top: 10px;
+    left: 32rem;
+  }
+
+  #ItemDetailsPage .goBackButton {
+    position: absolute;
+    font-size: 20px;
+    top: 68px;
   }
 
   .container-text {
