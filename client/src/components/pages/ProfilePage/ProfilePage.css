@@ -91,6 +91,7 @@
   padding: 1.5vh;
   font-weight: 300;
 }
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   .background {
