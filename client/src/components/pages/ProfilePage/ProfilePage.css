@@ -2,7 +2,6 @@
 .background {
   max-height: 90vh;
 }
-
 #ProfilePage #backgroundVideo {
   position: absolute;
   top: 0;
@@ -13,7 +12,6 @@
   z-index: -11;
   filter: blur(2px);
 }
-
 #ProfilePage h1 {
   color: white;
   text-align: center;
@@ -107,7 +105,7 @@
     font-size: 4.5rem;
   }
   .fav-profile {
-    margin-top: 0%;
+    margin-top: 0vh;
     padding: 1.8rem;
     width: 24vw;
   }

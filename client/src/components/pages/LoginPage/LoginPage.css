@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  margin: 40px auto 0px;
+  margin: 3vh auto 0px;
   width: 90%;
 }
 
@@ -33,15 +33,21 @@
 
 .create-account {
   font-family: "League Spartan", sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  text-align: center;
   cursor: pointer;
   width: 90%;
-  margin: 5px auto 15px;
+  margin: 3vh auto 0vh;
+}
+
+.create-account:hover {
+  text-decoration: underline;
 }
 
 .nextButton {
   display: flex;
   justify-content: center;
+  margin-top: 3vh;
 }
 
 .nextHome {
@@ -60,7 +66,7 @@
 }
 
 .wishlist .heart {
-  font-size: 25px;
+  font-size: 1rem;
 }
 
 #login-image-container {
@@ -115,16 +121,15 @@
 
   .wishlist {
     width: 35vw;
-    font-size: 20px;
+    font-size: 1rem;
     gap: 15px;
   }
-  .login-image-container {
-    width: 100vw;
-    margin: 0;
-    background-image: url(src/assets/images/illustrations/flower2bis.png);
-    background-position: center;
-    background-size: cover;
-    height: 43vh;
+  .create-account {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  .inputflex {
+    margin: 3vh auto 0px;
   }
 
   .flowerLogin {

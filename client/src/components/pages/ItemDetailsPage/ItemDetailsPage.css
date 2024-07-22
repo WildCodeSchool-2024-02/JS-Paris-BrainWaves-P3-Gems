@@ -37,10 +37,11 @@
   top: 10px;
   right: 10px;
   font-size: 40px;
+  width: 8vw;
+  height: 5vh;
   opacity: 1;
   z-index: 2;
   cursor: pointer;
-  animation: Smooth 2s cubic-bezier(0.075, 0.82, 0.165, 1) alternate;
 }
 
 .container-text {
@@ -142,7 +143,7 @@
   #ItemDetailsPage {
     display: flex;
     width: 95vw;
-    margin: 0 1vw;
+    margin: 9vh 1vw;
   }
 
   .goBackButton {

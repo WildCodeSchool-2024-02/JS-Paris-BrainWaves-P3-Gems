@@ -4,9 +4,8 @@
   width: 100vw;
   font-family: "League Spartan", sans-serif;
 }
-
 #AddToCart h1 {
-  padding: 10px 0 0 5px;
+  padding: 6vh 0 0 2vh;
 }
 
 #AddToCart h2 {
@@ -122,7 +121,6 @@
     width: 100vw;
     padding: 0;
   }
-
   #AddToCart h1 {
     font-size: 4vh;
   }
