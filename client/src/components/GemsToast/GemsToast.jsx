@@ -3,17 +3,21 @@ import PropTypes from "prop-types";
 import { FaCircleCheck } from "react-icons/fa6";
 import { MdError } from "react-icons/md";
 import { IoIosWarning } from "react-icons/io";
-import { FaShoppingBag, FaUserAltSlash, FaHeart } from "react-icons/fa";
-import { IoClose, IoHeartDislikeSharp } from "react-icons/io5";
+import { FaUserAltSlash } from "react-icons/fa";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+
+import { GoHeart, GoHeartFill } from "react-icons/go";
+
+import { IoClose} from "react-icons/io5";
 import "./GemsToast.css";
 
 const ToastTypes = {
   success: { icon: <FaCircleCheck /> },
   error: { icon: <MdError /> },
   warning: { icon: <IoIosWarning /> },
-  basket: { icon: <FaShoppingBag /> },
-  like: { icon: <FaHeart /> },
-  unlike: { icon: <IoHeartDislikeSharp /> },
+  basket: { icon: <HiOutlineShoppingBag /> },
+  like: { icon: <GoHeartFill /> },
+  unlike: { icon: <GoHeart /> },
   disconnected: { icon: <FaUserAltSlash /> },
 };
 

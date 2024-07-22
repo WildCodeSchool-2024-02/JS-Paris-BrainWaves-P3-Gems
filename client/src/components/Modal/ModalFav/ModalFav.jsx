@@ -69,7 +69,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
                 >
                   Supprimer
                 </button>
-                <h2>{modal.price}</h2>
+                <h2>{modal.price}€</h2>
               </div>
             </div>
           </div>
