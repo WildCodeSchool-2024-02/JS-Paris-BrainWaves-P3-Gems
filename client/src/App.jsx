@@ -10,10 +10,10 @@ function App() {
   return (
     <div id="App">
       <ToastProvider>
-      <Outlet context={auth} />
-    
-     </ToastProvider>
-      </div>
+        <Nav />
+        <Outlet context={auth} />
+      </ToastProvider>
+    </div>
   );
 }
 
