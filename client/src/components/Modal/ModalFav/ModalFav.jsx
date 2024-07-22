@@ -8,6 +8,7 @@ import { useToast } from "../../../contexts/ToastContext";
 
 
 function ModalFav({ setModalOpen , setFavorite }) {
+  const [likeCount, setLikeCount] = useState(null);
   const [modals, setModals] = useState([]);
   const {auth} = useAuth()
   const {addToast} = useToast()
@@ -29,7 +30,15 @@ function ModalFav({ setModalOpen , setFavorite }) {
   }
 
   
+  useEffect(() => {
 
+    fetch(`${urlApi}/api/wishlist/show-counter/`,{
+      headers:{"Content-Type": "application/json", Authorization: ` Bearer ${auth?.token}`}
+    })
+      .then((res) => res.json())
+      .then((data) => setLikeCount(data.count))
+      .catch((error) => console.error(error));
+  }, [urlApi, auth]);
 
 
   useEffect(() => {
@@ -52,7 +61,7 @@ function ModalFav({ setModalOpen , setFavorite }) {
       <div className="container-image">
         <div className="container-heart">
           <FaHeart className="heart-profile" />
-          <p>Mes articles favoris </p>
+          <p>Mes articles favoris {likeCount > 0 ? `(${likeCount})`: ""}</p>
         </div>
         {modals.length === 0 && <h1 className="noFav">Vous n'avez pas d'articles favoris</h1>}
         {modals.map((modal) => (
