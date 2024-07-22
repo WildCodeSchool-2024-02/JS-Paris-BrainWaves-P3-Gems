@@ -5,21 +5,7 @@
   z-index: 1;
   top: 23vh;
 }
-.container-heart {
-  display: flex;
-  align-items: center;
-  margin: 2% 0% 2% 2%;
-}
-.modal-style {
-  display: flex;
-  margin: 2%;
-  margin-left: 2%;
-}
-.modal-details {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
+
 #modal-sold h1 {
   text-align: start;
   padding-top: 0;
@@ -44,35 +30,12 @@
   justify-content: space-between;
   top: 40px;
 }
-.modal-delete {
-  background: none;
-  color: black;
-  font-size: 1rem;
-  font-weight: 400;
-  width: 6vw;
-}
-.modal-delete:hover {
-  background: none;
-}
+
 #modal-sold h2 {
   font-size: 1rem;
   margin-top: 30%;
   margin-left: 0.5vh;
   font-weight: 400;
-}
-.container-image {
-  background-color: rgb(255, 255, 255, 0.97);
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-.image-modal {
-  width: 49vw;
-  height: 19vh;
-  object-fit: cover;
-  z-index: 2;
 }
 
 #modal-sold .noFav {
@@ -89,17 +52,6 @@
   #modal-sold h1 {
     margin-top: 3%;
     font-size: 20px;
-  }
-  .modal-bottom {
-    height: 90%;
-  }
-  .container-image {
-    width: 65vw;
-    max-height: 80vh;
-  }
-  .image-modal {
-    width: 15vw;
-    height: 24vh;
   }
 
   #modal-sold .noFav {
