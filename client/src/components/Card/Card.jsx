@@ -48,7 +48,7 @@ function Card({ product, setShowInput, cart, setCart }) {
       return newCart;
     });
     setDisabledButton(true);
-    addToast("basket", "Bien ajouté au panier", 4000,);
+    addToast("basket", "L'article a été ajouté au panier", 4000,);
   };
 
   const isFavorite = favorites.some(
@@ -69,14 +69,14 @@ function Card({ product, setShowInput, cart, setCart }) {
       />
       {isFavorite ? (
         <GoHeartFill
-          onClick={() => {removeFromWishList(product.Id_product); addToast("unlike", "Bien retiré des favoris", 4000,);}}
+          onClick={() => {removeFromWishList(product.Id_product); addToast("unlike", "L'article a été retiré de vos favoris", 4000,);}}
           role="presentation"
           className="heart-logo"
           style={{ color: "white" }}
         />
       ) : (
         <FaRegHeart
-          onClick={auth ? () => {addToWishList(product.Id_product); addToast("like", "Bien ajouté aux favoris", 4000,);} : () => navigate("/login")}
+          onClick={auth ? () => {addToWishList(product.Id_product); addToast("like", "L'article a été ajouté à vos favoris", 4000,);} : () => navigate("/login")}
           role="presentation"
           className="heart-logo"
           style={{ color: "white" }}
@@ -96,12 +96,12 @@ function Card({ product, setShowInput, cart, setCart }) {
           onClick={() => {
             if (isFavorite) {
               removeFromWishList(product.Id_product);
-              addToast("unlike", "Bien retiré des favoris", 4000,);
+              addToast("unlike", "L'article a été retiré de vos favoris", 4000,);
             } else {
               if (!auth)
               navigate("/login")
               addToWishList(product.Id_product);
-              addToast("like", "Bien ajouté aux favoris", 4000,);
+              addToast("like", "L'article a été ajouté à vos favoris", 4000,);
             }
           }}
           role="presentation"

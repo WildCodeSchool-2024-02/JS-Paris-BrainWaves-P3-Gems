@@ -64,7 +64,7 @@ function ItemDetailsPage() {
       return newCart;
     });
     setDisabledButton(true);
-    addToast("basket", "Bien ajouté au panier", 4000);
+    addToast("basket", "L'article a été ajouté au panier", 4000);
   };
 
   if (!detailProduct) {
@@ -101,13 +101,13 @@ function ItemDetailsPage() {
 
         {isFavorite ? (
           <GoHeartFill
-            onClick={() => {removeFromWishList(detailProduct.Id_product); addToast("unlike", "Bien retiré des favoris", 4000)}}
+            onClick={() => {removeFromWishList(detailProduct.Id_product); addToast("unlike", "L'article a été retiré de vos favoris", 4000)}}
             className="heart-img"
             style={{ color: "white" }}
           />
         ) : (
           <FaRegHeart
-            onClick={auth ? () => {addToWishList(detailProduct.Id_product); addToast("like", "Bien ajouté aux favoris", 4000)} : ()=>navigate("/login")}
+            onClick={auth ? () => {addToWishList(detailProduct.Id_product); addToast("like", "L'article a été ajouté à vos favoris", 4000)} : ()=>navigate("/login")}
             className="heart-img"
             style={{ color: "white" }}
           />

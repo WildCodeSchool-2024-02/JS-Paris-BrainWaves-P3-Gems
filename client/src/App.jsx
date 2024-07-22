@@ -9,8 +9,8 @@ function App() {
 
   return (
     <div id="App">
-      <Nav/>
       <ToastProvider>
+      <Nav/>
       <Outlet context={auth} />
     
      </ToastProvider>
