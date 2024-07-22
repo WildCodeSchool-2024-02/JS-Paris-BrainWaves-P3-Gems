@@ -57,7 +57,7 @@
     top: 12%;
   }
   #modal-sold .modal-details {
-    width: 10vw;
+    width: 70%;
   }
   #modal-sold .image-modal {
     width: 10vw;
@@ -67,6 +67,7 @@
   }
   #modal-sold h1 {
     padding-bottom: 0;
+    margin-left: 1vh;
     margin-top: 3%;
     font-size: 20px;
   }
@@ -82,10 +83,11 @@
     font-weight: 400;
   }
   #modal-sold .modal-bottom {
-    top: 12vh;
+    top: 8vh;
     width: 20vw;
   }
   #modal-sold h3 {
     font-size: 15px;
+    margin-left: 1vh;
   }
 }
