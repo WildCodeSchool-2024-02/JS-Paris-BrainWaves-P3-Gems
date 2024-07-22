@@ -68,7 +68,7 @@
 .sale-button {
   color: black;
   background-color: transparent;
-  font-size: 1.5rem;
+  font-size: 3vh;
   font-weight: 500;
   margin-top: 15%;
   width: 60vw;
@@ -86,9 +86,10 @@
   height: 5vh;
   margin-top: 5%;
   width: 60vw;
-  padding: 1.5vh;
+  padding: 1vh;
   font-weight: 300;
 }
+
 /* DESKTOP */
 @media screen and (min-width: 1060px) {
   .background {

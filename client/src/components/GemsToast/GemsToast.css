@@ -28,24 +28,24 @@
 
 @keyframes popUp {
   0% {
-    transform: scale(0) translateX(1000px);
+    transform: scale(0) translateX(0);
   }
   80% {
-    transform: scale(1.1) translateX(500px);
+    transform: scale(1.1) translateX(200px);
   }
   100% {
     transform: scale(1) translateX(0);
   }
 }
 
-@keyframes pop {
+/* @keyframes pop {
   from {
-    transform: translateY(100px);
+    transform: translateY(50px);
   }
   to {
     transform: translateY(0);
   }
-}
+} */
 
 #gemsToast .toast-container {
   display: flex;
@@ -56,7 +56,7 @@
 }
 
 #gemsToast .toast-icon {
-  font-size: 30px;
+  font-size: 25px;
   animation: pop 1s ease-in-out alternate;
 }
 
@@ -67,10 +67,12 @@
 
 #gemsToast p {
   color: rgb(255, 255, 255);
+  font-size: 2vh;
+  font-weight: 300;
 }
 
 #gemsToast .close-btn {
-  font-size: 30px;
+  font-size: 20px;
   position: absolute;
   right: 10px;
   top: 10px;

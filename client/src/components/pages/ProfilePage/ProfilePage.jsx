@@ -7,12 +7,15 @@ import "./ProfilePage.css";
 import { useState, useEffect } from "react";
 import ModalFav from "../../Modal/ModalFav/ModalFav";
 import ModalSells from "../../Modal/ModalSells/ModalSells";
+import ModalSold from "../../Modal/ModalSold/ModalSold";
 import { useAuth } from "../../../contexts/AuthContext";
 import video from "../../../assets/images/videos/background1.mp4";
 
 function ProfilePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSellsOpen, setModalSellsOpen] = useState(false);
+  const [modalSoldOpen, setModalSoldOpen] = useState(false);
+
   const { setFavorite } = useOutletContext();
   const { auth, setAuth } = useAuth();
 
@@ -24,6 +27,10 @@ function ProfilePage() {
 
   const handleClickSells = () => {
     setModalSellsOpen(true);
+  };
+
+  const handleClickSold = () => {
+    setModalSoldOpen(true);
   };
 
   useEffect(() => {
@@ -98,10 +105,18 @@ function ProfilePage() {
             setFavorite={setFavorite}
           />
         )}
-        <div className="fav-profile">
+        <div className="fav-profile"
+        onClick={handleClickSold}
+        onKeyDown={handleClickSold}
+        role="presentation">
           <LiaFileInvoiceSolid className="invoice-profile" />
           <p>Mes ventes</p>
         </div>
+        {modalSoldOpen && (
+          <ModalSold
+            setModalSoldOpen={setModalSoldOpen}
+          />
+        )}
         <div className="boxjewels-profile">
           <IoBagSharp className="bag-profile" />
           <p>Mes achats</p>
