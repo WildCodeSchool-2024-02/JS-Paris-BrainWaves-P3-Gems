@@ -65,14 +65,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
   margin: 0 auto;
 }
 #ItemDetailsPage .button-detail {
   color: black;
   background-color: transparent;
   font-weight: 500;
-  font-size: 2.5vh;
+  font-size: 2.3vh;
   margin: 1vh;
   padding: 4px;
 }
@@ -143,7 +143,7 @@
   #ItemDetailsPage {
     display: flex;
     width: 95vw;
-    margin: 9vh 1vw;
+    margin: 3vh 1vw 0vh 0.5vw;
   }
 
   .goBackButton {
@@ -153,9 +153,20 @@
   }
 
   .image-detail {
-    width: 43vw;
-    height: 90vh;
+    width: 40vw;
+    height: 87vh;
     object-fit: cover;
+  }
+
+  .heart-img {
+    top: 10px;
+    left: 31rem;
+  }
+
+  #ItemDetailsPage .goBackButton {
+    position: absolute;
+    font-size: 20px;
+    top: 68px;
   }
 
   .container-text {

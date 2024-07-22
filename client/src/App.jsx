@@ -10,11 +10,11 @@ function App() {
   return (
     <div id="App">
       <ToastProvider>
-        <Nav />
-        <Outlet context={auth} />
-      </ToastProvider>
-    </div>
-  );
+      <Nav/>
+      <Outlet context={auth} />
+     </ToastProvider>
+      </div>
+);
 }
 
 export default App;
