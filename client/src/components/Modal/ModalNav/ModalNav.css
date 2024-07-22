@@ -27,7 +27,7 @@ h1 .noFav {
 
 #modal-nav .image-modalNav {
   width: 49vw;
-  height: 19vh;
+  height: 23vh;
   object-fit: cover;
   z-index: 2;
 }
@@ -68,7 +68,7 @@ h1 .noFav {
   align-items: center;
   justify-content: space-between;
   width: 42vw;
-  top: 118px;
+  top: 13vh;
 }
 #modal-nav .modal-deleteNav {
   background: none;
@@ -103,7 +103,7 @@ h1 .noFav {
   }
   #modal-nav .modal-bottomNav {
     position: relative;
-    top: 100px;
+    top: 12vh;
     width: 20vw;
   }
   #modal-nav .container-imgNav {
@@ -111,8 +111,8 @@ h1 .noFav {
     max-height: 100vh;
   }
   #modal-nav .image-modalNav {
-    width: 15vw;
-    height: 24vh;
+    width: 12vw;
+    height: 26vh;
   }
 
   #modal-nav .noFav {
