@@ -69,6 +69,15 @@ const readProductByUser = async (req, res, next) => {
   }
 };
 
+const readSells = async (req, res, next) => {
+  try {
+    const [results] = await tables.product.readSells(req.auth.id);
+    res.status(200).json(results);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const deleteProductByUser = async (req, res, next) => {
   try {
     const data = req.body;
@@ -190,5 +199,6 @@ module.exports = {
   validate,
   sell,
   checkoutSession,
-  retrieveSession
+  retrieveSession,
+  readSells
 };

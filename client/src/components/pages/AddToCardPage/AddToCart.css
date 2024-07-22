@@ -4,9 +4,6 @@
   width: 100vw;
   font-family: "League Spartan", sans-serif;
 }
-#AddToCart h1 {
-  padding: 6vh 0 0 2vh;
-}
 
 #AddToCart h2 {
   font-size: 2.5vh;
@@ -121,8 +118,16 @@
     width: 100vw;
     padding: 0;
   }
+
   #AddToCart h1 {
-    font-size: 4vh;
+    padding: 1vh 0 0 2vh;
+    font-size: 5vh;
+  }
+
+  #AddToCart .goBackButton {
+    position: absolute;
+    font-size: 20px;
+    top: 130px;
   }
 
   #AddToCart .container-add {
@@ -205,6 +210,7 @@
     justify-content: space-evenly;
     font-family: "League Spartan", sans-serif;
     padding: 0 20px 0 20px;
+    margin-top: 5vh;
   }
 
   #AddToCart .cart-total {

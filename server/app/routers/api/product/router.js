@@ -17,6 +17,7 @@ const {
   sell,
   checkoutSession,
   retrieveSession,
+  readSells
 } = require("../../../controllers/productActions");
 
 const validateProduct = require("../../../services/product");
@@ -38,6 +39,8 @@ router.post("/checkoutSession", checkoutSession);
 router.delete("/", verifyToken, deleteProductByUser);
 
 router.get("/user", verifyToken, readProductByUser);
+router.get("/user/sells", verifyToken, readSells);
+
 router.get("/product-by-category/:id", readProductByCategoryId);
 router.get("/single-Product/:id", readSingleProduct);
 router.get("/searching_for_product", getFilter);
