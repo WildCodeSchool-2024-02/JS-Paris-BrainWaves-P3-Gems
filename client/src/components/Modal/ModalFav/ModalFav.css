@@ -31,7 +31,7 @@
 }
 
 #modal-profile h3 {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 2%;
   margin-left: 2%;
   font-weight: 400;
@@ -42,7 +42,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  top: 55px;
+  top: 74px;
+  align-items: center;
 }
 .modal-delete {
   background: none;
@@ -55,7 +56,7 @@
   background: none;
 }
 #modal-profile h2 {
-  font-size: 1rem;
+  font-size: 2.5vh;
   margin-top: 3%;
   margin-right: 6%;
   font-weight: 400;
