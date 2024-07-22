@@ -30,18 +30,17 @@
 #modal-sold h3 {
   font-size: 13px;
   margin-top: 2%;
-  margin-left: 2%;
+  margin-left: 0.5vh;
   font-weight: 400;
 }
 
 #modal-sold .modal-bottom {
   position: relative;
-  width: 42vw;
+  top: 6vh;
 }
 
 #modal-sold h2 {
   font-size: 1rem;
-  margin-top: 30%;
   margin-left: 0.5vh;
   font-weight: 400;
 }
@@ -79,12 +78,11 @@
 
   #modal-sold h2 {
     font-size: 2.5vh;
-    margin-top: 3vh;
     margin-left: 1vh;
     font-weight: 400;
   }
   #modal-sold .modal-bottom {
-    top: 7vh;
+    top: 12vh;
     width: 20vw;
   }
   #modal-sold h3 {
