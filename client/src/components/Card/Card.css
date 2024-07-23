@@ -96,8 +96,7 @@
   font-size: 30px;
 }
 .card:hover .card-picture {
-  filter: blur(2px);
-  opacity: 0.8;
+  filter: blur(2px) brightness(0.7);
 }
 .card:hover .logo-container {
   display: flex;
@@ -180,8 +179,6 @@
   }
   .card:hover .card-picture {
     filter: blur(0px);
-  }
-  .card:hover .card-picture {
     opacity: 1;
   }
   .heart-logo {
