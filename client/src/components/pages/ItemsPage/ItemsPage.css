@@ -59,6 +59,7 @@
   #ItemsPage .illustrations-mobile {
     display: block;
     width: 100vw;
+    height: 40vh;
   }
 
   .illustrations-desktop {

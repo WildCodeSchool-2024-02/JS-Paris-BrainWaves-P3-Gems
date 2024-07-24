@@ -19,7 +19,6 @@
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  width: 50%;
 }
 #modal-profile h1 {
   text-align: start;
@@ -40,7 +39,7 @@
 
 #modal-profile .modal-bottom {
   position: relative;
-  top: 5vh;
+  top: 2vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,7 +68,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
+  min-height: 41vh;
   overflow-y: auto;
 }
 #modal-profile .image-modal {
