@@ -38,7 +38,7 @@ class ProductRepository extends AbstractRepository {
   }
 
   async searchForProduct(value) {
-    const query = `SELECT * FROM gems.product WHERE name LIKE ?`;
+    const query = `SELECT * FROM gems.product WHERE name LIKE ? AND sold = false`;
     const [result] = await this.database.query(query, [`%${value}%`]);
     return result;
   }
