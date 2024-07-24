@@ -52,12 +52,16 @@
   }
 
   #modal-conf-account-profile button {
+    display: flex;
+    align-items: center;
     width: 8vw;
+    font-weight: 400;
   }
 
   #modal-conf-account-profile button:hover {
     background-color: transparent;
     border: 1px solid white;
+    font-weight: 400;
     color: white;
   }
 }
