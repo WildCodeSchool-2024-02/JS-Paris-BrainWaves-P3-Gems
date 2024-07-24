@@ -15,7 +15,7 @@ function App() {
     
      </ToastProvider>
       </div>
-  );
+);
 }
 
 export default App;
