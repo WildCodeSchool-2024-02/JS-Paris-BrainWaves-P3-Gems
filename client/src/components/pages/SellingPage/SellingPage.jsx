@@ -85,6 +85,7 @@ function SellingPage() {
   return (
     <div id="sellingPage">
       {errors && <p className="error-picture">{errors.picture}</p>}
+      {errors && <p className="error-picture">{errors.invoice}</p>}
       <div className="input-image-div">
         <section className="container-picture">
           <input
