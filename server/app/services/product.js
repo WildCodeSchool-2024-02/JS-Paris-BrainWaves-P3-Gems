@@ -20,11 +20,11 @@ const validateProduct = (req, res, next) => {
     errors.picture = "Veuillez ajouter une photo";
   }
 
-  if (name.length > 25) {
+  if (name.length > 50) {
     errors.name = "Maximum 25 caractères autorisés";
   }
 
-  if (details.length > 60) {
+  if (details.length > 80) {
     errors.details = "Maximum 60 caractères autorisés";
   }
 
