@@ -96,7 +96,7 @@
   font-size: 30px;
 }
 .card:hover .card-picture {
-  filter: blur(2px);
+  filter: blur(2px) brightness(0.7);
   opacity: 0.8;
 }
 .card:hover .logo-container {

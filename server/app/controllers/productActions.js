@@ -101,7 +101,7 @@ const readProductToValidate = async (req, res, next) => {
 const validate = async (req, res, next) => {
   try {
     const product = await tables.product.validateProduct(req.params.Id_product);
-    res.status(204).json(product);
+    res.status(200).json(product);
   } catch (error) {
     next(error);
   }
