@@ -12,7 +12,6 @@ function App() {
       <ToastProvider>
       <Nav/>
       <Outlet context={auth} />
-    
      </ToastProvider>
       </div>
 );

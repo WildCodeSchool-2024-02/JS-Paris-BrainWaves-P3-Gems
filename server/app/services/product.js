@@ -12,20 +12,20 @@ const validateProduct = (req, res, next) => {
     errors.all = "Veuillez remplir tous les champs";
   }
   
-  if (!req?.files?.picture_jewell || !req?.files?.picture_validation) {
+  if (!req?.files?.picture_jewell) {
     errors.picture = "Veuillez ajouter une photo";
   }
 
-  if (!req?.files?.picture_jewell || !req?.files?.picture_validation) {
-    errors.picture = "Veuillez ajouter une photo";
+  if (!req?.files?.picture_validation) {
+    errors.invoice = "Veuillez ajouter une facture";
   }
 
-  if (name.length > 25) {
-    errors.name = "Maximum 25 caractères autorisés";
+  if (name.length > 50) {
+    errors.name = "Maximum 50 caractères autorisés";
   }
 
-  if (details.length > 60) {
-    errors.details = "Maximum 60 caractères autorisés";
+  if (details.length > 80) {
+    errors.details = "Maximum 80 caractères autorisés";
   }
 
   if (price.length > 6) {

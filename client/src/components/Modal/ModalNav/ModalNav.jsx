@@ -10,7 +10,6 @@ import { useWishlist } from "../../../contexts/WishlistContext";
 function ModalNav({ setModalNav }) {
   const [modalNavigation, setModalNavigation] = useState([]);
   const [likeCount, setLikeCount] = useState(null);
-
   const {auth}=useAuth();
 
   
@@ -83,7 +82,7 @@ function ModalNav({ setModalNav }) {
                 >
                   Supprimer
                 </button>
-                <h2>{modalsNav.price}</h2>
+                <h2>{modalsNav.price}€</h2>
               </div>
             </div>
           </div>

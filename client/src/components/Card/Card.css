@@ -47,6 +47,7 @@
   font-family: "League Spartan", sans-serif;
   font-size: 17px;
   padding-bottom: 5px;
+  line-height: 14px;
 }
 .cart {
   font-size: 25px;
@@ -97,7 +98,6 @@
 }
 .card:hover .card-picture {
   filter: blur(2px) brightness(0.7);
-  opacity: 0.8;
 }
 .card:hover .logo-container {
   display: flex;
@@ -180,8 +180,6 @@
   }
   .card:hover .card-picture {
     filter: blur(0px);
-  }
-  .card:hover .card-picture {
     opacity: 1;
   }
   .heart-logo {
