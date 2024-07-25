@@ -43,7 +43,7 @@
   width: 95%;
   align-items: center;
   gap: 10px;
-  margin: 10px auto;
+  margin: auto auto;
 }
 
 #gemsToast .toast-icon {

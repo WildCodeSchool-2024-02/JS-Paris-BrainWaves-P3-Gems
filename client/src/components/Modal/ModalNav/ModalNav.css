@@ -5,14 +5,14 @@
   z-index: 1;
   top: 28%;
 }
-.heart-profileNav {
+#modal-nav .heart-profileNav {
   margin-right: 1.5%;
   opacity: 0.6;
 }
 #modal-nav p {
   padding-top: 1%;
 }
-.container-imgNav {
+#modal-nav .container-imgNav {
   background-color: rgb(255, 255, 255, 0.9);
   width: 100vw;
   display: flex;
@@ -25,23 +25,23 @@ h1 .noFav {
   font-size: 6vh;
 }
 
-.image-modalNav {
+#modal-nav .image-modalNav {
   width: 49vw;
-  height: 19vh;
+  height: 23vh;
   object-fit: cover;
   z-index: 2;
 }
-.container-heartNav {
+#modal-nav .container-heartNav {
   display: flex;
   align-items: center;
   margin: 2% 0% 2% 2%;
 }
-.modal-styleNav {
+#modal-nav .modal-styleNav {
   display: flex;
   margin: 2%;
   margin-left: 2%;
 }
-.modal-detailsNav {
+#modal-nav .modal-detailsNav {
   display: flex;
   flex-direction: column;
 }
@@ -61,21 +61,23 @@ h1 .noFav {
   margin-left: 2%;
   font-weight: 400;
 }
-.modal-bottomNav {
+#modal-nav .modal-bottomNav {
   position: relative;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  top: 55px;
+  width: 42vw;
+  top: 13vh;
 }
-.modal-deleteNav {
+#modal-nav .modal-deleteNav {
   background: none;
   color: black;
   font-size: 1rem;
   font-weight: 400;
   width: 6vw;
 }
-.modal-deleteNav:hover {
+#modal-nav .modal-deleteNav:hover {
   background: none;
 }
 #modal-nav h2 {
@@ -99,16 +101,18 @@ h1 .noFav {
   #modal-nav h1 {
     margin-top: 3%;
   }
-  .modal-bottomNav {
-    height: 90%;
+  #modal-nav .modal-bottomNav {
+    position: relative;
+    top: 12vh;
+    width: 20vw;
   }
-  .container-imgNav {
+  #modal-nav .container-imgNav {
     width: 35vw;
     max-height: 100vh;
   }
-  .image-modalNav {
-    width: 15vw;
-    height: 24vh;
+  #modal-nav .image-modalNav {
+    width: 12vw;
+    height: 26vh;
   }
 
   #modal-nav .noFav {

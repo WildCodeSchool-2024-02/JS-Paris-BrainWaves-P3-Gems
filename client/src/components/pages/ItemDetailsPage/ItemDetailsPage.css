@@ -65,14 +65,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40vw;
+  width: 50vw;
   margin: 0 auto;
 }
 #ItemDetailsPage .button-detail {
   color: black;
   background-color: transparent;
   font-weight: 500;
-  font-size: 2.5vh;
+  font-size: 2.3vh;
   margin: 1vh;
   padding: 4px;
 }
@@ -160,7 +160,7 @@
 
   .heart-img {
     top: 10px;
-    left: 32rem;
+    left: 31rem;
   }
 
   #ItemDetailsPage .goBackButton {
