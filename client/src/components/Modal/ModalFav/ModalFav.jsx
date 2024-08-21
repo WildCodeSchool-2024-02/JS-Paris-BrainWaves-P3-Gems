@@ -29,7 +29,6 @@ function ModalFav({ setModalOpen , setFavorite }) {
       } 
   }
 
-  
   useEffect(() => {
 
     fetch(`${urlApi}/api/wishlist/show-counter/`,{
