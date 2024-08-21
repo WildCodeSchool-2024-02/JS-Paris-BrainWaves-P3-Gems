@@ -107,7 +107,10 @@ function ItemDetailsPage() {
           />
         ) : (
           <FaRegHeart
-            onClick={auth ? () => {addToWishList(detailProduct.Id_product); addToast("like", "L'article a été ajouté à vos favoris", 4000)} : ()=>navigate("/login")}
+              onClick={auth ? () => {
+                addToWishList(detailProduct.Id_product);
+                addToast("like", "L'article a été ajouté à vos favoris", 4000)
+              } : () => navigate("/login")}
             className="heart-img"
             style={{ color: "white" }}
           />

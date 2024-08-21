@@ -10,7 +10,7 @@ const { hashPassword, verifyToken } = require("../../../services/auth");
 
 const validateUser = require("../../../services/users");
 
-router.get("/",verifyToken, browse);
+router.get("/", browse);
 
 router.get("/refresh", refresh);
 
