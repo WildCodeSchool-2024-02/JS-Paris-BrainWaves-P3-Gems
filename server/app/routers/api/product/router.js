@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {
   add,
+  browse,
   readProductByCategoryId,
   readProductByUser,
   deleteProductByUser,
@@ -35,6 +36,8 @@ router.post(
   add
 );
 router.post("/checkoutSession", checkoutSession);
+
+router.get("/", browse);
 
 router.delete("/", verifyToken, deleteProductByUser);
 
